@@ -1,0 +1,126 @@
+/**
+ *------
+ * BGA framework: Gregory Isabelli & Emmanuel Colin & BoardGameArena
+ * Mythicals implementation : © joesimpson <1324811+joesimpson@users.noreply.github.com>
+ *
+ * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
+ * See http://en.boardgamearena.com/#!doc/Studio for more information.
+ * -----
+ *
+ * mythicals.scss
+ *
+ * Mythicals stylesheet
+ *
+ */
+
+@use "sass:math";
+@import "modules/css/variables";
+@import "modules/css/player-panel";
+@import "modules/css/cards";
+@import "modules/css/tiles";
+@import "modules/css/meeples";
+@import "modules/css/icons";
+@import "modules/css/settings";
+@import "modules/css/nouislider";
+/**
+    PREFIX FOR THIS GAME PROJECT : "myt"
+*/
+#myt_main_zone{
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.myt_nodisplay{
+    display: none;
+}
+.myt_hidden{
+    visibility: hidden;
+}
+
+// For animations : 
+.phantom {
+    visibility: hidden;
+}  
+//Buttons :
+.myt_selected_button{
+    background-color: rgb(255, 115, 0) !important;
+    background-image: none !important;
+    &:hover{
+        // overrides BGA default
+        background-color: rgba(255, 115, 0, 0.75) !important;
+    }
+}
+
+body[data-myt_undo_style='1']{//PREF_UNDO_STYLE_TEXT
+    #btnIconUndoLastStep, 
+    #btnIconRestartTurn
+    {
+        display: none !important;
+    }
+}
+body[data-myt_undo_style='2']{//PREF_UNDO_STYLE_ICON
+    #btnTextUndoLastStep,
+    #btnTextRestartTurn
+    {
+        display: none !important;
+    }
+}
+ 
+// SAFE MODE --------------------------
+#ebd-body.help-mode {
+    .tooltipable {
+        cursor: help;
+    }
+    #help-mode-switch{
+        svg{
+            color: #1b69ff;
+        }
+    }
+}
+
+.help-marker {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    z-index: 900;
+    border: 1px solid black;
+    border-radius: 50%;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+#ebd-body:not(.help-mode) {
+    .help-marker {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+//--------------------------------------
+/* Cancelled notification messages */
+.log.cancel {
+    color: #c62828 !important;
+    text-decoration: line-through;
+}
+/* Desktop logs */
+.log.cancel .roundedbox {
+    background-color: rgba(240, 186, 117, 0.6) !important;
+}
+/* Mobile logs */
+.log.cancel.roundedbox {
+    background-color: #ef9a9a;
+}
+
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+// Re enable list style over BGA common CSS, only for wanted section : game WIKI and some tooltips 
+#pagesection_howtoplay li, .midSizeDialog li { margin-left: 2em; } 
+#pagesection_howtoplay ol li { list-style: decimal; } /* BEFORE ul in case there are ul under ol */ 
+#pagesection_howtoplay ul li, .midSizeDialog ul li { list-style: disc; }
+// ------------------------------------------------------------------------------

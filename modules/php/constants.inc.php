@@ -36,6 +36,9 @@ const PREF_UNDO_STYLE = 101;
 const PREF_UNDO_STYLE_TEXT = 1;
 const PREF_UNDO_STYLE_ICON = 2;
 
+const ALL_PREFERENCES = [
+   PREF_UNDO_STYLE,
+];
 /////////////////////////////////////////////////////////
 //          GAME STATES
 /////////////////////////////////////////////////////////  
