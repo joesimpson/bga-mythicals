@@ -1,1 +1,23 @@
-{}
+{
+    "table": {
+        "turns_number": {
+          "id": 10,
+          "name": "Number of turns",
+          "type": "int"
+        }
+    },
+    "player": {
+      "score": {
+        "id": 10,
+        "name": "Score",
+        "type": "int"
+      },
+      "turnOrder": {
+        "id": 11,
+        "name": "Turn order",
+        "type": "int"
+      }
+    },
+    "value_labels": { 
+    }
+  }
