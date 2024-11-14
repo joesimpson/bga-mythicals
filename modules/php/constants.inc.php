@@ -27,6 +27,13 @@ const CARD_COLOR_RED = 4;
 //The day card will be unique
 const CARD_COLOR_DAY = 9;
 
+const CARD_COLORS = [
+   CARD_COLOR_BLUE, 
+   CARD_COLOR_GREEN, 
+   CARD_COLOR_PURPLE, 
+   CARD_COLOR_RED
+];
+
 const CARD_VALUE_1 = 1;
 const CARD_VALUE_2 = 2;
 const CARD_VALUE_3 = 3;

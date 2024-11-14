@@ -140,6 +140,7 @@ class Game extends \Table
         // Get information about players.
         $result["players"] = Players::getUiData($current_player_id);
         $result["cards"] = Cards::getUiData($current_player_id);
+        $result["deckSize"] = Cards::countInLocation(CARD_LOCATION_DECK);
         $result["prefs"] = Preferences::getUiData($current_player_id);
 
         // TODO: Gather all information about current game situation (visible by player $current_player_id).

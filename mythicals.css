@@ -15,6 +15,447 @@
  */
 :root {
   --myt_board_display_scale: 1;
+  --reserve_stack_scale: 1;
+}
+
+.myt_card_back,
+.myt_card {
+  width: 100px;
+  height: 200px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 5px black;
+  border-radius: 5px;
+  background-size: 700% 400%;
+  background-image: url("img/cards.jpg");
+  position: relative;
+}
+.myt_card_back[data-type="1"],
+.myt_card[data-type="1"] {
+  background-position-x: 0%;
+  background-position-y: 0%;
+}
+.myt_card_back[data-type="2"],
+.myt_card[data-type="2"] {
+  background-position-x: 16.6666666667%;
+  background-position-y: 0%;
+}
+.myt_card_back[data-type="3"],
+.myt_card[data-type="3"] {
+  background-position-x: 33.3333333333%;
+  background-position-y: 0%;
+}
+.myt_card_back[data-type="4"],
+.myt_card[data-type="4"] {
+  background-position-x: 50%;
+  background-position-y: 0%;
+}
+.myt_card_back[data-type="5"],
+.myt_card[data-type="5"] {
+  background-position-x: 66.6666666667%;
+  background-position-y: 0%;
+}
+.myt_card_back[data-type="6"],
+.myt_card[data-type="6"] {
+  background-position-x: 83.3333333333%;
+  background-position-y: 0%;
+}
+.myt_card_back[data-type="7"],
+.myt_card[data-type="7"] {
+  background-position-x: 100%;
+  background-position-y: 0%;
+}
+.myt_card_back[data-type="8"],
+.myt_card[data-type="8"] {
+  background-position-x: 0%;
+  background-position-y: 33.3333333333%;
+}
+.myt_card_back[data-type="9"],
+.myt_card[data-type="9"] {
+  background-position-x: 16.6666666667%;
+  background-position-y: 33.3333333333%;
+}
+.myt_card_back[data-type="10"],
+.myt_card[data-type="10"] {
+  background-position-x: 33.3333333333%;
+  background-position-y: 33.3333333333%;
+}
+.myt_card_back[data-type="11"],
+.myt_card[data-type="11"] {
+  background-position-x: 50%;
+  background-position-y: 33.3333333333%;
+}
+.myt_card_back[data-type="12"],
+.myt_card[data-type="12"] {
+  background-position-x: 66.6666666667%;
+  background-position-y: 33.3333333333%;
+}
+.myt_card_back[data-type="13"],
+.myt_card[data-type="13"] {
+  background-position-x: 83.3333333333%;
+  background-position-y: 33.3333333333%;
+}
+.myt_card_back[data-type="14"],
+.myt_card[data-type="14"] {
+  background-position-x: 100%;
+  background-position-y: 33.3333333333%;
+}
+.myt_card_back[data-type="15"],
+.myt_card[data-type="15"] {
+  background-position-x: 0%;
+  background-position-y: 66.6666666667%;
+}
+.myt_card_back[data-type="16"],
+.myt_card[data-type="16"] {
+  background-position-x: 16.6666666667%;
+  background-position-y: 66.6666666667%;
+}
+.myt_card_back[data-type="17"],
+.myt_card[data-type="17"] {
+  background-position-x: 33.3333333333%;
+  background-position-y: 66.6666666667%;
+}
+.myt_card_back[data-type="18"],
+.myt_card[data-type="18"] {
+  background-position-x: 50%;
+  background-position-y: 66.6666666667%;
+}
+.myt_card_back[data-type="19"],
+.myt_card[data-type="19"] {
+  background-position-x: 66.6666666667%;
+  background-position-y: 66.6666666667%;
+}
+.myt_card_back[data-type="20"],
+.myt_card[data-type="20"] {
+  background-position-x: 83.3333333333%;
+  background-position-y: 66.6666666667%;
+}
+.myt_card_back[data-type="21"],
+.myt_card[data-type="21"] {
+  background-position-x: 100%;
+  background-position-y: 66.6666666667%;
+}
+.myt_card_back[data-type="22"],
+.myt_card[data-type="22"] {
+  background-position-x: 0%;
+  background-position-y: 100%;
+}
+.myt_card_back[data-type="23"],
+.myt_card[data-type="23"] {
+  background-position-x: 16.6666666667%;
+  background-position-y: 100%;
+}
+.myt_card_back[data-type="24"],
+.myt_card[data-type="24"] {
+  background-position-x: 33.3333333333%;
+  background-position-y: 100%;
+}
+.myt_card_back[data-type="25"],
+.myt_card[data-type="25"] {
+  background-position-x: 50%;
+  background-position-y: 100%;
+}
+.myt_card_back[data-type="26"],
+.myt_card[data-type="26"] {
+  background-position-x: 66.6666666667%;
+  background-position-y: 100%;
+}
+.myt_card_back[data-type="27"],
+.myt_card[data-type="27"] {
+  background-position-x: 83.3333333333%;
+  background-position-y: 100%;
+}
+.myt_card_back.myt_card_back,
+.myt_card.myt_card_back {
+  background-position-x: 100%;
+  background-position-y: 33%;
+}
+.myt_card_back.selectable,
+.myt_card.selectable {
+  box-shadow: 0px 0px 7px 2px blue;
+  cursor: pointer;
+}
+.myt_card_back.selectable:hover,
+.myt_card.selectable:hover {
+  transform: scale(1.1);
+}
+.myt_card_back.selected, .myt_card_back.selected:hover,
+.myt_card.selected,
+.myt_card.selected:hover {
+  box-shadow: 0px 0px 7px 2px green;
+  z-index: 2;
+}
+.myt_card_back.selected.myt_selectedToDiscard .myt_card_wrapper::before, .myt_card_back.selected:hover.myt_selectedToDiscard .myt_card_wrapper::before,
+.myt_card.selected.myt_selectedToDiscard .myt_card_wrapper::before,
+.myt_card.selected:hover.myt_selectedToDiscard .myt_card_wrapper::before {
+  align-items: center;
+  background: rgba(209, 209, 209, 0.7450980392);
+  bottom: 0;
+  content: "\f1f8";
+  display: flex;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: calc(var(--myt_hand_scale) * 60px);
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+.myt_card_back .myt_card_wrapper,
+.myt_card .myt_card_wrapper {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+#myt_cards_reserve {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0px 5px;
+}
+
+.myt_cards_stack_resizable {
+  display: flex;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 10px black;
+  background-color: rgba(213, 162, 87, 0.5098039216);
+  position: relative;
+  margin-left: 10px;
+}
+.myt_cards_stack_resizable .myt_cards_stack {
+  display: flex;
+  flex-flow: column;
+}
+.myt_cards_stack_resizable .myt_cards_stack#myt_cards_stack_reserve {
+  min-width: calc(var(--reserve_stack_scale) * 100px);
+  min-height: calc(var(--reserve_stack_scale) * 200px);
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0px 5px;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable {
+  margin: 2px 5px;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card,
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable {
+  margin-bottom: -170px;
+  z-index: 2;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="1"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="1"] {
+  order: 1;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="2"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="2"] {
+  order: 2;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="3"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="3"] {
+  order: 3;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="4"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="4"] {
+  order: 4;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="5"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="5"] {
+  order: 5;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="6"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="6"] {
+  order: 6;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="7"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="7"] {
+  order: 7;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="8"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="8"] {
+  order: 8;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="9"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="9"] {
+  order: 9;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="10"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="10"] {
+  order: 10;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="11"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="11"] {
+  order: 11;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="12"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="12"] {
+  order: 12;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="13"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="13"] {
+  order: 13;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="14"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="14"] {
+  order: 14;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="15"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="15"] {
+  order: 15;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="16"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="16"] {
+  order: 16;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="17"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="17"] {
+  order: 17;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="18"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="18"] {
+  order: 18;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="19"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="19"] {
+  order: 19;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="20"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="20"] {
+  order: 20;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="21"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="21"] {
+  order: 21;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="22"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="22"] {
+  order: 22;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="23"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="23"] {
+  order: 23;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="24"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="24"] {
+  order: 24;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="25"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="25"] {
+  order: 25;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="26"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="26"] {
+  order: 26;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="27"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="27"] {
+  order: 27;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="28"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="28"] {
+  order: 28;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="29"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="29"] {
+  order: 29;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="30"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="30"] {
+  order: 30;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="31"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="31"] {
+  order: 31;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="32"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="32"] {
+  order: 32;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="33"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="33"] {
+  order: 33;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="34"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="34"] {
+  order: 34;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="35"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="35"] {
+  order: 35;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="36"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="36"] {
+  order: 36;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="37"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="37"] {
+  order: 37;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="38"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="38"] {
+  order: 38;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="39"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="39"] {
+  order: 39;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="40"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="40"] {
+  order: 40;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="41"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="41"] {
+  order: 41;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="42"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="42"] {
+  order: 42;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="43"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="43"] {
+  order: 43;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="44"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="44"] {
+  order: 44;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="45"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="45"] {
+  order: 45;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="46"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="46"] {
+  order: 46;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="47"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="47"] {
+  order: 47;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="48"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="48"] {
+  order: 48;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="49"],
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="49"] {
+  order: 49;
+}
+.myt_cards_stack_resizable .myt_cards_stack .myt_card:hover,
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable:hover {
+  z-index: 100;
+}
+
+.myt_deck_size {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 /**
@@ -580,7 +1021,9 @@
 #myt_main_zone {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  flex-flow: row;
 }
 
 .myt_nodisplay {

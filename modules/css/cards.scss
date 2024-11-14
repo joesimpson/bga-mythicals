@@ -1,0 +1,131 @@
+
+
+$card_width: 100px;
+$card_height: 200px;
+
+.myt_card_back,
+.myt_card {
+    width: $card_width;
+    height: $card_height;
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px black;
+    border-radius: 5px;
+
+    //sprite positions
+    background-size: 700% 400%;
+    background-image: url("img/cards.jpg");
+    @for $i from 0 through 26 {
+        &[data-type="#{$i + 1}"] {
+            background-position-x: math.div(($i % 7) * 100%, 6);//7 columns
+            background-position-y: math.div(math.div($i - ($i % 7), 7) * 100%, 3);//7 columns , 4 rows
+        }
+    }
+
+    &.myt_card_back{
+        background-position-x: 100%;
+        background-position-y: 33%;
+    }
+
+    position: relative; 
+    &.selectable {
+        box-shadow: 0px 0px 7px 2px blue;
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &.selected,
+    &.selected:hover {
+        box-shadow: 0px 0px 7px 2px green;
+        //transform: scale(1.1);
+        z-index: 2;
+
+        &.myt_selectedToDiscard{
+            .myt_card_wrapper::before{
+                //Display a garbage over the card
+                align-items:center;
+                background:#d1d1d1be;
+                bottom:0;
+                content:"\f1f8";
+                display:flex;
+                font:normal normal normal 14px/1 FontAwesome;
+                font-size: calc(var(--myt_hand_scale) * 60px);
+                justify-content:center;
+                left:0;
+                position:absolute;
+                right:0;
+                top:0;
+                z-index:10;
+           }
+        }
+    }
+
+    .myt_card_wrapper{//WRAPPER For text datas
+        user-select: none;
+    } 
+ 
+}
+
+#myt_cards_reserve{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0px 5px;
+}
+.myt_cards_stack_resizable
+ {
+    display: flex;
+
+    border-radius: 10px;
+    border: 2px solid black;
+    box-shadow: 1px 1px 10px black;
+    background-color: #d5a25782;
+    position: relative;
+    margin-left: 10px;
+
+    .myt_cards_stack{
+            
+        &#myt_cards_stack_reserve{
+            min-width: calc(var(--reserve_stack_scale) * $card_width);
+            min-height: calc(var(--reserve_stack_scale) * $card_height);
+        }
+
+        display: flex;
+        flex-flow: column;
+        .myt_card{
+            display: flex;
+            flex-flow: row;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0px 5px;
+        }
+        .myt_card_resizeable{
+            margin: 2px 5px;
+        }
+        .myt_card,
+        .myt_card_resizeable {
+            //ORDER CARDS by type :
+            @for $i from 1 through 49 {
+                &[data-type="#{$i}"] {
+                    order: $i;
+                }
+            }
+
+            //Stack cards 
+            margin-bottom: calc(math.div(-85, 100) * $card_height);
+            z-index: 2;
+            &:hover {
+                z-index: 100;
+            }
+        }
+    } 
+}
+
+.myt_deck_size{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}

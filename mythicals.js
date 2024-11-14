@@ -29,6 +29,21 @@ define([
 function (dojo, declare) {
     
     const PREF_UNDO_STYLE = 101;
+    
+    const CARD_LOCATION_RESERVE = 'reserve';
+        
+    const CARD_COLOR_BLUE = 1;
+    const CARD_COLOR_GREEN = 2;
+    const CARD_COLOR_PURPLE = 3;
+    const CARD_COLOR_RED = 4;
+    const CARD_COLOR_DAY = 9;
+
+    const CARD_COLORS = [
+        CARD_COLOR_BLUE, 
+        CARD_COLOR_GREEN, 
+        CARD_COLOR_PURPLE, 
+        CARD_COLOR_RED
+    ];
 
     return declare("bgagame.mythicals", [customgame.game], {
         constructor: function(){
@@ -57,8 +72,24 @@ function (dojo, declare) {
             document.getElementById('game_play_area').insertAdjacentHTML('beforeend', `
                 <div id="myt_game_container">
                     <div id="myt_select_piece_container"></div>
+                    <div id="myt_main_zone">
+                        <div id="myt_cards_deck_container">
+                            <div class="myt_card_back"></div>
+                            <div class="myt_deck_size">${gamedatas.deckSize}</div>
+                        </div>
+                        <div id="myt_cards_reserve"></div>
+                    </div>
                 </div>
             `);
+            //TODO JSA refresh COUNTER deckSize
+
+            Object.values(CARD_COLORS).forEach(color => {
+                document.getElementById('myt_cards_reserve').insertAdjacentHTML('beforeend', `
+                    <div id="myt_cards_reserve_resizable_${color}" class="myt_cards_stack_resizable">
+                        <div id="myt_cards_reserve_${color}" class="myt_cards_stack"></div>
+                    </div>
+                `);
+            });
 
             // Example to add a div on the game area
             document.getElementById('myt_game_container').insertAdjacentHTML('beforeend', `
@@ -83,6 +114,7 @@ function (dojo, declare) {
             
             this.setupPlayers();
             this.setupInfoPanel();
+            this.setupCards();
 
             debug( "Ending specific game setup" );
 
@@ -220,6 +252,47 @@ function (dojo, declare) {
             });        
         },    
 
+         ////////////////////////////////////////////////////////////
+        // _____                          _   _   _
+        // |  ___|__  _ __ _ __ ___   __ _| |_| |_(_)_ __   __ _
+        // | |_ / _ \| '__| '_ ` _ \ / _` | __| __| | '_ \ / _` |
+        // |  _| (_) | |  | | | | | | (_| | |_| |_| | | | | (_| |
+        // |_|  \___/|_|  |_| |_| |_|\__,_|\__|\__|_|_| |_|\__, |
+        //                                                 |___/
+        ////////////////////////////////////////////////////////////
+        /**
+         * Format log strings (alias fsr)
+         *  @Override
+         */
+        format_string_recursive(log, args) {
+            try {
+            if (log && args && !args.processed) {
+                args.processed = true;
+
+                log = this.formatString(_(log));
+                let bonus_icon = 'bonus_icon';
+                if(bonus_icon in args) {
+                    args.bonus_icon = this.formatIcon('bonus-'+args.bonus_icon);
+                }
+            }
+            } catch (e) {
+                console.error(log, args, 'Exception thrown', e.stack);
+            }
+
+            return this.inherited(arguments);
+        },
+        formatIcon(name, n = null) {
+            let type = name;
+            let text = n == null ? '' : `<span class='myt_icon_qty'>${n}</span>`;
+            return `<div class="myt_icon_container myt_icon_container_${type}">
+                <div class="myt_icon myt_icon_${type}">${text}</div>
+                </div>`;
+        },
+        
+        formatString(str) {
+            //debug('formatString', str);
+            return str;
+        },
         ////////////////////////////////////////
         //  ____  _
         // |  _ \| | __ _ _   _  ___ _ __ ___
@@ -316,6 +389,81 @@ function (dojo, declare) {
                 </div>
             </div>
             </div>`;
+        },
+
+
+        
+        ////////////////////////////////////////////////////////
+        //    ____              _
+        //   / ___|__ _ _ __ __| |___
+        //  | |   / _` | '__/ _` / __|
+        //  | |__| (_| | | | (_| \__ \
+        //   \____\__,_|_|  \__,_|___/
+        //////////////////////////////////////////////////////////
+        setupCards() {
+            debug("setupCards");
+            // This function is refreshUI compatible
+            //destroy previous cards
+            document.querySelectorAll('.myt_card[id^="myt_card-"]').forEach((oCard) => {
+                this.destroy(oCard);
+            });
+            let cardIds = this.gamedatas.cards.map((card) => {
+                let divCardId = `myt_card-${card.id}`;
+                if (!$(divCardId)) {
+                    this.addCard(card);
+                }
+        
+                let o = $(divCardId);
+                if (!o) return null;
+        
+                let container = this.getCardContainer(card);
+                if (o.parentNode != $(container)) {
+                    dojo.place(o, container);
+                }
+                return card.id;
+            });
+        },
+    
+        addCard(card, location = null) {
+            debug('addCard',card);
+            if ($('myt_card-' + card.id)) return;
+    
+            let o = this.place('tplCard', card, location == null ? this.getCardContainer(card) : location);
+            let tooltipDesc = this.getCardTooltip(card);
+            if (tooltipDesc != null) {
+                this.addCustomTooltip(o.id, tooltipDesc.map((t) => this.formatString(t)).join('<br/>'));
+            }
+    
+            return o;
+        },
+    
+        getCardTooltip(card) {
+            let cardDatas = card;
+            let desc = "TODO";
+            if(CARD_COLOR_DAY == card.color) desc = desc + _("<br>Day Card");
+            //else return;
+            let div = this.tplCard(cardDatas,'_tmp');
+            return [`<div class='myt_card_tooltip'><h1>${desc}</h1>${div}</div>`];
+        }, 
+
+        tplCard(card, prefix ='') {
+            return `<div class="myt_card" id="myt_card${prefix}-${card.id}" data-id="${card.id}" data-type="${card.type}" data-color="${card.color}"  data-value="${card.value}">
+                    <div class="myt_card_wrapper">
+                    </div>
+                </div>`;
+        },
+    
+        getCardContainer(card) { 
+            //TODO JSA display cards in the right container
+            if (card.location == 'deck' && CARD_COLORS.includes(card.color) ) {
+                return $(`myt_cards_reserve_${card.color}`);
+            }
+            if (card.location == CARD_LOCATION_RESERVE  && CARD_COLORS.includes(card.color) ) {
+                return $(`myt_cards_reserve_${card.color}`);
+            }
+            
+            console.error('Trying to get container of a card', card);
+            return 'myt_game_container';
         },
    });             
 });
