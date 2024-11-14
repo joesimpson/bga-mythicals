@@ -20,6 +20,7 @@ namespace Bga\Games\Mythicals;
 
 use \Bga\GameFramework\Actions\CheckAction;
 use Bga\Games\Mythicals\Core\Preferences;
+use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 
 require_once(APP_GAMEMODULE_PATH . "module/table/table.game.php");
@@ -138,6 +139,7 @@ class Game extends \Table
 
         // Get information about players.
         $result["players"] = Players::getUiData($current_player_id);
+        $result["cards"] = Cards::getUiData($current_player_id);
         $result["prefs"] = Preferences::getUiData($current_player_id);
 
         // TODO: Gather all information about current game situation (visible by player $current_player_id).

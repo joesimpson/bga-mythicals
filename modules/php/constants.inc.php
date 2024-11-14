@@ -12,9 +12,27 @@ const BGA_GAMESTATE_GAMEVERSION = 300;
 
 const CARD_LOCATION_DISCARD = 'discard';
 const CARD_LOCATION_DECK = 'deck';
+const CARD_LOCATION_CURRENT_DRAW = 'draw';
+const CARD_LOCATION_RESERVE = 'reserve';
 const CARD_LOCATION_HAND = 'hand';
 
 const NB_CARDS_PER_PLAYER = 2;
+/** there are 2 copies of each creature */
+const NB_CREATURE_COPIES = 2;
+
+const CARD_COLOR_BLUE = 1;
+const CARD_COLOR_GREEN = 2;
+const CARD_COLOR_PURPLE = 3;
+const CARD_COLOR_RED = 4;
+//The day card will be unique
+const CARD_COLOR_DAY = 9;
+
+const CARD_VALUE_1 = 1;
+const CARD_VALUE_2 = 2;
+const CARD_VALUE_3 = 3;
+const CARD_VALUE_4 = 4;
+const CARD_VALUE_5 = 5;
+const CARD_VALUE_JOKER = 6;
 
 /////////////////////////////////////////////////////////
 //          MEEPLES
