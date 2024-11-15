@@ -45,7 +45,7 @@ const CARD_VALUE_JOKER = 6;
 //          TILES
 /////////////////////////////////////////////////////////
 
-const TILE_LOCATION_BOARD = 'board';
+const TILE_LOCATION_BOARD = 'board-';//TO BE FOLLOWED BY POSITION !
 const TILE_LOCATION_HAND = 'hand';
 
 const TILE_COLOR_BLUE = 1;

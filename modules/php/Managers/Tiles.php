@@ -76,7 +76,7 @@ class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
    * @return string
    */
   public static function formatBoardLocation(int $scoringType){
-    return TILE_LOCATION_BOARD."-$scoringType";
+    return TILE_LOCATION_BOARD."$scoringType";
   }
    
   /** Creation of the tiles */

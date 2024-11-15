@@ -45,6 +45,23 @@ function (dojo, declare) {
         CARD_COLOR_RED
     ];
 
+    const TILE_LOCATION_BOARD = 'board-';
+
+    const TILE_COLOR_BLUE = 1;
+    const TILE_COLOR_GREEN = 2;
+    const TILE_COLOR_PURPLE = 3;
+    const TILE_COLOR_RED = 4;
+    const TILE_COLOR_GRAY = 5;
+    const TILE_COLOR_BLACK = 6;
+    const TILE_COLORS = [
+        TILE_COLOR_BLUE,
+        TILE_COLOR_GREEN,
+        TILE_COLOR_PURPLE,
+        TILE_COLOR_RED,
+        TILE_COLOR_GRAY,
+        TILE_COLOR_BLACK,
+    ];
+
     return declare("bgagame.mythicals", [customgame.game], {
         constructor: function(){
             debug('mythicals constructor');
@@ -73,6 +90,9 @@ function (dojo, declare) {
                 <div id="myt_game_container">
                     <div id="myt_select_piece_container"></div>
                     <div id="myt_main_zone">
+                        <div id="myt_board">
+                            <div id="myt_board_tiles"></div>
+                        </div>
                         <div id="myt_cards_deck_container">
                             <div class="myt_card_back"></div>
                             <div class="myt_deck_size">${gamedatas.deckSize}</div>
@@ -89,6 +109,15 @@ function (dojo, declare) {
                         <div id="myt_cards_reserve_${color}" class="myt_cards_stack"></div>
                     </div>
                 `);
+            });
+            
+            Object.values(TILE_COLORS).forEach(color => {
+                for(let k=1; k<=8;k++){
+                    document.getElementById('myt_board_tiles').insertAdjacentHTML('beforeend', `
+                        <div id="myt_board_tile_cell-${color}-${k}" class="myt_board_tile_cell">
+                        </div>
+                    `);
+                }
             });
 
             // Example to add a div on the game area
@@ -115,6 +144,7 @@ function (dojo, declare) {
             this.setupPlayers();
             this.setupInfoPanel();
             this.setupCards();
+            this.setupTiles();
 
             debug( "Ending specific game setup" );
 
@@ -391,7 +421,71 @@ function (dojo, declare) {
             </div>`;
         },
 
+        ////////////////////////////////////////////////////////
+        //  _____ _ _
+        // |_   _(_) | ___  ___
+        //   | | | | |/ _ \/ __|
+        //   | | | | |  __/\__ \
+        //   |_| |_|_|\___||___/
+        //////////////////////////////////////////////////////////
 
+        setupTiles() {
+            // This function is refreshUI compatible
+            debug("setupTiles"); 
+            //Destroy previous tiles
+            document.querySelectorAll('.myt_tile[id^="myt_tile-"]').forEach((oCard) => {
+                this.destroy(oCard);
+            });
+
+            let cardIds = this.gamedatas.tiles.map((card) => {
+                if (!$(`myt_tile-${card.id}`)) {
+                    this.addTile(card);
+                }
+        
+                let o = $(`myt_tile-${card.id}`);
+                if (!o) return null;
+        
+                let container = this.getTileContainer(card);
+                if (o.parentNode != $(container)) {
+                    dojo.place(o, container);
+                }
+                return card.id;
+            });
+        },
+        
+        addTile(tile, location = null) {
+            debug('addTile',tile);
+            let divId = `myt_tile-${tile.id}`;
+            if ($(divId)) return $(divId);
+            let o = this.place('tplTile', tile, location == null ? this.getTileContainer(tile) : location);
+            let tooltipDesc = this.getTileTooltip(tile);
+            if (tooltipDesc != null) {
+                this.addCustomTooltip(o.id, tooltipDesc);
+            }
+    
+            return o;
+        },
+        getTileTooltip(tile) {
+            let cardDatas = tile;
+            let typeName = '';
+            let titleSize = 'h1';
+            let div = this.tplTile(cardDatas,'_tmp');
+            return [`<div class='myt_tile_tooltip'><${titleSize}>${typeName}</${titleSize}>${div}</div>`];
+        },
+        tplTile(tile, prefix ='') {
+            return `<div class="myt_tile myt_tile${prefix}" id="myt_tile${prefix}-${tile.id}" data-id="${tile.id}" data-type="${tile.type}"
+                   data-state="${tile.state}" >
+                </div>`;
+        },
+        
+        getTileContainer(tile) {
+            if (tile.location.startsWith(TILE_LOCATION_BOARD)) {
+                return $(`myt_board_tile_cell-${tile.color}-${tile.pos}`);
+            }
+    
+            console.error('Trying to get container of a tile', tile);
+            return 'game_play_area';
+        },
         
         ////////////////////////////////////////////////////////
         //    ____              _

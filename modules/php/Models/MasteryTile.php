@@ -22,8 +22,18 @@ class MasteryTile extends Tile
     $data = parent::getUiData();
     $data['color'] = $this->getColor();
     $data['score'] = $this->getScore();
-    $data['scoring'] = $this->getScoring();
+    $data['pos'] = $this->getBoardPosition();
     return $data;
+  }
+
+  /**
+   * @return int position on board == scoring type during this game
+   */
+  public function getBoardPosition(){
+    $location = $this->getLocation();
+    if(str_starts_with($location, TILE_LOCATION_BOARD) ) 
+      return intval(substr($location,strlen(TILE_LOCATION_BOARD)));
+    return 0;
   }
   
 }
