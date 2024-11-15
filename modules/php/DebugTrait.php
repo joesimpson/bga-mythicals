@@ -2,6 +2,8 @@
 namespace Bga\Games\Mythicals;
 
 use Bga\Games\Mythicals\Core\Notifications;
+use Bga\Games\Mythicals\Managers\Cards;
+use Bga\Games\Mythicals\Managers\Tiles;
 
 /**
  * Debugging functions to be called in chat window in BGA Studio
@@ -46,7 +48,7 @@ trait DebugTrait
   /**
    * Function to call to regenerate JSON from PHP 
    */
-  function debugJSON(){
+  function debug_JSON(){
     include dirname(__FILE__) . '/gameoptions.inc.php';
 
     $customOptions = $game_options;//READ from module file
@@ -64,5 +66,14 @@ trait DebugTrait
   function debug_UI(){
     self::reloadPlayersBasicInfos();
     Notifications::refreshUI($this->getAllDatas());
+  }
+  ////////////////////////////////////////////////////
+
+  function debug_Setup(){
+    $players = self::loadPlayersBasicInfos();
+    Cards::DB()->delete()->run();
+    Cards::setupNewGame($players,[]);
+    Tiles::DB()->delete()->run();
+    Tiles::setupNewGame($players,[]);
   }
 }

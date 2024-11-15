@@ -38,6 +38,15 @@ CREATE TABLE IF NOT EXISTS `cards` (
   PRIMARY KEY (`card_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+CREATE TABLE IF NOT EXISTS `tiles` (
+  `tile_id` int(1) NOT NULL AUTO_INCREMENT,
+  `tile_state` int(10) DEFAULT 0,
+  `tile_location` varchar(32) NOT NULL,
+  `type` int(10) NOT NULL,
+  `player_id` int(10) NULL,
+  PRIMARY KEY (`tile_id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
 -- Example 2: add a custom field to the standard "player" table
 -- ALTER TABLE `player` ADD `player_my_custom_field` INT UNSIGNED NOT NULL DEFAULT '0';
 
