@@ -71,6 +71,7 @@ function (dojo, declare) {
             this._counters = {};
             
             this._notifications = [
+                ['refreshUI', 200],
             ];
 
         },
@@ -91,16 +92,17 @@ function (dojo, declare) {
                 <div id="myt_game_container">
                     <div id="myt_select_piece_container"></div>
                     <div id="myt_main_zone">
+                        <div id="myt_cards_deck_container">
+                            <div class="myt_card_back"></div>
+                            <div class="myt_deck_size">${gamedatas.deckSize}</div>
+                        </div>
                         <div id='myt_resizable_board'>
                             <div id='myt_board_container'>
                                 <div id="myt_board">
                                     <div id="myt_board_tiles"></div>
+                                    <div id="myt_cards_reserve"></div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="myt_cards_deck_container">
-                            <div class="myt_card_back"></div>
-                            <div class="myt_deck_size">${gamedatas.deckSize}</div>
                         </div>
                         <div id="myt_cards_reserve"></div>
                     </div>
@@ -245,7 +247,20 @@ function (dojo, declare) {
         //                                                            
         //    
         //////////////////////////////////////////////////////////////
- 
+        notif_refreshUI(n) {
+            debug('notif_refreshUI: refreshing UI', n);
+            ['cards', 'tiles', 'deckSize',].forEach((value) => {
+                this.gamedatas[value] = n.args.datas[value];
+            });
+            this.setupCards();
+            this.setupTiles();
+    
+            this.forEachPlayer((player) => {
+                let pId = player.id;
+                this.scoreCtrl[pId].toValue(player.score);
+                //TODO JSA REFRESH COUNTERS
+            });
+        },
 
         ///////////////////////////////////////////////////
         //    _    _ _   _ _     

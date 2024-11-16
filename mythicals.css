@@ -22,6 +22,7 @@
   width: calc(var(--myt_board_display_scale) * 3750px);
   height: calc(var(--myt_board_display_scale) * 1842px);
   margin-bottom: 10px;
+  margin-bottom: 250px;
 }
 #myt_resizable_board #myt_board_container {
   /* prevents vertical invisible overflow on BGA bottom elements*/
@@ -87,6 +88,37 @@
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="5"] {
   top: 1255px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve {
+  position: absolute;
+  top: 1802px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_card {
+  width: 450px;
+  height: 900px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable {
+  position: absolute;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable#myt_cards_reserve_resizable_3 {
+  left: 68px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable#myt_cards_reserve_resizable_2 {
+  left: 693px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable#myt_cards_reserve_resizable_4 {
+  left: 1317px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable#myt_cards_reserve_resizable_1 {
+  left: 1943px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack .myt_card,
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack .myt_card_resizeable {
+  margin-bottom: -165%;
+}
+
+#myt_cards_deck_container {
+  margin: 5px;
 }
 
 .myt_card_back,
@@ -279,14 +311,6 @@
           user-select: none;
 }
 
-#myt_cards_reserve {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 0px 5px;
-}
-
 .myt_cards_stack_resizable {
   display: flex;
   border-radius: 10px;
@@ -297,12 +321,14 @@
   margin-left: 10px;
 }
 .myt_cards_stack_resizable .myt_cards_stack {
+  /*
+  &#myt_cards_stack_reserve{
+      min-width: calc(var(--reserve_stack_scale) * $card_width);
+      min-height: calc(var(--reserve_stack_scale) * $card_height);
+  }
+  */
   display: flex;
   flex-flow: column;
-}
-.myt_cards_stack_resizable .myt_cards_stack#myt_cards_stack_reserve {
-  min-width: calc(var(--reserve_stack_scale) * 100px);
-  min-height: calc(var(--reserve_stack_scale) * 200px);
 }
 .myt_cards_stack_resizable .myt_cards_stack .myt_card {
   display: flex;

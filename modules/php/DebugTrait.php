@@ -77,5 +77,7 @@ trait DebugTrait
     Cards::setupNewGame($playersDatas,[]);
     Tiles::DB()->delete()->run();
     Tiles::setupNewGame($players,[]);
+    
+    Notifications::refreshUI($this->getAllDatas());
   }
 }

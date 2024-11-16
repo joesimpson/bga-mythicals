@@ -129,6 +129,8 @@ class Notifications
     $gameDatas = [
       'players' => $datas['players'],
       'cards' => $datas['cards'],
+      'deckSize' => $datas['deckSize'],
+      'tiles' => $datas['tiles'],
     ];
 
     self::notifyAll('refreshUI', '', [

@@ -68,11 +68,11 @@ $card_height: 200px;
 }
 
 #myt_cards_reserve{
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0px 5px;
+    //display: flex;
+    //flex-flow: row;
+    //flex-wrap: wrap;
+    //align-items: center;
+    //padding: 0px 5px;
 }
 .myt_cards_stack_resizable
  {
@@ -86,11 +86,12 @@ $card_height: 200px;
     margin-left: 10px;
 
     .myt_cards_stack{
-            
+         /*
         &#myt_cards_stack_reserve{
             min-width: calc(var(--reserve_stack_scale) * $card_width);
             min-height: calc(var(--reserve_stack_scale) * $card_height);
         }
+        */
 
         display: flex;
         flex-flow: column;
