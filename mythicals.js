@@ -90,8 +90,12 @@ function (dojo, declare) {
                 <div id="myt_game_container">
                     <div id="myt_select_piece_container"></div>
                     <div id="myt_main_zone">
-                        <div id="myt_board">
-                            <div id="myt_board_tiles"></div>
+                        <div id='myt_resizable_board'>
+                            <div id='myt_board_container'>
+                                <div id="myt_board">
+                                    <div id="myt_board_tiles"></div>
+                                </div>
+                            </div>
                         </div>
                         <div id="myt_cards_deck_container">
                             <div class="myt_card_back"></div>
@@ -114,7 +118,9 @@ function (dojo, declare) {
             Object.values(TILE_COLORS).forEach(color => {
                 for(let k=1; k<=8;k++){
                     document.getElementById('myt_board_tiles').insertAdjacentHTML('beforeend', `
-                        <div id="myt_board_tile_cell-${color}-${k}" class="myt_board_tile_cell">
+                        <div id="myt_board_tile_cell-${color}-${k}" class="myt_board_tile_cell"
+                            data-color="${color}" data-scoringtype="${k}"
+                        >
                         </div>
                     `);
                 }

@@ -1,12 +1,11 @@
-$tile_width: 80px;
-$tile_height: 80px;
+$tile_width: 370px;
+$tile_height: 370px;
 
 .myt_tile {
     width: $tile_width;
     height: $tile_height;
-    border: 1px solid black;
-    box-shadow: 1px 1px 5px black;
-    border-radius: 5px;
+    outline: 2px solid black;
+    border-radius: 40px;
 
     //sprite positions
     background-size: 800% 500%;
@@ -19,10 +18,10 @@ $tile_height: 80px;
             //8 columns alterning : 4 columns for OPEN STATE + 4 columns for LOCKED
             
             &[data-state="1"] {//TILE_STATE_OPEN
-                background-position-x: math.div(((2 * ($i+1) +0) % 8) * 100%, 7);
+                background-position-x: math.div(((2 * ($i) + 0) % 8) * 100%, 7);
             }
             &[data-state="2"] {//TILE_STATE_LOCKED
-                background-position-x: math.div(((2 * ($i+1) +1) % 8) * 100%, 7);
+                background-position-x: math.div(((2 * ($i) + 1) % 8) * 100%, 7);
             }
             background-position-y: math.div(math.div($i - ($i % 4), 4) * 100%, 4);
 
@@ -45,13 +44,4 @@ $tile_height: 80px;
         z-index: 2;
     }
 }
-
-#myt_board_tiles{
-    //TEMPORARY UNTIL GRID
-    width: 800px;
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0px 5px;
-}
+ 

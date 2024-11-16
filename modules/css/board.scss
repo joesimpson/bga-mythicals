@@ -1,0 +1,92 @@
+
+$board_img_width: 3750px;
+$board_img_height: 1842px;
+
+#myt_resizable_board {
+    width: calc(var(--myt_board_display_scale) * $board_img_width);
+    height: calc(var(--myt_board_display_scale) * $board_img_height);
+    margin-bottom: 10px;
+
+    #myt_board_container{
+        /* prevents vertical invisible overflow on BGA bottom elements*/
+        height: inherit;
+        
+        #myt_board{
+            width: $board_img_width;
+            height: 1842px;
+            transform: scale(var(--myt_board_display_scale));
+            transform-origin: top left;
+            border-radius: 10px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 10px black;
+            position: relative;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+
+            background-image: url('img/board.jpg');
+
+            #myt_board_tiles{
+                //position: absolute;
+                //grid-template-columns: repeat(7, 1fr);
+                //grid-template-rows: repeat(4, 1fr);
+                //display: grid;
+                
+                .myt_board_tile_cell{
+                    position: absolute;
+                    z-index: 2;
+                    //width: 400px;
+                    //height: 400px;
+                    //COLOR will gives the "COLUMN" :
+                    &[data-color="3"]{//TILE_COLOR_PURPLE
+                        left: 130px;
+                    } 
+                    &[data-color="2"]{//TILE_COLOR_GREEN
+                        left: 752px;
+                    } 
+                    &[data-color="4"]{//TILE_COLOR_RED
+                        left: 1380px;
+                    } 
+                    &[data-color="1"]{//TILE_COLOR_BLUE
+                        left: 2002px;
+                    } 
+                    &[data-color="5"]{//TILE_COLOR_GRAY
+                        left: 2575px;
+                    } 
+                    &[data-color="6"]{//TILE_COLOR_BLACK
+                        left: 2940px;
+                    } 
+                    //SCORING will gives the "line" :
+                    &[data-scoringtype="4"]{//TILE_SCORING_SUITE_5
+                        top: 168px;
+                    } 
+                    &[data-scoringtype="3"]{//TILE_SCORING_SUITE_4
+                        top: 533px;
+                    } 
+                    &[data-scoringtype="2"]{//TILE_SCORING_SUITE_3
+                        top: 908px;
+                    } 
+                    &[data-scoringtype="1"]{//TILE_SCORING_SUITE_2
+                        top: 1245px;
+                    } 
+                    //------------
+                    &[data-scoringtype="8"]{//TILE_SCORING_SAME_6
+                        top: 75px;
+                    } 
+                    &[data-scoringtype="7"]{//TILE_SCORING_SAME_4
+                        top: 525px;
+                    } 
+                    &[data-scoringtype="6"]{//TILE_SCORING_SAME_3
+                        top: 895px;
+                    } 
+                    &[data-scoringtype="5"]{//TILE_SCORING_SAME_2
+                        top: 1255px;
+                    } 
+                }
+            }
+        }
+    }
+}
