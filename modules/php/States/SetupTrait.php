@@ -23,7 +23,7 @@ trait SetupTrait
     Globals::setupNewGame($players, $options);
     $playersDatas = Players::setupNewGame($players, $options);
     Stats::setupNewGame($playersDatas);
-    Cards::setupNewGame($players,$options);
+    Cards::setupNewGame($playersDatas,$options);
     Tiles::setupNewGame($players,$options);
 
     $this->setGameStateInitialValue('logging', true); 

@@ -121,6 +121,19 @@ $card_height: 200px;
             }
         }
     } 
+    
+    &[data-color="1"] {//CARD_COLOR_BLUE
+        order: 4;
+    }
+    &[data-color="2"] {//CARD_COLOR_GREEN
+        order: 2;
+    }
+    &[data-color="3"] {//CARD_COLOR_PURPLE
+        order: 1;
+    }
+    &[data-color="4"] {//CARD_COLOR_RED
+        order: 3;
+    }
 }
 
 .myt_deck_size{
@@ -128,4 +141,40 @@ $card_height: 200px;
     justify-content: center;
     align-items: center;
     user-select: none;
+}
+
+#myt_players_table{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .myt_player_table{
+        width: fit-content;
+
+        border-radius: 10px;
+        border: 2px solid black;
+        box-shadow: 1px 1px 10px black;
+        background-color: #d5a25782;
+        margin-left: 10px;
+    }
+
+    .myt_title{
+        text-align: center;
+        padding: 0 7px;
+    }
+    .myt_player_cards{
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 0px 5px;
+
+        min-height: $card_height;
+
+        .myt_cards_stack_resizable{
+            min-width: $card_width;
+        }
+    }
 }

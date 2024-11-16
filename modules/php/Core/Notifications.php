@@ -31,6 +31,23 @@ class Notifications
     ]);
   }
 
+  
+  /**
+   * @param Player $player
+   * @param Card $card
+   */
+  public static function giveCardTo($player, $card)
+  {
+    self::notifyAll('giveCardToPublic', clienttranslate('${player_name} receives a new card'), [
+      'player' => $player,
+    ]);
+    //Beware this is a private info !
+    self::notify($player,'giveCardTo', '', [
+      'player' => $player,
+      'card' => $card->getUiData(),
+    ]);
+  }
+
   /*************************
    **** GENERIC METHODS ****
    *************************/

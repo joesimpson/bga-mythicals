@@ -2,6 +2,8 @@
 
 namespace Bga\Games\Mythicals\Managers;
 
+use Bga\Games\Mythicals\Core\Notifications;
+use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Models\Card;
 use Bga\Games\Mythicals\Models\CreatureCard;
@@ -35,7 +37,8 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
 
     return 
       self::getInLocation(CARD_LOCATION_DECK) //TODO JSA FILTER CARDS self::getInLocation(CARD_LOCATION_RESERVE)
-      ->merge($privateCards)
+      //->merge($privateCards)
+      ->merge(self::getInLocation(CARD_LOCATION_HAND))
       ->map(function ($card) {
         return $card->getUiData();
       })
@@ -62,8 +65,31 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
   {
     return self::getFilteredQuery($pId, CARD_LOCATION_HAND)->get();
   }
+
+  /**
+   * @param Player $player
+   * @param int $nbCards
+   * @return int $missingNb number of expected cards we cannot draw
+   */
+  public static function drawCardsToHand($player,$nbCards)
+  {
+    Game::get()->trace("drawCardsToHand($nbCards)");
+    $cards = self::pickForLocation($nbCards, CARD_LOCATION_DECK, CARD_LOCATION_HAND,0,true);
+    foreach($cards as $card){
+      $card->setPId($player->getId());
+      Notifications::giveCardTo($player,$card);
+    }
+    $missingNb = $nbCards - $cards->count();
+    Game::get()->trace("drawCardsToHand($nbCards) -> $missingNb are missing");
+    if($missingNb>0) // Notifications::missingCards($player,$missingNb);
+    return $missingNb;
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////////////
    
-  /** Creation of the cards */
+  /** Creation of the cards
+   * @param Collection $players
+   */
   public static function setupNewGame($players, $options)
   {
     $cards = [];
@@ -78,6 +104,10 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
 
     self::create($cards);
     self::shuffle(CARD_LOCATION_DECK);
+
+    foreach($players as $player){
+      self::drawCardsToHand($player, NB_CARDS_PER_PLAYER);
+    }
   }
   
   /**

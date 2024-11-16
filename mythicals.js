@@ -31,6 +31,7 @@ function (dojo, declare) {
     const PREF_UNDO_STYLE = 101;
     
     const CARD_LOCATION_RESERVE = 'reserve';
+    const CARD_LOCATION_HAND = 'hand';
         
     const CARD_COLOR_BLUE = 1;
     const CARD_COLOR_GREEN = 2;
@@ -103,6 +104,7 @@ function (dojo, declare) {
                         </div>
                         <div id="myt_cards_reserve"></div>
                     </div>
+                    <div id="myt_players_table"></div>
                 </div>
             `);
             //TODO JSA refresh COUNTER deckSize
@@ -125,11 +127,6 @@ function (dojo, declare) {
                     `);
                 }
             });
-
-            // Example to add a div on the game area
-            document.getElementById('myt_game_container').insertAdjacentHTML('beforeend', `
-                <div id="player-tables"></div>
-            `);
             
             // Setting up player boards
             Object.values(gamedatas.players).forEach(player => {
@@ -138,13 +135,22 @@ function (dojo, declare) {
                     <div id="player-counter-${player.id}">A player counter</div>
                 `);
 
-                // example of adding a div for each player
-                document.getElementById('player-tables').insertAdjacentHTML('beforeend', `
-                    <div id="player-table-${player.id}">
-                        <strong>${player.name}</strong>
-                        <div>Player zone content goes here</div>
+                let playerCardsDiv = ""; 
+                
+                Object.values(CARD_COLORS).forEach(color => {
+                    playerCardsDiv += `<div class="myt_cards_stack_resizable" data-color='${color}'>
+                        <div id="myt_player_cards-${player.id}_${color}" class="myt_cards_stack" data-color='${color}'></div>
+                    </div>`;
+                });
+                document.getElementById('myt_players_table').insertAdjacentHTML('beforeend', `
+                    <div id="myt_player_table-${player.id}" class="myt_player_table" data-pid=${player.id} data-color='${player.color}' style="border-color:#${player.color}">
+                        <h3 class='myt_title' >${this.fsr(('${player_name}'), { player_name:this.coloredPlayerName(player.name)}) }</h3>
+                        <div id="myt_player_cards-${player.id}" class="myt_player_cards">
+                            ${playerCardsDiv}
+                        </div>
                     </div>
                 `);
+                
             });
             
             this.setupPlayers();
@@ -560,6 +566,9 @@ function (dojo, declare) {
             }
             if (card.location == CARD_LOCATION_RESERVE  && CARD_COLORS.includes(card.color) ) {
                 return $(`myt_cards_reserve_${card.color}`);
+            }
+            if (card.location == CARD_LOCATION_HAND && CARD_COLORS.includes(card.color) ) {
+                return $(`myt_player_cards-${card.pId}_${card.color}`);
             }
             
             console.error('Trying to get container of a card', card);

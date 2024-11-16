@@ -519,6 +519,18 @@
 .myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable:hover {
   z-index: 100;
 }
+.myt_cards_stack_resizable[data-color="1"] {
+  order: 4;
+}
+.myt_cards_stack_resizable[data-color="2"] {
+  order: 2;
+}
+.myt_cards_stack_resizable[data-color="3"] {
+  order: 1;
+}
+.myt_cards_stack_resizable[data-color="4"] {
+  order: 3;
+}
 
 .myt_deck_size {
   display: flex;
@@ -527,6 +539,38 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+#myt_players_table {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+#myt_players_table .myt_player_table {
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 10px black;
+  background-color: rgba(213, 162, 87, 0.5098039216);
+  margin-left: 10px;
+}
+#myt_players_table .myt_title {
+  text-align: center;
+  padding: 0 7px;
+}
+#myt_players_table .myt_player_cards {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 0px 5px;
+  min-height: 200px;
+}
+#myt_players_table .myt_player_cards .myt_cards_stack_resizable {
+  min-width: 100px;
 }
 
 .myt_tile {

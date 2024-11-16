@@ -3,6 +3,7 @@ namespace Bga\Games\Mythicals;
 
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Managers\Cards;
+use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
 
 /**
@@ -71,8 +72,9 @@ trait DebugTrait
 
   function debug_Setup(){
     $players = self::loadPlayersBasicInfos();
+    $playersDatas = Players::getAll();
     Cards::DB()->delete()->run();
-    Cards::setupNewGame($players,[]);
+    Cards::setupNewGame($playersDatas,[]);
     Tiles::DB()->delete()->run();
     Tiles::setupNewGame($players,[]);
   }
