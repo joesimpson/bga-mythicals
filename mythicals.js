@@ -179,15 +179,15 @@ function (dojo, declare) {
             return {
                 boardWidth: {
                     section: "layout",
-                    default: 100,
+                    default: 200,
                     name: _('Main board'),
                     type: 'slider',
                     sliderConfig: {
-                        step: 2,
+                        step: 1,
                         padding: 0,
                         range: {
-                        min: [30],
-                        max: [100],
+                        min: [10],
+                        max: [40],
                         },
                     },
                 }, 
@@ -196,6 +196,7 @@ function (dojo, declare) {
             };
         },
         onChangeBoardWidthSetting(val) {
+            document.documentElement.style.setProperty('--myt_board_display_scale', val/100);
             this.updateLayout();
         },
         ///////////////////////////////////////////////////
