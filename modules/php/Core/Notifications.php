@@ -131,6 +131,7 @@ class Notifications
       'cards' => $datas['cards'],
       'deckSize' => $datas['deckSize'],
       'tiles' => $datas['tiles'],
+      'tokens' => $datas['tokens'],
     ];
 
     self::notifyAll('refreshUI', '', [

@@ -6,6 +6,8 @@ use Bga\Games\Mythicals\Helpers\QueryBuilder;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
+use Bga\Games\Mythicals\Managers\Tokens;
+use Bga\Games\Mythicals\Models\Token;
 
 /**
  * Debugging functions to be called in chat window in BGA Studio
@@ -72,13 +74,15 @@ trait DebugTrait
   ////////////////////////////////////////////////////
 
   function debug_Setup(){
+    $this->debug_ClearLogs();
     $players = self::loadPlayersBasicInfos();
     $playersDatas = Players::getAll();
     Cards::DB()->delete()->run();
     Cards::setupNewGame($playersDatas,[]);
     Tiles::DB()->delete()->run();
     Tiles::setupNewGame($players,[]);
-    
+    Tokens::DB()->delete()->run();
+    Tokens::setupNewGame($players,[]);
     Notifications::refreshUI($this->getAllDatas());
   }
 

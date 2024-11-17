@@ -63,6 +63,8 @@ function (dojo, declare) {
         TILE_COLOR_GRAY,
         TILE_COLOR_BLACK,
     ];
+    
+    const TOKEN_LOCATION_BOARD = 'board';
 
     return declare("bgagame.mythicals", [customgame.game], {
         constructor: function(){
@@ -156,7 +158,9 @@ function (dojo, declare) {
             this.setupInfoPanel();
             this.setupCards();
             this.setupTiles();
+            this.boardTokensZone = this.initTokenZone("myt_board_tokens");
             this.setupTokens();
+            this.addCustomTooltip(`myt_board_tokens`, _('Bonus markers'));
 
             debug( "Ending specific game setup" );
 
@@ -249,12 +253,12 @@ function (dojo, declare) {
         notif_refreshUI(n) {
             debug('notif_refreshUI: refreshing UI', n);
             this.refreshPlayersDatas(n.args.datas['players']);
-            ['cards', 'tiles', 'deckSize',].forEach((value) => {
+            ['cards', 'tiles', 'tokens', 'deckSize',].forEach((value) => {
                 this.gamedatas[value] = n.args.datas[value];
             });
             this.setupCards();
             this.setupTiles();
-            //this.setupTokens();
+            this.setupTokens();
     
             this.forEachPlayer((player) => {
                 let pId = player.id;
@@ -655,25 +659,25 @@ function (dojo, declare) {
         ////////////////////////////////////////
         setupTokens(){
             debug('setupTokens');
-            this.boardTokensZone = this.initTokenZone("myt_board_tokens");
-
-            //TODO JSA get tokens from server
-            this.addTokenOnBoard(1);
-            this.addTokenOnBoard(2);
-            this.addTokenOnBoard(3);
-            this.addTokenOnBoard(4);
-            this.addTokenOnBoard(5);
-            this.addTokenOnBoard(6);
-            this.addTokenOnBoard(7);
-            this.addTokenOnBoard(8);
-            this.addTokenOnBoard(9);
-            this.addTokenOnBoard(10);
-            this.addTokenOnBoard(11);
-            this.addTokenOnBoard(12);
-            this.addTokenOnBoard(13);
-            this.addTokenOnBoard(14);
-            this.addTokenOnBoard(15);
-            this.addTokenOnBoard(16);
+            this.boardTokensZone.removeAll();
+            document.querySelectorAll('.myt_bonus_token[id^="myt_bonus_token-"]').forEach((oToken) => {
+                this.destroy(oToken);
+            });
+            let tokenIds = this.gamedatas.tokens.map((token) => {
+                let divtokenId = `myt_token-${token.id}`;
+                if (token.location == TOKEN_LOCATION_BOARD ) {
+                    this.addTokenOnBoard(token.id);
+                }
+                return token.id;
+            });
+        },
+        getTokenContainer(token) { 
+            if (token.location == TOKEN_LOCATION_BOARD ) {
+                return $(`myt_cards_reserve_${token.color}`);
+            }
+            
+            console.error('Trying to get container of a token', token);
+            return 'myt_game_container';
         },
 
         initTokenZone:function(divId){
@@ -722,7 +726,7 @@ function (dojo, declare) {
         
         formatBonusToken: function(zone_div, tokenID){
             let index = tokenID;
-            let tokenDivId = `myt_bonus_token_${index}`;
+            let tokenDivId = `myt_bonus_token-${index}`;
             let divPlace = zone_div;
             if($(divPlace) == null) return null;
             

@@ -5,7 +5,10 @@ namespace Bga\Games\Mythicals\Models;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
+use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
+use Bga\Games\Mythicals\Managers\Tiles;
+use Bga\Games\Mythicals\Managers\Tokens;
 
 /*
  * Player: all utility functions concerning a player
@@ -32,10 +35,9 @@ class Player extends \Bga\Games\Mythicals\Helpers\DB_Model
   public function getUiData($currentPlayerId = null)
   {
     $data = parent::getUiData();
-    //TODO JSA COUNTERS
-    $data['nbcards'] = 2;
-    $data['nbtiles'] = 4;
-    $data['nbtokens'] = 5;
+    $data['nbcards'] = Cards::countPlayerCards($currentPlayerId, CARD_LOCATION_HAND);
+    $data['nbtiles'] = Tiles::countPlayerTiles($currentPlayerId, TILE_LOCATION_HAND);
+    $data['nbtokens'] = Tokens::countPlayerTokens($currentPlayerId, TOKEN_LOCATION_HAND);
  
     return $data;
   }

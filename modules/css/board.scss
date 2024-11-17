@@ -139,6 +139,12 @@ $card_height: calc(2 * $card_width);
                     height: 150px;
                 }
 
+                &.tooltipable:hover{
+                    border-radius: 250px;
+                    outline: 10px solid gold;
+                
+                }
+
             }
         }
     }

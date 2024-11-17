@@ -250,6 +250,10 @@
   width: 150px;
   height: 150px;
 }
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover {
+  border-radius: 250px;
+  outline: 10px solid gold;
+}
 
 #myt_cards_deck_container {
   margin: 5px;
