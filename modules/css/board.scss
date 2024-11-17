@@ -124,6 +124,22 @@ $card_height: calc(2 * $card_width);
                     margin-bottom: -165%;
                 }
             }
+
+            #myt_board_tokens{
+                position: absolute;
+                left: 3185px;
+                top: 622px;
+                //outline: 10px solid yellow;
+                //border-radius: 250px;
+                width: 496px;
+                height: 910px;
+
+                .myt_bonus_token{
+                    width: 150px;
+                    height: 150px;
+                }
+
+            }
         }
     }
 }

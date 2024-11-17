@@ -23,6 +23,7 @@ define([
     "dojo","dojo/_base/declare",
     "ebg/core/gamegui",
     "ebg/counter",
+    "ebg/zone",
     g_gamethemeurl + 'modules/js/Core/game.js',
     g_gamethemeurl + 'modules/js/Core/modal.js',
 ],
@@ -68,6 +69,7 @@ function (dojo, declare) {
             debug('mythicals constructor');
               
             // Here, you can init the global variables of your user interface
+            this.tokenZone_width = 150;
             this._counters = {};
             
             this._notifications = [
@@ -101,10 +103,10 @@ function (dojo, declare) {
                                 <div id="myt_board">
                                     <div id="myt_board_tiles"></div>
                                     <div id="myt_cards_reserve"></div>
+                                    <div id="myt_board_tokens"></div>
                                 </div>
                             </div>
                         </div>
-                        <div id="myt_cards_reserve"></div>
                     </div>
                     <div id="myt_players_table"></div>
                 </div>
@@ -159,6 +161,7 @@ function (dojo, declare) {
             this.setupInfoPanel();
             this.setupCards();
             this.setupTiles();
+            this.setupTokens();
 
             debug( "Ending specific game setup" );
 
@@ -589,6 +592,99 @@ function (dojo, declare) {
             console.error('Trying to get container of a card', card);
             return 'myt_game_container';
         },
+
+        
+        ////////////////////////////////////////
+        //  _______    _                   
+        // |__   __|  | |                  
+        //    | | ___ | | _____ _ __  ___  
+        //    | |/ _ \| |/ / _ \ '_ \/ __| 
+        //    | | (_) |   <  __/ | | \__ \ 
+        //    |_|\___/|_|\_\___|_| |_|___/ 
+        //                                
+        ////////////////////////////////////////
+        setupTokens(){
+            debug('setupTokens');
+            this.boardTokensZone = this.initTokenZone("myt_board_tokens");
+
+            //TODO JSA get tokens from server
+            this.addTokenOnBoard(1);
+            this.addTokenOnBoard(2);
+            this.addTokenOnBoard(3);
+            this.addTokenOnBoard(4);
+            this.addTokenOnBoard(5);
+            this.addTokenOnBoard(6);
+            this.addTokenOnBoard(7);
+            this.addTokenOnBoard(8);
+            this.addTokenOnBoard(9);
+            this.addTokenOnBoard(10);
+            this.addTokenOnBoard(11);
+            this.addTokenOnBoard(12);
+            this.addTokenOnBoard(13);
+            this.addTokenOnBoard(14);
+            this.addTokenOnBoard(15);
+            this.addTokenOnBoard(16);
+        },
+
+        initTokenZone:function(divId){
+            debug('initTokenZone',divId);
+            if(dojo.query("#"+divId).length==0) return null;
+            let zone = new ebg.zone();    
+            zone.create( this, divId, this.tokenZone_width, this.tokenZone_width );
+            zone.setPattern( 'custom' ); //ellipticalfit
+            zone.autowidth = false;
+            zone.autoheight = false;
+            
+            zone.itemIdToCoords = function( i, control_width ) {
+                if( i ==0 ) return {  x:0,y:400, w:this.item_width, h:this.item_height };
+                if( i ==1 ) return {  x:100,y:100, w:this.item_width, h:this.item_height };
+                if( i ==2 ) return {  x:100,y:200, w:this.item_width, h:this.item_height };
+                if( i ==3 ) return {  x:100,y:300, w:this.item_width, h:this.item_height };
+                if( i ==4 ) return {  x:100,y:400, w:this.item_width, h:this.item_height };
+                if( i ==5 ) return {  x:100,y:500, w:this.item_width, h:this.item_height };
+                if( i ==6 ) return {  x:100,y:600, w:this.item_width, h:this.item_height };
+                if( i ==7 ) return {  x:100,y:700, w:this.item_width, h:this.item_height };
+                if( i ==8 ) return {  x:200,y:100, w:this.item_width, h:this.item_height };
+                if( i ==9 ) return {  x:200,y:200, w:this.item_width, h:this.item_height };
+                if( i ==10 ) return {  x:200,y:300, w:this.item_width, h:this.item_height };
+                if( i ==11 ) return {  x:200,y:400, w:this.item_width, h:this.item_height };
+                if( i ==12 ) return {  x:200,y:500, w:this.item_width, h:this.item_height };
+                if( i ==13 ) return {  x:200,y:600, w:this.item_width, h:this.item_height };
+                if( i ==14 ) return {  x:200,y:700, w:this.item_width, h:this.item_height };
+                if( i ==15 ) return {  x:300,y:400, w:this.item_width, h:this.item_height };
+                //DEFAULT 
+                return {  x:0,y:0, w:this.item_width, h:this.item_height };
+            };
+            
+            return zone;
+        },
+        
+        addTokenOnBoard: function(tokenID){
+            console.log("addTokenOnBoard",tokenID);
+            if(this.boardTokensZone == undefined ) {
+                return;
+            }
+            let zone = this.boardTokensZone;
+            // let zoneSize =  zone.getItemNumber() ;
+            let tokenDivId = this.formatBonusToken(zone.container_div, tokenID);
+            zone.placeInZone(tokenDivId);
+        },
+        
+        formatBonusToken: function(zone_div, tokenID){
+            let index = tokenID;
+            let tokenDivId = `myt_bonus_token_${index}`;
+            let divPlace = zone_div;
+            if($(divPlace) == null) return null;
+            
+            dojo.place(  
+                `<div class="myt_bonus_token" id="${tokenDivId}"></div>`,
+                divPlace
+            );
+            this.attachToNewParent(tokenDivId, divPlace);
+            this.slideToObject(tokenDivId,divPlace, 1000);
+            return tokenDivId;
+        },
+
    });             
 });
 
