@@ -15,7 +15,130 @@
  */
 :root {
   --myt_board_display_scale: 0.2;
-  --reserve_stack_scale: 1;
+}
+
+.myt_panel .myt_player_infos {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  position: relative;
+}
+.myt_panel .myt_player_infos hr {
+  width: 100%;
+}
+.myt_panel .myt_player_infos hr,
+.myt_panel .myt_player_infos .myt_player_resource_line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative;
+  line-height: 3em;
+}
+.myt_panel .myt_player_infos .myt_player_resource {
+  position: relative;
+  text-align: center;
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_reserve {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_reserve.tooltipable:hover {
+  outline: 2px solid green;
+  z-index: 2;
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_resource_cards,
+.myt_panel .myt_player_infos .myt_player_resource .myt_resource_tiles,
+.myt_panel .myt_player_infos .myt_player_resource .myt_resource_bonus_tokens {
+  font-size: 15px;
+  font-weight: bold;
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_cards {
+  vertical-align: top;
+  padding-left: 15px;
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_cards .myt_subicon_cards {
+  background-size: 700% 400%;
+  background-image: url("img/cards.jpg");
+  background-position-x: 100%;
+  background-position-y: 33.33%;
+  border-radius: 4px;
+  height: 32px;
+  position: absolute;
+  width: 16px;
+  transform-origin: bottom center;
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_cards .myt_subicon_cards[data-type="1"] {
+  transform: rotate(40deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_cards .myt_subicon_cards[data-type="2"] {
+  transform: rotate(20deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_cards .myt_subicon_cards[data-type="3"] {
+  transform: rotate(0deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_cards .myt_subicon_cards[data-type="4"] {
+  transform: rotate(-20deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_cards .myt_subicon_cards[data-type="5"] {
+  transform: rotate(-40deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_tiles {
+  vertical-align: top;
+  padding-left: 15px;
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_tiles .myt_subicon_tiles {
+  background-color: #949392;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 24px;
+  position: absolute;
+  width: 24px;
+  transform-origin: bottom center;
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_tiles .myt_subicon_tiles[data-type="1"] {
+  transform: rotate(40deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_tiles .myt_subicon_tiles[data-type="2"] {
+  transform: rotate(20deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_tiles .myt_subicon_tiles[data-type="3"] {
+  transform: rotate(0deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_tiles .myt_subicon_tiles[data-type="4"] {
+  transform: rotate(-20deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_icon_container_tiles .myt_subicon_tiles[data-type="5"] {
+  transform: rotate(-40deg);
+}
+.myt_panel .myt_player_infos .myt_player_resource .myt_resource_bonus_tokens {
+  font-size: 15px;
+  font-weight: bold;
+}
+.myt_panel .myt_icon_container {
+  margin: 0 0.5em;
+}
+
+.myt_icon_container {
+  display: inline-block;
+  vertical-align: middle;
+}
+.myt_icon_container .myt_icon.myt_icon_cards {
+  width: 2em;
+  height: 2em;
+}
+.myt_icon_container .myt_icon.myt_icon_tiles {
+  width: 2em;
+  height: 2em;
+}
+.myt_icon_container .myt_icon.myt_icon_bonus_tokens {
+  width: 3em;
+  height: 3em;
+  background-image: url("img/bonus_marker.png");
+  background-size: 100%;
 }
 
 #myt_resizable_board {
@@ -281,7 +404,7 @@
 .myt_card_back.myt_card_back,
 .myt_card.myt_card_back {
   background-position-x: 100%;
-  background-position-y: 33%;
+  background-position-y: 33.33%;
 }
 .myt_card_back.selectable,
 .myt_card.selectable {

@@ -134,11 +134,6 @@ function (dojo, declare) {
             
             // Setting up player boards
             Object.values(gamedatas.players).forEach(player => {
-                // example of setting up players boards
-                this.getPlayerPanelElement(player.id).insertAdjacentHTML('beforeend', `
-                    <div id="player-counter-${player.id}">A player counter</div>
-                `);
-
                 let playerCardsDiv = ""; 
                 
                 Object.values(CARD_COLORS).forEach(color => {
@@ -253,16 +248,20 @@ function (dojo, declare) {
         //////////////////////////////////////////////////////////////
         notif_refreshUI(n) {
             debug('notif_refreshUI: refreshing UI', n);
+            this.refreshPlayersDatas(n.args.datas['players']);
             ['cards', 'tiles', 'deckSize',].forEach((value) => {
                 this.gamedatas[value] = n.args.datas[value];
             });
             this.setupCards();
             this.setupTiles();
+            //this.setupTokens();
     
             this.forEachPlayer((player) => {
                 let pId = player.id;
                 this.scoreCtrl[pId].toValue(player.score);
-                //TODO JSA REFRESH COUNTERS
+                this._counters[pId].cards.toValue(player.nbcards);
+                this._counters[pId].tiles.toValue(player.nbtiles);
+                this._counters[pId].bonus_tokens.toValue(player.nbtokens);
             });
         },
 
@@ -349,6 +348,20 @@ function (dojo, declare) {
                 <div class="myt_icon myt_icon_${type}">${text}</div>
                 </div>`;
         },
+        formatIconWithMultiImages(name, nbSubIcons = null, filterSubIconType = null, n = null) {
+            let type = name;
+            let tplSubIcons ='';
+            if(nbSubIcons && nbSubIcons > 0){
+                for(let k = 1; k<=nbSubIcons; k++){
+                    if(filterSubIconType != null && k!= filterSubIconType) continue;
+                    tplSubIcons +=`<div class='myt_subicon_${type}' data-type='${k}'></div>`;
+                }
+            }
+            let text = n == null ? '' : `<span>${n}</span>`;
+            return `<div class="myt_icon_container myt_icon_container_${type}">
+                <div class="myt_icon myt_icon_${type}">${text}${tplSubIcons}</div>
+                </div>`;
+        },
         
         formatString(str) {
             //debug('formatString', str);
@@ -372,8 +385,6 @@ function (dojo, declare) {
                 this.place('tplPlayerPanel', player, divPanel, 'after');
                 
                 let pId = player.id;
-                this._counters[pId] = {
-                };
                 nPlayers++;
                 if (isCurrent) currentPlayerNo = player.no;
 
@@ -382,9 +393,31 @@ function (dojo, declare) {
                     <div id="player-counter-${player.id}">A player counter</div>
                 `);
                 */
+                this._counters[pId] = {
+                    cards: this.createCounter(`myt_counter_${pId}_cards`, player.nbcards),
+                    tiles: this.createCounter(`myt_counter_${pId}_tiles`, player.nbtiles),
+                    bonus_tokens: this.createCounter(`myt_counter_${pId}_bonus_tokens`, player.nbtokens),
+                };
+                this.addCustomTooltip(`myt_reserve_${player.id}_cards`, _('Creature cards'));
+                this.addCustomTooltip(`myt_reserve_${player.id}_tiles`, _('Mastery tiles'));
+                this.addCustomTooltip(`myt_reserve_${player.id}_bonus_tokens`, _('Bonus markers'));
             });
-     
     
+        },
+
+        refreshPlayersDatas(players){
+            debug("refreshPlayersDatas()",players);
+            //Erasing this array would erase some BGA datas (ex color_back)-> we should erase only datas in parameter array
+            //this.gamedatas.players = players;
+            Object.values(players).forEach((player) => {
+                let pid = player.id;
+                //Object.keys(player).forEach((data) => {
+                //    this.gamedatas.players[pid][data] = player[data];
+                //});
+                for (const property in player) {
+                    this.gamedatas.players[pid][property] = player[property];
+                }
+            });
         },
         
         ////////////////////////////////////////////////////////
@@ -447,9 +480,25 @@ function (dojo, declare) {
             <div class="myt_first_player_holder"></div>
             <div class='myt_player_infos'>
                 <div class='myt_player_resource_line'>
+                    ${this.tplResourceCounter(player, 'cards',5,)}
+                    ${this.tplResourceCounter(player, 'tiles',5,)}
+                    ${this.tplResourceCounter(player, 'bonus_tokens')}
                 </div>
             </div>
             </div>`;
+        },
+        /**
+         * Use this tpl for any counters that represent qty of tokens
+         */
+        tplResourceCounter(player, res, nbSubIcons = null, totalValue = null) {
+            let totalText = totalValue ==null ? '' : `<span id='myt_counter_${player.id}_${res}_total' class='myt_resource_${res}_total'>${totalValue}</span> `;
+            return `
+            <div class='myt_player_resource myt_resource_${res}'>
+                <span id='myt_counter_${player.id}_${res}' 
+                class='myt_resource_${res}'></span>${totalText}${ nbSubIcons!=null ? this.formatIconWithMultiImages(res, nbSubIcons) : this.formatIcon(res, null)}
+                <div class='myt_reserve' id='myt_reserve_${player.id}_${res}'></div>
+            </div>
+            `;
         },
 
         ////////////////////////////////////////////////////////

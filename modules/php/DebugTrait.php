@@ -2,6 +2,7 @@
 namespace Bga\Games\Mythicals;
 
 use Bga\Games\Mythicals\Core\Notifications;
+use Bga\Games\Mythicals\Helpers\QueryBuilder;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
@@ -79,5 +80,11 @@ trait DebugTrait
     Tiles::setupNewGame($players,[]);
     
     Notifications::refreshUI($this->getAllDatas());
+  }
+
+  //Clear logs
+  function debug_ClearLogs(){
+    $query = new QueryBuilder('gamelog', null, 'gamelog_packet_id');
+    $query->delete()->run();
   }
 }

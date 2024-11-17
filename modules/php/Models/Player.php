@@ -32,6 +32,10 @@ class Player extends \Bga\Games\Mythicals\Helpers\DB_Model
   public function getUiData($currentPlayerId = null)
   {
     $data = parent::getUiData();
+    //TODO JSA COUNTERS
+    $data['nbcards'] = 2;
+    $data['nbtiles'] = 4;
+    $data['nbtokens'] = 5;
  
     return $data;
   }
