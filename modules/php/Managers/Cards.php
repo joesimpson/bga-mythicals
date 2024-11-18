@@ -85,6 +85,38 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     return $missingNb;
   }
 
+  /**
+   * @param Player $player
+   * @param int $color
+   * @return Collection $cards
+   */
+  public static function moveReserveToPlayer($player,$color)
+  {
+    Game::get()->trace("moveReserveToPlayer($color)");
+    $cards = self::getInLocation(CARD_LOCATION_RESERVE)
+      ->filter(function ($card) use ($color) {
+        return $color == $card->getColor();
+      });
+    self::move($cards->getIds(),CARD_LOCATION_HAND);
+    foreach($cards as $card){
+      $card->setPId($player->getId());
+      Notifications::giveCardTo($player,$card);
+    }
+    return $cards;
+  }
+  
+  /**
+   * @return array 
+   */
+  public static function listReserveColors()
+  {
+    Game::get()->trace("listReserveColors()");
+    $colors = self::getInLocation(CARD_LOCATION_RESERVE)
+      ->map(function ($card) {
+        return $card->getColor();
+      })->toUniqueArray();
+    return $colors;
+  }
   ///////////////////////////////////////////////////////////////////////////////////////
    
   /** Creation of the cards

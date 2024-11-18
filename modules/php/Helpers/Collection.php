@@ -37,6 +37,10 @@ class Collection extends \ArrayObject
     {
         return array_values($this->getArrayCopy());
     }
+    public function toUniqueArray()
+    {
+        return array_values(array_unique($this->getArrayCopy()));
+    }
 
     public function toAssoc()
     {

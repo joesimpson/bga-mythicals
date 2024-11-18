@@ -3,7 +3,9 @@
 namespace Bga\Games\Mythicals\States;
 
 use Bga\Games\Mythicals\Core\Globals;
+use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
+use Bga\Games\Mythicals\Exceptions\UnexpectedException;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
@@ -21,47 +23,36 @@ trait PlayerTurnTrait
    */
   public function argPlayerTurn(): array
   {
-      // Get some values from the current game situation from the database.
-
-      return [
-          "playableCardsIds" => [1, 2],
-      ];
+    return [
+      "reserveColors" => Cards::listReserveColors(),
+    ];
   }
-
+  
   /**
-   * Player action, example content.
-   *
-   * In this scenario, each time a player plays a card, this method will be called. This method is called directly
-   * by the action trigger on the front side with `bgaPerformAction`.
-   *
+   * Step 1 : player can choose a color in reserve cards
    * @throws BgaUserException
    */
-  public function actPlayCard(int $card_id): void
+  public function actCollectReserve(int $color): void
   {
-    // Retrieve the active player ID.
-    $player_id = (int)$this->getActivePlayerId();
+    self::trace("actCollectReserve($color)");
+
+    $player = Players::getCurrent();
+    $pId = $player->getId();
+    $this->addStep();
 
     // check input values
     $args = $this->argPlayerTurn();
-    $playableCardsIds = $args['playableCardsIds'];
-    if (!in_array($card_id, $playableCardsIds)) {
-        throw new \BgaUserException('Invalid card choice');
+    $reserveColors = $args['reserveColors'];
+    if (!in_array($color, $reserveColors)) {
+      throw new UnexpectedException(2,'Invalid color in reserve');
     }
 
     // Add your game logic to play a card here.
-    $card_name = Game::$CARD_TYPES[$card_id]['card_name'];
-
-    // Notify all players about the card played.
-    $this->notifyAllPlayers("cardPlayed", clienttranslate('${player_name} plays ${card_name}'), [
-        "player_id" => $player_id,
-        "player_name" => $this->getActivePlayerName(),
-        "card_name" => $card_name,
-        "card_id" => $card_id,
-        "i18n" => ['card_name'],
-    ]);
+    Notifications::collectReserve($player,$color);
+    $cards = Cards::moveReserveToPlayer($player,$color);
 
     // at the end of the action, move to the next state
-    $this->gamestate->nextState("playCard");
+    $this->gamestate->nextState("next");
   }
 
   public function actPass(): void
@@ -70,7 +61,7 @@ trait PlayerTurnTrait
     $player_id = (int)$this->getActivePlayerId();
 
     // Notify all players about the choice to pass.
-    $this->notifyAllPlayers("cardPlayed", clienttranslate('${player_name} passes'), [
+    $this->notifyAllPlayers("pass", clienttranslate('${player_name} passes'), [
         "player_id" => $player_id,
         "player_name" => $this->getActivePlayerName(),
     ]);

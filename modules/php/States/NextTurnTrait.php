@@ -19,7 +19,7 @@ trait NextTurnTrait
     
     $this->activeNextPlayer();
 
-    $this->addCheckpoint(ST_PLAYER_TURN);
+    $this->addCheckpoint(ST_PLAYER_TURN_COLLECT);
     // Go to another gamestate
     // Here, we would detect if the game is over, and in this case use "endGame" transition instead 
     $this->gamestate->nextState("nextPlayer");

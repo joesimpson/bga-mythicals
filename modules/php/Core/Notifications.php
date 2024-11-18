@@ -48,6 +48,17 @@ class Notifications
     ]);
   }
 
+  /**
+   * @param Player $player
+   * @param int $color
+   */
+  public static function collectReserve($player, $color)
+  {
+    self::notifyAll('collectReserve', clienttranslate('${player_name} collects reserve cards of color ${color}'), [
+      'player' => $player,
+      'color' => $color,//TODO JSA COLOR NAME
+    ]);
+  }
   /*************************
    **** GENERIC METHODS ****
    *************************/

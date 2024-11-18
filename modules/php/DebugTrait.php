@@ -27,7 +27,7 @@ trait DebugTrait
 
     // Change for your game
     // We are setting the current state to match the start of a player's turn if it's already game over
-    $state = ST_PLAYER_TURN;
+    $state = ST_PLAYER_TURN_COLLECT;
     $sql[] = "UPDATE global SET global_value=$state WHERE global_id=1 AND global_value=99";
     foreach ($players as $index => $pId) {
       $studioPlayer = $studioPlayersIds[$index];
@@ -84,6 +84,8 @@ trait DebugTrait
     Tokens::DB()->delete()->run();
     Tokens::setupNewGame($players,[]);
     Notifications::refreshUI($this->getAllDatas());
+    
+    $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
   }
 
   //Clear logs

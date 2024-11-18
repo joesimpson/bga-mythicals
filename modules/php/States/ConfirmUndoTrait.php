@@ -66,7 +66,7 @@ trait ConfirmUndoTrait
     {
         self::checkAction('actRestart');
         $player = Players::getCurrent();
-        $pId = $player->id;
+        $pId = $player->getId();
         if (Globals::getChoices($pId) < 1) {
             throw new UnexpectedException(404,'No choice to undo. You may need to reload the page.');
         }
@@ -74,11 +74,12 @@ trait ConfirmUndoTrait
         Notifications::restartTurn($player);
     }
 
-    public function actUndoToStep($stepId)
+    public function actUndoToStep(int $stepId): void
     {
         self::checkAction('actRestart');
         $player = Players::getCurrent();
-        $steps = Log::getUndoableSteps($player->id);
+        $pId = $player->getId();
+        $steps = Log::getUndoableSteps($pId);
         if(!in_array($stepId,$steps)){
             throw new UnexpectedException(404,'This step is not undoable anymore. You may need to reload the page.');
         }

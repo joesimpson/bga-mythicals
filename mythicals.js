@@ -225,12 +225,10 @@ function (dojo, declare) {
             {            
                 switch( stateName )
                 {
-                 case 'playerTurn':    
-                    const playableCardsIds = args.playableCardsIds; // returned by the argPlayerTurn
-
-                    // Add test action buttons in the action status bar, simulating a card click:
-                    playableCardsIds.forEach(
-                        cardId => this.addActionButton(`actPlayCard${cardId}-btn`, _('Play card with id ${card_id}').replace('${card_id}', cardId), () => this.onCardClick(cardId))
+                 case 'playerTurnCollect':    
+                    const playableReserveColors = args.reserveColors;
+                    playableReserveColors.forEach(
+                        color => this.addActionButton(`actCollect${color}-btn`, _('Collect reserve ${color}').replace('${color}', color), () => this.onCardClick(color))
                     ); 
 
                     this.addActionButton('actPass-btn', _('Pass'), () => this.bgaPerformAction("actPass"), null, null, 'gray'); 
@@ -304,12 +302,12 @@ function (dojo, declare) {
         
         // Example:
         
-        onCardClick: function( card_id )
+        onCardClick: function( color )
         {
-            debug( 'onCardClick', card_id );
+            debug( 'onCardClick', color );
 
-            this.bgaPerformAction("actPlayCard", { 
-                card_id,
+            this.bgaPerformAction("actCollectReserve", { 
+                color,
             }).then(() =>  {                
                 // What to do after the server call if it succeeded
                 // (most of the time, nothing, as the game will react to notifs / change of state instead)

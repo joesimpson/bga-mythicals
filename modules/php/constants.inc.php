@@ -120,7 +120,7 @@ const ST_GAME_SETUP = 1;
  
 const ST_NEXT_TURN = 10;
 
-const ST_PLAYER_TURN = 20; 
+const ST_PLAYER_TURN_COLLECT = 20; 
 
 const ST_CONFIRM_CHOICES = 70;
 const ST_CONFIRM_TURN = 71;

@@ -32,13 +32,12 @@ class Game extends \Table
 {    
     use DebugTrait;
     use States\ConfirmUndoTrait;
+    use States\EndTurnTrait;
     use States\NextTurnTrait;
     use States\PlayerTurnTrait;
     use States\SetupTrait;
 
     public static $instance = null;
-    //TODO JSA CLEAN TEMPLATE
-    public static array $CARD_TYPES;
 
     /**
      * Your global variables labels:
@@ -58,16 +57,6 @@ class Game extends \Table
         $this->initGameStateLabels([
             'logging' => 10,
         ]);        
-
-        self::$CARD_TYPES = [
-            1 => [
-                "card_name" => clienttranslate('Troll'), // ...
-            ],
-            2 => [
-                "card_name" => clienttranslate('Goblin'), // ...
-            ],
-            // ...
-        ];
     }
 
     public static function get()
@@ -132,7 +121,7 @@ class Game extends \Table
      * - when the game starts
      * - when a player refreshes the game page (F5)
      */
-    protected function getAllDatas()
+    public function getAllDatas()
     {
         $result = [];
 

@@ -245,6 +245,11 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       dojo.empty('customActions');
       dojo.empty('restartAction');
     },
+    
+    undoToStep(stepId) {
+      this.checkAction('actRestart');
+      this.takeAction('actUndoToStep', { stepId }, false);
+    },
 
     clearPossible() {
       debug('clearPossible()' );

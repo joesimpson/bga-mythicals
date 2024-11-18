@@ -50,46 +50,136 @@
 //    !! It is not a good idea to modify this file when a game is running !!
 
 
+/*
+    "Visual" States Diagram :
+
+                SETUP
+                |
+                |
+                v
+ /<----------- nextTurn     <-------------------------\                                
+ |              |                                     ^
+ |              v                                     |
+ |              playerTurn --\                        |
+ |                           |                        |
+ |                           v                        |
+ |                          confirm --> endTurn ----->/
+ v  
+ \-> endGameScoring
+        | 
+        v
+        preEndOfGame
+        | 
+        v
+        END
+*/
+
+
 $machinestates = [
 
     // The initial state. Please do not modify.
-
-    1 => array(
+    ST_GAME_SETUP => array(
         "name" => "gameSetup",
         "description" => "",
         "type" => "manager",
         "action" => "stGameSetup",
-        "transitions" => ["" => 2]
+        "transitions" => ["" => ST_NEXT_TURN]
     ),
 
-    // Note: ID=2 => your first state
-
-    2 => [
-        "name" => "playerTurn",
-        "description" => clienttranslate('${actplayer} must play a card or pass'),
-        "descriptionmyturn" => clienttranslate('${you} must play a card or pass'),
-        "type" => "activeplayer",
-        "args" => "argPlayerTurn",
-        "possibleactions" => [
-            // these actions are called from the front with bgaPerformAction, and matched to the function on the game.php file
-            "actPlayCard", 
-            "actPass",
-        ],
-        "transitions" => ["playCard" => 3, "pass" => 3]
-    ],
-
-    3 => [
+    ST_NEXT_TURN => [
         "name" => "nextPlayer",
         "description" => '',
         "type" => "game",
         "action" => "stNextPlayer",
         "updateGameProgression" => true,
-        "transitions" => ["endGame" => 99, "nextPlayer" => 2]
+        "transitions" => ["endGame" => ST_END_GAME, "nextPlayer" => ST_PLAYER_TURN_COLLECT]
     ],
+
+    ST_PLAYER_TURN_COLLECT => [
+        "name" => "playerTurnCollect",
+        "description" => clienttranslate('${actplayer} must collect cards'),
+        "descriptionmyturn" => clienttranslate('${you} must collect cards'),
+        "type" => "activeplayer",
+        "args" => "argPlayerTurn",
+        "possibleactions" => [
+            "actCollectReserve", 
+            "actPass",
+        ],
+        "transitions" => [
+            "playCard" => ST_CONFIRM_TURN, 
+            "next" => ST_CONFIRM_TURN, //TODO JSA STEP 2
+            "pass" => ST_CONFIRM_TURN,
+        ],
+    ],
+
+    ST_CONFIRM_TURN => [
+        'name' => 'confirmTurn',
+        'description' => clienttranslate('${actplayer} must confirm or restart'),
+        'descriptionmyturn' => clienttranslate('${you} must confirm or restart'),
+        'type' => 'activeplayer',
+        'args' => 'argsConfirmTurn',
+        'action' => 'stConfirmTurn',
+        'possibleactions' => [
+            'actConfirmTurn', 
+            'actUndoToStep',
+            'actRestart'
+        ],
+        'transitions' => [
+          'confirm' => ST_END_TURN,
+          'zombiePass'=> ST_END_TURN,
+        ],
+    ],
+
+    ST_END_TURN => array(
+        "name" => "endTurn",
+        "description" => clienttranslate('End turn'),
+        "type" => "game",
+        "action" => "stEndTurn",
+        "transitions" => [ 
+            "next" => ST_NEXT_TURN,
+        ],
+    ),
+
+    ST_END_SCORING => array(
+        "name" => "scoring",
+        "description" => clienttranslate('Scoring'),
+        "type" => "game",
+        "action" => "stScoring",
+        "transitions" => [ 
+            "next" => ST_PRE_END_OF_GAME,
+        ],
+    ),
+    
+    ST_PRE_END_OF_GAME => array(
+        "name" => "preEndOfGame",
+        "description" => '',
+        "type" => "game",
+        "action" => "stPreEndOfGame",
+        "transitions" => [ 
+            "next" => ST_END_GAME,
+            //"next" => 96,
+        ],
+    ),
+   
+    //END GAME TESTING STATE
+    /*
+    96 => [
+        "name" => "playerGameEnd",
+        "description" => ('${actplayer} Game Over'),
+        "descriptionmyturn" => ('${you} Game Over'),
+        'type' => 'activeplayer',
+        "args" => "argPlayerTurn",
+        "possibleactions" => ["endGame"],
+        "transitions" => [
+            "next" => ST_END_GAME,
+            "loopback" => 96 
+        ] 
+    ],
+    */
 
     // Final state.
     // Please do not modify (and do not overload action/args methods).
-    99 => [
+    ST_END_GAME => [
         "name" => "gameEnd",
         "description" => clienttranslate("End of game"),
         "type" => "manager",
