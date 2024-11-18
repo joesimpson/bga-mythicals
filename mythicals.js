@@ -272,6 +272,15 @@ function (dojo, declare) {
                 this.addImageActionButton(buttonId, `<div class='myt_btn_collect_image' data-color='${color}'>${buttonText}</div>`, callbackColorSelection);
             });
         }, 
+        onEnteringStateConfirmTurn(args) {
+            debug('onEnteringStateConfirmTurn', args);
+
+            let confirmText = _('Confirm');
+            if(this.player_id == args.c ) confirmText = _('End turn');
+            this.addPrimaryActionButton('btnConfirmTurn', confirmText, () => {
+                    this.takeAction('actConfirmTurn');
+                }, 'restartAction');
+        },
         
         //////////////////////////////////////////////////////////////
         //    _   _       _   _  __ _           _   _                 
