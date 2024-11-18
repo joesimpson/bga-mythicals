@@ -683,6 +683,13 @@
 .myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable:hover {
   z-index: 100;
 }
+.myt_cards_stack_resizable .myt_cards_stack.selectable {
+  cursor: pointer;
+  outline: 20px solid yellow;
+}
+.myt_cards_stack_resizable .myt_cards_stack.selectable.selected {
+  outline-color: rgb(255, 94, 0);
+}
 .myt_cards_stack_resizable[data-color="1"] {
   order: 4;
 }
@@ -945,6 +952,43 @@
   background-size: 100%;
   width: 50px;
   height: 50px;
+}
+
+.myt_icon_color-1,
+.myt_icon_color-2,
+.myt_icon_color-3,
+.myt_icon_color-4 {
+  border-radius: 10px;
+  background-image: url("img/board.jpg");
+  background-size: 4573.1707317073% 2246.3414634146% !important;
+  background-repeat: repeat !important;
+  width: 41px;
+  height: 41px;
+  background-position-y: -863px;
+}
+.myt_icon_color-1.myt_icon_color-1,
+.myt_icon_color-2.myt_icon_color-1,
+.myt_icon_color-3.myt_icon_color-1,
+.myt_icon_color-4.myt_icon_color-1 {
+  background-position-x: -1073px;
+}
+.myt_icon_color-1.myt_icon_color-2,
+.myt_icon_color-2.myt_icon_color-2,
+.myt_icon_color-3.myt_icon_color-2,
+.myt_icon_color-4.myt_icon_color-2 {
+  background-position-x: -448px;
+}
+.myt_icon_color-1.myt_icon_color-3,
+.myt_icon_color-2.myt_icon_color-3,
+.myt_icon_color-3.myt_icon_color-3,
+.myt_icon_color-4.myt_icon_color-3 {
+  background-position-x: -135px;
+}
+.myt_icon_color-1.myt_icon_color-4,
+.myt_icon_color-2.myt_icon_color-4,
+.myt_icon_color-3.myt_icon_color-4,
+.myt_icon_color-4.myt_icon_color-4 {
+  background-position-x: -761.5px;
 }
 
 /**
@@ -1543,6 +1587,26 @@ body[data-myt_undo_style="1"] #btnIconRestartTurn {
 body[data-myt_undo_style="2"] #btnTextUndoLastStep,
 body[data-myt_undo_style="2"] #btnTextRestartTurn {
   display: none !important;
+}
+
+#btnCollectReserve_1 {
+  background-color: #005983;
+  color: white;
+}
+
+#btnCollectReserve_2 {
+  background-color: #2f6125;
+  color: white;
+}
+
+#btnCollectReserve_3 {
+  background-color: #731e74;
+  color: white;
+}
+
+#btnCollectReserve_4 {
+  background-color: #9d140a;
+  color: white;
 }
 
 #ebd-body.help-mode .tooltipable {

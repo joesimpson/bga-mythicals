@@ -17,7 +17,7 @@ $card_height: calc(2 * $card_width);
         
         #myt_board{
             width: $board_img_width;
-            height: 1842px;
+            height: $board_img_height;
             transform: scale(var(--myt_board_display_scale));
             transform-origin: top left;
             border-radius: 10px;

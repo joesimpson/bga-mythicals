@@ -41,10 +41,11 @@ function (dojo, declare) {
     const CARD_COLOR_DAY = 9;
 
     const CARD_COLORS = [
-        CARD_COLOR_BLUE, 
-        CARD_COLOR_GREEN, 
+        // ordered for board view
         CARD_COLOR_PURPLE, 
-        CARD_COLOR_RED
+        CARD_COLOR_GREEN, 
+        CARD_COLOR_RED,
+        CARD_COLOR_BLUE, 
     ];
 
     const TILE_LOCATION_BOARD = 'board-';
@@ -56,10 +57,11 @@ function (dojo, declare) {
     const TILE_COLOR_GRAY = 5;
     const TILE_COLOR_BLACK = 6;
     const TILE_COLORS = [
-        TILE_COLOR_BLUE,
-        TILE_COLOR_GREEN,
+        // ordered for board view
         TILE_COLOR_PURPLE,
+        TILE_COLOR_GREEN,
         TILE_COLOR_RED,
+        TILE_COLOR_BLUE,
         TILE_COLOR_GRAY,
         TILE_COLOR_BLACK,
     ];
@@ -74,6 +76,10 @@ function (dojo, declare) {
             this.tokenZone_width = 150;
             this._counters = {};
             
+            //Filter states where we don't want other players to display state actions
+            this._activeStates = ['playerTurnCollect'];
+            this._inactiveStates = ['scoring','gameEnd'];
+
             this._notifications = [
                 ['refreshUI', 200],
             ];
@@ -118,7 +124,7 @@ function (dojo, declare) {
             Object.values(CARD_COLORS).forEach(color => {
                 document.getElementById('myt_cards_reserve').insertAdjacentHTML('beforeend', `
                     <div id="myt_cards_reserve_resizable_${color}" class="myt_cards_stack_resizable">
-                        <div id="myt_cards_reserve_${color}" class="myt_cards_stack"></div>
+                        <div id="myt_cards_reserve_${color}" class="myt_cards_stack myt_reserve_stack"></div>
                     </div>
                 `);
             });
@@ -212,31 +218,36 @@ function (dojo, declare) {
             dojo.empty('myt_select_piece_container');
         },
 
+        onEnteringStatePlayerTurnCollect(args){
+            debug('onEnteringStatePlayerTurnCollect', args);
 
+            this.selectedColor = null;
+            //let confirmMessage = _('Deliver to ${customer_name}');
+            //this.addPrimaryActionButton('btnConfirm', this.fsr(confirmMessage, {customer_name:''}), () => {
+            //    this.takeAction('actCollectReserve', { c: this.selectedCardId});
+            //}); 
+            //DISABLED by default
+            //$(`btnConfirm`).classList.add('disabled');
 
-        // onUpdateActionButtons: in this method you can manage "action buttons" that are displayed in the
-        //                        action status bar (ie: the HTML links in the status bar).
-        //        
-        onUpdateActionButtons: function( stateName, args )
-        {
-            debug( 'onUpdateActionButtons: '+stateName, args );
-                      
-            if( this.isCurrentPlayerActive() )
-            {            
-                switch( stateName )
-                {
-                 case 'playerTurnCollect':    
-                    const playableReserveColors = args.reserveColors;
-                    playableReserveColors.forEach(
-                        color => this.addActionButton(`actCollect${color}-btn`, _('Collect reserve ${color}').replace('${color}', color), () => this.onCardClick(color))
-                    ); 
+            let playableReserveColors = args.reserveColors;
+            //CARD_COLORS is ordered
+            Object.values(CARD_COLORS).forEach(color => {
+                if(!(playableReserveColors).includes(color)) return;
+                let div = $(`myt_cards_reserve_${color}`);
+                let buttonId = `btnCollectReserve_${color}`;
+                let iconColor = this.formatIcon('color-'+color);
+                let buttonText = this.fsr(_("Reserve ${color}"), { color: iconColor });
+                let callbackColorSelection = (evt) => {
+                    [...$(`myt_cards_reserve`).querySelectorAll('.myt_reserve_stack')].forEach((elt) => { elt.classList.remove('selected');});
+                    div.classList.add('selected');
+                    this.selectedColor = color;
+                    this.takeAction('actCollectReserve', { color: this.selectedColor});
 
-                    this.addActionButton('actPass-btn', _('Pass'), () => this.bgaPerformAction("actPass"), null, null, 'gray'); 
-                    break;
-                }
-            }
-        },        
-
+                };
+                this.onClick(`${div.id}`, callbackColorSelection);
+                this.addImageActionButton(buttonId, `<div class='myt_btn_collect_image' data-color='${color}'>${buttonText}</div>`, callbackColorSelection);
+            });
+        }, 
         
         //////////////////////////////////////////////////////////////
         //    _   _       _   _  __ _           _   _                 

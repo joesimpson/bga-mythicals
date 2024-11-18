@@ -33,10 +33,10 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
    */
   public static function getUiData($currentPlayerId)
   {
-    $privateCards = self::getPlayerHand($currentPlayerId);
+    //$privateCards = self::getPlayerHand($currentPlayerId);
 
     return 
-      self::getInLocation(CARD_LOCATION_DECK) //TODO JSA FILTER CARDS self::getInLocation(CARD_LOCATION_RESERVE)
+      self::getInLocation(CARD_LOCATION_RESERVE)
       //->merge($privateCards)
       ->merge(self::getInLocation(CARD_LOCATION_HAND))
       ->map(function ($card) {

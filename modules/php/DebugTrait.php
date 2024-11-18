@@ -93,4 +93,19 @@ trait DebugTrait
     $query = new QueryBuilder('gamelog', null, 'gamelog_packet_id');
     $query->delete()->run();
   }
+
+  ////////////////////////////////////////////////////
+  
+  function debug_Reserve(){
+    //Move all cards from deck to reserve, but not DAY CARD !
+    Cards::moveAllInLocation(CARD_LOCATION_DECK, CARD_LOCATION_RESERVE);
+    $cards = Cards::getInLocation(CARD_LOCATION_RESERVE);
+    foreach($cards as $card){
+      if(CARD_COLOR_DAY == $card->getColor()){
+        $card->setLocation(CARD_LOCATION_DECK);
+      }
+    }
+    $this->debug_UI();
+    $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
+  }
 }

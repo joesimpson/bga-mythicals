@@ -121,6 +121,15 @@ $card_height: 200px;
                 z-index: 100;
             }
         }
+
+        &.selectable{
+            cursor: pointer;
+            outline: 20px solid yellow;
+
+            &.selected{
+                outline-color: rgb(255, 94, 0);
+            }
+        }
     } 
     
     &[data-color="1"] {//CARD_COLOR_BLUE

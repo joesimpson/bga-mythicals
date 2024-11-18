@@ -69,6 +69,23 @@ body[data-myt_undo_style='2']{//PREF_UNDO_STYLE_ICON
         display: none !important;
     }
 }
+
+#btnCollectReserve_1{//CARD_COLOR_BLUE
+    background-color: #005983;
+    color: white;
+}
+#btnCollectReserve_2{//CARD_COLOR_GREEN
+    background-color: #2f6125;
+    color: white;
+}
+#btnCollectReserve_3{//CARD_COLOR_PURPLE
+    background-color: #731e74;
+    color: white;
+}
+#btnCollectReserve_4{//CARD_COLOR_RED
+    background-color: #9d140a;
+    color: white;
+}
  
 // SAFE MODE --------------------------
 #ebd-body.help-mode {

@@ -1,0 +1,37 @@
+//BLIND COLOR SYMBOLS
+.myt_icon_color-1,
+.myt_icon_color-2,
+.myt_icon_color-3,
+.myt_icon_color-4{
+
+    border-radius: 10px;
+    background-image: url("img/board.jpg");
+    $board_img_width: 3750px;
+    $board_img_height: 1842px;
+    $icon_img_width: 82px;
+    $icon_img_height: 82px;
+    $icon_img_ratio: 0.5;
+
+    background-size: 
+        math.percentage(calc(math.div($board_img_width, $icon_img_width ))) 
+        math.percentage(math.div($board_img_height,$icon_img_height )) 
+        !important;
+    background-repeat: repeat !important;
+    width: calc( $icon_img_ratio * $icon_img_width);
+    height: calc( $icon_img_ratio * $icon_img_height);
+    
+    background-position-y: calc( $icon_img_ratio * -1726px);
+
+    &.myt_icon_color-1{//CARD_COLOR_BLUE
+        background-position-x: calc( $icon_img_ratio * -2146px);
+    }
+    &.myt_icon_color-2{//CARD_COLOR_GREEN
+        background-position-x: calc( $icon_img_ratio * -896px);
+    }
+    &.myt_icon_color-3{//CARD_COLOR_PURPLE
+        background-position-x: calc( $icon_img_ratio * -270px);
+    }
+    &.myt_icon_color-4{//CARD_COLOR_RED
+        background-position-x: calc( $icon_img_ratio * -1523px);
+    }
+}
