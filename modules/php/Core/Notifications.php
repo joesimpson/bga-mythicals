@@ -31,6 +31,17 @@ class Notifications
     ]);
   }
 
+  /**
+   * @param Player $player
+   * @param Card $card
+   */
+  public static function cardToReserve($player, $card)
+  {
+    self::notifyAll('cardToReserve', clienttranslate('A new card goes to the reserve'), [
+      //'player' => $player,
+      'card' => $card->getUiData(),
+    ]);
+  }
   
   /**
    * @param Player $player
@@ -58,6 +69,19 @@ class Notifications
     self::notifyAll('collectReserve', clienttranslate('${player_name} collects reserve cards of color ${color}'), [
       'player' => $player,
       'color' => $color,//TODO JSA COLOR NAME
+    ]);
+  }
+
+  /**
+   * @param Player $player
+   * @param Collection $cards
+   */
+  public static function drawCards($player,$cards)
+  {
+    self::notifyAll('drawCards', clienttranslate('${player_name} draws ${n} cards from the deck'), [
+      'player' => $player,
+      'n' => $cards->count(),
+      'cards' => $cards->ui(),
     ]);
   }
   /*************************

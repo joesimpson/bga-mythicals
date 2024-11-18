@@ -102,11 +102,15 @@ $machinestates = [
         "type" => "activeplayer",
         "args" => "argPlayerTurn",
         "possibleactions" => [
+            "actDraw", 
+            "actCollectDraw",
             "actCollectReserve", 
             "actPass",
+            'actUndoToStep',
+            'actRestart',
         ],
         "transitions" => [
-            "playCard" => ST_CONFIRM_TURN, 
+            "draw" => ST_PLAYER_TURN_COLLECT,
             "next" => ST_CONFIRM_TURN, //TODO JSA STEP 2
             "pass" => ST_CONFIRM_TURN,
         ],
@@ -122,7 +126,7 @@ $machinestates = [
         'possibleactions' => [
             'actConfirmTurn', 
             'actUndoToStep',
-            'actRestart'
+            'actRestart',
         ],
         'transitions' => [
           'confirm' => ST_END_TURN,

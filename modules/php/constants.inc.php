@@ -19,6 +19,8 @@ const CARD_LOCATION_HAND = 'hand';
 const NB_CARDS_PER_PLAYER = 2;
 /** there are 2 copies of each creature */
 const NB_CREATURE_COPIES = 2;
+/** We draw 3 cards at a time */
+const NB_CARDS_PER_DRAW = 3;
 
 const CARD_COLOR_BLUE = 1;
 const CARD_COLOR_GREEN = 2;

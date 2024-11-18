@@ -38,6 +38,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     return 
       self::getInLocation(CARD_LOCATION_RESERVE)
       //->merge($privateCards)
+      ->merge(self::getInLocation(CARD_LOCATION_CURRENT_DRAW))
       ->merge(self::getInLocation(CARD_LOCATION_HAND))
       ->map(function ($card) {
         return $card->getUiData();
@@ -84,6 +85,23 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     if($missingNb>0) // Notifications::missingCards($player,$missingNb);
     return $missingNb;
   }
+  
+  /**
+   * @param Player $player
+   * @param int $nbCards
+   * @return int $missingNb number of expected cards we cannot draw
+   */
+  public static function drawCardsToSelection($player,$nbCards)
+  {
+    Game::get()->trace("drawCardsToSelection($nbCards)");
+    $cards = self::pickForLocation($nbCards, CARD_LOCATION_DECK, CARD_LOCATION_CURRENT_DRAW,0,false);
+    foreach($cards as $card){
+      //Notifications::giveCardTo($player,$card);
+    }
+    $missingNb = $nbCards - $cards->count();
+    if($missingNb>0) Game::get()->trace("drawCardsToSelection($nbCards) -> $missingNb are missing");
+    return $cards;
+  }
 
   /**
    * @param Player $player
@@ -118,6 +136,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       })->toUniqueArray();
     return $colors;
   }
+
   ///////////////////////////////////////////////////////////////////////////////////////
    
   /** Creation of the cards

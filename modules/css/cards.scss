@@ -146,6 +146,24 @@ $card_height: 200px;
     }
 }
 
+#myt_cards_deck_container{
+    &.selectable{
+        cursor: pointer;
+        outline: 5px solid yellow;
+        border-radius: 3px;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+        &.selected{
+            outline-color: rgb(0, 255, 64);
+        }
+    }
+    //FOR ANIMATION FOR HERE
+    .myt_card{
+        position: absolute;
+    }
+}
 .myt_deck_size{
     display: flex;
     justify-content: center;
@@ -185,6 +203,31 @@ $card_height: 200px;
 
         .myt_cards_stack_resizable{
             min-width: $card_width;
+        }
+    }
+}
+
+#myt_cards_draw{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;  
+    align-items: center;
+    justify-content: center;
+    padding: 0px 5px;
+
+    .myt_card{
+
+        &[data-color="1"] {//CARD_COLOR_BLUE
+            order: 4;
+        }
+        &[data-color="2"] {//CARD_COLOR_GREEN
+            order: 2;
+        }
+        &[data-color="3"] {//CARD_COLOR_PURPLE
+            order: 1;
+        }
+        &[data-color="4"] {//CARD_COLOR_RED
+            order: 3;
         }
     }
 }

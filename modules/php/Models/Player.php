@@ -35,9 +35,9 @@ class Player extends \Bga\Games\Mythicals\Helpers\DB_Model
   public function getUiData($currentPlayerId = null)
   {
     $data = parent::getUiData();
-    $data['nbcards'] = Cards::countPlayerCards($currentPlayerId, CARD_LOCATION_HAND);
-    $data['nbtiles'] = Tiles::countPlayerTiles($currentPlayerId, TILE_LOCATION_HAND);
-    $data['nbtokens'] = Tokens::countPlayerTokens($currentPlayerId, TOKEN_LOCATION_HAND);
+    $data['nbcards'] = Cards::countPlayerCards($this->getId(), CARD_LOCATION_HAND);
+    $data['nbtiles'] = Tiles::countPlayerTiles($this->getId(), TILE_LOCATION_HAND);
+    $data['nbtokens'] = Tokens::countPlayerTokens($this->getId(), TOKEN_LOCATION_HAND);
  
     return $data;
   }

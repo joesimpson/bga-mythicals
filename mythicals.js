@@ -33,6 +33,7 @@ function (dojo, declare) {
     
     const CARD_LOCATION_RESERVE = 'reserve';
     const CARD_LOCATION_HAND = 'hand';
+    const CARD_LOCATION_CURRENT_DRAW = 'draw';
         
     const CARD_COLOR_BLUE = 1;
     const CARD_COLOR_GREEN = 2;
@@ -81,7 +82,9 @@ function (dojo, declare) {
             this._inactiveStates = ['scoring','gameEnd'];
 
             this._notifications = [
-                ['giveCardToPublic', 1000],
+                ['drawCards', 1000],
+                ['giveCardToPublic', 800],
+                ['cardToReserve', 800],
                 ['refreshUI', 200],
             ];
 
@@ -105,8 +108,9 @@ function (dojo, declare) {
                     <div id="myt_main_zone">
                         <div id="myt_cards_deck_container">
                             <div class="myt_card_back"></div>
-                            <div class="myt_deck_size">${gamedatas.deckSize}</div>
+                            <div class="myt_deck_size" id="myt_deck_size">${gamedatas.deckSize}</div>
                         </div>
+                        <div id="myt_cards_draw"></div>
                         <div id='myt_resizable_board'>
                             <div id='myt_board_container'>
                                 <div id="myt_board">
@@ -169,6 +173,9 @@ function (dojo, declare) {
             this.setupTokens();
             this.addCustomTooltip(`myt_board_tokens`, _('Bonus markers'));
 
+            this._counters['deckSize'] = this.createCounter('myt_deck_size',this.gamedatas.deckSize);
+            this.addCustomTooltip(`myt_deck_size`, _('Cards in deck'));
+
             debug( "Ending specific game setup" );
 
             this.inherited(arguments);
@@ -223,12 +230,28 @@ function (dojo, declare) {
             debug('onEnteringStatePlayerTurnCollect', args);
 
             this.selectedColor = null;
-            //let confirmMessage = _('Deliver to ${customer_name}');
-            //this.addPrimaryActionButton('btnConfirm', this.fsr(confirmMessage, {customer_name:''}), () => {
-            //    this.takeAction('actCollectReserve', { c: this.selectedCardId});
-            //}); 
-            //DISABLED by default
-            //$(`btnConfirm`).classList.add('disabled');
+            
+            let playableDraw = args.d;
+            if(playableDraw){
+                let btnMessage = _('Draw ${n} cards');
+                let callbackDrawCards = (evt) => {
+                    this.takeAction('actDraw', { });
+                };
+                this.addPrimaryActionButton('btnDraw', this.fsr(btnMessage, {n:3}), callbackDrawCards); 
+                this.onClick(`myt_cards_deck_container`, callbackDrawCards );
+            }
+            let playableCardsInDraw = args.drawnCards;
+            Object.values(playableCardsInDraw).forEach(card => {
+                let div = $(`myt_card-${card.id}`);
+                let callbackColorSelection = (evt) => {
+                    [...$(`myt_cards_draw`).querySelectorAll('.myt_card')].forEach((elt) => { elt.classList.remove('selected');});
+                    div.classList.add('selected');
+                    this.selectedColor = card.color;
+                    this.takeAction('actCollectDraw', { color: this.selectedColor});
+
+                };
+                this.onClick(`${div.id}`, callbackColorSelection);
+            });
 
             let playableReserveColors = args.reserveColors;
             //CARD_COLORS is ordered
@@ -277,10 +300,37 @@ function (dojo, declare) {
                 this._counters[pId].tiles.toValue(player.nbtiles);
                 this._counters[pId].bonus_tokens.toValue(player.nbtokens);
             });
+            this._counters['deckSize'].toValue(n.args.datas.deckSize);
         },
         
+        notif_drawCards(n) {
+            debug('notif_drawCards: 3 cards to the center', n);
+            let deckContainer = $('myt_cards_deck_container');
+            Promise.all(
+                Object.values(n.args.cards).map((card, i) => {
+                    this.gamedatas.cards.push(card);
+                    let divCard = this.addCard(card, deckContainer, {
+                        phantom: false,
+                        from: deckContainer.id 
+                    });
+                    this._counters['deckSize'].incValue(-1 );
+                    return this.wait(50 * i).then(() => 
+                        this.slide(divCard.id, this.getCardContainer(card), { })
+                    );
+                })
+            ).then(() => {
+                this.notifqueue.setSynchronousDuration(this.isFastMode() ? 0 : 10);
+                //this._counters['deckSize'].incValue(- n.args.cards.length );
+            });
+        },
         notif_giveCardToPublic(n) {
             debug('notif_giveCardToPublic: receiving a new card', n);
+            if (!$(`myt_card-${n.args.card.id}`)) this.addCard(n.args.card, this.getVisibleTitleContainer());
+            this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card));
+            this._counters[n.args.player_id].cards.incValue(1);
+        },
+        notif_cardToReserve(n) {
+            debug('notif_cardToReserve: RESERVE receiving a new card', n);
             if (!$(`myt_card-${n.args.card.id}`)) this.addCard(n.args.card, this.getVisibleTitleContainer());
             this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card));
         },
@@ -649,8 +699,8 @@ function (dojo, declare) {
     
         getCardContainer(card) { 
             //TODO JSA display cards in the right container
-            if (card.location == 'deck' && CARD_COLORS.includes(card.color) ) {
-                return $(`myt_cards_reserve_${card.color}`);
+            if (card.location == CARD_LOCATION_CURRENT_DRAW) {
+                return $(`myt_cards_draw`);
             }
             if (card.location == CARD_LOCATION_RESERVE  && CARD_COLORS.includes(card.color) ) {
                 return $(`myt_cards_reserve_${card.color}`);

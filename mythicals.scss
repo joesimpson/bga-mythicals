@@ -45,6 +45,13 @@
 .phantom {
     visibility: hidden;
 }  
+#pagemaintitletext,
+#gameaction_status 
+{
+    .myt_card{
+        position: absolute;
+    }
+}
 //Buttons :
 .myt_selected_button{
     background-color: rgb(255, 115, 0) !important;

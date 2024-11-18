@@ -703,6 +703,21 @@
   order: 3;
 }
 
+#myt_cards_deck_container.selectable {
+  cursor: pointer;
+  outline: 5px solid yellow;
+  border-radius: 3px;
+}
+#myt_cards_deck_container.selectable:hover {
+  transform: scale(1.1);
+}
+#myt_cards_deck_container.selectable.selected {
+  outline-color: rgb(0, 255, 64);
+}
+#myt_cards_deck_container .myt_card {
+  position: absolute;
+}
+
 .myt_deck_size {
   display: flex;
   justify-content: center;
@@ -742,6 +757,27 @@
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable {
   min-width: 100px;
+}
+
+#myt_cards_draw {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 5px;
+}
+#myt_cards_draw .myt_card[data-color="1"] {
+  order: 4;
+}
+#myt_cards_draw .myt_card[data-color="2"] {
+  order: 2;
+}
+#myt_cards_draw .myt_card[data-color="3"] {
+  order: 1;
+}
+#myt_cards_draw .myt_card[data-color="4"] {
+  order: 3;
 }
 
 .myt_tile {
@@ -1569,6 +1605,11 @@
 
 .phantom {
   visibility: hidden;
+}
+
+#pagemaintitletext .myt_card,
+#gameaction_status .myt_card {
+  position: absolute;
 }
 
 .myt_selected_button {
