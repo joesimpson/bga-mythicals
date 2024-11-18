@@ -50,6 +50,7 @@ trait PlayerTurnTrait
     // Add your game logic to play a card here.
     Notifications::collectReserve($player,$color);
     $cards = Cards::moveReserveToPlayer($player,$color);
+    //TODO JSA move duplicates to opponent !
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");

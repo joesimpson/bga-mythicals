@@ -81,6 +81,7 @@ function (dojo, declare) {
             this._inactiveStates = ['scoring','gameEnd'];
 
             this._notifications = [
+                ['giveCardToPublic', 1000],
                 ['refreshUI', 200],
             ];
 
@@ -276,6 +277,12 @@ function (dojo, declare) {
                 this._counters[pId].tiles.toValue(player.nbtiles);
                 this._counters[pId].bonus_tokens.toValue(player.nbtokens);
             });
+        },
+        
+        notif_giveCardToPublic(n) {
+            debug('notif_giveCardToPublic: receiving a new card', n);
+            if (!$(`myt_card-${n.args.card.id}`)) this.addCard(n.args.card, this.getVisibleTitleContainer());
+            this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card));
         },
 
         ///////////////////////////////////////////////////

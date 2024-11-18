@@ -97,9 +97,10 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       ->filter(function ($card) use ($color) {
         return $color == $card->getColor();
       });
-    self::move($cards->getIds(),CARD_LOCATION_HAND);
+    //self::move($cards->getIds(),CARD_LOCATION_HAND);
     foreach($cards as $card){
       $card->setPId($player->getId());
+      $card->setLocation(CARD_LOCATION_HAND);
       Notifications::giveCardTo($player,$card);
     }
     return $cards;
