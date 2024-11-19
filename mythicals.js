@@ -281,6 +281,14 @@ function (dojo, declare) {
             this.addPrimaryActionButton('btnPassTileChoice', _('Pass'), () => {
                     this.takeAction('actPass');
                 });
+            let possibleTilesIds = args.possibleTiles;
+            Object.values(possibleTilesIds).forEach(tile_id => {
+                let div = $(`myt_tile-${tile_id}`);
+                let callbackTileSelection = (evt) => {
+                    this.takeAction('actTileChoice', { tile_id: tile_id});
+                };
+                this.onClick(`${div.id}`, callbackTileSelection);
+            });
         },
 
         onEnteringStateConfirmTurn(args) {

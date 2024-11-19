@@ -36,6 +36,7 @@ class Game extends \Table
     use States\NextTurnTrait;
     use States\PlayerTurnTrait;
     use States\TileChoiceTrait;
+    use States\TileModifTrait;
     use States\SetupTrait;
 
     public static $instance = null;

@@ -11,18 +11,18 @@ use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
 
-trait TileChoiceTrait
+trait TileModifTrait
 {
   
   /**
    * Game state arguments, example content.
    *
-   * This method returns some additional information that is very specific to the `tileChoice` game state.
+   * This method returns some additional information that is very specific to the `tileModif` game state.
    *
    * @return array
    * @see ./states.inc.php
    */
-  public function argTileChoice(): array
+  public function argTileModif(): array
   {
     $possibleTiles = Tiles::getInLocation(TILE_LOCATION_BOARD.'%');
     //TODO JSA Filter tiles based on rules
@@ -35,12 +35,12 @@ trait TileChoiceTrait
   }
   
   /**
-   * Step 2.1 : player may choose a tile
+   * Step 2.2 : player may modify a tile
    * @throws \BgaUserException
    */
-  public function actTileChoice(int $tile_id): void
+  public function actTileModif(int $tile_id): void
   {
-    self::trace("actTileChoice($tile_id)");
+    self::trace("actTileModif($tile_id)");
 
     $player = Players::getCurrent();
     $pId = $player->getId();
@@ -58,18 +58,4 @@ trait TileChoiceTrait
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");
   }
- 
-  public function actPass(): void
-  {
-    self::trace("actPass()");
-    $player = Players::getCurrent();
-    $this->addStep();
-
-    // Notify all players about the choice to pass.
-    Notifications::pass($player);
-
-    // at the end of the action, move to the next state
-    $this->gamestate->nextState("pass");
-  }
- 
 }
