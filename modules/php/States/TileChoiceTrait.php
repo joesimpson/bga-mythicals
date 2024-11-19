@@ -2,6 +2,7 @@
 
 namespace Bga\Games\Mythicals\States;
 
+use Bga\GameFramework\Actions\Types\IntArrayParam;
 use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
@@ -24,10 +25,9 @@ trait TileChoiceTrait
    */
   public function argTileChoice(): array
   {
-    $possibleTiles = Tiles::getInLocation(TILE_LOCATION_BOARD.'%');
-    //TODO JSA Filter tiles based on rules
+    $player = Players::getActive();
     $args = [
-      "possibleTiles" => $possibleTiles->getIds(),
+      "possibleTiles" => $this->listPossibleTilesToTake($player),
     ];
     
     $this->addArgsForUndo($args);
@@ -38,7 +38,7 @@ trait TileChoiceTrait
    * Step 2.1 : player may choose a tile
    * @throws \BgaUserException
    */
-  public function actTileChoice(int $tile_id): void
+  public function actTileChoice(int $tile_id, #[IntArrayParam] array $card_ids): void
   {
     self::trace("actTileChoice($tile_id)");
 
@@ -49,9 +49,22 @@ trait TileChoiceTrait
     // check input values
     $args = $this->argTileChoice();
     $possibleTiles = $args['possibleTiles'];
-    if (!in_array($tile_id, $possibleTiles)) {
+    if(! array_key_exists($tile_id, $possibleTiles)){
       throw new UnexpectedException(101,"Invalid tile $tile_id ( see ".json_encode($possibleTiles).")");
     }
+    $expectedDatas = $possibleTiles[$tile_id];
+    $nbExpectedCards = $expectedDatas['n'];
+    $possibleCardIds = $expectedDatas['c'];
+    if ($nbExpectedCards != count($card_ids)) {
+      throw new UnexpectedException(102,"You must select $nbExpectedCards cards");
+    }
+    foreach($card_ids as $paramCardId){
+      if (!in_array($paramCardId, $possibleCardIds)) {
+        throw new UnexpectedException(103,"Invalid card $paramCardId ( see ".json_encode($possibleCardIds).")");
+      }
+    }
+
+    //TODO JSA RULE MESSAGE WHEN CARDS ARE NOT REPRESENTING A RIGHT SET (suite/same)
 
     //  game logic here. 
 
@@ -72,4 +85,26 @@ trait TileChoiceTrait
     $this->gamestate->nextState("pass");
   }
  
+
+  ////////////////////////////////////////////////////////////////////////////
+  
+  /**
+   * @param Player $player
+   * @return array datas about tiles to take as : [tile_id => [nbExpectedCards as 'n',cardIds as 'c',]]
+   */
+  public function listPossibleTilesToTake($player): array
+  {
+    $possibleTiles = Tiles::getInLocation(TILE_LOCATION_BOARD.'%');
+
+    foreach($possibleTiles as $tileId => $tile){
+
+      $tiles_datas[$tileId] = [
+        //nbExpectedCards:
+        'n' => $tile->getColor() +1, //TODO JSA COMPUTE real value
+        //cardIds :
+        'c' => [1829,1832,1833,1834],//TODO JSA COMPUTE at player cards
+      ];
+    }
+    return $tiles_datas;
+  }
 }

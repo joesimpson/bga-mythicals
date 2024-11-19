@@ -281,15 +281,16 @@ function (dojo, declare) {
             this.addPrimaryActionButton('btnPassTileChoice', _('Pass'), () => {
                     this.takeAction('actPass');
                 });
-            let possibleTilesIds = args.possibleTiles;
-            Object.values(possibleTilesIds).forEach(tile_id => {
+            let possibleTiles = args.possibleTiles;
+            Object.entries(possibleTiles).forEach( (tile_datas) => {
+                let tile_id = tile_datas[0];
+                let tile = tile_datas[1];
                 let div = $(`myt_tile-${tile_id}`);
                 let callbackTileSelection = (evt) => {
-                    //this.takeAction('actTileChoice', { tile_id: tile_id});
                     this.clientState('tileChoiceCards', _('Select cards to discard'), {
                         tile_id: tile_id,
-                        cardIds: [1829,1832,1833,1834,1835],//TODO JSA ARGS
-                        nbexpected: 3,//TODO JSA ARGS
+                        cardIds: tile.c,
+                        nbExpected: tile.n,
                       });
                 };
                 this.onClick(`${div.id}`, callbackTileSelection);
@@ -303,8 +304,8 @@ function (dojo, declare) {
             let tile_id = args.tile_id;
             let cardIds = args.cardIds;
             cardIds.forEach((cardId) => (elements[cardId] = $(`myt_card-${cardId}`)));
-            this.onSelectN(elements, args.nbexpected, (selectedCards) => {
-                this.takeAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards});
+            this.onSelectN(elements, args.nbExpected, (selectedCards) => {
+                this.takeAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards.join(',')});
             });
         },
 
