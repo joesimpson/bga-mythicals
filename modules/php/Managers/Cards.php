@@ -145,7 +145,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
    */
   public static function listExistingSuites($cards, $length)
   {
-    $hasJoker = false;
+    $jokerCard = null;
     $values = [];
     foreach($cards as $card ){
       $card_id = $card->getId();
@@ -155,7 +155,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       if(!array_key_exists($value,$values)){
         $values[$value] = $card_id;
       }
-      if(CARD_VALUE_JOKER == $value) $hasJoker = true;
+      if(CARD_VALUE_JOKER == $value) $jokerCard = $card_id;
     }
     //SORT ARRAY by key
     ksort($values);
@@ -175,8 +175,10 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     $currentSuit = [];
     $currentSuitUsedJoker = false;
     for($k=CARD_VALUE_MIN; $k<=CARD_VALUE_MAX; $k++){
-      if(array_key_exists($k,$values) || ($hasJoker && !$currentSuitUsedJoker) ){
+      if(array_key_exists($k,$values) ){
         $currentSuit[] = $values[$k];
+      } else if(isset($jokerCard) && !$currentSuitUsedJoker){
+        $currentSuit[] = $jokerCard;
       } else {
         //Reset current suit until next value
         if(count($currentSuit)>=$length) $allSuites[] = $currentSuit;

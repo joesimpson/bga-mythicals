@@ -64,9 +64,19 @@ trait TileChoiceTrait
       }
     }
 
-    //TODO JSA RULE MESSAGE WHEN CARDS ARE NOT REPRESENTING A RIGHT SET (suite/same)
+    //TODO JSA RULE MESSAGE WHEN CARDS ARE NOT REPRESENTING A VALID SET (suite/same)
 
     //  game logic here. 
+    $tile = Tiles::get($tile_id);
+    $cards = Cards::getMany($card_ids);
+    $tile->setPId($pId);
+    $tile->setLocation(TILE_LOCATION_HAND);
+    foreach($cards as $card){
+      $card->setLocation(CARD_LOCATION_DISCARD);
+      $card->setPId(null);
+    }
+    Notifications::discardCards($player,$cards);
+    Notifications::takeTile($player,$tile);
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");

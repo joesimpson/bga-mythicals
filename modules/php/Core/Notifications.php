@@ -3,6 +3,7 @@
 namespace Bga\Games\Mythicals\Core;
 
 use Bga\Games\Mythicals\Game;
+use Bga\Games\Mythicals\Models\MasteryTile;
 use Bga\Games\Mythicals\Models\Player;
 
 class Notifications
@@ -84,6 +85,18 @@ class Notifications
       'cards' => $cards->ui(),
     ]);
   }
+  /**
+   * @param Player $player
+   * @param Collection $cards
+   */
+  public static function discardCards($player,$cards)
+  {
+    self::notifyAll('discardCards', clienttranslate('${player_name} discard ${n} cards'), [
+      'player' => $player,
+      'n' => $cards->count(),
+      'cards' => $cards->ui(),
+    ]);
+  }
   
   /**
    * @param Player $player
@@ -92,6 +105,18 @@ class Notifications
   {
     self::notifyAll('pass', clienttranslate('${player_name} passes'), [
       'player' => $player,
+    ]);
+  }
+
+  /**
+   * @param Player $player
+   * @param MasteryTile $tile
+   */
+  public static function takeTile($player,$tile)
+  {
+    self::notifyAll('takeTile', clienttranslate('${player_name} takes a mastery tile from the board'), [
+      'player' => $player,
+      'tile' => $tile->getUiData(),
     ]);
   }
   /*************************
