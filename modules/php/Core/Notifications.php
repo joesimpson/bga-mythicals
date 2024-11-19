@@ -84,6 +84,16 @@ class Notifications
       'cards' => $cards->ui(),
     ]);
   }
+  
+  /**
+   * @param Player $player
+   */
+  public static function pass($player)
+  {
+    self::notifyAll('pass', clienttranslate('${player_name} passes'), [
+      'player' => $player,
+    ]);
+  }
   /*************************
    **** GENERIC METHODS ****
    *************************/

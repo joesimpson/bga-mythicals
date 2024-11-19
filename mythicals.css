@@ -412,7 +412,7 @@
 }
 .myt_card_back.selectable,
 .myt_card.selectable {
-  box-shadow: 0px 0px 7px 2px blue;
+  box-shadow: 0px 0px 7px 2px #00ffff;
   cursor: pointer;
 }
 .myt_card_back.selectable:hover,
@@ -686,6 +686,9 @@
 .myt_cards_stack_resizable .myt_cards_stack.selectable {
   cursor: pointer;
   outline: 20px solid yellow;
+}
+.myt_cards_stack_resizable .myt_cards_stack.selectable:hover {
+  transform: scale(1.1);
 }
 .myt_cards_stack_resizable .myt_cards_stack.selectable.selected {
   outline-color: rgb(255, 94, 0);

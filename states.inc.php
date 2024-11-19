@@ -57,13 +57,19 @@
                 |
                 |
                 v
- /<----------- nextTurn     <-------------------------\                                
- |              |                                     ^
- |              v                                     |
- |              playerTurn --\                        |
- |                           |                        |
- |                           v                        |
- |                          confirm --> endTurn ----->/
+ /<----------- nextTurn     <-------------------\
+ |              |                               ^
+ |              v                               |
+ |       playerTurnCollect --\                  |
+ |              |            |                  |
+ |              v            |                  |
+ |       tileChoice -->\     |                  |
+ |              |      |     |                  |
+ |              v      |     |                  |
+ |       tileModif -->\|     |                  |
+ |                    ||     |                  |
+ |                    vv     v                  |
+ |                    confirm --> endTurn ----->/
  v  
  \-> endGameScoring
         | 
@@ -105,13 +111,46 @@ $machinestates = [
             "actDraw", 
             "actCollectDraw",
             "actCollectReserve", 
-            "actPass",
-            'actUndoToStep',
-            'actRestart',
+            'actUndoToStep', 'actRestart',
         ],
         "transitions" => [
             "draw" => ST_PLAYER_TURN_COLLECT,
-            "next" => ST_CONFIRM_TURN, //TODO JSA STEP 2
+            //TODO JSA NEXT ONLY WHEN playable tile
+            "next" => ST_PLAYER_TURN_TILE_CHOICE,
+            "end" => ST_CONFIRM_TURN,
+        ],
+    ],
+    
+    ST_PLAYER_TURN_TILE_CHOICE => [
+        "name" => "tileChoice",
+        "description" => clienttranslate('${actplayer} may take a mastery tile'),
+        "descriptionmyturn" => clienttranslate('${you} may take a mastery tile'),
+        "type" => "activeplayer",
+        "args" => "argTileChoice",
+        "possibleactions" => [
+            "actTileChoice", 
+            "actPass",
+            'actUndoToStep', 'actRestart',
+        ],
+        "transitions" => [
+            "next" => ST_PLAYER_TURN_TILE_MODIFICATION,
+            "pass" => ST_CONFIRM_TURN,
+        ],
+    ],
+    
+    ST_PLAYER_TURN_TILE_MODIFICATION => [
+        "name" => "tileModif",
+        "description" => clienttranslate('${actplayer} may reinforce or lock another mastery tile'),
+        "descriptionmyturn" => clienttranslate('${you} may reinforce or lock another mastery tile'),
+        "type" => "activeplayer",
+        "args" => "argTileModif",
+        "possibleactions" => [
+            "actTileModif", 
+            "actPass",
+            'actUndoToStep', 'actRestart',
+        ],
+        "transitions" => [
+            "next" => ST_CONFIRM_TURN,
             "pass" => ST_CONFIRM_TURN,
         ],
     ],
@@ -125,8 +164,7 @@ $machinestates = [
         'action' => 'stConfirmTurn',
         'possibleactions' => [
             'actConfirmTurn', 
-            'actUndoToStep',
-            'actRestart',
+            'actUndoToStep', 'actRestart',
         ],
         'transitions' => [
           'confirm' => ST_END_TURN,

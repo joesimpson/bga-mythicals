@@ -38,7 +38,7 @@ trait PlayerTurnTrait
   
   /**
    * Step 1.1 : player can choose to draw 3 cards
-   * @throws BgaUserException
+   * @throws \BgaUserException
    */
   public function actDraw(): void
   {
@@ -64,7 +64,7 @@ trait PlayerTurnTrait
   
   /**
    * Step 1.2 : player must choose a color in drawn cards
-   * @throws BgaUserException
+   * @throws \BgaUserException
    */
   public function actCollectDraw(int $color): void
   {
@@ -75,7 +75,6 @@ trait PlayerTurnTrait
     $this->addStep();
 
     // check input values
-    $args = $this->argPlayerTurn();
     $drawnCards = Cards::getInLocation(CARD_LOCATION_CURRENT_DRAW);
     $drawnCardsColors = $drawnCards->map( function($card) { return $card->getColor();})->toArray();
     if (!in_array($color, $drawnCardsColors)) {
@@ -105,7 +104,7 @@ trait PlayerTurnTrait
 
   /**
    * Step 1.3 : player can choose a color in reserve cards
-   * @throws BgaUserException
+   * @throws \BgaUserException
    */
   public function actCollectReserve(int $color): void
   {
@@ -129,21 +128,6 @@ trait PlayerTurnTrait
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");
-  }
-
-  public function actPass(): void
-  {
-    // Retrieve the active player ID.
-    $player_id = (int)$this->getActivePlayerId();
-
-    // Notify all players about the choice to pass.
-    $this->notifyAllPlayers("pass", clienttranslate('${player_name} passes'), [
-        "player_id" => $player_id,
-        "player_name" => $this->getActivePlayerName(),
-    ]);
-
-    // at the end of the action, move to the next state
-    $this->gamestate->nextState("pass");
   }
  
 }

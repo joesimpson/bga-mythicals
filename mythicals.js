@@ -35,6 +35,8 @@ function (dojo, declare) {
     const CARD_LOCATION_HAND = 'hand';
     const CARD_LOCATION_CURRENT_DRAW = 'draw';
         
+    const NB_CARDS_PER_DRAW = 3;
+
     const CARD_COLOR_BLUE = 1;
     const CARD_COLOR_GREEN = 2;
     const CARD_COLOR_PURPLE = 3;
@@ -237,7 +239,7 @@ function (dojo, declare) {
                 let callbackDrawCards = (evt) => {
                     this.takeAction('actDraw', { });
                 };
-                this.addPrimaryActionButton('btnDraw', this.fsr(btnMessage, {n:3}), callbackDrawCards); 
+                this.addPrimaryActionButton('btnDraw', this.fsr(btnMessage, {n:NB_CARDS_PER_DRAW}), callbackDrawCards); 
                 this.onClick(`myt_cards_deck_container`, callbackDrawCards );
             }
             let playableCardsInDraw = args.drawnCards;
@@ -272,6 +274,15 @@ function (dojo, declare) {
                 this.addImageActionButton(buttonId, `<div class='myt_btn_collect_image' data-color='${color}'>${buttonText}</div>`, callbackColorSelection);
             });
         }, 
+        
+        onEnteringStateTileChoice(args) {
+            debug('onEnteringStateTileChoice', args);
+
+            this.addPrimaryActionButton('btnPassTileChoice', _('Pass'), () => {
+                    this.takeAction('actPass');
+                });
+        },
+
         onEnteringStateConfirmTurn(args) {
             debug('onEnteringStateConfirmTurn', args);
 
