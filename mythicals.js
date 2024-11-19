@@ -285,9 +285,26 @@ function (dojo, declare) {
             Object.values(possibleTilesIds).forEach(tile_id => {
                 let div = $(`myt_tile-${tile_id}`);
                 let callbackTileSelection = (evt) => {
-                    this.takeAction('actTileChoice', { tile_id: tile_id});
+                    //this.takeAction('actTileChoice', { tile_id: tile_id});
+                    this.clientState('tileChoiceCards', _('Select cards to discard'), {
+                        tile_id: tile_id,
+                        cardIds: [1829,1832,1833,1834,1835],//TODO JSA ARGS
+                        nbexpected: 3,//TODO JSA ARGS
+                      });
                 };
                 this.onClick(`${div.id}`, callbackTileSelection);
+            });
+        },
+        //CLIENT STATE
+        onEnteringStateTileChoiceCards(args) {
+            debug('onEnteringStateTileChoiceCards', args);
+            this.addCancelStateBtn(_('Go back'));
+            let elements = [];
+            let tile_id = args.tile_id;
+            let cardIds = args.cardIds;
+            cardIds.forEach((cardId) => (elements[cardId] = $(`myt_card-${cardId}`)));
+            this.onSelectN(elements, args.nbexpected, (selectedCards) => {
+                this.takeAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards});
             });
         },
 

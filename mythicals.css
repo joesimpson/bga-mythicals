@@ -422,7 +422,7 @@
 .myt_card_back.selected, .myt_card_back.selected:hover,
 .myt_card.selected,
 .myt_card.selected:hover {
-  box-shadow: 0px 0px 7px 2px green;
+  box-shadow: 0px 0px 7px 2px #d3ff00, 0px 0px 7px 2px #dfff00, 0px 0px 7px 2px #fffb00;
   z-index: 2;
 }
 .myt_card_back.selected.myt_selectedToDiscard .myt_card_wrapper::before, .myt_card_back.selected:hover.myt_selectedToDiscard .myt_card_wrapper::before,

@@ -1344,6 +1344,8 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       ] );
       anim.play();
     },
+    /** Useful When we want to select mutliple elements at the same time
+    */
     onSelectN(elements, n, callback) {
       let selectedElements = [];
       let updateStatus = () => {
@@ -1358,8 +1360,8 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
         }
 
         if ($('btnCancelChoice')) $('btnCancelChoice').remove();
-        if (selectedElements > 0) {
-          this.addSecondaryActionButton('btnCancelChoice', _('Cancel'), () => {
+        if (selectedElements.length  > 0) {
+          this.addSecondaryActionButton('btnCancelChoice', _('Cancel selection'), () => {
             selectedElements = [];
             updateStatus();
           });
