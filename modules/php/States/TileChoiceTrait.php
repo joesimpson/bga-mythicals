@@ -90,20 +90,79 @@ trait TileChoiceTrait
   
   /**
    * @param Player $player
-   * @return array datas about tiles to take as : [tile_id => [nbExpectedCards as 'n',cardIds as 'c',]]
+   * @return array datas about tiles to take by player as : [tile_id => [nbExpectedCards as 'n',cardIds as 'c',]]
    */
   public function listPossibleTilesToTake($player): array
   {
     $possibleTiles = Tiles::getInLocation(TILE_LOCATION_BOARD.'%');
+    $playerCards = Cards::getPlayerHand($player->getId());
 
     foreach($possibleTiles as $tileId => $tile){
 
-      $tiles_datas[$tileId] = [
-        //nbExpectedCards:
-        'n' => $tile->getColor() +1, //TODO JSA COMPUTE real value
-        //cardIds :
-        'c' => [1829,1832,1833,1834],//TODO JSA COMPUTE at player cards
-      ];
+      $tileScoringType = $tile->getBoardPosition();
+      $tileColor = $tile->getColor();
+      $cardsOfTileColor = $playerCards->filter(
+          function($card) use ($tileColor) { 
+            return $tileColor == $card->getColor();
+        });
+
+      $nbExpectedCards = 1;
+      $expectedSameColor = false;
+      $expectedSameValue = false;
+      $possibleCards = [];
+
+      switch($tileScoringType){
+        //------------------------------
+        case TILE_SCORING_SUITE_2:
+          $nbExpectedCards = 2;
+          $expectedSameColor = true;
+          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+          break;
+        case TILE_SCORING_SUITE_3:
+          $nbExpectedCards = 3;
+          $expectedSameColor = true;
+          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+          break;
+        case TILE_SCORING_SUITE_4:
+          $nbExpectedCards = 4;
+          $expectedSameColor = true;
+          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+          break;
+        case TILE_SCORING_SUITE_5:
+          $nbExpectedCards = 5;
+          $expectedSameColor = true;
+          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+          break;
+        //------------------------------
+        case TILE_SCORING_SAME_2:
+          $nbExpectedCards = 2;
+          $expectedSameValue = true;
+          break;
+        case TILE_SCORING_SAME_3:
+          $nbExpectedCards = 3;
+          $expectedSameValue = true;
+          break;
+        case TILE_SCORING_SAME_4:
+          $nbExpectedCards = 4;
+          $expectedSameValue = true;
+          break;
+        case TILE_SCORING_SAME_6:
+          $nbExpectedCards = 6;
+          $expectedSameValue = true;
+          break;
+        //------------------------------
+        default: break;
+      }
+
+      if(!empty($possibleCards)){
+        $possibleCardsIds = $possibleCards[0];//TODO JSA GET ALL in array
+        $tiles_datas[$tileId] = [
+          //nbExpectedCards:
+          'n' => $nbExpectedCards,
+          //cardIds :
+          'c' => $possibleCardsIds,
+        ];
+      }
     }
     return $tiles_datas;
   }

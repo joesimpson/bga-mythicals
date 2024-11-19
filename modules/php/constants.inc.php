@@ -42,6 +42,8 @@ const CARD_VALUE_3 = 3;
 const CARD_VALUE_4 = 4;
 const CARD_VALUE_5 = 5;
 const CARD_VALUE_JOKER = 6;
+const CARD_VALUE_MIN = CARD_VALUE_1;
+const CARD_VALUE_MAX = CARD_VALUE_5;
 
 /////////////////////////////////////////////////////////
 //          TILES

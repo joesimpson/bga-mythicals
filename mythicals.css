@@ -168,7 +168,6 @@
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell {
   position: absolute;
-  z-index: 2;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-color="3"] {
   left: 130px;
@@ -976,6 +975,8 @@
 }
 .myt_tile.selectable {
   box-shadow: 0px 0px 40px 20px #0ff;
+  outline: 20px solid aqua;
+  z-index: 3;
   cursor: pointer;
 }
 .myt_tile.selectable:hover {
@@ -983,7 +984,7 @@
 }
 .myt_tile.selected, .myt_tile.selected:hover {
   box-shadow: 0px 0px 7px 2px green;
-  z-index: 2;
+  z-index: 4;
 }
 
 .myt_bonus_token {

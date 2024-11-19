@@ -137,6 +137,56 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     return $colors;
   }
 
+  
+  /**
+   * @param Collection $cards
+   * @param int $length
+   * @return array list of existing suits of specified $length in $cards
+   */
+  public static function listExistingSuites($cards, $length)
+  {
+    $hasJoker = false;
+    $values = [];
+    foreach($cards as $card ){
+      $card_id = $card->getId();
+      $color = $card->getColor();
+      $value = $card->getValue();
+      
+      if(!array_key_exists($value,$values)){
+        $values[$value] = $card_id;
+      }
+      if(CARD_VALUE_JOKER == $value) $hasJoker = true;
+    }
+    //SORT ARRAY by key
+    ksort($values);
+    // foreach($values as $value => $id) {
+    //   $nextEltExist = true;
+    //   for($k=0; $k<$length; $k++){
+
+    //     $nextEltExist = $nextEltExist 
+    //       && (array_key_exists($value -$k,$values) //suit to DESC
+    //        || array_key_exists($value +$k,$values) //suit to ASC
+    //        || $hasJoker && $unusedJoker 
+    //       );
+    //   }
+    // }
+
+    $allSuites = [];
+    $currentSuit = [];
+    $currentSuitUsedJoker = false;
+    for($k=CARD_VALUE_MIN; $k<=CARD_VALUE_MAX; $k++){
+      if(array_key_exists($k,$values) || ($hasJoker && !$currentSuitUsedJoker) ){
+        $currentSuit[] = $values[$k];
+      } else {
+        //Reset current suit until next value
+        if(count($currentSuit)>=$length) $allSuites[] = $currentSuit;
+        $currentSuit = [];
+        $currentSuitUsedJoker = false;
+      }
+    }
+    if(count($currentSuit)>=$length) $allSuites[] = $currentSuit;
+    return $allSuites;
+  }
   ///////////////////////////////////////////////////////////////////////////////////////
    
   /** Creation of the cards
