@@ -52,6 +52,7 @@ function (dojo, declare) {
     ];
 
     const TILE_LOCATION_BOARD = 'board-';
+    const TILE_LOCATION_HAND = 'hand';
 
     const TILE_COLOR_BLUE = 1;
     const TILE_COLOR_GREEN = 2;
@@ -88,6 +89,7 @@ function (dojo, declare) {
                 ['giveCardToPublic', 800],
                 ['cardToReserve', 800],
                 ['discardCards', 1000],
+                ['takeTile', 800],
                 ['refreshUI', 200],
             ];
 
@@ -127,8 +129,8 @@ function (dojo, declare) {
                     <div id="myt_players_table"></div>
                 </div>
             `);
-            //TODO JSA refresh COUNTER deckSize
 
+            //Setting up board Cards
             Object.values(CARD_COLORS).forEach(color => {
                 document.getElementById('myt_cards_reserve').insertAdjacentHTML('beforeend', `
                     <div id="myt_cards_reserve_resizable_${color}" class="myt_cards_stack_resizable">
@@ -137,6 +139,7 @@ function (dojo, declare) {
                 `);
             });
             
+            //Setting up board TILES
             Object.values(TILE_COLORS).forEach(color => {
                 for(let k=1; k<=8;k++){
                     document.getElementById('myt_board_tiles').insertAdjacentHTML('beforeend', `
@@ -162,6 +165,9 @@ function (dojo, declare) {
                         <h3 class='myt_title' >${this.fsr(('${player_name}'), { player_name:this.coloredPlayerName(player.name)}) }</h3>
                         <div id="myt_player_cards-${player.id}" class="myt_player_cards">
                             ${playerCardsDiv}
+                        </div>
+                        <div id="myt_player_tiles-${player.id}" class="myt_player_tiles">
+                            <div id="myt_player_toptile-${player.id}" class="myt_player_toptile">
                         </div>
                     </div>
                 `);
@@ -310,6 +316,14 @@ function (dojo, declare) {
             });
         },
 
+        onEnteringStateTileModif(args) {
+            debug('onEnteringStateTileModif', args);
+
+            this.addPrimaryActionButton('btnPassTileModif', _('Pass'), () => {
+                    this.takeAction('actPass');
+                });
+             //...
+        },
         onEnteringStateConfirmTurn(args) {
             debug('onEnteringStateConfirmTurn', args);
 
@@ -401,6 +415,16 @@ function (dojo, declare) {
                 this.notifqueue.setSynchronousDuration(this.isFastMode() ? 0 : 10);
                 this._counters[n.args.player_id].cards.incValue(- n.args.cards.length);
             });
+        },
+        notif_takeTile(n) {
+            debug('notif_takeTile: player receiving a new tile', n);
+            let tile = n.args.tile;
+            let pId = n.args.player_id;
+            //Remove DOM of previous one because game rule states we see only the top
+            this.empty(`myt_player_toptile-${pId}`);
+            if (!$(`myt_tile${tile.id}`)) this.addTile(tile, this.getVisibleTitleContainer());
+            this.slide(`myt_tile-${tile.id}`, this.getTileContainer(tile));
+            this._counters[pId].tiles.incValue(1);
         },
 
         ///////////////////////////////////////////////////
@@ -708,7 +732,10 @@ function (dojo, declare) {
             if (tile.location.startsWith(TILE_LOCATION_BOARD)) {
                 return $(`myt_board_tile_cell-${tile.color}-${tile.pos}`);
             }
-    
+            if (tile.location == (TILE_LOCATION_HAND)) {
+                return $(`myt_player_toptile-${tile.pId}`);
+            }
+            
             console.error('Trying to get container of a tile', tile);
             return 'game_play_area';
         },

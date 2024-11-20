@@ -1,11 +1,11 @@
-$tile_width: 370px;
-$tile_height: 370px;
+$tile_width: 100px;
+$tile_height: 100px;
 
 .myt_tile {
     width: $tile_width;
     height: $tile_height;
     outline: 2px solid black;
-    border-radius: 40px;
+    border-radius: 20px;
 
     //sprite positions
     background-size: 800% 500%;
@@ -47,3 +47,44 @@ $tile_height: 370px;
     }
 }
  
+#myt_board_tiles{
+    .myt_tile{
+        width: 370px;
+        height: 370px;
+        border-radius: 40px;
+    }
+}
+
+.myt_tile_tooltip{
+    .myt_tile{
+        width: 200px;
+        height: 200px;
+        border-radius: 30px;
+    }
+}
+
+.myt_player_tiles{
+    .myt_player_toptile{
+        .myt_tile{
+            &::after,
+            &::before{  
+                content: "";
+                position:absolute;  
+                top: 5px;
+                left: 5px;
+                width: $tile_width;
+                height: $tile_height;
+                border: 2px solid black;
+                border-top: none;
+                border-left: none;
+                border-radius: 20px;
+                //background-color: black;
+            }
+            &::after{
+                top: 2px;
+                left: 2px;
+            }
+        }
+
+    }
+}

@@ -309,6 +309,24 @@ class Pieces extends DB_Manager
       ->limit($n)
       ->get($returnValueIfOnlyOneRow);
   }
+  
+  /**
+   * Return "$nbr" piece on top of this PLAYER location, top defined as item with higher state value
+   * @param int $playerId
+   * @param string $location
+   * @param int $n
+   * @param bool $returnValueIfOnlyOneRow
+   */
+  public static function getTopOfPlayerLoc(int $playerId,string $location,int $n = 1, bool $returnValueIfOnlyOneRow = true)
+  {
+    self::checkLocation($location);
+    self::checkPosInt($n);
+    return self::getSelectWhere(null, $location)
+      ->wherePlayer($playerId)
+      ->orderBy(static::$prefix . 'state', 'DESC')
+      ->limit($n)
+      ->get($returnValueIfOnlyOneRow);
+  }
 
   /**
    * Return all pieces in specific location

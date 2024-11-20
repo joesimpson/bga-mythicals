@@ -29,11 +29,17 @@ class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
    */
   public static function getUiData($currentPlayerId)
   {
-    $privateTiles = self::getPlayerHand($currentPlayerId);
+    //$privateTiles = self::getPlayerHand($currentPlayerId);
+    $players = Players::getAll();
 
-    return 
-      self::getBoardTiles()
-      ->merge($privateTiles)
+    $tiles = self::getBoardTiles();
+    //GAME RULE: we can see only 1 tile on top of tiles stack of each player
+    foreach($players as $pId => $p){
+      $tile = self::getTopOfPlayerLoc($pId,TILE_LOCATION_HAND);
+      if(isset($tile)) $tiles->append($tile);
+    }
+    
+    return $tiles
       ->map(function ($tile) {
         return $tile->getUiData();
       })

@@ -743,6 +743,8 @@
 #myt_players_table .myt_player_table {
   width: -moz-fit-content;
   width: fit-content;
+  display: flex;
+  flex-flow: row;
   border-radius: 10px;
   border: 2px solid black;
   box-shadow: 1px 1px 10px black;
@@ -787,10 +789,10 @@
 }
 
 .myt_tile {
-  width: 370px;
-  height: 370px;
+  width: 100px;
+  height: 100px;
   outline: 2px solid black;
-  border-radius: 40px;
+  border-radius: 20px;
   background-size: 800% 500%;
   background-image: url("img/tiles.jpg");
   background-position-x: 0;
@@ -989,6 +991,35 @@
 .myt_tile.selected, .myt_tile.selected:hover {
   box-shadow: 0px 0px 7px 2px green;
   z-index: 4;
+}
+
+#myt_board_tiles .myt_tile {
+  width: 370px;
+  height: 370px;
+  border-radius: 40px;
+}
+
+.myt_tile_tooltip .myt_tile {
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+}
+
+.myt_player_tiles .myt_player_toptile .myt_tile::after, .myt_player_tiles .myt_player_toptile .myt_tile::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  border-top: none;
+  border-left: none;
+  border-radius: 20px;
+}
+.myt_player_tiles .myt_player_toptile .myt_tile::after {
+  top: 2px;
+  left: 2px;
 }
 
 .myt_bonus_token {
