@@ -73,6 +73,12 @@ function (dojo, declare) {
     
     const TOKEN_LOCATION_BOARD = 'board';
 
+    const TILE_FACE_NAMES = [
+        0,
+        'Open',//TILE_STATE_OPEN
+        'Locked',//TILE_STATE_LOCKED
+    ];
+
     return declare("bgagame.mythicals", [customgame.game], {
         constructor: function(){
             debug('mythicals constructor');
@@ -783,10 +789,25 @@ function (dojo, declare) {
         },
         getTileTooltip(tile) {
             let cardDatas = tile;
-            let typeName = '';
-            let titleSize = 'h1';
+            let title = "";
+            let descColor = "";
+            let descValue ="";
             let div = this.tplTile(cardDatas,'_tmp');
-            return [`<div class='myt_tile_tooltip'><${titleSize}>${typeName}</${titleSize}>${div}</div>`];
+            {
+                title = _('Mastery tile');
+                let iconColor = this.formatIcon('color-'+tile.color);
+                descColor = this.fsr(_("Color : ${color}"), {color: iconColor});
+                descValue = this.fsr(_("Score : ${n}"), {n: tile.score});
+                descFace = this.fsr(_("Face : ${face}"), {face: TILE_FACE_NAMES[tile.state]});
+            }
+            return [`<div class='myt_tile_tooltip'>
+                    <h1>${title}</h1>
+                    <h3>${descColor}</h3>
+                    <h2>${descValue}</h2>
+                    <h2>${descFace}</h2>
+                    ${div}
+                </div>`];
+
         },
         tplTile(tile, prefix ='') {
             return `<div class="myt_tile myt_tile${prefix}" id="myt_tile${prefix}-${tile.id}" data-id="${tile.id}" data-type="${tile.type}"
