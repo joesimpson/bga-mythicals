@@ -438,6 +438,7 @@ function (dojo, declare) {
             if (!$(`myt_card-${n.args.card.id}`)) this.addCard(n.args.card, this.getVisibleTitleContainer());
             this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card));
             this._counters[n.args.player_id].cards.incValue(1);
+            if(n.args.player_id2) this._counters[n.args.player_id2].cards.incValue(-1);
         },
         notif_cardToReserve(n) {
             debug('notif_cardToReserve: RESERVE receiving a new card', n);

@@ -3,6 +3,7 @@ namespace Bga\Games\Mythicals;
 
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Helpers\QueryBuilder;
+use Bga\Games\Mythicals\Helpers\Utils;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
@@ -107,5 +108,11 @@ trait DebugTrait
     }
     $this->debug_UI();
     $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
+  }
+  
+  function debug_Duplicates(){
+    $player = Players::getCurrent();
+    $cards = Cards::listDuplicatesInPlayerHand($player);
+    Notifications::message(json_encode($cards));
   }
 }

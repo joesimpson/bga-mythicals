@@ -96,7 +96,7 @@ trait PlayerTurnTrait
 
       }
     }
-    //TODO JSA move duplicates to opponent !
+    Cards::moveDuplicatesToOpponent($player);
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");
@@ -124,7 +124,7 @@ trait PlayerTurnTrait
     //  game logic here.
     Notifications::collectReserve($player,$color);
     $cards = Cards::moveReserveToPlayer($player,$color);
-    //TODO JSA move duplicates to opponent !
+    Cards::moveDuplicatesToOpponent($player);
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");

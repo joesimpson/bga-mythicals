@@ -5,8 +5,10 @@ namespace Bga\Games\Mythicals\Managers;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Helpers\Collection;
+use Bga\Games\Mythicals\Helpers\Utils;
 use Bga\Games\Mythicals\Models\Card;
 use Bga\Games\Mythicals\Models\CreatureCard;
+use Bga\Games\Mythicals\Models\Player;
 
 /* Class to manage all the cards */
 
@@ -122,6 +124,61 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       Notifications::giveCardTo($player,$card);
     }
     return $cards;
+  }
+  
+  public static function moveDuplicatesToOpponent(Player $player)
+  {
+    Game::get()->trace("moveDuplicatesToOpponent()");
+    //HERE we suppose it is always a 2P game !
+    $opponentPlayerId = Players::getNextId($player);
+    $opponentPlayer = Players::get($opponentPlayerId);
+    $cardsToMove = self::listDuplicatesInPlayerHand($player);
+    foreach($cardsToMove as $card){
+      $card->setPId($opponentPlayer->getId());
+      $card->setLocation(CARD_LOCATION_HAND);
+      Notifications::giveCardTo($opponentPlayer,$card,$player);
+    }
+    //return $cardsToMove;
+  }
+  
+  /**
+   * @return Collection cards 
+   */
+  public static function listDuplicatesInPlayerHand($player)
+  {
+    Game::get()->trace("listDuplicatesInPlayerHand()");
+    $cardsInHand = Cards::getPlayerHand($player->getId());
+
+    $cardsDuplicates = new Collection();
+    $cardIdsDups = [];
+    // $cardsInHand->map(function ($card) {
+    //     return $cardsToMove[$card->getValue()][] = $card->getId() ;
+    //   });
+      
+      
+    foreach(CARD_COLORS as $color){
+      $coloredCards = $cardsInHand->filter(function ($card) use ($color) {
+        return $color == $card->getColor() ;
+      });
+      $values = $coloredCards->map(function ($card) {
+        return $card->getValue();
+      });
+      foreach($values as $cardValue){
+        $duplicatesForValue = $coloredCards->filter(function ($card) use ($cardValue) {
+          return $cardValue == $card->getValue() ;
+        })->getIds();
+        if(count($duplicatesForValue) >= 2){
+          $cardIdsDups[] = $duplicatesForValue[0];
+        }
+      }
+    }
+    $cardIdsDups = array_unique($cardIdsDups);
+    foreach($cardsInHand as $card){
+      if( in_array($card->getId(), $cardIdsDups) ){
+        $cardsDuplicates->append($card);
+      }
+    }
+    return $cardsDuplicates;
   }
   
   /**

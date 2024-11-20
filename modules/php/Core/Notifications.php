@@ -46,12 +46,16 @@ class Notifications
   
   /**
    * @param Player $player
+   * @param Player $fromPlayer
    * @param Card $card
    */
-  public static function giveCardTo($player, $card)
+  public static function giveCardTo($player, $card, $fromPlayer = null)
   {
-    self::notifyAll('giveCardToPublic', clienttranslate('${player_name} receives a new card'), [
+    $msg = clienttranslate('${player_name} receives a new card');
+    if(isset($fromPlayer)) $msg = clienttranslate('${player_name} receives a card from ${player_name2}');
+    self::notifyAll('giveCardToPublic', $msg, [
       'player' => $player,
+      'player2' => $fromPlayer,
     /*]);
     //Beware this is a private info !
     self::notify($player,'giveCardTo', '', [
@@ -185,12 +189,12 @@ class Notifications
 
       unset($data['player']);
     }
-    /* not used in this game for now
     if (isset($data['player2'])) {
       $data['player_name2'] = $data['player2']->getName();
       $data['player_id2'] = $data['player2']->getId();
       unset($data['player2']);
     }
+    /* not used in this game for now
     
     if (isset($data['player3'])) {
       $data['player_name3'] = $data['player3']->getName();
