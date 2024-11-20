@@ -1043,6 +1043,9 @@
   position: relative;
   -o-border-image: none;
      border-image: none;
+  order: 0;
+  grid-row-start: 1;
+  grid-column: 1;
 }
 
 #player_config .player_config_row {

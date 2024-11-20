@@ -5,6 +5,9 @@
 #player_board_config {
     position: relative;
     border-image: none;
+    order: 0;
+    grid-row-start: 1;
+    grid-column: 1;
 }
 
 #player_config {
