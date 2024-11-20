@@ -90,6 +90,7 @@ function (dojo, declare) {
                 ['cardToReserve', 800],
                 ['discardCards', 1000],
                 ['takeTile', 800],
+                ['lockTile', 800],
                 ['refreshUI', 200],
             ];
 
@@ -473,6 +474,16 @@ function (dojo, declare) {
             if (!$(`myt_tile${tile.id}`)) this.addTile(tile, this.getVisibleTitleContainer());
             this.slide(`myt_tile-${tile.id}`, this.getTileContainer(tile));
             this._counters[pId].tiles.incValue(1);
+        },
+        
+        notif_lockTile(n) {
+            debug('notif_lockTile: player updating tile state', n);
+            let tile = n.args.tile;
+            let div = $(`myt_tile-${tile.id}`);
+            if (!div) return;
+            div.dataset.state = tile.state;
+            //TODO ? flipAndReplace
+            //this.flipAndReplace(div, divAfter);
         },
 
         ///////////////////////////////////////////////////

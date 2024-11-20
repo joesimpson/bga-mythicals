@@ -63,6 +63,7 @@ trait TileModifTrait
 
     //  game logic here. 
     $tile = Tiles::get($tile_id);
+    $tile->setState(TILE_STATE_LOCKED);
     Notifications::lockTile($player,$tile);
 
     // at the end of the action, move to the next state
