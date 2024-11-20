@@ -540,6 +540,14 @@ function (dojo, declare) {
                 this.addCustomTooltip(`myt_reserve_${player.id}_tiles`, _('Mastery tiles'));
                 this.addCustomTooltip(`myt_reserve_${player.id}_bonus_tokens`, _('Bonus markers'));
             });
+            // Order them
+            this.forEachPlayer((player) => {
+                let isCurrent = player.id == this.player_id;
+                //let 1 space for personal board
+                let order = ((player.no - currentPlayerNo + nPlayers) % nPlayers) + 1;
+                if (isCurrent) order = 1;
+                $(`myt_player_table-${player.id}`).style.order = order;
+            });
     
         },
 
