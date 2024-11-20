@@ -682,6 +682,10 @@
 .myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable:hover {
   z-index: 100;
 }
+.myt_cards_stack_resizable .myt_cards_stack .myt_card.selected,
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable.selected {
+  margin-left: -20px;
+}
 .myt_cards_stack_resizable .myt_cards_stack.selectable {
   cursor: pointer;
   outline: 20px solid yellow;

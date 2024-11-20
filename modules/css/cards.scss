@@ -121,6 +121,10 @@ $card_height: 200px;
             &:hover {
                 z-index: 100;
             }
+            &.selected{
+                //Make the card a bit out of the stack
+                margin-left: -20px;
+            }
         }
 
         &.selectable{
