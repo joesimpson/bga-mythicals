@@ -91,6 +91,7 @@ function (dojo, declare) {
                 ['discardCards', 1000],
                 ['takeTile', 800],
                 ['lockTile', 800],
+                ['clearTurn', 200],
                 ['refreshUI', 200],
             ];
 
@@ -393,6 +394,10 @@ function (dojo, declare) {
         //                                                            
         //    
         //////////////////////////////////////////////////////////////
+        notif_clearTurn(n) {
+            debug('notif_clearTurn: restarting turn/step', n);
+            this.cancelLogs(n.args.notifIds);
+        },
         notif_refreshUI(n) {
             debug('notif_refreshUI: refreshing UI', n);
             this.refreshPlayersDatas(n.args.datas['players']);
@@ -861,7 +866,6 @@ function (dojo, declare) {
         },
     
         getCardContainer(card) { 
-            //TODO JSA display cards in the right container
             if (card.location == CARD_LOCATION_CURRENT_DRAW) {
                 return $(`myt_cards_draw`);
             }
