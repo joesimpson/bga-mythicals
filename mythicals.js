@@ -311,7 +311,7 @@ function (dojo, declare) {
             let elements = [];
             let tile_id = args.tile_id;
             let cardIds = args.cardIds;
-            cardIds.forEach((cardId) => (elements[cardId] = $(`myt_card-${cardId}`)));
+            Object.values(cardIds).forEach((cardId) => (elements[cardId] = $(`myt_card-${cardId}`)));
             this.onSelectN(elements, args.nbExpected, (selectedCards) => {
                 this.takeAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards.join(',')});
             });
