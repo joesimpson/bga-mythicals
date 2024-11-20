@@ -287,7 +287,7 @@ function (dojo, declare) {
                 let tile = tile_datas[1];
                 let div = $(`myt_tile-${tile_id}`);
                 let callbackTileSelection = (evt) => {
-                    this.clientState('tileChoiceCards', _('Select cards to discard'), {
+                    this.clientState('tileChoiceCards',  this.fsr(_('Select ${n} cards to discard'), {n:tile.n}), {
                         tile_id: tile_id,
                         cardIds: tile.c,
                         nbExpected: tile.n,
