@@ -318,12 +318,60 @@ function (dojo, declare) {
 
         onEnteringStateTileModif(args) {
             debug('onEnteringStateTileModif', args);
+                
+            this.addPrimaryActionButton('btnReinforce', _('Reinforce'), () => {
+                this.clientState('tileReinforce',  this.fsr(_('Select a tile'), {}), {
+                    tiles_ids: args.tiles_ids_r,
+                });
+            });
+            this.addPrimaryActionButton('btnLock', _('Lock'), () => {
+                this.clientState('tileLock',  this.fsr(_('Select a tile'), {}), {
+                    tiles_ids: args.tiles_ids_l,
+                });
+            });
 
             this.addPrimaryActionButton('btnPassTileModif', _('Pass'), () => {
-                    this.takeAction('actPass');
-                });
-             //...
+                this.takeAction('actPass');
+            });
         },
+        
+        //CLIENT STATE
+        onEnteringStateTileReinforce(args) {
+            debug('onEnteringStateTileReinforce', args);
+            this.addCancelStateBtn(_('Go back'));
+            let tiles_ids = args.tiles_ids;
+            Object.values(tiles_ids).forEach( (tile_id) => {
+                let div = $(`myt_tile-${tile_id}`);
+                let callbackTileSelection = (evt) => {
+                    //TODO JSA Get 1 or 2 depending on the tile
+                    this.clientState('tileReinforceTokens',  this.fsr(_('Select up to ${n} tokens to reinforce this tile'), {n:2}), {
+                        tile_id: tile_id,
+                      });
+                };
+                this.onClick(`${div.id}`, callbackTileSelection);
+            });
+        },
+        //CLIENT STATE
+        onEnteringStateTileReinforceTokens(args) {
+            debug('onEnteringStateTileReinforceTokens', args);
+            this.addCancelStateBtn(_('Go back'));
+            let tile_id = args.tile_id;
+            
+        },
+        //CLIENT STATE
+        onEnteringStateTileLock(args) {
+            debug('onEnteringStateTileLock', args);
+            this.addCancelStateBtn(_('Go back'));
+            let tiles_ids = args.tiles_ids;
+            Object.values(tiles_ids).forEach( (tile_id) => {
+                let div = $(`myt_tile-${tile_id}`);
+                let callbackTileSelection = (evt) => {
+                    this.takeAction('actTileLock', { tile_id: tile_id,});
+                };
+                this.onClick(`${div.id}`, callbackTileSelection);
+            });
+        },
+
         onEnteringStateConfirmTurn(args) {
             debug('onEnteringStateConfirmTurn', args);
 

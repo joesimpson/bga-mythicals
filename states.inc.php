@@ -146,6 +146,7 @@ $machinestates = [
         "args" => "argTileModif",
         "possibleactions" => [
             "actTileModif", 
+            "actTileLock", 
             "actPass",
             'actUndoToStep', 'actRestart',
         ],

@@ -70,6 +70,7 @@ const TILE_COLORS = [
 
 /** there are 1 copies of each tile */
 const NB_TILE_COPIES = 1;
+const NB_MAX_TOKENS_ON_TILE = 2;
 
 const TILE_SCORE_2 = 2;
 const TILE_SCORE_4 = 4;
@@ -96,6 +97,7 @@ const TILE_STATE_LOCKED = 2;
 /////////////////////////////////////////////////////////
 const TOKEN_LOCATION_BOARD = 'board';
 const TOKEN_LOCATION_HAND = 'hand';
+const TOKEN_LOCATION_TILE = 'tile-';//TO BE FOLLOWED by TILE ID !
 
 const NB_BONUS_TOKEN_COPIES = 16;
 

@@ -119,6 +119,17 @@ class Notifications
       'tile' => $tile->getUiData(),
     ]);
   }
+  /**
+   * @param Player $player
+   * @param MasteryTile $tile
+   */
+  public static function lockTile($player,$tile)
+  {
+    self::notifyAll('lockTile', clienttranslate('${player_name} locks a mastery tile on the board'), [
+      'player' => $player,
+      'tile' => $tile->getUiData(),
+    ]);
+  }
   /*************************
    **** GENERIC METHODS ****
    *************************/

@@ -25,9 +25,17 @@ trait TileModifTrait
   public function argTileModif(): array
   {
     $possibleTiles = Tiles::getInLocation(TILE_LOCATION_BOARD.'%');
-    //TODO JSA Filter tiles based on rules
+    $possibleTilesToReinforce = $possibleTiles->filter(function($tile){
+      $tokens = $tile->getTokens();
+      return TILE_STATE_OPEN == $tile->getState() && count($tokens)< NB_MAX_TOKENS_ON_TILE;
+    });
+    $possibleTilesToLock = $possibleTiles->filter(function($tile){
+      $tokens = $tile->getTokens();
+      return TILE_STATE_OPEN == $tile->getState() && 0 == count($tokens);
+    });
     $args = [
-      "possibleTiles" => $possibleTiles->getIds(),
+      "tiles_ids_r" => $possibleTilesToReinforce->getIds(),
+      "tiles_ids_l" => $possibleTilesToLock->getIds(),
     ];
     
     $this->addArgsForUndo($args);
@@ -35,25 +43,27 @@ trait TileModifTrait
   }
   
   /**
-   * Step 2.2 : player may modify a tile
+   * Step 2.3 : player may LOCK a tile
    * @throws \BgaUserException
    */
-  public function actTileModif(int $tile_id): void
+  public function actTileLock(int $tile_id): void
   {
-    self::trace("actTileModif($tile_id)");
+    self::trace("actTileLock($tile_id)");
 
     $player = Players::getCurrent();
     $pId = $player->getId();
     $this->addStep();
 
     // check input values
-    $args = $this->argTileChoice();
-    $possibleTiles = $args['possibleTiles'];
+    $args = $this->argTileModif();
+    $possibleTiles = $args['tiles_ids_l'];
     if (!in_array($tile_id, $possibleTiles)) {
-      throw new UnexpectedException(101,"Invalid tile $tile_id ( see ".json_encode($possibleTiles).")");
+      throw new UnexpectedException(106,"Invalid tile $tile_id ( see ".json_encode($possibleTiles).")");
     }
 
     //  game logic here. 
+    $tile = Tiles::get($tile_id);
+    Notifications::lockTile($player,$tile);
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");

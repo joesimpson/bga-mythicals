@@ -2,6 +2,8 @@
 
 namespace Bga\Games\Mythicals\Models;
 
+use Bga\Games\Mythicals\Managers\Tokens;
+
 class MasteryTile extends Tile
 {
   
@@ -34,6 +36,14 @@ class MasteryTile extends Tile
     if(str_starts_with($location, TILE_LOCATION_BOARD) ) 
       return intval(substr($location,strlen(TILE_LOCATION_BOARD)));
     return 0;
+  }
+  
+  /**
+   * @return Collection of Token
+   */
+  public function getTokens()
+  {
+    return Tokens::getInLocation(TOKEN_LOCATION_TILE.$this->getId());
   }
   
 }
