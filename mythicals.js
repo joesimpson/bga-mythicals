@@ -87,6 +87,7 @@ function (dojo, declare) {
                 ['drawCards', 1000],
                 ['giveCardToPublic', 800],
                 ['cardToReserve', 800],
+                ['discardCards', 1000],
                 ['refreshUI', 200],
             ];
 
@@ -379,6 +380,27 @@ function (dojo, declare) {
             debug('notif_cardToReserve: RESERVE receiving a new card', n);
             if (!$(`myt_card-${n.args.card.id}`)) this.addCard(n.args.card, this.getVisibleTitleContainer());
             this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card));
+        },
+
+        notif_discardCards(n) {
+            debug('notif_discardCards: n cards discarded to not visible zone', n);
+            Promise.all(
+                Object.values(n.args.cards).map((card, i) => {
+                    //Remove card datas from memory
+                    let cardIndex = this.gamedatas.cards.findIndex((t) => t == card.id);
+                    this.gamedatas.cards.splice(cardIndex, 1);
+                    
+                    return this.wait(50 * i).then(() => 
+                        this.slide(`myt_card-${card.id}`, this.getVisibleTitleContainer(), {
+                            destroy: true,
+                            phantom: false,
+                        })
+                    );
+                })
+            ).then(() => {
+                this.notifqueue.setSynchronousDuration(this.isFastMode() ? 0 : 10);
+                this._counters[n.args.player_id].cards.incValue(- n.args.cards.length);
+            });
         },
 
         ///////////////////////////////////////////////////

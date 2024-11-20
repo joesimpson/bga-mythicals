@@ -71,11 +71,11 @@ trait TileChoiceTrait
     $cards = Cards::getMany($card_ids);
     $tile->setPId($pId);
     $tile->setLocation(TILE_LOCATION_HAND);
+    Notifications::discardCards($player,$cards);
     foreach($cards as $card){
       $card->setLocation(CARD_LOCATION_DISCARD);
       $card->setPId(null);
     }
-    Notifications::discardCards($player,$cards);
     Notifications::takeTile($player,$tile);
 
     // at the end of the action, move to the next state
