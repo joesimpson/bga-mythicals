@@ -165,13 +165,14 @@ trait TileChoiceTrait
       }
 
       if(!empty($possibleCards)){
-        $possibleCardsIds = $possibleCards[0];//TODO JSA GET ALL in array
-        $tiles_datas[$tileId] = [
-          //nbExpectedCards:
-          'n' => $nbExpectedCards,
-          //cardIds :
-          'c' => $possibleCardsIds,
-        ];
+        $possibleCardsIds = array_unique(array_merge([], ...$possibleCards));
+        if($nbExpectedCards <= count($possibleCardsIds)){
+          $tiles_datas[$tileId] = [
+            //NAME is short for JSON to send
+            'n' => $nbExpectedCards,
+            'c' => $possibleCardsIds,
+          ];
+        }
       }
     }
     return $tiles_datas;
