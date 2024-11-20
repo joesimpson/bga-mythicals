@@ -36,6 +36,7 @@ function (dojo, declare) {
     const CARD_LOCATION_CURRENT_DRAW = 'draw';
         
     const NB_CARDS_PER_DRAW = 3;
+    const CARD_VALUE_JOKER = 6;
 
     const CARD_COLOR_BLUE = 1;
     const CARD_COLOR_GREEN = 2;
@@ -851,11 +852,24 @@ function (dojo, declare) {
     
         getCardTooltip(card) {
             let cardDatas = card;
-            let desc = "TODO";
-            if(CARD_COLOR_DAY == card.color) desc = desc + _("<br>Day Card");
-            //else return;
+            let title = "";
+            let descColor = "";
+            let descValue ="";
+            if(CARD_COLOR_DAY == card.color) title = _("Day Card");
+            else {
+                title = _("Creature card");
+                let iconColor = this.formatIcon('color-'+card.color);
+                let value = CARD_VALUE_JOKER == card.value ? _('Joker, can replace any value from 1 to 5'): card.value;
+                descColor = this.fsr(_("Color : ${color}"), {color:iconColor});
+                descValue = this.fsr(_("Value : ${value}"), {value: value});
+            }
             let div = this.tplCard(cardDatas,'_tmp');
-            return [`<div class='myt_card_tooltip'><h1>${desc}</h1>${div}</div>`];
+            return [`<div class='myt_card_tooltip'>
+                    <h1>${title}</h1>
+                    <h3>${descColor}</h3>
+                    <h2>${descValue}</h2>
+                    ${div}
+                </div>`];
         }, 
 
         tplCard(card, prefix ='') {

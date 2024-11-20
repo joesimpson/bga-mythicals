@@ -241,3 +241,10 @@ $card_height: 200px;
         }
     }
 }
+
+.myt_card_tooltip{
+    .myt_card{
+        width: calc($card_width * 2);
+        height: calc($card_height * 2);
+    }
+}

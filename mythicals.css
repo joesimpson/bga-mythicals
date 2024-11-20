@@ -788,6 +788,11 @@
   order: 3;
 }
 
+.myt_card_tooltip .myt_card {
+  width: 200px;
+  height: 400px;
+}
+
 .myt_tile {
   width: 100px;
   height: 100px;
