@@ -55,7 +55,7 @@ trait ConfirmUndoTrait
     {
         Game::get()->checkVersion($version);
         if (!$auto) {
-            self::checkAction('actConfirmTurn');
+            //self::checkAction('actConfirmTurn');
         }
 
         $player = Players::getCurrent();
@@ -68,7 +68,6 @@ trait ConfirmUndoTrait
     public function actRestart(#[IntParam(name: 'v')] int $version)
     {
         Game::get()->checkVersion($version);
-        self::checkAction('actRestart');
         $player = Players::getCurrent();
         $pId = $player->getId();
         if (Globals::getChoices($pId) < 1) {
@@ -81,7 +80,6 @@ trait ConfirmUndoTrait
     public function actUndoToStep(int $stepId, #[IntParam(name: 'v')] int $version): void
     {
         Game::get()->checkVersion($version);
-        self::checkAction('actRestart');
         $player = Players::getCurrent();
         $pId = $player->getId();
         $steps = Log::getUndoableSteps($pId);

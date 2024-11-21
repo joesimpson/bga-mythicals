@@ -91,7 +91,7 @@ function (dojo, declare) {
             this._counters = {};
             
             //Filter states where we don't want other players to display state actions
-            this._activeStates = ['cardCollect','tileChoice','tileModif'];
+            this._activeStates = ['cardCollect','tileChoice','tileModif', 'confirmTurn'];
             this._inactiveStates = ['scoring','gameEnd'];
 
             this._notifications = [
