@@ -67,6 +67,7 @@ trait PlayerTurnTrait
     }
 
     // at the end of the action, move to the next state
+    $this->addCheckPoint(ST_PLAYER_TURN_COLLECT);
     $this->gamestate->nextState("draw");
   }
   
