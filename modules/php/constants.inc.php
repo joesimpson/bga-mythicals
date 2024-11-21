@@ -16,12 +16,15 @@ const CARD_LOCATION_CURRENT_DRAW = 'draw';
 const CARD_LOCATION_RESERVE = 'reserve';
 const CARD_LOCATION_HAND = 'hand';
 const CARD_LOCATION_END = 'e';
+const CARD_LOCATION_CURRENT_SETUP = 'setup';
 
 const NB_CARDS_PER_PLAYER = 2;
 /** there are 2 copies of each creature */
 const NB_CREATURE_COPIES = 2;
 /** We draw 3 cards at a time */
 const NB_CARDS_PER_DRAW = 3;
+//We must shuffle Day card + 8 cards
+const NB_CARDS_SETUP_DAY_CARD = 8;
 
 const CARD_COLOR_BLUE = 1;
 const CARD_COLOR_GREEN = 2;
@@ -45,6 +48,8 @@ const CARD_VALUE_5 = 5;
 const CARD_VALUE_JOKER = 6;
 const CARD_VALUE_MIN = CARD_VALUE_1;
 const CARD_VALUE_MAX = CARD_VALUE_5;
+
+const CARD_TYPE_DAY_CARD = 7;
 
 /////////////////////////////////////////////////////////
 //          TILES

@@ -90,4 +90,20 @@ class Collection extends \ArrayObject
             return $elem->getUiData();
         })->toAssoc();
     }
+    
+    /**
+     * @return Collection shuffled list
+     */
+    public function shuffle(): Collection {
+        $keys = array_keys($this->getArrayCopy());
+
+        shuffle($keys);
+
+        $new = [];
+        foreach($keys as $key) {
+            $new[$key] = $this[$key];
+        }
+
+        return new Collection($new);
+    }
 }

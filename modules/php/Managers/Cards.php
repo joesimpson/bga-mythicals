@@ -80,6 +80,9 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     Game::get()->trace("drawCardsToHand($nbCards)");
     $cards = self::pickForLocation($nbCards, CARD_LOCATION_DECK, CARD_LOCATION_HAND,0,true);
     foreach($cards as $card){
+      //TODO JSA DRAW another until we have 2 different colors,
+      // + check not DAY CARD 
+      //then RESHUFFLE
       $card->setPId($player->getId());
       Notifications::giveCardTo($player,$card);
     }
@@ -247,6 +250,13 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     if(count($currentSuit)>=$length) $allSuites[] = $currentSuit;
     return $allSuites;
   }
+
+  public static function getByType(int $cardType)
+  {
+    return self::DB()
+      ->where('type', $cardType)
+      ->get();
+  }
   ///////////////////////////////////////////////////////////////////////////////////////
    
   /** Creation of the cards
@@ -269,6 +279,18 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
 
     foreach($players as $player){
       self::drawCardsToHand($player, NB_CARDS_PER_PLAYER);
+    }
+
+    // SHUFFLE  8 Cards + DAY CARD and add them to the bottom of the deck
+    $dayCard = self::getByType(CARD_TYPE_DAY_CARD)->first();
+    $dayCard->setLocation(CARD_LOCATION_CURRENT_SETUP);
+    $cardsToShuffle = self::pickForLocation(NB_CARDS_SETUP_DAY_CARD, CARD_LOCATION_DECK, CARD_LOCATION_CURRENT_SETUP,0,false);
+    self::shuffle(CARD_LOCATION_CURRENT_SETUP);
+    $cardsToShuffle = self::getInLocation(CARD_LOCATION_CURRENT_SETUP);
+    $cardsToShuffle = $cardsToShuffle->shuffle();
+    self::shuffle(CARD_LOCATION_DECK);
+    foreach ($cardsToShuffle as $card) {
+      self::insertAtBottom($card->getId(), CARD_LOCATION_DECK);
     }
   }
   
@@ -293,7 +315,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       6 => $f([ NB_CREATURE_COPIES, CARD_COLOR_BLUE, CARD_VALUE_JOKER]), 
 
       //The day card will be unique
-      7 => $f([1,    CARD_COLOR_DAY, CARD_VALUE_1]), 
+      CARD_TYPE_DAY_CARD => $f([1,    CARD_COLOR_DAY, CARD_VALUE_1]), 
       
       8 => $f([ NB_CREATURE_COPIES, CARD_COLOR_GREEN, CARD_VALUE_1]), 
       9 => $f([ NB_CREATURE_COPIES, CARD_COLOR_GREEN, CARD_VALUE_2]), 
