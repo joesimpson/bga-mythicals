@@ -75,19 +75,28 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
    * @param int $nbCards
    * @return int $missingNb number of expected cards we cannot draw
    */
-  public static function drawCardsToHand($player,$nbCards)
+  public static function setupDrawCardsToHand(Player $player,int $nbCards)
   {
-    Game::get()->trace("drawCardsToHand($nbCards)");
-    $cards = self::pickForLocation($nbCards, CARD_LOCATION_DECK, CARD_LOCATION_HAND,0,true);
-    foreach($cards as $card){
-      //TODO JSA DRAW another until we have 2 different colors,
+    Game::get()->trace("setupDrawCardsToHand($nbCards)");
+    $cards = new Collection();
+    $colors = [];
+    while(count($colors)< $nbCards){
+      $card = self::pickForLocation(1,CARD_LOCATION_DECK, CARD_LOCATION_HAND)->first();
+      //DRAW another until we have 2 different colors,
       // + check not DAY CARD 
-      //then RESHUFFLE
+      if(CARD_TYPE_DAY_CARD == $card->getType() || in_array( $card->getColor(),$colors) ){
+        self::insertAtBottom($card->getId(), CARD_LOCATION_DECK);
+        continue;
+      }
+      $colors[] = $card->getColor();
+      $cards->append($card);
+    }
+    foreach($cards as $card){
       $card->setPId($player->getId());
       Notifications::giveCardTo($player,$card);
     }
     $missingNb = $nbCards - $cards->count();
-    Game::get()->trace("drawCardsToHand($nbCards) -> $missingNb are missing");
+    Game::get()->trace("setupDrawCardsToHand($nbCards) -> $missingNb are missing");
     if($missingNb>0) // Notifications::missingCards($player,$missingNb);
     return $missingNb;
   }
@@ -278,7 +287,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     self::shuffle(CARD_LOCATION_DECK);
 
     foreach($players as $player){
-      self::drawCardsToHand($player, NB_CARDS_PER_PLAYER);
+      self::setupDrawCardsToHand($player, NB_CARDS_PER_PLAYER);
     }
 
     // SHUFFLE  8 Cards + DAY CARD and add them to the bottom of the deck

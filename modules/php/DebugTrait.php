@@ -79,10 +79,11 @@ trait DebugTrait
     $players = self::loadPlayersBasicInfos();
     $playersDatas = Players::getAll();
     Cards::DB()->delete()->run();
-    Cards::setupNewGame($playersDatas,[]);
     Tiles::DB()->delete()->run();
-    Tiles::setupNewGame($players,[]);
     Tokens::DB()->delete()->run();
+    Notifications::refreshUI($this->getAllDatas());
+    Cards::setupNewGame($playersDatas,[]);
+    Tiles::setupNewGame($players,[]);
     Tokens::setupNewGame($players,[]);
     Notifications::refreshUI($this->getAllDatas());
     
