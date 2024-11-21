@@ -2,6 +2,7 @@
 
 namespace Bga\Games\Mythicals\States;
 
+use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 
@@ -30,6 +31,9 @@ trait NextTurnTrait
     
     $this->activeNextPlayer();
     $player = Players::getActive();
+    
+    Globals::setupNewTurn();
+    $turn = Globals::getTurn();
     Players::setupNewTurn($player);
 
     $this->addCheckpoint(ST_PLAYER_TURN_COLLECT);
