@@ -1001,8 +1001,7 @@ function (dojo, declare) {
             if (token.location.startsWith(TOKEN_LOCATION_TILE)) {
                 let locationParts = token.location.split('-');
                 let tileId = locationParts[1];
-                //TODO JSA GET SPOT from BACK
-                let spotIndex = 1;
+                let spotIndex = token.pos;
                 return $(`myt_tile_token_spot-${tileId}-${spotIndex}`);
             }
             

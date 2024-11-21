@@ -90,6 +90,7 @@ class Tokens extends \Bga\Games\Mythicals\Helpers\Pieces
       throw new UnexpectedException(404,"No more bonus markers !");
     }
     $token->setLocation(TOKEN_LOCATION_TILE.$tile->getId());
+    $token->setPosition($tile->getTokens()->count());
     Notifications::newBonusMarkerOnTile($tile,$token);
     return $token;
   }
