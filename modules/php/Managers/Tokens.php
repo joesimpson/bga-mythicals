@@ -34,7 +34,8 @@ class Tokens extends \Bga\Games\Mythicals\Helpers\Pieces
   {
 
     return 
-      self::getAll()
+      self::getInLocation(TOKEN_LOCATION_BOARD)
+      ->merge(self::getInLocation(TOKEN_LOCATION_TILE.'%'))
       ->map(function ($token) {
         return $token->getUiData();
       })

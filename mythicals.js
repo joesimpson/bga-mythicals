@@ -99,9 +99,10 @@ function (dojo, declare) {
                 ['giveCardToPublic', 800],
                 ['cardToReserve', 800],
                 ['discardCards', 1000],
-                ['takeTile', 800],
+                ['takeTile', 900],
                 ['lockTile', 800],
-                ['newBonusMarkerOnTile', 800],
+                ['newBonusMarkerOnTile', 900],
+                ['takeBonus', 800],
                 ['clearTurn', 200],
                 ['refreshUI', 200],
             ];
@@ -543,6 +544,22 @@ function (dojo, declare) {
             let token = n.args.token;
             this.slide(`myt_token-${token.id}`, this.getTokenContainer(token));
             this.boardTokensZone.removeFromZone(`myt_token-${token.id}`);
+        },
+        
+        notif_takeBonus(n) {
+            debug('notif_takeBonus', n);
+            let token = n.args.token;
+            if (this.isFastMode() ) {
+                this._counters[token.pId].bonus_tokens.incValue(1);
+                return Promise.resolve();
+            }
+            let divToken = $(`myt_token-${token.id}`);
+            let currentPos = divToken.parentNode;
+            this.slide(divToken.id, `myt_reserve_${token.pId}_bonus_tokens`, {
+                from: currentPos,
+                destroy: true,
+                phantom: false,
+            } ).then(() => this._counters[token.pId].bonus_tokens.incValue(1));
         },
 
         ///////////////////////////////////////////////////

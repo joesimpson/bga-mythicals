@@ -77,6 +77,12 @@ trait TileChoiceTrait
       $card->setPId(null);
     }
     Notifications::takeTile($player,$tile);
+    $tokens = $tile->getTokens();
+    foreach($tokens as $token){
+      $token->setLocation(TOKEN_LOCATION_HAND);
+      $token->setPId($pId);
+      Notifications::takeBonus($player,$token);
+    }
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");

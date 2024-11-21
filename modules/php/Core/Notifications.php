@@ -157,6 +157,14 @@ class Notifications
       'token' => $token->getUiData(),
     ]);
   }
+ 
+  public static function takeBonus(Player $player,Token $token)
+  {
+    self::notifyAll('takeBonus', clienttranslate('${player_name} receives a bonus marker'), [
+      'player' => $player,
+      'token' => $token->getUiData(),
+    ]);
+  }
   /*************************
    **** GENERIC METHODS ****
    *************************/
