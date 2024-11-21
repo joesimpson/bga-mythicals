@@ -7,6 +7,7 @@ use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
+use Bga\Games\Mythicals\Managers\Tokens;
 
 trait SetupTrait
 {
@@ -25,6 +26,7 @@ trait SetupTrait
     Stats::setupNewGame($playersDatas);
     Cards::setupNewGame($playersDatas,$options);
     Tiles::setupNewGame($players,$options);
+    Tokens::setupNewGame($players,[]);
 
     $this->setGameStateInitialValue('logging', true); 
 
