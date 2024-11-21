@@ -145,7 +145,7 @@ $machinestates = [
         "type" => "activeplayer",
         "args" => "argTileModif",
         "possibleactions" => [
-            "actTileModif", 
+            "actTileReinforce", 
             "actTileLock", 
             "actPass",
             'actUndoToStep', 'actRestart',

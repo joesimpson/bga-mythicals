@@ -45,6 +45,7 @@ $tile_height: 100px;
         //transform: scale(1.1);
         z-index: 4;
     }
+
 }
  
 #myt_board_tiles{
@@ -52,6 +53,33 @@ $tile_height: 100px;
         width: 370px;
         height: 370px;
         border-radius: 40px;
+        $tile_ratio: math.div(370px, 512px );
+            
+        .myt_tile_token_spot{
+            position: absolute;
+            left: calc($tile_ratio * 50px);
+            $token_spot_width: 140px;
+            width: calc($tile_ratio * $token_spot_width); //calc(math.div(140px, 512px ) * math.div($token_spot_width, 370px ));
+            height: calc($tile_ratio * $token_spot_width); 
+            &.selectable{
+                cursor: pointer;
+                outline: 10px solid gold;
+                border-radius: 50%;
+                &:hover {
+                    transform: scale(1.1);
+                }
+                &.selected{
+                    outline-color: green;
+                }
+            }
+            //WE COUNT empty spots from bottom, to fill them from top
+            &[data-index="2"]{
+                top: calc($tile_ratio * 75px);
+            }
+            &[data-index="1"]{
+                top: calc($tile_ratio * 298px);
+            }
+        }
     }
 }
 

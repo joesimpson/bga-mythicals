@@ -1003,6 +1003,29 @@
   height: 370px;
   border-radius: 40px;
 }
+#myt_board_tiles .myt_tile .myt_tile_token_spot {
+  position: absolute;
+  left: 36.1328125px;
+  width: 101.171875px;
+  height: 101.171875px;
+}
+#myt_board_tiles .myt_tile .myt_tile_token_spot.selectable {
+  cursor: pointer;
+  outline: 10px solid gold;
+  border-radius: 50%;
+}
+#myt_board_tiles .myt_tile .myt_tile_token_spot.selectable:hover {
+  transform: scale(1.1);
+}
+#myt_board_tiles .myt_tile .myt_tile_token_spot.selectable.selected {
+  outline-color: green;
+}
+#myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="2"] {
+  top: 54.19921875px;
+}
+#myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="1"] {
+  top: 215.3515625px;
+}
 
 .myt_tile_tooltip .myt_tile {
   width: 200px;

@@ -353,8 +353,10 @@ function (dojo, declare) {
                 let div = $(`myt_tile-${tile_id}`);
                 let callbackTileSelection = (evt) => {
                     //TODO JSA Get 1 or 2 depending on the tile
-                    this.clientState('tileReinforceTokens',  this.fsr(_('Select up to ${n} tokens to reinforce this tile'), {n:2}), {
+                    let n = 2;
+                    this.clientState('tileReinforceTokens',  this.fsr(_('Select up to ${n} bonus spots to reinforce this tile'), {n:n}), {
                         tile_id: tile_id,
+                        n: n,
                       });
                 };
                 this.onClick(`${div.id}`, callbackTileSelection);
@@ -364,8 +366,40 @@ function (dojo, declare) {
         onEnteringStateTileReinforceTokens(args) {
             debug('onEnteringStateTileReinforceTokens', args);
             this.addCancelStateBtn(_('Go back'));
-            let tile_id = args.tile_id;
+            let selectedTileId = args.tile_id;
+            let maxTokens = args.n;
+            let selectedElements = [];
+            let confirmMsg = _('Confirm ${n} bonus markers');
+            this.addPrimaryActionButton('btnConfirm', this.fsr(confirmMsg, { n: 0 }), () => {
+                this.takeAction('actTileReinforce', { tile_id: selectedTileId, nTokens: selectedElements.length });
+            }); 
+            //DISABLED by default
+            $(`btnConfirm`).classList.add('disabled');
             
+            for(let k=1; k<=maxTokens; k++){
+                let div = $(`myt_tile_token_spot-${selectedTileId}-${k}`);
+                let callbackSpotSelection = (evt) => {
+                    //let selected = selectedElements.includes(div.id);
+                    div.classList.toggle('selected');
+                    //div.classList.toggle('selectable', selected || selectedElements.length < maxTokens);
+                    
+                    let index = selectedElements.findIndex((t) => t == div.id);
+                    if (index === -1) {//save new Selection
+                        selectedElements.push(div.id);
+                    } else {//Remove old selection
+                        selectedElements.splice(index, 1);
+                    }
+                    $('btnConfirm').innerHTML = this.fsr(confirmMsg, { n: selectedElements.length });
+                    if(selectedElements.length>0 && selectedElements.length<=maxTokens){
+                        $(`btnConfirm`).classList.remove('disabled');
+                    }
+                    else {
+                        //DISABLED by default
+                        $(`btnConfirm`).classList.add('disabled');
+                    }
+                };
+                this.onClick(`${div.id}`, callbackSpotSelection);
+            }
         },
         //CLIENT STATE
         onEnteringStateTileLock(args) {
@@ -812,6 +846,12 @@ function (dojo, declare) {
         tplTile(tile, prefix ='') {
             return `<div class="myt_tile myt_tile${prefix}" id="myt_tile${prefix}-${tile.id}" data-id="${tile.id}" data-type="${tile.type}"
                    data-state="${tile.state}" >
+                   ${this.tplTileTokenSpot(tile.id,1,prefix)}
+                   ${this.tplTileTokenSpot(tile.id,2,prefix)}
+                </div>`;
+        },
+        tplTileTokenSpot(tileId,index, prefix ='') {
+            return `<div id="myt_tile_token_spot${prefix}-${tileId}-${index}" class="myt_tile_token_spot" data-index="${index}">
                 </div>`;
         },
         

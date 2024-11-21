@@ -29,6 +29,7 @@ trait TileModifTrait
       $tokens = $tile->getTokens();
       return TILE_STATE_OPEN == $tile->getState() && count($tokens)< NB_MAX_TOKENS_ON_TILE;
     });
+    //TODO JSA CHECK remaining Tokens
     $possibleTilesToLock = $possibleTiles->filter(function($tile){
       $tokens = $tile->getTokens();
       return TILE_STATE_OPEN == $tile->getState() && 0 == count($tokens);
@@ -42,6 +43,35 @@ trait TileModifTrait
     return $args;
   }
   
+  /**
+   * Step 2.2 : player may REINFORCE a tile
+   * @param int $tile_id : chosen tile 
+   * @param int $nTokens : nb of tokens to add
+   * @throws \BgaUserException
+   */
+  public function actTileReinforce(int $tile_id, int $nTokens): void
+  {
+    self::trace("actTileReinforce($tile_id,$nTokens)");
+
+    $player = Players::getCurrent();
+    $pId = $player->getId();
+    $this->addStep();
+
+    // check input values
+    $args = $this->argTileModif();
+    $possibleTiles = $args['tiles_ids_r'];
+    if (!in_array($tile_id, $possibleTiles)) {
+      throw new UnexpectedException(110,"Invalid tile $tile_id ( see ".json_encode($possibleTiles).")");
+    }
+    //TODO JSA CHECK nTokens
+
+    //  game logic here. 
+    $tile = Tiles::get($tile_id);
+    Notifications::reinforceTile($player,$tile,$nTokens);
+
+    // at the end of the action, move to the next state
+    $this->gamestate->nextState("next");
+  }
   /**
    * Step 2.3 : player may LOCK a tile
    * @throws \BgaUserException

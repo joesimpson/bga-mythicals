@@ -134,6 +134,20 @@ class Notifications
       'tile' => $tile->getUiData(),
     ]);
   }
+  
+  /**
+   * @param Player $player
+   * @param MasteryTile $tile
+   * @param int $nTokens
+   */
+  public static function reinforceTile(Player $player,MasteryTile $tile,int $nTokens)
+  {
+    self::notifyAll('reinforceTile', clienttranslate('${player_name} reinforces a mastery tile on the board with ${n} bonus markers'), [
+      'player' => $player,
+      'tile' => $tile->getUiData(),
+      'n' => $nTokens,
+    ]);
+  }
   /*************************
    **** GENERIC METHODS ****
    *************************/
