@@ -105,6 +105,7 @@ function (dojo, declare) {
                 ['takeBonus', 800],
                 ['clearTurn', 200],
                 ['refreshUI', 200],
+                ['dayCard', 3000],
                 ['addPoints', 1200],
             ];
 
@@ -570,6 +571,9 @@ function (dojo, declare) {
             this.gamedatas.players[pId].score += points;
             this.scoreCtrl[pId].incValue(points);
         },
+        notif_dayCard(n) {
+            debug('notif_dayCard', n);
+        },
         ///////////////////////////////////////////////////
         //    _    _ _   _ _     
         //   | |  | | | (_) |    
@@ -978,7 +982,9 @@ function (dojo, declare) {
         },
     
         getCardContainer(card) { 
-            if (card.location == CARD_LOCATION_CURRENT_DRAW) {
+            if (card.location == CARD_LOCATION_CURRENT_DRAW 
+                || CARD_COLOR_DAY == card.color
+            ) {
                 return $(`myt_cards_draw`);
             }
             if (card.location == CARD_LOCATION_RESERVE  && CARD_COLORS.includes(card.color) ) {

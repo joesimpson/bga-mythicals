@@ -42,6 +42,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       //->merge($privateCards)
       ->merge(self::getInLocation(CARD_LOCATION_CURRENT_DRAW))
       ->merge(self::getInLocation(CARD_LOCATION_HAND))
+      ->merge(self::getInLocation(CARD_LOCATION_END))
       ->map(function ($card) {
         return $card->getUiData();
       })
@@ -91,9 +92,9 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
   /**
    * @param Player $player
    * @param int $nbCards
-   * @return int $missingNb number of expected cards we cannot draw
+   * @return Collection
    */
-  public static function drawCardsToSelection($player,$nbCards)
+  public static function drawCardsToSelection(Player $player,int $nbCards): Collection
   {
     Game::get()->trace("drawCardsToSelection($nbCards)");
     $cards = self::pickForLocation($nbCards, CARD_LOCATION_DECK, CARD_LOCATION_CURRENT_DRAW,0,false);

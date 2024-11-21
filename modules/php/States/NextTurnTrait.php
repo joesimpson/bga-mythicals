@@ -2,6 +2,8 @@
 
 namespace Bga\Games\Mythicals\States;
 
+use Bga\Games\Mythicals\Managers\Cards;
+
 trait NextTurnTrait
 {
    
@@ -13,6 +15,14 @@ trait NextTurnTrait
   public function stNextPlayer(): void {
     // Retrieve the active player ID.
     $player_id = (int)$this->getActivePlayerId();
+
+
+    if(Cards::countInLocation(CARD_LOCATION_END) > 0){
+      //END GAME TRIGGER
+      $this->addCheckpoint(ST_END_SCORING);
+      $this->gamestate->nextState('end');
+      return;
+    }
 
     // Give some extra time to the active player when he completed an action
     $this->giveExtraTime($player_id);

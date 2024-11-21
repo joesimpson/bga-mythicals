@@ -15,6 +15,7 @@ const CARD_LOCATION_DECK = 'deck';
 const CARD_LOCATION_CURRENT_DRAW = 'draw';
 const CARD_LOCATION_RESERVE = 'reserve';
 const CARD_LOCATION_HAND = 'hand';
+const CARD_LOCATION_END = 'e';
 
 const NB_CARDS_PER_PLAYER = 2;
 /** there are 2 copies of each creature */

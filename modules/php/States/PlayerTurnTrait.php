@@ -57,6 +57,12 @@ trait PlayerTurnTrait
     //  game logic here.
     $cards = Cards::drawCardsToSelection($player,NB_CARDS_PER_DRAW);
     Notifications::drawCards($player,$cards);
+    foreach($cards as $card){
+      if($card->getColor() == CARD_COLOR_DAY){
+        $card->setLocation(CARD_LOCATION_END);
+        Notifications::dayCard($player,$card);
+      }
+    }
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("draw");

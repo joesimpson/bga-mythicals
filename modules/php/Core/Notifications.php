@@ -3,6 +3,7 @@
 namespace Bga\Games\Mythicals\Core;
 
 use Bga\Games\Mythicals\Game;
+use Bga\Games\Mythicals\Models\Card;
 use Bga\Games\Mythicals\Models\MasteryTile;
 use Bga\Games\Mythicals\Models\Player;
 use Bga\Games\Mythicals\Models\Token;
@@ -30,7 +31,7 @@ class Notifications
    */
   public static function computeFinalScore()
   {
-    self::notifyAll('computeFinalScore', clienttranslate('Computing final scoring...'), [
+    self::notifyAll('computeFinalScore', clienttranslate('Computing final score...'), [
     ]);
   }
 
@@ -67,6 +68,18 @@ class Notifications
     ]);
   }
 
+  /**
+   * @param Player $player
+   * @param Card $card
+   */
+  public static function dayCard(Player $player, Card $card)
+  {
+    $msg = clienttranslate('The day card appears, this is the last turn !');
+    self::notifyAll('dayCard', $msg, [
+      'player' => $player, 
+      'card' => $card->getUiData(),
+    ]);
+  }
   /**
    * @param Player $player
    * @param int $color
