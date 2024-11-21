@@ -46,6 +46,10 @@ $tile_height: 100px;
         //transform: scale(1.1);
         z-index: 4;
     }
+    &.tooltipable:hover{
+        outline: 20px solid black;
+        z-index: 4;
+    }
     
     .myt_tile_token_spot{
         position: absolute;

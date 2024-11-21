@@ -997,6 +997,10 @@
   box-shadow: 0px 0px 7px 2px green;
   z-index: 4;
 }
+.myt_tile.tooltipable:hover {
+  outline: 20px solid black;
+  z-index: 4;
+}
 .myt_tile .myt_tile_token_spot {
   position: absolute;
   left: 9.765625px;
