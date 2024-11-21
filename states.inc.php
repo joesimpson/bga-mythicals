@@ -60,7 +60,7 @@
  /<----------- nextTurn     <-------------------\
  |              |                               ^
  |              v                               |
- |       playerTurnCollect --\                  |
+ |             cardCollect --\                  |
  |              |            |                  |
  |              v            |                  |
  |       tileChoice -->\     |                  |
@@ -71,7 +71,7 @@
  |                    vv     v                  |
  |                    confirm --> endTurn ----->/
  v  
- \-> endGameScoring
+ \-> scoring
         | 
         v
         preEndOfGame
@@ -105,11 +105,11 @@ $machinestates = [
     ],
 
     ST_PLAYER_TURN_COLLECT => [
-        "name" => "playerTurnCollect",
+        "name" => "cardCollect",
         "description" => clienttranslate('${actplayer} must collect cards'),
         "descriptionmyturn" => clienttranslate('${you} must collect cards'),
         "type" => "activeplayer",
-        "args" => "argPlayerTurn",
+        "args" => "argCardCollect",
         "possibleactions" => [
             "actDraw", 
             "actCollectDraw",
@@ -215,6 +215,7 @@ $machinestates = [
         "descriptionmyturn" => ('${you} Game Over'),
         'type' => 'activeplayer',
         "args" => "argPlayerTurn",
+        "args" => "argCardCollect",
         "possibleactions" => ["endGame"],
         "transitions" => [
             "next" => ST_END_GAME,

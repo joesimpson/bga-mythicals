@@ -11,18 +11,18 @@ use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 
-trait PlayerTurnTrait
+trait CardCollectTrait
 {
   
   /**
    * Game state arguments, example content.
    *
-   * This method returns some additional information that is very specific to the `playerTurn` game state.
+   * This method returns some additional information that is very specific to the `cardCollect` game state.
    *
    * @return array
    * @see ./states.inc.php
    */
-  public function argPlayerTurn(): array
+  public function argCardCollect(): array
   {
     $drawnCards = Cards::getInLocation(CARD_LOCATION_CURRENT_DRAW);
     $possibleDraw = count($drawnCards) == 0 ;
@@ -51,7 +51,7 @@ trait PlayerTurnTrait
     $this->addStep();
 
     // check input values
-    $args = $this->argPlayerTurn();
+    $args = $this->argCardCollect();
     if (!$args["d"]) {
       throw new UnexpectedException(1,'You cannot draw cards now');
     }
@@ -127,7 +127,7 @@ trait PlayerTurnTrait
     $this->addStep();
 
     // check input values
-    $args = $this->argPlayerTurn();
+    $args = $this->argCardCollect();
     $reserveColors = $args['reserveColors'];
     if (!in_array($color, $reserveColors)) {
       throw new UnexpectedException(2,"Invalid color $color in reserve (".json_encode($reserveColors).")");

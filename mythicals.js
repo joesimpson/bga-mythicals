@@ -91,7 +91,7 @@ function (dojo, declare) {
             this._counters = {};
             
             //Filter states where we don't want other players to display state actions
-            this._activeStates = ['playerTurnCollect','tileChoice','tileModif'];
+            this._activeStates = ['cardCollect','tileChoice','tileModif'];
             this._inactiveStates = ['scoring','gameEnd'];
 
             this._notifications = [
@@ -251,8 +251,8 @@ function (dojo, declare) {
             dojo.empty('myt_select_piece_container');
         },
 
-        onEnteringStatePlayerTurnCollect(args){
-            debug('onEnteringStatePlayerTurnCollect', args);
+        onEnteringStateCardCollect(args){
+            debug('onEnteringStateCardCollect', args);
 
             this.selectedColor = null;
             

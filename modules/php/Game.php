@@ -35,7 +35,7 @@ class Game extends \Table
     use States\ConfirmUndoTrait;
     use States\EndTurnTrait;
     use States\NextTurnTrait;
-    use States\PlayerTurnTrait;
+    use States\CardCollectTrait;
     use States\TileChoiceTrait;
     use States\TileModifTrait;
     use States\SetupTrait;
