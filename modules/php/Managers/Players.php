@@ -5,6 +5,7 @@ namespace Bga\Games\Mythicals\Managers;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
+use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Exceptions\UnexpectedException;
 use Bga\Games\Mythicals\Models\Player;
 
@@ -65,6 +66,13 @@ class Players extends \Bga\Games\Mythicals\Helpers\DB_Manager
     return $playersObjects;
   }
  
+  /**
+   * Setup new player turn
+   */
+  public static function setupNewTurn($player)
+  {
+    Stats::inc("turns_number_p",$player);
+  }
   /**
    * @param int $pId
    * @param int $score score to add to current score

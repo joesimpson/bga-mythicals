@@ -8,13 +8,34 @@
     },
     "player": {
       "score": {
-        "id": 10,
+        "id": 11,
         "name": "Score",
         "type": "int"
       },
+      "turns_number_p": {
+        "id": 12,
+        "name": "Number of turns",
+        "type": "int"
+      },
       "turnOrder": {
-        "id": 11,
+        "id": 13,
         "name": "Turn order",
+        "type": "int"
+      },
+      
+      "cards": {
+        "id": 20,
+        "name": "Creature cards",
+        "type": "int"
+      },
+      "tiles": {
+        "id": 21,
+        "name": "Mastery tiles",
+        "type": "int"
+      },
+      "bonus_token": {
+        "id": 22,
+        "name": "Bonus markers",
         "type": "int"
       }
     },

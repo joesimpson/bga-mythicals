@@ -3,6 +3,7 @@
 namespace Bga\Games\Mythicals\States;
 
 use Bga\Games\Mythicals\Core\Notifications;
+use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
 use Globals;
@@ -44,6 +45,7 @@ trait ScoringTrait
 
       $totalScore = $scoreTokens + $scoreTiles;
       $player->setScore($totalScore);
+      Stats::set( "score", $player, $totalScore );
       Notifications::addPoints($player,$scoreTokens,clienttranslate('${player_name} scores ${n} ${points} with ${n2} tokens'), $nbTokens);
       Notifications::addPoints($player,$scoreTiles,clienttranslate('${player_name} scores ${n} ${points} with ${n2} tiles'), $playerTiles->count());
     }

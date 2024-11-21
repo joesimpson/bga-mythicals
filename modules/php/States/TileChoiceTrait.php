@@ -73,10 +73,12 @@ trait TileChoiceTrait
     $cards = Cards::getMany($card_ids);
     $tile->setPId($pId);
     $tile->setLocation(TILE_LOCATION_HAND);
+    Stats::inc("tiles",$player);
     Notifications::discardCards($player,$cards);
     foreach($cards as $card){
       $card->setLocation(CARD_LOCATION_DISCARD);
       $card->setPId(null);
+      Stats::inc("cards",$player,-1);
     }
     Notifications::takeTile($player,$tile);
     $tokens = $tile->getTokens();
@@ -84,6 +86,8 @@ trait TileChoiceTrait
       $token->setLocation(TOKEN_LOCATION_HAND);
       $token->setPId($pId);
       Notifications::takeBonus($player,$token);
+      
+      Stats::inc("bonus_token",$player);
     }
 
     // at the end of the action, move to the next state
@@ -115,6 +119,7 @@ trait TileChoiceTrait
   {
     $possibleTiles = Tiles::getInLocation(TILE_LOCATION_BOARD.'%');
     $playerCards = Cards::getPlayerHand($player->getId());
+    $tiles_datas = [];
 
     foreach($possibleTiles as $tileId => $tile){
 

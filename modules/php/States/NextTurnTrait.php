@@ -3,6 +3,7 @@
 namespace Bga\Games\Mythicals\States;
 
 use Bga\Games\Mythicals\Managers\Cards;
+use Bga\Games\Mythicals\Managers\Players;
 
 trait NextTurnTrait
 {
@@ -28,6 +29,8 @@ trait NextTurnTrait
     $this->giveExtraTime($player_id);
     
     $this->activeNextPlayer();
+    $player = Players::getActive();
+    Players::setupNewTurn($player);
 
     $this->addCheckpoint(ST_PLAYER_TURN_COLLECT);
     // Go to another gamestate

@@ -97,6 +97,7 @@ trait PlayerTurnTrait
         $card->setPId($player->getId());
         $card->setLocation(CARD_LOCATION_HAND);
         Notifications::giveCardTo($player,$card);
+        Stats::inc("cards",$player);
       }
       else {
         //move others to RESERVE !

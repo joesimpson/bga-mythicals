@@ -2,6 +2,7 @@
 namespace Bga\Games\Mythicals;
 
 use Bga\Games\Mythicals\Core\Notifications;
+use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Helpers\QueryBuilder;
 use Bga\Games\Mythicals\Helpers\Utils;
 use Bga\Games\Mythicals\Managers\Cards;
@@ -78,15 +79,18 @@ trait DebugTrait
     $this->debug_ClearLogs();
     $players = self::loadPlayersBasicInfos();
     $playersDatas = Players::getAll();
+    Stats::DB()->delete()->run();
     Cards::DB()->delete()->run();
     Tiles::DB()->delete()->run();
     Tokens::DB()->delete()->run();
     Notifications::refreshUI($this->getAllDatas());
+    Stats::setupNewGame($playersDatas);
     Cards::setupNewGame($playersDatas,[]);
     Tiles::setupNewGame($players,[]);
     Tokens::setupNewGame($players,[]);
     Notifications::refreshUI($this->getAllDatas());
     
+    $this->addCheckpoint(ST_PLAYER_TURN_COLLECT);
     $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
   }
 

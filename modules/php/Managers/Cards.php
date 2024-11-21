@@ -3,6 +3,7 @@
 namespace Bga\Games\Mythicals\Managers;
 
 use Bga\Games\Mythicals\Core\Notifications;
+use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Helpers\Utils;
@@ -94,6 +95,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     foreach($cards as $card){
       $card->setPId($player->getId());
       Notifications::giveCardTo($player,$card);
+      Stats::inc("cards",$player->getId());
     }
     $missingNb = $nbCards - $cards->count();
     Game::get()->trace("setupDrawCardsToHand($nbCards) -> $missingNb are missing");
@@ -135,6 +137,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       $card->setPId($player->getId());
       $card->setLocation(CARD_LOCATION_HAND);
       Notifications::giveCardTo($player,$card);
+      Stats::inc("cards",$player);
     }
     return $cards;
   }
@@ -150,6 +153,8 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       $card->setPId($opponentPlayer->getId());
       $card->setLocation(CARD_LOCATION_HAND);
       Notifications::giveCardTo($opponentPlayer,$card,$player);
+      Stats::inc("cards",$player,-1);
+      Stats::inc("cards",$opponentPlayer,+1);
     }
     //return $cardsToMove;
   }

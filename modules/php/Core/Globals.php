@@ -50,6 +50,8 @@ class Globals extends \Bga\Games\Mythicals\Helpers\DB_Manager
   public static function setupNewTurn()
   {
     self::incTurn(1);
+    
+    Stats::inc("turns_number");
   }
 
   //////////////////////////////////////////////////////////////////////////////////////
