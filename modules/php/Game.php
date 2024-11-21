@@ -80,9 +80,12 @@ class Game extends \Table
      */
     public function getGameProgression()
     {
-        // TODO: compute and return the game progression
+        $nbPlayers = Players::count();
+        $initialDeckSize = Cards::countAll() - $nbPlayers * NB_CARDS_PER_PLAYER;
+        $deckSize = Cards::countInLocation(CARD_LOCATION_DECK);
+        $progress = ($initialDeckSize - $deckSize) / $initialDeckSize;
 
-        return 0;
+        return $progress * 100;
     }
 
     /**

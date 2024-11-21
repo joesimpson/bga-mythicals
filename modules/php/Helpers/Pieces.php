@@ -366,6 +366,13 @@ class Pieces extends DB_Manager
   }
 
   /**
+   * @return int number of pieces 
+   */
+  public static function countAll()
+  {
+    return self::getSelectQuery()->count();
+  }
+  /**
    * getFilteredQuery : many times the DB scheme has a pId and a type extra field, this allow for a shortcut for a query for these case
    */
   public static function getFilteredQuery($pId, $location = null, $type = null)

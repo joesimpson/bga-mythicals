@@ -97,6 +97,7 @@ trait DebugTrait
 
   ////////////////////////////////////////////////////
   
+  /*
   function debug_Reserve(){
     //Move all cards from deck to reserve, but not DAY CARD !
     Cards::moveAllInLocation(CARD_LOCATION_DECK, CARD_LOCATION_RESERVE);
@@ -115,4 +116,11 @@ trait DebugTrait
     $cards = Cards::listDuplicatesInPlayerHand($player);
     Notifications::message(json_encode($cards));
   }
+  
+  function debug_TMP(){
+    $player = Players::getCurrent();
+    $cards = Cards::countAll();
+    Notifications::message(json_encode($cards));
+  }
+  */
 }
