@@ -4,6 +4,7 @@ $tile_height: 100px;
 .myt_tile {
     width: $tile_width;
     height: $tile_height;
+    $tile_ratio: math.div($tile_width, 512px );
     outline: 2px solid black;
     border-radius: 20px;
 
@@ -45,6 +46,22 @@ $tile_height: 100px;
         //transform: scale(1.1);
         z-index: 4;
     }
+    
+    .myt_tile_token_spot{
+        position: absolute;
+        left: calc($tile_ratio * 50px);
+        $token_spot_width: 140px;
+        width: calc($tile_ratio * $token_spot_width);
+        height: calc($tile_ratio * $token_spot_width); 
+        
+        //WE COUNT empty spots from bottom, to fill them from top
+        &[data-index="2"]{
+            top: calc($tile_ratio * 75px);
+        }
+        &[data-index="1"]{
+            top: calc($tile_ratio * 298px);
+        }
+    }
 
 }
  
@@ -59,7 +76,7 @@ $tile_height: 100px;
             position: absolute;
             left: calc($tile_ratio * 50px);
             $token_spot_width: 140px;
-            width: calc($tile_ratio * $token_spot_width); //calc(math.div(140px, 512px ) * math.div($token_spot_width, 370px ));
+            width: calc($tile_ratio * $token_spot_width);
             height: calc($tile_ratio * $token_spot_width); 
             &.selectable{
                 cursor: pointer;
