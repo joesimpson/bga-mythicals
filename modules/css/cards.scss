@@ -119,7 +119,11 @@ $card_height: 200px;
             margin-bottom: calc(math.div(-85, 100) * $card_height);
             z-index: 2;
             &:hover {
-                z-index: 100;
+                //may interfere with tooltip
+                //z-index: 100;
+                :not(.tooltipable){
+                    z-index: 100;
+                }
             }
             &.selected{
                 //Make the card a bit out of the stack

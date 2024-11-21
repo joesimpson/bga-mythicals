@@ -678,8 +678,8 @@
 .myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="49"] {
   order: 49;
 }
-.myt_cards_stack_resizable .myt_cards_stack .myt_card:hover,
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable:hover {
+.myt_cards_stack_resizable .myt_cards_stack .myt_card:hover :not(.tooltipable),
+.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable:hover :not(.tooltipable) {
   z-index: 100;
 }
 .myt_cards_stack_resizable .myt_cards_stack .myt_card.selected,
