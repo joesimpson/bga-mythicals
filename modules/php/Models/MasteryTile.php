@@ -2,6 +2,9 @@
 
 namespace Bga\Games\Mythicals\Models;
 
+use Bga\Games\Mythicals\Exceptions\UnexpectedException;
+use Bga\Games\Mythicals\Exceptions\UserException;
+use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Managers\Tokens;
 
 class MasteryTile extends Tile
@@ -46,4 +49,24 @@ class MasteryTile extends Tile
     return Tokens::getInLocation(TOKEN_LOCATION_TILE.$this->getId());
   }
   
+  /**
+   * @param $nbTokens : number of tokens to add to current tokens
+   * @return Collection added tokens
+   */
+  public function addBonus(int $nbTokens)
+  {
+    $newTokens = new Collection();
+
+    $currentTokensNb = $this->getTokens()->count();
+    if($currentTokensNb + $nbTokens > NB_MAX_TOKENS_ON_TILE){
+      throw new UnexpectedException(405,"You cannot add $nbTokens bonus markers on this tile !");
+    }
+
+    for($k=0; $k<$nbTokens; $k++){
+      $token = Tokens::addBonusMarkerOnTile($this);
+      $newTokens->append($token);
+    }
+
+    return $newTokens;
+  }
 }

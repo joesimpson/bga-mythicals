@@ -2,7 +2,10 @@
 
 namespace Bga\Games\Mythicals\Managers;
 
+use Bga\Games\Mythicals\Core\Notifications;
+use Bga\Games\Mythicals\Exceptions\UnexpectedException;
 use Bga\Games\Mythicals\Helpers\Collection;
+use Bga\Games\Mythicals\Models\MasteryTile;
 use Bga\Games\Mythicals\Models\Token;
 
 /* Class to manage all the tokens */
@@ -68,6 +71,31 @@ class Tokens extends \Bga\Games\Mythicals\Helpers\Pieces
     return self::getFilteredQuery($pId, TOKEN_LOCATION_HAND)->get();
   }
   
+  /**
+   * @param MasteryTile $tile
+   * @return Token
+   */
+  public static function addBonusMarkerOnTile(MasteryTile $tile)
+  {
+    /* We dont create it ! we get it from BOARD
+    $token = [
+      'type' => TOKEN_TYPE_BONUS_MARKER,
+      'location' => TOKEN_LOCATION_TILE.$tile->getId(),
+      'player_id' => null,
+    ];
+    $elt = self::singleCreate($token);
+    */
+    $token = self::getTopOf(TOKEN_LOCATION_BOARD);
+    if(!isset($token)){
+      throw new UnexpectedException(404,"No more bonus markers !");
+    }
+    $token->setLocation(TOKEN_LOCATION_TILE.$tile->getId());
+    Notifications::newBonusMarkerOnTile($tile,$token);
+    return $token;
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////
+  
   /** Creation of the tokens */
   public static function setupNewGame($players, $options)
   {
@@ -95,7 +123,7 @@ class Tokens extends \Bga\Games\Mythicals\Helpers\Pieces
       ];
     };
     return [
-      1 => $f([ NB_BONUS_TOKEN_COPIES, ]), 
+      TOKEN_TYPE_BONUS_MARKER => $f([ NB_BONUS_TOKEN_COPIES, ]), 
     
     ];
   }

@@ -68,6 +68,7 @@ trait TileModifTrait
     //  game logic here. 
     $tile = Tiles::get($tile_id);
     Notifications::reinforceTile($player,$tile,$nTokens);
+    $tokens = $tile->addBonus($nTokens);
 
     // at the end of the action, move to the next state
     $this->gamestate->nextState("next");

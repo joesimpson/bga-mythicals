@@ -5,6 +5,7 @@ namespace Bga\Games\Mythicals\Core;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Models\MasteryTile;
 use Bga\Games\Mythicals\Models\Player;
+use Bga\Games\Mythicals\Models\Token;
 
 class Notifications
 { 
@@ -14,7 +15,7 @@ class Notifications
    * @param int $points
    * @param string $msg (optional) Message to overwrite default
    */
-  public static function addPoints($player,$points, $msg = null){
+  public static function addPoints(Player $player,$points, $msg = null){
     if(!isset($msg)) $msg = clienttranslate('${player_name} scores ${n} ${points}');
     self::notifyAll('addPoints',$msg,[ 
         'player' => $player,
@@ -36,7 +37,7 @@ class Notifications
    * @param Player $player
    * @param Card $card
    */
-  public static function cardToReserve($player, $card)
+  public static function cardToReserve(Player $player, $card)
   {
     self::notifyAll('cardToReserve', clienttranslate('A new card goes to the reserve'), [
       //'player' => $player,
@@ -49,7 +50,7 @@ class Notifications
    * @param Player $fromPlayer
    * @param Card $card
    */
-  public static function giveCardTo($player, $card, $fromPlayer = null)
+  public static function giveCardTo(Player $player, $card, $fromPlayer = null)
   {
     $msg = clienttranslate('${player_name} receives a new card');
     if(isset($fromPlayer)) $msg = clienttranslate('${player_name} receives a card from ${player_name2}');
@@ -69,7 +70,7 @@ class Notifications
    * @param Player $player
    * @param int $color
    */
-  public static function collectReserve($player, $color)
+  public static function collectReserve(Player $player, $color)
   {
     self::notifyAll('collectReserve', clienttranslate('${player_name} collects reserve cards of color ${color}'), [
       'player' => $player,
@@ -81,7 +82,7 @@ class Notifications
    * @param Player $player
    * @param Collection $cards
    */
-  public static function drawCards($player,$cards)
+  public static function drawCards(Player $player,$cards)
   {
     self::notifyAll('drawCards', clienttranslate('${player_name} draws ${n} cards from the deck'), [
       'player' => $player,
@@ -93,7 +94,7 @@ class Notifications
    * @param Player $player
    * @param Collection $cards
    */
-  public static function discardCards($player,$cards)
+  public static function discardCards(Player $player,$cards)
   {
     self::notifyAll('discardCards', clienttranslate('${player_name} discard ${n} cards'), [
       'player' => $player,
@@ -105,7 +106,7 @@ class Notifications
   /**
    * @param Player $player
    */
-  public static function pass($player)
+  public static function pass(Player $player)
   {
     self::notifyAll('pass', clienttranslate('${player_name} passes'), [
       'player' => $player,
@@ -116,7 +117,7 @@ class Notifications
    * @param Player $player
    * @param MasteryTile $tile
    */
-  public static function takeTile($player,$tile)
+  public static function takeTile(Player $player,MasteryTile $tile)
   {
     self::notifyAll('takeTile', clienttranslate('${player_name} takes a mastery tile from the board'), [
       'player' => $player,
@@ -127,7 +128,7 @@ class Notifications
    * @param Player $player
    * @param MasteryTile $tile
    */
-  public static function lockTile($player,$tile)
+  public static function lockTile(Player $player,MasteryTile $tile)
   {
     self::notifyAll('lockTile', clienttranslate('${player_name} locks a mastery tile on the board'), [
       'player' => $player,
@@ -138,14 +139,22 @@ class Notifications
   /**
    * @param Player $player
    * @param MasteryTile $tile
-   * @param int $nTokens
+   * @param int $nbTokens
    */
-  public static function reinforceTile(Player $player,MasteryTile $tile,int $nTokens)
+  public static function reinforceTile(Player $player,MasteryTile $tile,int $nbTokens)
   {
     self::notifyAll('reinforceTile', clienttranslate('${player_name} reinforces a mastery tile on the board with ${n} bonus markers'), [
       'player' => $player,
       'tile' => $tile->getUiData(),
-      'n' => $nTokens,
+      'n' => $nbTokens,
+    ]);
+  }
+  
+  public static function newBonusMarkerOnTile(MasteryTile $tile,Token $token)
+  {
+    self::notifyAll('newBonusMarkerOnTile', '', [
+      'tile_id' => $tile->getId(),
+      'token' => $token->getUiData(),
     ]);
   }
   /*************************

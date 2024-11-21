@@ -101,6 +101,8 @@ const TOKEN_LOCATION_TILE = 'tile-';//TO BE FOLLOWED by TILE ID !
 
 const NB_BONUS_TOKEN_COPIES = 16;
 
+const TOKEN_TYPE_BONUS_MARKER = 1;
+
 /////////////////////////////////////////////////////////
 //          Game options
 /////////////////////////////////////////////////////////  

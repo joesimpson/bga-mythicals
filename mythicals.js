@@ -72,6 +72,9 @@ function (dojo, declare) {
     ];
     
     const TOKEN_LOCATION_BOARD = 'board';
+    const TOKEN_LOCATION_TILE = 'tile-';
+
+    const TOKEN_TYPE_BONUS_MARKER = 1;
 
     const TILE_FACE_NAMES = [
         0,
@@ -968,7 +971,7 @@ function (dojo, declare) {
         setupTokens(){
             debug('setupTokens');
             this.boardTokensZone.removeAll();
-            document.querySelectorAll('.myt_bonus_token[id^="myt_bonus_token-"]').forEach((oToken) => {
+            document.querySelectorAll('.myt_token[id^="myt_token-"]').forEach((oToken) => {
                 this.destroy(oToken);
             });
             let tokenIds = this.gamedatas.tokens.map((token) => {
@@ -976,12 +979,22 @@ function (dojo, declare) {
                 if (token.location == TOKEN_LOCATION_BOARD ) {
                     this.addTokenOnBoard(token.id);
                 }
+                else {
+                    this.addToken(token);
+                }
                 return token.id;
             });
         },
         getTokenContainer(token) { 
             if (token.location == TOKEN_LOCATION_BOARD ) {
-                return $(`myt_cards_reserve_${token.color}`);
+                //TODO JSA INSTEAD OF ZONE
+            }
+            if (token.location.startsWith(TOKEN_LOCATION_TILE)) {
+                let locationParts = token.location.split('-');
+                let tileId = locationParts[1];
+                //TODO JSA GET SPOT from BACK
+                let spotIndex = 1;
+                return $(`myt_tile_token_spot-${tileId}-${spotIndex}`);
             }
             
             console.error('Trying to get container of a token', token);
@@ -1032,14 +1045,30 @@ function (dojo, declare) {
             zone.placeInZone(tokenDivId);
         },
         
+        addToken: function(token){
+            console.log("addToken",token); 
+
+            if ($(`myt_token-${token.id}`)) return $(`myt_token-${token.id}`);
+    
+            let obj = this.place('tplToken', token, this.getTokenContainer(token)); 
+            return obj;
+        },
+    
+        tplToken(token, prefix ='') {
+            const TYPES = [TOKEN_TYPE_BONUS_MARKER];
+            if(token.type == TOKEN_TYPE_BONUS_MARKER) 
+                return `<div class="myt_token myt_bonus_token" id="myt_token${prefix}-${token.id}"></div>`;
+            return '';
+        },
+        
         formatBonusToken: function(zone_div, tokenID){
             let index = tokenID;
-            let tokenDivId = `myt_bonus_token-${index}`;
+            let tokenDivId = `myt_token-${index}`;
             let divPlace = zone_div;
             if($(divPlace) == null) return null;
             
             dojo.place(  
-                `<div class="myt_bonus_token" id="${tokenDivId}"></div>`,
+                `<div class="myt_token myt_bonus_token" id="${tokenDivId}"></div>`,
                 divPlace
             );
             this.attachToNewParent(tokenDivId, divPlace);
