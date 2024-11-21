@@ -2,6 +2,7 @@
 
 namespace Bga\Games\Mythicals\States;
 
+use Bga\GameFramework\Actions\Types\IntParam;
 use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
@@ -49,8 +50,9 @@ trait TileModifTrait
    * @param int $nTokens : nb of tokens to add
    * @throws \BgaUserException
    */
-  public function actTileReinforce(int $tile_id, int $nTokens): void
+  public function actTileReinforce(int $tile_id, int $nTokens,#[IntParam(name: 'v')] int $version,): void
   {
+    Game::get()->checkVersion($version);
     self::trace("actTileReinforce($tile_id,$nTokens)");
 
     $player = Players::getCurrent();
@@ -77,8 +79,9 @@ trait TileModifTrait
    * Step 2.3 : player may LOCK a tile
    * @throws \BgaUserException
    */
-  public function actTileLock(int $tile_id): void
+  public function actTileLock(int $tile_id,#[IntParam(name: 'v')] int $version,): void
   {
+    Game::get()->checkVersion($version);
     self::trace("actTileLock($tile_id)");
 
     $player = Players::getCurrent();

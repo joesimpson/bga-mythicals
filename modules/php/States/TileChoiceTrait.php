@@ -3,6 +3,7 @@
 namespace Bga\Games\Mythicals\States;
 
 use Bga\GameFramework\Actions\Types\IntArrayParam;
+use Bga\GameFramework\Actions\Types\IntParam;
 use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
@@ -38,8 +39,9 @@ trait TileChoiceTrait
    * Step 2.1 : player may choose a tile
    * @throws \BgaUserException
    */
-  public function actTileChoice(int $tile_id, #[IntArrayParam] array $card_ids): void
+  public function actTileChoice(int $tile_id, #[IntArrayParam] array $card_ids, #[IntParam(name: 'v')] int $version,): void
   {
+    Game::get()->checkVersion($version);
     self::trace("actTileChoice($tile_id)");
 
     $player = Players::getCurrent();
@@ -88,8 +90,9 @@ trait TileChoiceTrait
     $this->gamestate->nextState("next");
   }
  
-  public function actPass(): void
+  public function actPass(#[IntParam(name: 'v')] int $version,): void
   {
+    Game::get()->checkVersion($version);
     self::trace("actPass()");
     $player = Players::getCurrent();
     $this->addStep();

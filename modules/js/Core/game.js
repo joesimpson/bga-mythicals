@@ -156,7 +156,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       } else if (data.lock === false) {
         delete data.lock;
       }
-      data.version = this.gamedatas.version;
+      data.v = this.gamedatas.version;
       return new Promise((resolve, reject) => {
         this.ajaxcall(
           '/' + this.game_name + '/' + this.game_name + '/' + action + '.html',

@@ -2,9 +2,11 @@
 
 namespace Bga\Games\Mythicals\States;
 
+use Bga\GameFramework\Actions\Types\IntParam;
 use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Exceptions\UnexpectedException;
+use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Helpers\Log;
 use Bga\Games\Mythicals\Managers\Players;
 
@@ -49,8 +51,9 @@ trait ConfirmUndoTrait
         }
     }
 
-    public function actConfirmTurn($auto = false)
+    public function actConfirmTurn(#[IntParam(name: 'v')] int $version, $auto = false)
     {
+        Game::get()->checkVersion($version);
         if (!$auto) {
             self::checkAction('actConfirmTurn');
         }
@@ -62,8 +65,9 @@ trait ConfirmUndoTrait
     }
 
 
-    public function actRestart()
+    public function actRestart(#[IntParam(name: 'v')] int $version)
     {
+        Game::get()->checkVersion($version);
         self::checkAction('actRestart');
         $player = Players::getCurrent();
         $pId = $player->getId();
@@ -74,8 +78,9 @@ trait ConfirmUndoTrait
         Notifications::restartTurn($player);
     }
 
-    public function actUndoToStep(int $stepId): void
+    public function actUndoToStep(int $stepId, #[IntParam(name: 'v')] int $version): void
     {
+        Game::get()->checkVersion($version);
         self::checkAction('actRestart');
         $player = Players::getCurrent();
         $pId = $player->getId();

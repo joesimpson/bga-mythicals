@@ -20,6 +20,7 @@ namespace Bga\Games\Mythicals;
 
 use \Bga\GameFramework\Actions\CheckAction;
 use Bga\Games\Mythicals\Core\Preferences;
+use Bga\Games\Mythicals\Exceptions\UserException;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
@@ -141,6 +142,7 @@ class Game extends \Table
         $result["tiles"] = Tiles::getUiData($current_player_id);
         $result["tokens"] = Tokens::getUiData($current_player_id);
         $result["prefs"] = Preferences::getUiData($current_player_id);
+        $result["version"] = intval($this->gamestate->table_globals[BGA_GAMESTATE_GAMEVERSION]);
 
         // TODO: Gather all information about current game situation (visible by player $current_player_id).
 
@@ -203,6 +205,17 @@ class Game extends \Table
     {
         //TODO JSA check if useless from boilerplate
         //Preferences::set($this->getCurrentPId(), $pref, $value);
+    }
+    
+    /**
+    * Check Server version to compare with client version : throw an error in case it 's not the same
+    * From https://en.doc.boardgamearena.com/BGA_Studio_Cookbook#Force_players_to_refresh_after_new_deploy
+    */
+    public function checkVersion(int $clientVersion)
+    {
+        if ($clientVersion != intval($this->gamestate->table_globals[BGA_GAMESTATE_GAMEVERSION])) {
+            throw new UserException('!!!checkVersion');
+        }
     }
     
     /////////////////////////////////////////////////////////////

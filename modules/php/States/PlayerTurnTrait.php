@@ -2,6 +2,7 @@
 
 namespace Bga\Games\Mythicals\States;
 
+use Bga\GameFramework\Actions\Types\IntParam;
 use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
@@ -40,8 +41,9 @@ trait PlayerTurnTrait
    * Step 1.1 : player can choose to draw 3 cards
    * @throws \BgaUserException
    */
-  public function actDraw(): void
+  public function actDraw(#[IntParam(name: 'v')] int $version,): void
   {
+    Game::get()->checkVersion($version);
     self::trace("actDraw()");
 
     $player = Players::getCurrent();
@@ -72,8 +74,9 @@ trait PlayerTurnTrait
    * Step 1.2 : player must choose a color in drawn cards
    * @throws \BgaUserException
    */
-  public function actCollectDraw(int $color): void
+  public function actCollectDraw(int $color,#[IntParam(name: 'v')] int $version,): void
   {
+    Game::get()->checkVersion($version);
     self::trace("actCollectDraw($color)");
 
     $player = Players::getCurrent();
@@ -112,8 +115,9 @@ trait PlayerTurnTrait
    * Step 1.3 : player can choose a color in reserve cards
    * @throws \BgaUserException
    */
-  public function actCollectReserve(int $color): void
+  public function actCollectReserve(int $color,#[IntParam(name: 'v')] int $version,): void
   {
+    Game::get()->checkVersion($version);
     self::trace("actCollectReserve($color)");
 
     $player = Players::getCurrent();
