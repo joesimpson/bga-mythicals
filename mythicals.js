@@ -101,6 +101,7 @@ function (dojo, declare) {
                 ['discardCards', 1000],
                 ['takeTile', 800],
                 ['lockTile', 800],
+                ['newBonusMarkerOnTile', 800],
                 ['clearTurn', 200],
                 ['refreshUI', 200],
             ];
@@ -534,6 +535,14 @@ function (dojo, declare) {
             div.dataset.state = tile.state;
             //TODO ? flipAndReplace
             //this.flipAndReplace(div, divAfter);
+        },
+        
+        notif_newBonusMarkerOnTile(n) {
+            debug('notif_newBonusMarkerOnTile', n);
+            let tile_id = n.args.tile_id;
+            let token = n.args.token;
+            this.slide(`myt_token-${token.id}`, this.getTokenContainer(token));
+            this.boardTokensZone.removeFromZone(`myt_token-${token.id}`);
         },
 
         ///////////////////////////////////////////////////
