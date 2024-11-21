@@ -97,6 +97,9 @@ trait DebugTrait
 
   ////////////////////////////////////////////////////
   
+  function debug_GoToPlayerTurn(){
+    $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
+  }
   /*
   function debug_Reserve(){
     //Move all cards from deck to reserve, but not DAY CARD !
@@ -123,4 +126,17 @@ trait DebugTrait
     Notifications::message(json_encode($cards));
   }
   */
+  
+  function debug_Scoring(){
+    $players = Players::getAll();
+    foreach($players as $player) $player->setScore(0);
+    $this->debug_UI();
+    $this->computeFinalScore($players);
+  }
+  function debug_GoToScoring(){
+    $players = Players::getAll();
+    foreach($players as $player) $player->setScore(0);
+    $this->debug_UI();
+    $this->gamestate->jumpToState(ST_END_SCORING);
+  }
 }

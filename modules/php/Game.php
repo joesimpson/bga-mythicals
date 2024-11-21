@@ -38,6 +38,7 @@ class Game extends \Table
     use States\TileChoiceTrait;
     use States\TileModifTrait;
     use States\SetupTrait;
+    use States\ScoringTrait;
 
     public static $instance = null;
 

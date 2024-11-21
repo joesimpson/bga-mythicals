@@ -90,4 +90,10 @@ class Player extends \Bga\Games\Mythicals\Helpers\DB_Model
     Game::get()->giveExtraTime($this->getId());
   }
   
+
+  
+  public function getNbTokens(): int 
+  {
+    return Tokens::countPlayerTokens($this->getId(), TOKEN_LOCATION_HAND);
+  }
 }

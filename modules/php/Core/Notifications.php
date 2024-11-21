@@ -15,14 +15,15 @@ class Notifications
    * @param int $points
    * @param string $msg (optional) Message to overwrite default
    */
-  public static function addPoints(Player $player,$points, $msg = null){
+  public static function addPoints(Player $player,int $points, string $msg = null, int $n2 =null){
     if(!isset($msg)) $msg = clienttranslate('${player_name} scores ${n} ${points}');
-    self::notifyAll('addPoints',$msg,[ 
-        'player' => $player,
-        'n' => $points,
-        'points' => 'points',
-      ],
-    );
+    $args = [ 
+      'player' => $player,
+      'n' => $points,
+      'points' => 'points',
+    ];
+    if(isset($n2)) $args['n2'] = $n2;
+    self::notifyAll('addPoints',$msg, $args, );
   }
 
   /**

@@ -105,6 +105,7 @@ function (dojo, declare) {
                 ['takeBonus', 800],
                 ['clearTurn', 200],
                 ['refreshUI', 200],
+                ['addPoints', 1200],
             ];
 
         },
@@ -562,6 +563,13 @@ function (dojo, declare) {
             } ).then(() => this._counters[token.pId].bonus_tokens.incValue(1));
         },
 
+        notif_addPoints(n) {
+            debug('notif_addPoints : new score', n);
+            let pId = n.args.player_id;
+            let points = n.args.n;
+            this.gamedatas.players[pId].score += points;
+            this.scoreCtrl[pId].incValue(points);
+        },
         ///////////////////////////////////////////////////
         //    _    _ _   _ _     
         //   | |  | | | (_) |    
