@@ -217,7 +217,7 @@ function (dojo, declare) {
             return {
                 boardWidth: {
                     section: "layout",
-                    default: 200,
+                    default: 20,
                     name: _('Main board'),
                     type: 'slider',
                     sliderConfig: {
