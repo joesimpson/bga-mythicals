@@ -156,10 +156,6 @@ trait TileChoiceTrait
   {
       $tileScoringType = $tile->getBoardPosition();
       $tileColor = $tile->getColor();
-      $cardsOfTileColor = $playerCards->filter(
-          function($card) use ($tileColor) { 
-            return $tileColor == $card->getColor();
-        });
 
       $nbExpectedCards = $tile->getNbCardsToDiscard();
       $expectedSameColor = false;
@@ -169,19 +165,14 @@ trait TileChoiceTrait
       switch($tileScoringType){
         //------------------------------
         case TILE_SCORING_SUITE_2:
-          $expectedSameColor = true;
-          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
-          break;
         case TILE_SCORING_SUITE_3:
-          $expectedSameColor = true;
-          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
-          break;
         case TILE_SCORING_SUITE_4:
-          $expectedSameColor = true;
-          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
-          break;
         case TILE_SCORING_SUITE_5:
           $expectedSameColor = true;
+          $cardsOfTileColor = $playerCards->filter(
+              function($card) use ($tileColor) { 
+                return $tileColor == $card->getColor();
+            });
           $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
           break;
         case TILE_SCORING_SUITE_6:
@@ -196,13 +187,10 @@ trait TileChoiceTrait
           break;
         //------------------------------
         case TILE_SCORING_SAME_2:
-          $expectedSameValue = true;
-          break;
         case TILE_SCORING_SAME_3:
-          $expectedSameValue = true;
-          break;
         case TILE_SCORING_SAME_4:
           $expectedSameValue = true;
+          $possibleCards = Cards::listExistingSameValues($playerCards, $nbExpectedCards);
           break;
         //------------------------------
         default: break;

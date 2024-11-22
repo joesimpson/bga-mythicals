@@ -237,8 +237,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
           if(isset($currentSuitWithForcedJoker) && count($currentSuitWithForcedJoker)>=$length ) $allSuites[] = $currentSuitWithForcedJoker;
         }
 
-      } else if($keepJokerApart){
-      }
+      } 
     }
     
 
@@ -300,6 +299,37 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     sort($currentSuit);
 
     return $currentSuit;
+  }
+
+    /**
+   * @param Collection $cards
+   * @param int $length
+   * @return array list of existing sets of $cards with same value
+   */
+  public static function listExistingSameValues(Collection $cards, int $length,): array
+  {
+    $allSets = [];
+    for($i=CARD_VALUE_MIN; $i<=CARD_VALUE_MAX; $i++){
+      $currentSet = [];
+      foreach(CARD_COLORS as $color){
+        $coloredCardWithValue = $cards->filter(function ($card) use ($i ,$color) {
+          return $color == $card->getColor() && $i == $card->getValue();
+        })->first();
+        if(isset($coloredCardWithValue)){
+          $currentSet [] = $coloredCardWithValue->getId();
+        }
+        else { //ELSE LOOK at a joker of that color
+          $coloredCardJoker = $cards->filter(function ($card) use ($color) {
+            return $color == $card->getColor() && CARD_VALUE_JOKER == $card->getValue();
+          })->first();
+          if(isset($coloredCardJoker)){
+            $currentSet [] = $coloredCardJoker->getId();
+          }
+        }
+      }
+      if(count($currentSet)>=$length ) $allSets[] = $currentSet;
+    }
+    return $allSets;
   }
 
   public static function getByType(int $cardType)

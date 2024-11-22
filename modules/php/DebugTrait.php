@@ -153,6 +153,21 @@ trait DebugTrait
     Notifications::message("All Suites : ".json_encode($this->listPossibleTilesToTake($player)));
     Notifications::message("--------------------------------------------------");
   }
+
+  
+  function debug_Sets(){
+    $player = Players::getCurrent();
+    Notifications::message("--------------------------------------------------");
+    //
+    $playerCards = Cards::getPlayerHand($player->getId());
+    
+    foreach([2,3,4] as $nbExpectedCards){
+      $possibleCards = Cards::listExistingSameValues($playerCards, $nbExpectedCards);
+      Notifications::message("Sets of $nbExpectedCards cards : ".json_encode(($possibleCards)));
+    }
+    //
+    Notifications::message("--------------------------------------------------");
+  }
   
   function debug_Scoring(){
     $players = Players::getAll();
