@@ -214,7 +214,7 @@ class Game extends \Table
     public function checkVersion(int $clientVersion)
     {
         if ($clientVersion != intval($this->gamestate->table_globals[BGA_GAMESTATE_GAMEVERSION])) {
-            throw new UserException('!!!checkVersion');
+            throw new UserException(555,'!!!checkVersion');
         }
     }
     

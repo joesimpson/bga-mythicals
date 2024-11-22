@@ -8,6 +8,7 @@ use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Exceptions\UnexpectedException;
+use Bga\Games\Mythicals\Exceptions\UserException;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Managers\Cards;
@@ -68,10 +69,23 @@ trait TileChoiceTrait
       }
     }
 
-    //TODO JSA RULE MESSAGE WHEN CARDS ARE NOT REPRESENTING A VALID SET (suite/same)
+    // RULE MESSAGE WHEN CARDS ARE NOT REPRESENTING A VALID SET (suite/same)
+    $tile = Tiles::get($tile_id);
+    $foundMatch = false;
+    $playerCards = Cards::getPlayerHand($player->getId());
+    $possibleCardsIdsArrays = $this->listPossibleCardsToDiscardForTile($playerCards,$tile);
+    foreach($possibleCardsIdsArrays as $possibleCardsIdsArray){
+      $diff = array_diff($card_ids, $possibleCardsIdsArray);
+      if (count($diff) == 0){
+        $foundMatch = true;
+        break;
+      }
+    }
+    if (!$foundMatch) {
+      throw new UserException(120,"These cards are not a valid set to get this tile");
+    }
 
     //  game logic here. 
-    $tile = Tiles::get($tile_id);
     $cards = Cards::getMany($card_ids);
     $tile->setPId($pId);
     $tile->setLocation(TILE_LOCATION_HAND);
@@ -129,7 +143,7 @@ trait TileChoiceTrait
       $possibleCards = $this->listPossibleCardsToDiscardForTile($playerCards,$tile);
 
       if(!empty($possibleCards)){
-        $possibleCardsIds = array_unique(array_merge([], ...$possibleCards));
+        $possibleCardsIds = array_values(array_unique(array_merge([], ...$possibleCards)));
         if($nbExpectedCards <= count($possibleCardsIds)){
           $tiles_datas[$tileId] = [
             //NAME is short for JSON to send

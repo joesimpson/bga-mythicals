@@ -4,8 +4,11 @@ use Bga\Games\Mythicals\Game;
 
 class UserException extends \BgaUserException
 {
-    public function __construct($str)
+    protected $code;
+
+    public function __construct($code,$str)
     {
+        $this->code = $code;
         parent::__construct(Game::get()->translate($str));
     }
 }
