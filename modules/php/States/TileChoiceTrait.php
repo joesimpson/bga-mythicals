@@ -52,28 +52,19 @@ trait TileChoiceTrait
     $this->addStep();
 
     // check input values
-    $args = $this->argTileChoice();
-    $possibleTiles = $args['possibleTiles'];
-    if(! array_key_exists($tile_id, $possibleTiles)){
-      throw new UnexpectedException(101,"Invalid tile $tile_id ( see ".json_encode($possibleTiles).")");
+    $tile = Tiles::get($tile_id);
+    $playerCards = Cards::getPlayerHand($player->getId());
+    $possibleCardsIdsArrays = $this->listPossibleCardsToDiscardForTile($playerCards,$tile);
+    if(empty($possibleCardsIdsArrays))
+    {
+      throw new UnexpectedException(101,"Invalid tile $tile_id");
     }
-    $expectedDatas = $possibleTiles[$tile_id];
-    $nbExpectedCards = $expectedDatas['n'];
-    $possibleCardIds = $expectedDatas['c'];
+    $nbExpectedCards = $tile->getNbCardsToDiscard();
     if ($nbExpectedCards != count($card_ids)) {
       throw new UnexpectedException(102,"You must select $nbExpectedCards cards");
     }
-    foreach($card_ids as $paramCardId){
-      if (!in_array($paramCardId, $possibleCardIds)) {
-        throw new UnexpectedException(103,"Invalid card $paramCardId ( see ".json_encode($possibleCardIds).")");
-      }
-    }
-
     // RULE MESSAGE WHEN CARDS ARE NOT REPRESENTING A VALID SET (suite/same)
-    $tile = Tiles::get($tile_id);
     $foundMatch = false;
-    $playerCards = Cards::getPlayerHand($player->getId());
-    $possibleCardsIdsArrays = $this->listPossibleCardsToDiscardForTile($playerCards,$tile);
     foreach($possibleCardsIdsArrays as $possibleCardsIdsArray){
       $diff = array_diff($card_ids, $possibleCardsIdsArray);
       if (count($diff) == 0){
@@ -82,7 +73,7 @@ trait TileChoiceTrait
       }
     }
     if (!$foundMatch) {
-      throw new UserException(120,"These cards are not a valid set to get this tile");
+      throw new UserException(103,"These cards are not a valid set to get this tile");
     }
 
     //  game logic here. 
