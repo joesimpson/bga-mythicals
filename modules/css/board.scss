@@ -77,7 +77,7 @@ $card_height: calc(2 * $card_width);
                         top: 1245px;
                     } 
                     //------------
-                    &[data-scoringtype="8"]{//TILE_SCORING_SAME_6
+                    &[data-scoringtype="8"]{//TILE_SCORING_SUITE_6
                         top: 75px;
                     } 
                     &[data-scoringtype="7"]{//TILE_SCORING_SAME_4

@@ -91,7 +91,7 @@ const TILE_SCORING_SUITE_5 = 4;
 const TILE_SCORING_SAME_2 = 5;
 const TILE_SCORING_SAME_3 = 6;
 const TILE_SCORING_SAME_4 = 7;
-const TILE_SCORING_SAME_6 = 8;
+const TILE_SCORING_SUITE_6 = 8;
 
 
 //A tile is either on OPEN side or LOCKED side

@@ -144,6 +144,9 @@ trait DebugTrait
         $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
         Notifications::message("Suites of $nbExpectedCards cards of color $tileColor : ".json_encode(($possibleCards)));
       }
+      $nbExpectedCards = 6;
+      $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards -1,true);
+      Notifications::message("Suites of $nbExpectedCards cards of color $tileColor WITH JOKER value : ".json_encode(($possibleCards)));
     }
 
     //

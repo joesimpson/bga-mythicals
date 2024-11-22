@@ -139,8 +139,8 @@ class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
       17 => $f([ NB_TILE_COPIES, TILE_COLOR_GRAY, TILE_SCORE_2 , TILE_SCORING_SAME_2, ]),
       18 => $f([ NB_TILE_COPIES, TILE_COLOR_GRAY, TILE_SCORE_4 , TILE_SCORING_SAME_3, ]),
       19 => $f([ NB_TILE_COPIES, TILE_COLOR_GRAY, TILE_SCORE_7 , TILE_SCORING_SAME_4, ]),
-      //TODO JSA FIX : it is not SAME but SUITE
-      20 => $f([ NB_TILE_COPIES, TILE_COLOR_BLACK, TILE_SCORE_13, TILE_SCORING_SAME_6, ]), 
+      
+      20 => $f([ NB_TILE_COPIES, TILE_COLOR_BLACK, TILE_SCORE_13, TILE_SCORING_SUITE_6, ]), 
     
     ];
   }

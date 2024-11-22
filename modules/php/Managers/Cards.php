@@ -216,79 +216,28 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
   /**
    * @param Collection $cards
    * @param int $length
+   * @param bool $keepJokerApart (default false) : true if we want to find a SUite where Joker is another value and NOT a wildcard
    * @return array list of existing suits of specified $length in $cards
    */
-  public static function listExistingSuites(Collection $cards, int $length): array
+  public static function listExistingSuites(Collection $cards, int $length, bool $keepJokerApart = false): array
   {
-    /*
-    $jokerCard = null;
-    $values = [];
-    foreach($cards as $card ){
-      $card_id = $card->getId();
-      $color = $card->getColor();
-      $value = $card->getValue();
-      
-      if(!array_key_exists($value,$values)){
-        $values[$value] = $card_id;
-      }
-      if(CARD_VALUE_JOKER == $value) $jokerCard = $card_id;
-    }
-    //SORT ARRAY by key
-    ksort($values);
-    // foreach($values as $value => $id) {
-    //   $nextEltExist = true;
-    //   for($k=0; $k<$length; $k++){
 
-    //     $nextEltExist = $nextEltExist 
-    //       && (array_key_exists($value -$k,$values) //suit to DESC
-    //        || array_key_exists($value +$k,$values) //suit to ASC
-    //        || $hasJoker && $unusedJoker 
-    //       );
-    //   }
-    // }
-
-    $allSuites = [];
-    $currentSuit = [];
-    $previousSuit = [];
-    $currentSuitUsedJoker = false;
-    for($k=CARD_VALUE_MIN; $k<=CARD_VALUE_MAX; $k++){
-      if(array_key_exists($k,$values) ){
-        $currentSuit[] = $values[$k];
-      } else if(isset($jokerCard) && !in_array($jokerCard,$currentSuit)){
-        $currentSuit[] = $jokerCard;
-        $currentSuitUsedJoker = true;
-      } 
-      else {
-        //Reset current suit until next value
-        if(isset($jokerCard) && !in_array($jokerCard,$currentSuit)){
-          $currentSuit[] = $jokerCard;
-        }
-        if(count($currentSuit)>=$length) $allSuites[] = $currentSuit;
-        $previousSuit = $currentSuit;
-        $currentSuit = [];
-        $currentSuitUsedJoker = false;
-      }
-    }
-    if(isset($jokerCard) && !in_array($jokerCard,$currentSuit)){
-      $currentSuit[] = $jokerCard;
-    }
-    if(count($currentSuit)>=$length) $allSuites[] = $currentSuit;
-    */
-
-    //------------------------------------------------ V3
     $allSuites = [];
     for($i=CARD_VALUE_MIN; $i<=CARD_VALUE_MAX; $i++){
-      for($j=$i+1; $j<=CARD_VALUE_MAX && $j<$i+$length; $j++){
-        $currentSuit = Cards::findExistingSuites($cards, $i, $j);
-        //if(array_search($currentSuit,$allSuites) === TRUE ) continue;
+      $j = $i + $length -1;
+      if($j<=CARD_VALUE_MAX){
+      //for($j=$i+1; $j<=CARD_VALUE_MAX && $j<$i+$length; $j++){
+        $currentSuit = Cards::findExistingSuites($cards, $i, $j, $keepJokerApart);
         if(isset($currentSuit) && count($currentSuit)>=$length ) $allSuites[] = $currentSuit;
 
-              
+        if($keepJokerApart) continue;
+
         for($k=$i; $k<=$j; $k++){//for each possible value in the suit, let's find a replacing joker
-          $currentSuitWithForcedJoker = Cards::findExistingSuites($cards, $i, $j, $k);
+          $currentSuitWithForcedJoker = Cards::findExistingSuites($cards, $i, $j, false, $k);
           if(isset($currentSuitWithForcedJoker) && count($currentSuitWithForcedJoker)>=$length ) $allSuites[] = $currentSuitWithForcedJoker;
         }
 
+      } else if($keepJokerApart){
       }
     }
     
@@ -303,11 +252,18 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
    * @param Collection $cards
    * @param int $fromValue
    * @param int $toValue
-   * @param int $forceJoker : true if we want to find existing suite with a specified Joker value
+   * @param bool $keepJokerApart (default false) : true if we want to find a SUite where Joker is another value and NOT a wildcard
+   * @param int $forceJoker (default null): a value if we want to find existing suite with a specified Joker value
    * @return array EXACT list of CARDS IDS representing a suite from $fromValue to $toValue,
    *    <br>EMPTY if not found
    */
-  public static function findExistingSuites(Collection $cards, int $fromValue, int $toValue, int $forceJoker = null): array
+  public static function findExistingSuites(
+    Collection $cards, 
+    int $fromValue, 
+    int $toValue, 
+    bool $keepJokerApart = false, 
+    int $forceJoker = null
+  ): array
   {
     $currentSuit = [];
     $jokerCard = null;
@@ -321,15 +277,17 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       }
       if(CARD_VALUE_JOKER == $value) $jokerCard = $card_id;
     }
+    
+    if($keepJokerApart) {
+      if(!isset($jokerCard)) {
+        return [];//KO
+      }
+      else {
+        $currentSuit[] = $jokerCard;
+      }
+    }
 
     for($i=$fromValue; $i<=$toValue; $i++){
-      //$cardWithValue = $cards->filter(
-      //  function($card) use ($i) { 
-      //    return $i == $card->getValue();
-      //})->first();
-      //if(isset($cardWithValue)){
-      //  $cardWithValue->getId();
-      //}
       if(isset($forceJoker) && isset($jokerCard) && $forceJoker == $i) $currentSuit[] = $jokerCard;
       else if(array_key_exists($i,$values) ) $currentSuit[] = $values[$i];
       else if(!isset($forceJoker) && isset($jokerCard) && !in_array($jokerCard,$currentSuit)){

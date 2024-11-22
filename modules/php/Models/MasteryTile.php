@@ -69,4 +69,25 @@ class MasteryTile extends Tile
 
     return $newTokens;
   }
+
+  
+  /**
+   * @return int number of cards needed to be able to take that card
+   */
+  public function getNbCardsToDiscard() : int {
+    $tileScoringType = $this->getBoardPosition();
+    switch($tileScoringType){
+      //------------------------------
+      case TILE_SCORING_SUITE_2: return 2;
+      case TILE_SCORING_SUITE_3: return 3;
+      case TILE_SCORING_SUITE_4: return 4;
+      case TILE_SCORING_SUITE_5: return 5;
+      case TILE_SCORING_SUITE_6: return 6;
+      //------------------------------
+      case TILE_SCORING_SAME_2: return 2;
+      case TILE_SCORING_SAME_3: return 3;
+      case TILE_SCORING_SAME_4: return 4;
+    }
+    return 0;
+  }
 }

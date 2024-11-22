@@ -9,9 +9,11 @@ use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Exceptions\UnexpectedException;
 use Bga\Games\Mythicals\Game;
+use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
+use Bga\Games\Mythicals\Models\MasteryTile;
 
 trait TileChoiceTrait
 {
@@ -122,61 +124,9 @@ trait TileChoiceTrait
     $tiles_datas = [];
 
     foreach($possibleTiles as $tileId => $tile){
-
-      $tileScoringType = $tile->getBoardPosition();
-      $tileColor = $tile->getColor();
-      $cardsOfTileColor = $playerCards->filter(
-          function($card) use ($tileColor) { 
-            return $tileColor == $card->getColor();
-        });
-
-      $nbExpectedCards = 1;
-      $expectedSameColor = false;
-      $expectedSameValue = false;
-      $possibleCards = [];
-
-      switch($tileScoringType){
-        //------------------------------
-        case TILE_SCORING_SUITE_2:
-          $nbExpectedCards = 2;
-          $expectedSameColor = true;
-          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
-          break;
-        case TILE_SCORING_SUITE_3:
-          $nbExpectedCards = 3;
-          $expectedSameColor = true;
-          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
-          break;
-        case TILE_SCORING_SUITE_4:
-          $nbExpectedCards = 4;
-          $expectedSameColor = true;
-          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
-          break;
-        case TILE_SCORING_SUITE_5:
-          $nbExpectedCards = 5;
-          $expectedSameColor = true;
-          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
-          break;
-        //------------------------------
-        case TILE_SCORING_SAME_2:
-          $nbExpectedCards = 2;
-          $expectedSameValue = true;
-          break;
-        case TILE_SCORING_SAME_3:
-          $nbExpectedCards = 3;
-          $expectedSameValue = true;
-          break;
-        case TILE_SCORING_SAME_4:
-          $nbExpectedCards = 4;
-          $expectedSameValue = true;
-          break;
-        case TILE_SCORING_SAME_6:
-          $nbExpectedCards = 6;
-          $expectedSameValue = true;
-          break;
-        //------------------------------
-        default: break;
-      }
+      
+      $nbExpectedCards = $tile->getNbCardsToDiscard();
+      $possibleCards = $this->listPossibleCardsToDiscardForTile($playerCards,$tile);
 
       if(!empty($possibleCards)){
         $possibleCardsIds = array_unique(array_merge([], ...$possibleCards));
@@ -190,5 +140,69 @@ trait TileChoiceTrait
       }
     }
     return $tiles_datas;
+  }
+
+  /**
+   * @param Collection $player
+   * @param MasteryTile $tile
+   * @return array arrays of cards ids as : [[1,2,3], [12,15,16],] ...
+   */
+  public function listPossibleCardsToDiscardForTile(Collection $playerCards,MasteryTile $tile): array
+  {
+      $tileScoringType = $tile->getBoardPosition();
+      $tileColor = $tile->getColor();
+      $cardsOfTileColor = $playerCards->filter(
+          function($card) use ($tileColor) { 
+            return $tileColor == $card->getColor();
+        });
+
+      $nbExpectedCards = $tile->getNbCardsToDiscard();
+      $expectedSameColor = false;
+      $expectedSameValue = false;
+      $possibleCards = [];
+
+      switch($tileScoringType){
+        //------------------------------
+        case TILE_SCORING_SUITE_2:
+          $expectedSameColor = true;
+          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+          break;
+        case TILE_SCORING_SUITE_3:
+          $expectedSameColor = true;
+          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+          break;
+        case TILE_SCORING_SUITE_4:
+          $expectedSameColor = true;
+          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+          break;
+        case TILE_SCORING_SUITE_5:
+          $expectedSameColor = true;
+          $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+          break;
+        case TILE_SCORING_SUITE_6:
+          $expectedSameColor = true;
+          foreach(CARD_COLORS as $color){
+            $cardsOfAnyColor = $playerCards->filter(
+                function($card) use ($color) { 
+                  return $color == $card->getColor();
+              });
+            $possibleCards = array_merge($possibleCards, Cards::listExistingSuites($cardsOfAnyColor, $nbExpectedCards-1,true));
+          }
+          break;
+        //------------------------------
+        case TILE_SCORING_SAME_2:
+          $expectedSameValue = true;
+          break;
+        case TILE_SCORING_SAME_3:
+          $expectedSameValue = true;
+          break;
+        case TILE_SCORING_SAME_4:
+          $expectedSameValue = true;
+          break;
+        //------------------------------
+        default: break;
+      }
+ 
+    return $possibleCards;
   }
 }
