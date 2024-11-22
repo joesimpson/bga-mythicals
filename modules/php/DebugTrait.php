@@ -125,12 +125,31 @@ trait DebugTrait
     Notifications::message(json_encode($cards));
   }
   
-  function debug_TMP(){
-    $player = Players::getCurrent();
-    $cards = Cards::countAll();
-    Notifications::message(json_encode($cards));
-  }
   */
+  
+  function debug_Suites(){
+    $player = Players::getCurrent();
+    Notifications::message("--------------------------------------------------");
+    //
+    $playerCards = Cards::getPlayerHand($player->getId());
+      
+    foreach(CARD_COLORS as $color){
+      $tileColor = $color;
+      $cardsOfTileColor = $playerCards->filter(
+          function($card) use ($tileColor) { 
+            return $tileColor == $card->getColor();
+        });
+        
+      foreach([2,3,4,5] as $nbExpectedCards){
+        $possibleCards = Cards::listExistingSuites($cardsOfTileColor, $nbExpectedCards);
+        Notifications::message("Suites of $nbExpectedCards cards of color $tileColor : ".json_encode(($possibleCards)));
+      }
+    }
+
+    //
+    Notifications::message("All Suites : ".json_encode($this->listPossibleTilesToTake($player)));
+    Notifications::message("--------------------------------------------------");
+  }
   
   function debug_Scoring(){
     $players = Players::getAll();
