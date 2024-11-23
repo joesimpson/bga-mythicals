@@ -42,5 +42,17 @@ $game_preferences = [
     "default"=> PREF_UNDO_STYLE_ICON,
     'attribute' => 'myt_undo_style',
   ],
+
+  PREF_CARD_STACK_STYLE => [
+    'name' => totranslate('Card stack order'),
+    'needReload' => false,
+    'values' => [
+      PREF_CARD_STACK_ASC => [ 'name' => '1,2,3,4,5,*' ],
+      PREF_CARD_STACK_DESC => [ 'name' => '*,5,4,3,2,1'],
+      //We could add "*,1,2,3,4,5" and "5,4,3,2,1,*"
+    ],
+    "default"=> PREF_CARD_STACK_ASC,
+    'attribute' => 'myt_card_stack_order',
+  ],
  
 ];

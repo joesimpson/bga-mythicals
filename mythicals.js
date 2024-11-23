@@ -30,6 +30,7 @@ define([
 function (dojo, declare) {
     
     const PREF_UNDO_STYLE = 101;
+    const PREF_CARD_STACK_STYLE = 110;
     
     const CARD_LOCATION_RESERVE = 'reserve';
     const CARD_LOCATION_HAND = 'hand';
@@ -231,6 +232,7 @@ function (dojo, declare) {
                 }, 
 
                 undoStyle: { section: "buttons", type: 'pref', prefId: PREF_UNDO_STYLE },
+                cardStackStyle: { section: "layout", type: 'pref', prefId: PREF_CARD_STACK_STYLE },
             };
         },
         onChangeBoardWidthSetting(val) {

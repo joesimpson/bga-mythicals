@@ -482,202 +482,6 @@
   margin-bottom: -170px;
   z-index: 2;
 }
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="1"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="1"] {
-  order: 1;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="2"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="2"] {
-  order: 2;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="3"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="3"] {
-  order: 3;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="4"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="4"] {
-  order: 4;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="5"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="5"] {
-  order: 5;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="6"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="6"] {
-  order: 6;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="7"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="7"] {
-  order: 7;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="8"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="8"] {
-  order: 8;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="9"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="9"] {
-  order: 9;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="10"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="10"] {
-  order: 10;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="11"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="11"] {
-  order: 11;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="12"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="12"] {
-  order: 12;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="13"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="13"] {
-  order: 13;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="14"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="14"] {
-  order: 14;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="15"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="15"] {
-  order: 15;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="16"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="16"] {
-  order: 16;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="17"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="17"] {
-  order: 17;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="18"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="18"] {
-  order: 18;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="19"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="19"] {
-  order: 19;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="20"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="20"] {
-  order: 20;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="21"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="21"] {
-  order: 21;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="22"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="22"] {
-  order: 22;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="23"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="23"] {
-  order: 23;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="24"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="24"] {
-  order: 24;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="25"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="25"] {
-  order: 25;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="26"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="26"] {
-  order: 26;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="27"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="27"] {
-  order: 27;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="28"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="28"] {
-  order: 28;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="29"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="29"] {
-  order: 29;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="30"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="30"] {
-  order: 30;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="31"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="31"] {
-  order: 31;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="32"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="32"] {
-  order: 32;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="33"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="33"] {
-  order: 33;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="34"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="34"] {
-  order: 34;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="35"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="35"] {
-  order: 35;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="36"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="36"] {
-  order: 36;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="37"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="37"] {
-  order: 37;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="38"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="38"] {
-  order: 38;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="39"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="39"] {
-  order: 39;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="40"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="40"] {
-  order: 40;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="41"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="41"] {
-  order: 41;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="42"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="42"] {
-  order: 42;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="43"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="43"] {
-  order: 43;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="44"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="44"] {
-  order: 44;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="45"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="45"] {
-  order: 45;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="46"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="46"] {
-  order: 46;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="47"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="47"] {
-  order: 47;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="48"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="48"] {
-  order: 48;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card[data-type="49"],
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable[data-type="49"] {
-  order: 49;
-}
 .myt_cards_stack_resizable .myt_cards_stack .myt_card:hover :not(.tooltipable),
 .myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable:hover :not(.tooltipable) {
   z-index: 100;
@@ -707,6 +511,400 @@
 }
 .myt_cards_stack_resizable[data-color="4"] {
   order: 3;
+}
+
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="1"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="1"] {
+  order: 1;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="2"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="2"] {
+  order: 2;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="3"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="3"] {
+  order: 3;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="4"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="4"] {
+  order: 4;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="5"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="5"] {
+  order: 5;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="6"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="6"] {
+  order: 6;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="7"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="7"] {
+  order: 7;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="8"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="8"] {
+  order: 8;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="9"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="9"] {
+  order: 9;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="10"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="10"] {
+  order: 10;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="11"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="11"] {
+  order: 11;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="12"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="12"] {
+  order: 12;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="13"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="13"] {
+  order: 13;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="14"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="14"] {
+  order: 14;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="15"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="15"] {
+  order: 15;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="16"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="16"] {
+  order: 16;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="17"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="17"] {
+  order: 17;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="18"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="18"] {
+  order: 18;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="19"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="19"] {
+  order: 19;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="20"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="20"] {
+  order: 20;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="21"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="21"] {
+  order: 21;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="22"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="22"] {
+  order: 22;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="23"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="23"] {
+  order: 23;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="24"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="24"] {
+  order: 24;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="25"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="25"] {
+  order: 25;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="26"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="26"] {
+  order: 26;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="27"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="27"] {
+  order: 27;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="28"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="28"] {
+  order: 28;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="29"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="29"] {
+  order: 29;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="30"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="30"] {
+  order: 30;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="31"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="31"] {
+  order: 31;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="32"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="32"] {
+  order: 32;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="33"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="33"] {
+  order: 33;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="34"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="34"] {
+  order: 34;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="35"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="35"] {
+  order: 35;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="36"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="36"] {
+  order: 36;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="37"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="37"] {
+  order: 37;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="38"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="38"] {
+  order: 38;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="39"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="39"] {
+  order: 39;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="40"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="40"] {
+  order: 40;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="41"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="41"] {
+  order: 41;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="42"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="42"] {
+  order: 42;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="43"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="43"] {
+  order: 43;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="44"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="44"] {
+  order: 44;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="45"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="45"] {
+  order: 45;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="46"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="46"] {
+  order: 46;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="47"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="47"] {
+  order: 47;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="48"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="48"] {
+  order: 48;
+}
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card[data-type="49"],
+body[data-myt_card_stack_order="1"] .myt_cards_stack .myt_card_resizeable[data-type="49"] {
+  order: 49;
+}
+
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="1"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="1"] {
+  order: 48;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="2"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="2"] {
+  order: 47;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="3"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="3"] {
+  order: 46;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="4"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="4"] {
+  order: 45;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="5"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="5"] {
+  order: 44;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="6"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="6"] {
+  order: 43;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="7"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="7"] {
+  order: 42;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="8"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="8"] {
+  order: 41;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="9"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="9"] {
+  order: 40;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="10"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="10"] {
+  order: 39;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="11"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="11"] {
+  order: 38;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="12"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="12"] {
+  order: 37;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="13"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="13"] {
+  order: 36;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="14"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="14"] {
+  order: 35;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="15"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="15"] {
+  order: 34;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="16"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="16"] {
+  order: 33;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="17"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="17"] {
+  order: 32;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="18"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="18"] {
+  order: 31;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="19"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="19"] {
+  order: 30;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="20"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="20"] {
+  order: 29;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="21"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="21"] {
+  order: 28;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="22"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="22"] {
+  order: 27;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="23"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="23"] {
+  order: 26;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="24"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="24"] {
+  order: 25;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="25"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="25"] {
+  order: 24;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="26"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="26"] {
+  order: 23;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="27"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="27"] {
+  order: 22;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="28"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="28"] {
+  order: 21;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="29"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="29"] {
+  order: 20;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="30"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="30"] {
+  order: 19;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="31"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="31"] {
+  order: 18;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="32"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="32"] {
+  order: 17;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="33"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="33"] {
+  order: 16;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="34"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="34"] {
+  order: 15;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="35"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="35"] {
+  order: 14;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="36"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="36"] {
+  order: 13;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="37"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="37"] {
+  order: 12;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="38"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="38"] {
+  order: 11;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="39"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="39"] {
+  order: 10;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="40"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="40"] {
+  order: 9;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="41"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="41"] {
+  order: 8;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="42"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="42"] {
+  order: 7;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="43"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="43"] {
+  order: 6;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="44"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="44"] {
+  order: 5;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="45"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="45"] {
+  order: 4;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="46"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="46"] {
+  order: 3;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="47"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="47"] {
+  order: 2;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="48"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="48"] {
+  order: 1;
+}
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card[data-type="49"],
+body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-type="49"] {
+  order: 0;
 }
 
 #myt_cards_deck_container.selectable {

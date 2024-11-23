@@ -125,8 +125,13 @@ const PREF_UNDO_STYLE = 101;
 const PREF_UNDO_STYLE_TEXT = 1;
 const PREF_UNDO_STYLE_ICON = 2;
 
+const PREF_CARD_STACK_STYLE = 110;
+const PREF_CARD_STACK_ASC = 1;
+const PREF_CARD_STACK_DESC = 2;
+
 const ALL_PREFERENCES = [
    PREF_UNDO_STYLE,
+   PREF_CARD_STACK_STYLE,
 ];
 /////////////////////////////////////////////////////////
 //          GAME STATES

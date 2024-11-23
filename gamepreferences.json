@@ -12,5 +12,19 @@
         },
         "default": 2,
         "attribute": "myt_undo_style"
+    },
+    "110": {
+        "name": "Card stack order",
+        "needReload": false,
+        "values": {
+            "1": {
+                "name": "1,2,3,4,5,*"
+            },
+            "2": {
+                "name": "*,5,4,3,2,1"
+            }
+        },
+        "default": 1,
+        "attribute": "myt_card_stack_order"
     }
 }

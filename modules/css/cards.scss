@@ -108,12 +108,14 @@ $card_height: 200px;
         }
         .myt_card,
         .myt_card_resizeable {
-            //ORDER CARDS by type :
-            @for $i from 1 through 49 {
-                &[data-type="#{$i}"] {
-                    order: $i;
-                }
-            }
+            // Replaced by PREF below
+            ////ORDER CARDS by type :
+            //@for $i from 1 through 49 {
+            //    &[data-type="#{$i}"] {
+            //        order: $i;
+            //    }
+            //}
+            
 
             //Stack cards 
             margin-bottom: calc(math.div(-85, 100) * $card_height);
@@ -155,6 +157,34 @@ $card_height: 200px;
     }
     &[data-color="4"] {//CARD_COLOR_RED
         order: 3;
+    }
+}
+
+
+body[data-myt_card_stack_order='1']{//PREF_CARD_STACK_ASC
+    .myt_cards_stack{
+        .myt_card,
+        .myt_card_resizeable {
+            //ORDER CARDS by type :
+            @for $i from 1 through 49 {
+                &[data-type="#{$i}"] {
+                    order: $i;
+                }
+            }
+        }
+    }
+}
+body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
+    .myt_cards_stack{
+        .myt_card,
+        .myt_card_resizeable {
+            //ORDER CARDS by type :
+            @for $i from 1 through 49 {
+                &[data-type="#{$i}"] {
+                    order: 49-$i;
+                }
+            }
+        }
     }
 }
 
