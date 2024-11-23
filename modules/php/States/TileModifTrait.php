@@ -11,6 +11,7 @@ use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
+use Bga\Games\Mythicals\Managers\Tokens;
 
 trait TileModifTrait
 {
@@ -26,13 +27,12 @@ trait TileModifTrait
   public function argTileModif(): array
   {
     $possibleTiles = Tiles::getInLocation(TILE_LOCATION_BOARD.'%');
-    $possibleTilesToReinforce = $possibleTiles->filter(function($tile){
-      $tokens = $tile->getTokens();
-      return TILE_FACE_OPEN == $tile->getFace() && count($tokens)< NB_MAX_TOKENS_ON_TILE;
-    })->map(function($tile){
-      return $tile->getNbEmptyTokenSpots();
+    $nbAvailableTokens = Tokens::countInLocation(TOKEN_LOCATION_BOARD);
+    $possibleTilesToReinforce = $possibleTiles->filter(function($tile) use ($nbAvailableTokens){
+      return TILE_FACE_OPEN == $tile->getFace() && $tile->getNbEmptyTokenSpots()>0 && $nbAvailableTokens>0;
+    })->map(function($tile) use ($nbAvailableTokens){
+      return min($nbAvailableTokens,$tile->getNbEmptyTokenSpots());
     });
-    //TODO JSA CHECK remaining Tokens
     $possibleTilesToLock = $possibleTiles->filter(function($tile){
       $tokens = $tile->getTokens();
       return TILE_FACE_OPEN == $tile->getFace() && 0 == count($tokens);
@@ -52,7 +52,7 @@ trait TileModifTrait
    * @param int $nTokens : nb of tokens to add
    * @throws \BgaUserException
    */
-  public function actTileReinforce(int $tile_id, int $nTokens,#[IntParam(name: 'v')] int $version,): void
+  public function actTileReinforce(int $tile_id, #[IntParam(min: '1')] int $nTokens,#[IntParam(name: 'v')] int $version,): void
   {
     Game::get()->checkVersion($version);
     self::trace("actTileReinforce($tile_id,$nTokens)");
@@ -68,7 +68,6 @@ trait TileModifTrait
     if (!in_array($tile_id, $possibleTilesIds)) {
       throw new UnexpectedException(110,"Invalid tile $tile_id ( see ".json_encode($possibleTilesIds).")");
     }
-    //TODO JSA CHECK remaining tokens
 
     //  game logic here. 
     $tile = Tiles::get($tile_id);

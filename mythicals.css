@@ -1791,33 +1791,45 @@ body[data-myt_undo_style="2"] #btnTextRestartTurn {
 }
 
 #btnCollectReserve_1 {
-  background-color: #005983;
   color: white;
+}
+#btnCollectReserve_1:not(.disabled) {
+  background-color: #005983;
 }
 
 #btnCollectReserve_2 {
-  background-color: #2f6125;
   color: white;
+}
+#btnCollectReserve_2:not(.disabled) {
+  background-color: #2f6125;
 }
 
 #btnCollectReserve_3 {
-  background-color: #731e74;
   color: white;
+}
+#btnCollectReserve_3:not(.disabled) {
+  background-color: #731e74;
 }
 
 #btnCollectReserve_4 {
-  background-color: #9d140a;
   color: white;
+}
+#btnCollectReserve_4:not(.disabled) {
+  background-color: #9d140a;
 }
 
 #btnReinforce {
-  background-color: rgb(70, 82, 133);
   color: white;
+}
+#btnReinforce:not(.disabled) {
+  background-color: rgb(70, 82, 133);
 }
 
 #btnLock {
-  background-color: rgb(132, 96, 66);
   color: white;
+}
+#btnLock:not(.disabled) {
+  background-color: rgb(132, 96, 66);
 }
 
 #ebd-body.help-mode .tooltipable {

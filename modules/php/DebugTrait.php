@@ -198,6 +198,27 @@ trait DebugTrait
     Notifications::message("--------------------------------------------------");
   }
   
+  //Test placing tokens when no more available
+  function debug_noMoreTokens(){
+    $player = Players::getCurrent();
+    Tokens::moveAllInLocation(TOKEN_LOCATION_BOARD,'tmp'.TOKEN_LOCATION_BOARD);
+    //MOVE 1 AGAIN
+    $token = Tokens::getTopOf('tmp'.TOKEN_LOCATION_BOARD);
+    $token->setLocation(TOKEN_LOCATION_BOARD);
+    $this->debug_UI();
+  }
+  
+  //Test locking tiles when no more available
+  function debug_noMoreTiles(){
+    $player = Players::getCurrent();
+    $tiles = Tiles::getBoardTiles();
+    foreach($tiles as $tile){
+      $tile->setLocation('tmp'.$tile->getLocation());
+    }
+
+    $this->debug_UI();
+  }
+  
   function debug_Scoring(){
     $players = Players::getAll();
     foreach($players as $player) $player->setScore(0);

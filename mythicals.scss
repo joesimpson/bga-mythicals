@@ -78,28 +78,40 @@ body[data-myt_undo_style='2']{//PREF_UNDO_STYLE_ICON
 }
 
 #btnCollectReserve_1{//CARD_COLOR_BLUE
-    background-color: #005983;
+    &:not(.disabled){
+        background-color: #005983;
+    }
     color: white;
 }
 #btnCollectReserve_2{//CARD_COLOR_GREEN
-    background-color: #2f6125;
+    &:not(.disabled){
+        background-color: #2f6125;
+    }
     color: white;
 }
 #btnCollectReserve_3{//CARD_COLOR_PURPLE
-    background-color: #731e74;
+    &:not(.disabled){
+        background-color: #731e74;
+    }
     color: white;
 }
 #btnCollectReserve_4{//CARD_COLOR_RED
-    background-color: #9d140a;
+    &:not(.disabled){
+        background-color: #9d140a;
+    }
     color: white;
 }
 
 #btnReinforce{
-    background-color: rgb(70, 82, 133);
+    &:not(.disabled){
+        background-color: rgb(70, 82, 133);
+    }
     color: white;
 }
 #btnLock{
-    background-color: rgb(132, 96, 66);
+    &:not(.disabled){
+        background-color: rgb(132, 96, 66);
+    }
     color: white;
 }
  

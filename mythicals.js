@@ -340,11 +340,13 @@ function (dojo, declare) {
                     possibleTiles: args.tiles_ids_r,
                 });
             });
+            if( Object.entries(args.tiles_ids_r).length == 0) $(`btnReinforce`).classList.add('disabled');
             this.addPrimaryActionButton('btnLock', _('Lock'), () => {
                 this.clientState('tileLock',  this.fsr(_('Select a tile'), {}), {
                     tiles_ids: args.tiles_ids_l,
                 });
             });
+            if(Object.entries(args.tiles_ids_l).length == 0) $(`btnLock`).classList.add('disabled');
 
             this.addPrimaryActionButton('btnPassTileModif', _('Pass'), () => {
                 this.takeAction('actPass');
