@@ -31,12 +31,23 @@ trait TileChoiceTrait
   public function argTileChoice(): array
   {
     $player = Players::getActive();
+    $possibleTiles = $this->listPossibleTilesToTake($player);
     $args = [
-      "possibleTiles" => $this->listPossibleTilesToTake($player),
+      "possibleTiles" => $possibleTiles,
+      '_no_notify' => count($possibleTiles) === 0,
     ];
     
     $this->addArgsForUndo($args);
     return $args;
+  }
+  
+  public function stTileChoice()
+  {
+    $args = $this->argTileChoice();
+    if ($args['_no_notify']) {
+      $this->gamestate->nextState('pass');
+      return;
+    }
   }
   
   /**

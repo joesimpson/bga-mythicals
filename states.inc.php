@@ -118,7 +118,6 @@ $machinestates = [
         ],
         "transitions" => [
             "draw" => ST_PLAYER_TURN_COLLECT,
-            //TODO JSA NEXT ONLY WHEN playable tile
             "next" => ST_PLAYER_TURN_TILE_CHOICE,
             "end" => ST_CONFIRM_TURN,
         ],
@@ -130,6 +129,7 @@ $machinestates = [
         "descriptionmyturn" => clienttranslate('${you} may take a mastery tile'),
         "type" => "activeplayer",
         "args" => "argTileChoice",
+        "action" => "stTileChoice",
         "possibleactions" => [
             "actTileChoice", 
             "actPass",
