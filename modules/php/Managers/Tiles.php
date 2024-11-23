@@ -13,7 +13,7 @@ class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
   protected static $prefix = 'tile_';
   protected static $autoIncrement = true;
   protected static $autoremovePrefix = false;
-  protected static $customFields = ['player_id', 'type'];
+  protected static $customFields = ['player_id', 'type', 'face'];
   protected static $autoreshuffle = false;
 
   protected static function cast($row)
@@ -95,7 +95,7 @@ class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
         'location' => self::formatBoardLocation($tile['defaultScoring']),
         'type' => $type,
         'nbr' => $tile['nbr'],
-        'state' => TILE_STATE_OPEN,
+        'face' => TILE_FACE_OPEN,
       ];
     } 
 

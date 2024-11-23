@@ -78,8 +78,8 @@ function (dojo, declare) {
 
     const TILE_FACE_NAMES = [
         0,
-        'Open',//TILE_STATE_OPEN
-        'Locked',//TILE_STATE_LOCKED
+        'Open',//TILE_FACE_OPEN
+        'Locked',//TILE_FACE_LOCKED
     ];
 
     return declare("bgagame.mythicals", [customgame.game], {
@@ -531,11 +531,11 @@ function (dojo, declare) {
         },
         
         notif_lockTile(n) {
-            debug('notif_lockTile: player updating tile state', n);
+            debug('notif_lockTile: player updating tile face', n);
             let tile = n.args.tile;
             let div = $(`myt_tile-${tile.id}`);
             if (!div) return;
-            div.dataset.state = tile.state;
+            div.dataset.face = tile.face;
             //TODO ? flipAndReplace
             //this.flipAndReplace(div, divAfter);
         },
@@ -873,7 +873,7 @@ function (dojo, declare) {
                 let iconColor = this.formatIcon('color-'+tile.color);
                 descColor = this.fsr(_("Color : ${color}"), {color: iconColor});
                 descValue = this.fsr(_("Score : ${n}"), {n: tile.score});
-                descFace = this.fsr(_("Face : ${face}"), {face: TILE_FACE_NAMES[tile.state]});
+                descFace = this.fsr(_("Face : ${face}"), {face: TILE_FACE_NAMES[tile.face]});
             }
             return [`<div class='myt_tile_tooltip'>
                     <h1>${title}</h1>
@@ -886,7 +886,7 @@ function (dojo, declare) {
         },
         tplTile(tile, prefix ='') {
             return `<div class="myt_tile myt_tile${prefix}" id="myt_tile${prefix}-${tile.id}" data-id="${tile.id}" data-type="${tile.type}"
-                   data-state="${tile.state}" >
+                   data-face="${tile.face}" >
                    ${this.tplTileTokenSpot(tile.id,1,prefix)}
                    ${this.tplTileTokenSpot(tile.id,2,prefix)}
                 </div>`;

@@ -16,6 +16,7 @@ class Tile extends \Bga\Games\Mythicals\Helpers\DB_Model
     'location' => 'tile_location',
     'pId' => ['player_id', 'int'],
     'type' => ['type', 'int'],
+    'face' => ['face', 'int'],
   ];
    
   public function __construct($row, $datas)

@@ -28,12 +28,12 @@ trait TileModifTrait
     $possibleTiles = Tiles::getInLocation(TILE_LOCATION_BOARD.'%');
     $possibleTilesToReinforce = $possibleTiles->filter(function($tile){
       $tokens = $tile->getTokens();
-      return TILE_STATE_OPEN == $tile->getState() && count($tokens)< NB_MAX_TOKENS_ON_TILE;
+      return TILE_FACE_OPEN == $tile->getFace() && count($tokens)< NB_MAX_TOKENS_ON_TILE;
     });
     //TODO JSA CHECK remaining Tokens
     $possibleTilesToLock = $possibleTiles->filter(function($tile){
       $tokens = $tile->getTokens();
-      return TILE_STATE_OPEN == $tile->getState() && 0 == count($tokens);
+      return TILE_FACE_OPEN == $tile->getFace() && 0 == count($tokens);
     });
     $args = [
       "tiles_ids_r" => $possibleTilesToReinforce->getIds(),
@@ -97,7 +97,7 @@ trait TileModifTrait
 
     //  game logic here. 
     $tile = Tiles::get($tile_id);
-    $tile->setState(TILE_STATE_LOCKED);
+    $tile->setFace(TILE_FACE_LOCKED);
     Notifications::lockTile($player,$tile);
 
     // at the end of the action, move to the next state

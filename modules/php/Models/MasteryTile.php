@@ -28,6 +28,8 @@ class MasteryTile extends Tile
     $data['color'] = $this->getColor();
     $data['score'] = $this->getScore();
     $data['pos'] = $this->getBoardPosition();
+    //State is now used to stack tiles in hand
+    $data['face'] = $this->getFace();// $this->getState();
     return $data;
   }
 

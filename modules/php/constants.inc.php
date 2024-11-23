@@ -95,8 +95,8 @@ const TILE_SCORING_SUITE_6 = 8;
 
 
 //A tile is either on OPEN side or LOCKED side
-const TILE_STATE_OPEN = 1;
-const TILE_STATE_LOCKED = 2;
+const TILE_FACE_OPEN = 1;
+const TILE_FACE_LOCKED = 2;
 
 /////////////////////////////////////////////////////////
 //          MEEPLES

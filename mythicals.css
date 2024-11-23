@@ -807,181 +807,181 @@
 .myt_tile[data-type="1"] {
   background-position-y: 0%;
 }
-.myt_tile[data-type="1"][data-state="1"] {
+.myt_tile[data-type="1"][data-face="1"] {
   background-position-x: 0%;
 }
-.myt_tile[data-type="1"][data-state="2"] {
+.myt_tile[data-type="1"][data-face="2"] {
   background-position-x: 14.2857142857%;
 }
 .myt_tile[data-type="2"] {
   background-position-y: 0%;
 }
-.myt_tile[data-type="2"][data-state="1"] {
+.myt_tile[data-type="2"][data-face="1"] {
   background-position-x: 28.5714285714%;
 }
-.myt_tile[data-type="2"][data-state="2"] {
+.myt_tile[data-type="2"][data-face="2"] {
   background-position-x: 42.8571428571%;
 }
 .myt_tile[data-type="3"] {
   background-position-y: 0%;
 }
-.myt_tile[data-type="3"][data-state="1"] {
+.myt_tile[data-type="3"][data-face="1"] {
   background-position-x: 57.1428571429%;
 }
-.myt_tile[data-type="3"][data-state="2"] {
+.myt_tile[data-type="3"][data-face="2"] {
   background-position-x: 71.4285714286%;
 }
 .myt_tile[data-type="4"] {
   background-position-y: 0%;
 }
-.myt_tile[data-type="4"][data-state="1"] {
+.myt_tile[data-type="4"][data-face="1"] {
   background-position-x: 85.7142857143%;
 }
-.myt_tile[data-type="4"][data-state="2"] {
+.myt_tile[data-type="4"][data-face="2"] {
   background-position-x: 100%;
 }
 .myt_tile[data-type="5"] {
   background-position-y: 25%;
 }
-.myt_tile[data-type="5"][data-state="1"] {
+.myt_tile[data-type="5"][data-face="1"] {
   background-position-x: 0%;
 }
-.myt_tile[data-type="5"][data-state="2"] {
+.myt_tile[data-type="5"][data-face="2"] {
   background-position-x: 14.2857142857%;
 }
 .myt_tile[data-type="6"] {
   background-position-y: 25%;
 }
-.myt_tile[data-type="6"][data-state="1"] {
+.myt_tile[data-type="6"][data-face="1"] {
   background-position-x: 28.5714285714%;
 }
-.myt_tile[data-type="6"][data-state="2"] {
+.myt_tile[data-type="6"][data-face="2"] {
   background-position-x: 42.8571428571%;
 }
 .myt_tile[data-type="7"] {
   background-position-y: 25%;
 }
-.myt_tile[data-type="7"][data-state="1"] {
+.myt_tile[data-type="7"][data-face="1"] {
   background-position-x: 57.1428571429%;
 }
-.myt_tile[data-type="7"][data-state="2"] {
+.myt_tile[data-type="7"][data-face="2"] {
   background-position-x: 71.4285714286%;
 }
 .myt_tile[data-type="8"] {
   background-position-y: 25%;
 }
-.myt_tile[data-type="8"][data-state="1"] {
+.myt_tile[data-type="8"][data-face="1"] {
   background-position-x: 85.7142857143%;
 }
-.myt_tile[data-type="8"][data-state="2"] {
+.myt_tile[data-type="8"][data-face="2"] {
   background-position-x: 100%;
 }
 .myt_tile[data-type="9"] {
   background-position-y: 50%;
 }
-.myt_tile[data-type="9"][data-state="1"] {
+.myt_tile[data-type="9"][data-face="1"] {
   background-position-x: 0%;
 }
-.myt_tile[data-type="9"][data-state="2"] {
+.myt_tile[data-type="9"][data-face="2"] {
   background-position-x: 14.2857142857%;
 }
 .myt_tile[data-type="10"] {
   background-position-y: 50%;
 }
-.myt_tile[data-type="10"][data-state="1"] {
+.myt_tile[data-type="10"][data-face="1"] {
   background-position-x: 28.5714285714%;
 }
-.myt_tile[data-type="10"][data-state="2"] {
+.myt_tile[data-type="10"][data-face="2"] {
   background-position-x: 42.8571428571%;
 }
 .myt_tile[data-type="11"] {
   background-position-y: 50%;
 }
-.myt_tile[data-type="11"][data-state="1"] {
+.myt_tile[data-type="11"][data-face="1"] {
   background-position-x: 57.1428571429%;
 }
-.myt_tile[data-type="11"][data-state="2"] {
+.myt_tile[data-type="11"][data-face="2"] {
   background-position-x: 71.4285714286%;
 }
 .myt_tile[data-type="12"] {
   background-position-y: 50%;
 }
-.myt_tile[data-type="12"][data-state="1"] {
+.myt_tile[data-type="12"][data-face="1"] {
   background-position-x: 85.7142857143%;
 }
-.myt_tile[data-type="12"][data-state="2"] {
+.myt_tile[data-type="12"][data-face="2"] {
   background-position-x: 100%;
 }
 .myt_tile[data-type="13"] {
   background-position-y: 75%;
 }
-.myt_tile[data-type="13"][data-state="1"] {
+.myt_tile[data-type="13"][data-face="1"] {
   background-position-x: 0%;
 }
-.myt_tile[data-type="13"][data-state="2"] {
+.myt_tile[data-type="13"][data-face="2"] {
   background-position-x: 14.2857142857%;
 }
 .myt_tile[data-type="14"] {
   background-position-y: 75%;
 }
-.myt_tile[data-type="14"][data-state="1"] {
+.myt_tile[data-type="14"][data-face="1"] {
   background-position-x: 28.5714285714%;
 }
-.myt_tile[data-type="14"][data-state="2"] {
+.myt_tile[data-type="14"][data-face="2"] {
   background-position-x: 42.8571428571%;
 }
 .myt_tile[data-type="15"] {
   background-position-y: 75%;
 }
-.myt_tile[data-type="15"][data-state="1"] {
+.myt_tile[data-type="15"][data-face="1"] {
   background-position-x: 57.1428571429%;
 }
-.myt_tile[data-type="15"][data-state="2"] {
+.myt_tile[data-type="15"][data-face="2"] {
   background-position-x: 71.4285714286%;
 }
 .myt_tile[data-type="16"] {
   background-position-y: 75%;
 }
-.myt_tile[data-type="16"][data-state="1"] {
+.myt_tile[data-type="16"][data-face="1"] {
   background-position-x: 85.7142857143%;
 }
-.myt_tile[data-type="16"][data-state="2"] {
+.myt_tile[data-type="16"][data-face="2"] {
   background-position-x: 100%;
 }
 .myt_tile[data-type="17"] {
   background-position-y: 100%;
 }
-.myt_tile[data-type="17"][data-state="1"] {
+.myt_tile[data-type="17"][data-face="1"] {
   background-position-x: 0%;
 }
-.myt_tile[data-type="17"][data-state="2"] {
+.myt_tile[data-type="17"][data-face="2"] {
   background-position-x: 14.2857142857%;
 }
 .myt_tile[data-type="18"] {
   background-position-y: 100%;
 }
-.myt_tile[data-type="18"][data-state="1"] {
+.myt_tile[data-type="18"][data-face="1"] {
   background-position-x: 28.5714285714%;
 }
-.myt_tile[data-type="18"][data-state="2"] {
+.myt_tile[data-type="18"][data-face="2"] {
   background-position-x: 42.8571428571%;
 }
 .myt_tile[data-type="19"] {
   background-position-y: 100%;
 }
-.myt_tile[data-type="19"][data-state="1"] {
+.myt_tile[data-type="19"][data-face="1"] {
   background-position-x: 57.1428571429%;
 }
-.myt_tile[data-type="19"][data-state="2"] {
+.myt_tile[data-type="19"][data-face="2"] {
   background-position-x: 71.4285714286%;
 }
 .myt_tile[data-type="20"] {
   background-position-y: 100%;
 }
-.myt_tile[data-type="20"][data-state="1"] {
+.myt_tile[data-type="20"][data-face="1"] {
   background-position-x: 85.7142857143%;
 }
-.myt_tile[data-type="20"][data-state="2"] {
+.myt_tile[data-type="20"][data-face="2"] {
   background-position-x: 100%;
 }
 .myt_tile.selectable {

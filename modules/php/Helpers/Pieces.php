@@ -296,6 +296,16 @@ class Pieces extends DB_Manager
     self::addWhereClause($query, $id, $location);
     return $query->func($getMax ? 'MAX' : 'MIN', static::$prefix . 'state') ?? 0;
   }
+  /**
+   * Get max or min state of the specific location where each player has its own
+   */
+  public static function getExtremePositionOnPlayerLocation($getMax, string $location, int $playerId, int $id = null)
+  {
+    $whereOp = self::checkLocation($location, true);
+    $query = self::DB();
+    self::addWhereClause($query, $id, $location);
+    return $query->wherePlayer($playerId)->func($getMax ? 'MAX' : 'MIN', static::$prefix . 'state') ?? 0;
+  }
 
   /**
    * Return "$nbr" piece on top of this location, top defined as item with higher state value
@@ -535,11 +545,30 @@ class Pieces extends DB_Manager
       ->run();
     self::move($id, $location, $state);
   }
+  public static function insertAtPlayerLocation(int $id, string $location, int $pId, int $state = 0)
+  {
+    self::checkLocation($location);
+    self::checkState($state);
+    $p = static::$prefix;
+    self::DB()
+      ->inc([$p . 'state' => 1])
+      ->where($p . 'location', $location)
+      ->wherePlayer($pId)
+      ->where($p . 'state', '>=', $state)
+      ->run();
+    self::move($id, $location, $state);
+  }
 
   public static function insertOnTop($id, $location)
   {
     $pos = self::getExtremePosition(true, $location);
     self::insertAt($id, $location, $pos + 1);
+  }
+
+  public static function insertOnTopOfPlayerLocation(int $id, string $location, int $pId)
+  {
+    $pos = self::getExtremePositionOnPlayerLocation(true, $location, $pId);
+    self::insertAtPlayerLocation($id, $location, $pId, $pos + 1);
   }
 
   public static function insertAtBottom($id, $location)

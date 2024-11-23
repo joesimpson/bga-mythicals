@@ -18,10 +18,10 @@ $tile_height: 100px;
         &[data-type="#{$i + 1}"] {
             //8 columns alterning : 4 columns for OPEN STATE + 4 columns for LOCKED
             
-            &[data-state="1"] {//TILE_STATE_OPEN
+            &[data-face="1"] {//TILE_FACE_OPEN
                 background-position-x: math.div(((2 * ($i) + 0) % 8) * 100%, 7);
             }
-            &[data-state="2"] {//TILE_STATE_LOCKED
+            &[data-face="2"] {//TILE_FACE_LOCKED
                 background-position-x: math.div(((2 * ($i) + 1) % 8) * 100%, 7);
             }
             background-position-y: math.div(math.div($i - ($i % 4), 4) * 100%, 4);

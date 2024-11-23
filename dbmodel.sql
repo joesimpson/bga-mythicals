@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `tiles` (
   `tile_location` varchar(32) NOT NULL,
   `type` int(10) NOT NULL,
   `player_id` int(10) NULL,
+  `face` int(1) DEFAULT 1,
   PRIMARY KEY (`tile_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 

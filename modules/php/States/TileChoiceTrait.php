@@ -92,7 +92,10 @@ trait TileChoiceTrait
     //  game logic here. 
     //$cards = Cards::getMany($card_ids);
     $tile->setPId($pId);
-    $tile->setLocation(TILE_LOCATION_HAND);
+    //$tile->setLocation(TILE_LOCATION_HAND);
+    //MOVE TO TOP of tiles stack
+    Tiles::insertOnTopOfPlayerLocation($tile->getId(),TILE_LOCATION_HAND,$pId);
+    $tile = Tiles::get($tile_id);//Refresh
     Stats::inc("tiles",$player);
     Notifications::discardCards($player,$cards);
     foreach($cards as $card){
