@@ -93,11 +93,11 @@ $tile_height: 100px;
                     outline-color: green;
                 }
             }
-            //WE COUNT empty spots from bottom, to fill them from top
-            &[data-index="2"]{
+            //WE COUNT empty spots from TOP, to fill them from top
+            &[data-index="1"]{
                 top: calc($tile_ratio * 75px);
             }
-            &[data-index="1"]{
+            &[data-index="2"]{
                 top: calc($tile_ratio * 298px);
             }
         }

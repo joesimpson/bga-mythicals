@@ -1299,10 +1299,10 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 #myt_board_tiles .myt_tile .myt_tile_token_spot.selectable.selected {
   outline-color: green;
 }
-#myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="2"] {
+#myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="1"] {
   top: 54.19921875px;
 }
-#myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="1"] {
+#myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="2"] {
   top: 215.3515625px;
 }
 

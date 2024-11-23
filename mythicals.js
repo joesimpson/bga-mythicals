@@ -75,6 +75,7 @@ function (dojo, declare) {
     const TOKEN_LOCATION_TILE = 'tile-';
 
     const TOKEN_TYPE_BONUS_MARKER = 1;
+    const NB_MAX_TOKENS_ON_TILE = 2;
 
     const TILE_FACE_NAMES = [
         0,
@@ -386,8 +387,11 @@ function (dojo, declare) {
             //DISABLED by default
             $(`btnConfirm`).classList.add('disabled');
             
-            for(let k=1; k<=maxTokens; k++){
+            
+            for(let k=1 + (NB_MAX_TOKENS_ON_TILE-maxTokens); k<=NB_MAX_TOKENS_ON_TILE; k++){
+            //for(let k=NB_MAX_TOKENS_ON_TILE; k>=1 && k>= NB_MAX_TOKENS_ON_TILE - maxTokens ; k--){
                 let div = $(`myt_tile_token_spot-${selectedTileId}-${k}`);
+                if(div.querySelector(`.myt_bonus_token`)) continue;
                 let callbackSpotSelection = (evt) => {
                     //let selected = selectedElements.includes(div.id);
                     div.classList.toggle('selected');
