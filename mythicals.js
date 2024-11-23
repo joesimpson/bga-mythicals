@@ -23,7 +23,6 @@ define([
     "dojo","dojo/_base/declare",
     "ebg/core/gamegui",
     "ebg/counter",
-    "ebg/zone",
     g_gamethemeurl + 'modules/js/Core/game.js',
     g_gamethemeurl + 'modules/js/Core/modal.js',
 ],
@@ -195,7 +194,6 @@ function (dojo, declare) {
             this.setupInfoPanel();
             this.setupCards();
             this.setupTiles();
-            this.boardTokensZone = this.initTokenZone("myt_board_tokens");
             this.setupTokens();
             this.addCustomTooltip(`myt_board_tokens`, _('Bonus markers'));
 
@@ -550,7 +548,6 @@ function (dojo, declare) {
             let tile_id = n.args.tile_id;
             let token = n.args.token;
             this.slide(`myt_token-${token.id}`, this.getTokenContainer(token));
-            this.boardTokensZone.removeFromZone(`myt_token-${token.id}`);
         },
         
         notif_takeBonus(n) {
@@ -1021,24 +1018,17 @@ function (dojo, declare) {
         ////////////////////////////////////////
         setupTokens(){
             debug('setupTokens');
-            this.boardTokensZone.removeAll();
             document.querySelectorAll('.myt_token[id^="myt_token-"]').forEach((oToken) => {
                 this.destroy(oToken);
             });
             let tokenIds = this.gamedatas.tokens.map((token) => {
-                let divtokenId = `myt_token-${token.id}`;
-                if (token.location == TOKEN_LOCATION_BOARD ) {
-                    this.addTokenOnBoard(token.id);
-                }
-                else {
-                    this.addToken(token);
-                }
+                this.addToken(token);
                 return token.id;
             });
         },
         getTokenContainer(token) { 
             if (token.location == TOKEN_LOCATION_BOARD ) {
-                //TODO JSA INSTEAD OF ZONE
+                return $(`myt_board_tokens`);
             }
             if (token.location.startsWith(TOKEN_LOCATION_TILE)) {
                 let locationParts = token.location.split('-');
@@ -1050,57 +1040,13 @@ function (dojo, declare) {
             console.error('Trying to get container of a token', token);
             return 'myt_game_container';
         },
-
-        initTokenZone:function(divId){
-            debug('initTokenZone',divId);
-            if(dojo.query("#"+divId).length==0) return null;
-            let zone = new ebg.zone();    
-            zone.create( this, divId, this.tokenZone_width, this.tokenZone_width );
-            zone.setPattern( 'custom' ); //ellipticalfit
-            zone.autowidth = false;
-            zone.autoheight = false;
-            
-            zone.itemIdToCoords = function( i, control_width ) {
-                if( i ==0 ) return {  x:0,y:400, w:this.item_width, h:this.item_height };
-                if( i ==1 ) return {  x:100,y:100, w:this.item_width, h:this.item_height };
-                if( i ==2 ) return {  x:100,y:200, w:this.item_width, h:this.item_height };
-                if( i ==3 ) return {  x:100,y:300, w:this.item_width, h:this.item_height };
-                if( i ==4 ) return {  x:100,y:400, w:this.item_width, h:this.item_height };
-                if( i ==5 ) return {  x:100,y:500, w:this.item_width, h:this.item_height };
-                if( i ==6 ) return {  x:100,y:600, w:this.item_width, h:this.item_height };
-                if( i ==7 ) return {  x:100,y:700, w:this.item_width, h:this.item_height };
-                if( i ==8 ) return {  x:200,y:100, w:this.item_width, h:this.item_height };
-                if( i ==9 ) return {  x:200,y:200, w:this.item_width, h:this.item_height };
-                if( i ==10 ) return {  x:200,y:300, w:this.item_width, h:this.item_height };
-                if( i ==11 ) return {  x:200,y:400, w:this.item_width, h:this.item_height };
-                if( i ==12 ) return {  x:200,y:500, w:this.item_width, h:this.item_height };
-                if( i ==13 ) return {  x:200,y:600, w:this.item_width, h:this.item_height };
-                if( i ==14 ) return {  x:200,y:700, w:this.item_width, h:this.item_height };
-                if( i ==15 ) return {  x:300,y:400, w:this.item_width, h:this.item_height };
-                //DEFAULT 
-                return {  x:0,y:0, w:this.item_width, h:this.item_height };
-            };
-            
-            return zone;
-        },
-        
-        addTokenOnBoard: function(tokenID){
-            console.log("addTokenOnBoard",tokenID);
-            if(this.boardTokensZone == undefined ) {
-                return;
-            }
-            let zone = this.boardTokensZone;
-            // let zoneSize =  zone.getItemNumber() ;
-            let tokenDivId = this.formatBonusToken(zone.container_div, tokenID);
-            zone.placeInZone(tokenDivId);
-        },
         
         addToken: function(token){
             console.log("addToken",token); 
 
             if ($(`myt_token-${token.id}`)) return $(`myt_token-${token.id}`);
     
-            let obj = this.place('tplToken', token, this.getTokenContainer(token)); 
+            let obj = this.place('tplToken', token, this.getTokenContainer(token),'first'); 
             return obj;
         },
     
@@ -1109,21 +1055,6 @@ function (dojo, declare) {
             if(token.type == TOKEN_TYPE_BONUS_MARKER) 
                 return `<div class="myt_token myt_bonus_token" id="myt_token${prefix}-${token.id}"></div>`;
             return '';
-        },
-        
-        formatBonusToken: function(zone_div, tokenID){
-            let index = tokenID;
-            let tokenDivId = `myt_token-${index}`;
-            let divPlace = zone_div;
-            if($(divPlace) == null) return null;
-            
-            dojo.place(  
-                `<div class="myt_token myt_bonus_token" id="${tokenDivId}"></div>`,
-                divPlace
-            );
-            this.attachToNewParent(tokenDivId, divPlace);
-            this.slideToObject(tokenDivId,divPlace, 1000);
-            return tokenDivId;
         },
 
    });             

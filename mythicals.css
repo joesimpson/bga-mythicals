@@ -248,6 +248,71 @@
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token {
   width: 150px;
   height: 150px;
+  position: absolute;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(1) {
+  top: 0px;
+  left: 100px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(2) {
+  top: 100px;
+  left: 100px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(3) {
+  top: 200px;
+  left: 100px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(4) {
+  top: 300px;
+  left: 100px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(5) {
+  top: 400px;
+  left: 100px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(6) {
+  top: 500px;
+  left: 100px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(7) {
+  top: 600px;
+  left: 100px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(8) {
+  top: 700px;
+  left: 100px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(9) {
+  top: 600px;
+  left: 200px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(10) {
+  top: 500px;
+  left: 200px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(11) {
+  top: 400px;
+  left: 200px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(12) {
+  top: 300px;
+  left: 200px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(13) {
+  top: 200px;
+  left: 200px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(14) {
+  top: 100px;
+  left: 200px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(15) {
+  top: 0px;
+  left: 200px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(16) {
+  top: -100px;
+  left: 200px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover {
   border-radius: 250px;

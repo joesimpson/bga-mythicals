@@ -137,6 +137,20 @@ $card_height: calc(2 * $card_width);
                 .myt_bonus_token{
                     width: 150px;
                     height: 150px;
+                    position: absolute;
+                                    
+                    @for $i from 1 through 8 {
+                        &:nth-of-type(#{$i}){
+                            top: calc(($i - 1) * 100px);
+                            left: 100px;
+                        }
+                    }             
+                    @for $i from 9 through 16 {//NB_BONUS_TOKEN_COPIES
+                        &:nth-of-type(#{$i}){
+                            top: calc((16 - $i - 1) * 100px);
+                            left: 200px;
+                        }
+                    }
                 }
 
                 &.tooltipable:hover{
