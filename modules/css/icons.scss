@@ -44,3 +44,33 @@
         background-position-x: calc( $icon_img_ratio * -1523px);
     }
 }
+
+.myt_icon_color-5,
+.myt_icon_color-6
+{
+    border-radius: 10px;
+    //Let's look at the gray and black tiles for those colors
+    background-image: url("img/tiles.jpg");
+    $tiles_img_width: 4096px;
+    $tiles_img_height: 2560px;
+    $icon_img_width: 140px;
+    $icon_img_height: 140px;
+    $icon_img_ratio: math.div(40px, $icon_img_width );
+
+    background-size: 
+        math.percentage(math.div($tiles_img_width, $icon_img_width )) 
+        math.percentage(math.div($tiles_img_height,$icon_img_height )) 
+        !important;
+    background-repeat: repeat !important;
+    width: calc( $icon_img_ratio * $icon_img_width);
+    height: calc( $icon_img_ratio * $icon_img_height);
+    
+    &.myt_icon_color-5{//TILE_COLOR_GRAY
+        background-position-y: calc( $icon_img_ratio * -2092px);
+        background-position-x: calc( $icon_img_ratio * -328px);
+    } 
+    &.myt_icon_color-6{//TILE_COLOR_BLACK
+        background-position-y: calc( $icon_img_ratio * -2081px);
+        background-position-x: calc( $icon_img_ratio * -3420px);
+    }
+}
