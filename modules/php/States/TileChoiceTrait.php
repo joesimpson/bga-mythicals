@@ -11,6 +11,7 @@ use Bga\Games\Mythicals\Exceptions\UnexpectedException;
 use Bga\Games\Mythicals\Exceptions\UserException;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Helpers\Collection;
+use Bga\Games\Mythicals\Helpers\Utils;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
@@ -64,6 +65,7 @@ trait TileChoiceTrait
       throw new UnexpectedException(102,"You must select $nbExpectedCards cards");
     }
     // RULE MESSAGE WHEN CARDS ARE NOT REPRESENTING A VALID SET (suite/same)
+    // + Anticheat check cards are not from opponent or whatever
     $foundMatch = false;
     foreach($possibleCardsIdsArrays as $possibleCardsIdsArray){
       $diff = array_diff($card_ids, $possibleCardsIdsArray);
@@ -75,9 +77,20 @@ trait TileChoiceTrait
     if (!$foundMatch) {
       throw new UserException(103,"These cards are not a valid set to get this tile");
     }
+    $cards = $playerCards->filter(function($card) use ($card_ids){
+      return in_array($card->getId(), $card_ids);
+    });
+    /*
+    $foundMatch = false;
+    //TONLY FOR SETS not SUITES !
+    $foundMatch = Utils::isSameValueSet($cards);
+    if (!$foundMatch) {
+      throw new UserException(104,"These cards are not a valid set to get this tile");
+    }
+    */
 
     //  game logic here. 
-    $cards = Cards::getMany($card_ids);
+    //$cards = Cards::getMany($card_ids);
     $tile->setPId($pId);
     $tile->setLocation(TILE_LOCATION_HAND);
     Stats::inc("tiles",$player);
@@ -190,7 +203,7 @@ trait TileChoiceTrait
         case TILE_SCORING_SAME_3:
         case TILE_SCORING_SAME_4:
           $expectedSameValue = true;
-          $possibleCards = Cards::listExistingSameValues($playerCards, $nbExpectedCards);
+          $possibleCards = Utils::listExistingSameValues($playerCards, $nbExpectedCards);
           break;
         //------------------------------
         default: break;

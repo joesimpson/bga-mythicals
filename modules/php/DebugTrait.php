@@ -3,6 +3,7 @@ namespace Bga\Games\Mythicals;
 
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
+use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Helpers\QueryBuilder;
 use Bga\Games\Mythicals\Helpers\Utils;
 use Bga\Games\Mythicals\Managers\Cards;
@@ -162,9 +163,37 @@ trait DebugTrait
     $playerCards = Cards::getPlayerHand($player->getId());
     
     foreach([2,3,4] as $nbExpectedCards){
-      $possibleCards = Cards::listExistingSameValues($playerCards, $nbExpectedCards);
+      $possibleCards = Utils::listExistingSameValues($playerCards, $nbExpectedCards);
       Notifications::message("Sets of $nbExpectedCards cards : ".json_encode(($possibleCards)));
+
+      /*
+      $possibleCardsArrays = (Utils::listSameValueSets($playerCards, $nbExpectedCards));
+      //REMOVE DUPLICATES 
+      $possibleCardsArrays = Utils::array_of_uniquearrays($possibleCardsArrays);
+      $possibleCardsIds = [];
+      foreach($possibleCardsArrays as $possibleCardsArray){
+
+        $possibleCards = new Collection($possibleCardsArray);
+        $possibleCardsIds[] = $possibleCards->map(function($card){return $card->getId();})->toArray();
+      }
+      Notifications::message("Sets of $nbExpectedCards cards : ".json_encode(($possibleCardsIds)));
+      */
     }
+    //
+    Notifications::message("--------------------------------------------------");
+  }
+  
+  function debug_SpecificSet(){
+    $cards_ids = [14,25,36];
+    $cards_ids = [25,36];
+    $player = Players::getCurrent();
+    Notifications::message("--------------------------------------------------");
+    //
+    $playerCards = Cards::getPlayerHand($player->getId());
+    $cards = $playerCards->filter(function($card) use ($cards_ids){return in_array($card->getId(), $cards_ids);});
+    
+    $isOk = Utils::isSameValueSet($cards);
+    Notifications::message("Is set of cards  ".json_encode(($cards->getIds()))." ...: ".json_encode($isOk));
     //
     Notifications::message("--------------------------------------------------");
   }

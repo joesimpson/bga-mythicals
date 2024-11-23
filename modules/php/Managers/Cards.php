@@ -242,7 +242,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     
 
     //REMOVE DUPLICATES 
-    $allSuites = array_intersect_key($allSuites, array_unique(array_map('serialize', $allSuites)));
+    $allSuites = Utils::array_of_uniquearrays($allSuites);
     return $allSuites;
   }
 
@@ -299,63 +299,6 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     sort($currentSuit);
 
     return $currentSuit;
-  }
-
-    /**
-   * @param Collection $cards
-   * @param int $length
-   * @return array list of existing sets of $cards with same value
-   */
-  public static function listExistingSameValues(Collection $cards, int $length): array
-  {
-    $allSets = [];
-    for($i=CARD_VALUE_MIN; $i<=CARD_VALUE_MAX; $i++){
-      $currentSet = array_unique(self::findExistingValues($cards,$i, $length, CARD_COLORS));
-      if(count($currentSet)>=$length ) $allSets[] = $currentSet;
-    }
-    return $allSets;
-  }
-
-  /**
-   * 
-   * @param Collection $cards
-   * @param int $length
-   * @param int $value SPECIFIC VALUE to look for
-   * @param array $filterColors : colors where we are looking for same values
-   * @return array list of existing sets of $cards with same value
-   */
-  public static function findExistingValues(Collection $cards,int $value,  int $length, array $filterColors): array
-  {
-    Game::get()->trace("findExistingValues($value,  $length, ".json_encode(array_values($filterColors)).")");
-    $currentSet = [];
-    foreach($filterColors as $color){
-      $coloredCardWithValue = $cards->filter(function ($card) use ($value ,$color) {
-        return $color == $card->getColor() && $value == $card->getValue();
-      })->first();
-      if(isset($coloredCardWithValue)){
-        $currentSet [] = $coloredCardWithValue->getId();
-      }
-      else { //ELSE LOOK at a joker of that color
-        $coloredCardJoker = $cards->filter(function ($card) use ($color) {
-          return $color == $card->getColor() && CARD_VALUE_JOKER == $card->getValue();
-        })->first();
-        if(isset($coloredCardJoker)){
-          $currentSet [] = $coloredCardJoker->getId();
-        }
-      }
-
-      Game::get()->trace("findExistingValues($value,  $length,) used color :... ".($color).")");
-      $newFilterColors = $filterColors;
-      $usedColorIndex = array_search($color,$newFilterColors);
-      unset($newFilterColors[$usedColorIndex]);
-      $newLength = $length - count($currentSet);
-      $currentSet2 = [];
-      if($newLength>0){
-        $currentSet2 = self::findExistingValues($cards, $value, $newLength, $newFilterColors);
-      }
-      $currentSet = array_merge($currentSet,$currentSet2);
-    }
-    return $currentSet;
   }
 
   public static function getByType(int $cardType)
