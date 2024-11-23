@@ -960,7 +960,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
     },
 
     coloredPlayerName(name, specifiedColor = null) {
-      debug("coloredPlayerName",name, specifiedColor);
+      //debug("coloredPlayerName",name, specifiedColor);
       const player = Object.values(this.gamedatas.players).find((player) => player.name == name);
       if (player == undefined) return `<!--PNS--><span class="playername playername_wrapper_${specifiedColor}">${name}</span><!--PNE-->`;
 
@@ -1417,7 +1417,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
      * idea from bennygui (see Earth) to keep a fixed page title even with many buttons
      */
     adaptStatusBar() {
-      debug("adaptStatusBar");
+      //debug("adaptStatusBar");
       this.inherited(arguments);
 
       if (this.alwaysFixTopActions) {

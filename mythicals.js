@@ -337,7 +337,7 @@ function (dojo, declare) {
                 
             this.addPrimaryActionButton('btnReinforce', _('Reinforce'), () => {
                 this.clientState('tileReinforce',  this.fsr(_('Select a tile'), {}), {
-                    tiles_ids: args.tiles_ids_r,
+                    possibleTiles: args.tiles_ids_r,
                 });
             });
             this.addPrimaryActionButton('btnLock', _('Lock'), () => {
@@ -355,12 +355,13 @@ function (dojo, declare) {
         onEnteringStateTileReinforce(args) {
             debug('onEnteringStateTileReinforce', args);
             this.addCancelStateBtn(_('Go back'));
-            let tiles_ids = args.tiles_ids;
-            Object.values(tiles_ids).forEach( (tile_id) => {
+            let possibleTiles = args.possibleTiles;
+            Object.entries(possibleTiles).forEach( (tile_datas) => {
+                let tile_id = tile_datas[0];
+                let nbEmptySpots = tile_datas[1];
                 let div = $(`myt_tile-${tile_id}`);
                 let callbackTileSelection = (evt) => {
-                    //TODO JSA Get 1 or 2 depending on the tile
-                    let n = 2;
+                    let n = nbEmptySpots;
                     this.clientState('tileReinforceTokens',  this.fsr(_('Select up to ${n} bonus spots to reinforce this tile'), {n:n}), {
                         tile_id: tile_id,
                         n: n,
@@ -590,7 +591,7 @@ function (dojo, declare) {
             if (!this.settings) return;
             const ROOT = document.documentElement;
     
-            //TODO JSA 
+            //TODO JSA  updateLayout
         },
 
         ///////////////////////////////////////////////////

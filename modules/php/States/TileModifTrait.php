@@ -29,6 +29,8 @@ trait TileModifTrait
     $possibleTilesToReinforce = $possibleTiles->filter(function($tile){
       $tokens = $tile->getTokens();
       return TILE_FACE_OPEN == $tile->getFace() && count($tokens)< NB_MAX_TOKENS_ON_TILE;
+    })->map(function($tile){
+      return $tile->getNbEmptyTokenSpots();
     });
     //TODO JSA CHECK remaining Tokens
     $possibleTilesToLock = $possibleTiles->filter(function($tile){
@@ -36,7 +38,7 @@ trait TileModifTrait
       return TILE_FACE_OPEN == $tile->getFace() && 0 == count($tokens);
     });
     $args = [
-      "tiles_ids_r" => $possibleTilesToReinforce->getIds(),
+      "tiles_ids_r" => $possibleTilesToReinforce,
       "tiles_ids_l" => $possibleTilesToLock->getIds(),
     ];
     
@@ -62,10 +64,11 @@ trait TileModifTrait
     // check input values
     $args = $this->argTileModif();
     $possibleTiles = $args['tiles_ids_r'];
-    if (!in_array($tile_id, $possibleTiles)) {
-      throw new UnexpectedException(110,"Invalid tile $tile_id ( see ".json_encode($possibleTiles).")");
+    $possibleTilesIds = $possibleTiles->getIds();
+    if (!in_array($tile_id, $possibleTilesIds)) {
+      throw new UnexpectedException(110,"Invalid tile $tile_id ( see ".json_encode($possibleTilesIds).")");
     }
-    //TODO JSA CHECK nTokens
+    //TODO JSA CHECK remaining tokens
 
     //  game logic here. 
     $tile = Tiles::get($tile_id);

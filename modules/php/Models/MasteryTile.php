@@ -43,6 +43,15 @@ class MasteryTile extends Tile
     return 0;
   }
   
+  public function getNbEmptyTokenSpots() :int
+  {
+    $currentTokensNb = $this->getTokens()->count();
+    if($currentTokensNb >= NB_MAX_TOKENS_ON_TILE){
+      return 0;
+    }
+    return NB_MAX_TOKENS_ON_TILE - $currentTokensNb;
+  }
+  
   /**
    * @return Collection of Token
    */
@@ -59,8 +68,7 @@ class MasteryTile extends Tile
   {
     $newTokens = new Collection();
 
-    $currentTokensNb = $this->getTokens()->count();
-    if($currentTokensNb + $nbTokens > NB_MAX_TOKENS_ON_TILE){
+    if($nbTokens > $this->getNbEmptyTokenSpots()){
       throw new UnexpectedException(405,"You cannot add $nbTokens bonus markers on this tile !");
     }
 
