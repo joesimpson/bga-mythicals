@@ -70,7 +70,16 @@ function (dojo, declare) {
         TILE_COLOR_GRAY,
         TILE_COLOR_BLACK,
     ];
-    
+        
+    const TILE_SCORING_SUITE_2 = 1;
+    const TILE_SCORING_SUITE_3 = 2;
+    const TILE_SCORING_SUITE_4 = 3;
+    const TILE_SCORING_SUITE_5 = 4;
+    const TILE_SCORING_SAME_2 = 5;
+    const TILE_SCORING_SAME_3 = 6;
+    const TILE_SCORING_SAME_4 = 7;
+    const TILE_SCORING_SUITE_6 = 8;
+
     const TOKEN_LOCATION_BOARD = 'board';
     const TOKEN_LOCATION_TILE = 'tile-';
 
@@ -139,6 +148,7 @@ function (dojo, declare) {
                                     <div id="myt_board_tiles"></div>
                                     <div id="myt_cards_reserve"></div>
                                     <div id="myt_board_tokens"></div>
+                                    <div id="myt_board_hints"></div>
                                 </div>
                             </div>
                         </div>
@@ -167,6 +177,27 @@ function (dojo, declare) {
                     `);
                 }
             });
+            for(let k=1; k<=4;k++){//TILE_SCORING_SUITE_2,3,4,5...
+                document.getElementById('myt_board_hints').insertAdjacentHTML('beforeend', `
+                    <div id="myt_board_tile_require-${k}-left" class="myt_board_tile_require"
+                       data-scoringtype="${k}" data-index="1"
+                    ></div>
+                    <div id="myt_board_tile_require-${k}-right" class="myt_board_tile_require"
+                       data-scoringtype="${k}" data-index="2"
+                    ></div>
+                `);
+                this.addCustomTooltip(`myt_board_tile_require-${k}-left`, this.getTileHintTooltip(k));
+                this.addCustomTooltip(`myt_board_tile_require-${k}-right`, this.getTileHintTooltip(k));
+            }
+            for(let k=5; k<=8;k++){//TILE_SCORING_SAME_2,3,4..
+                document.getElementById('myt_board_hints').insertAdjacentHTML('beforeend', `
+                    <div id="myt_board_tile_require-${k}" class="myt_board_tile_require"
+                       data-scoringtype="${k}"
+                    >
+                    </div>
+                `);
+                this.addCustomTooltip(`myt_board_tile_require-${k}`, this.getTileHintTooltip(k));
+            }
             
             // Setting up player boards
             Object.values(gamedatas.players).forEach(player => {
@@ -918,6 +949,28 @@ function (dojo, declare) {
             
             console.error('Trying to get container of a tile', tile);
             return 'game_play_area';
+        },
+        
+        getTileHintTooltip(scoringType) {
+            let jokerDesc = _('The star symbol is a joker that can replace any value from 1 to 5.');
+            let suiteDesc = _('Requires a suite of ${n} cards of the color of the chosen tile. (A suit is made up of cards with sequential values).')
+                + "<br/><br/>" + jokerDesc;
+            let setDesc = _('Requires ${n} cards with the same value, and of different colors.')
+                + "<br/><br/>" + jokerDesc;
+            let descriptionMap = new Map([
+                [TILE_SCORING_SUITE_2,     this.fsr(suiteDesc,{ n:2 })],
+                [TILE_SCORING_SUITE_3,     this.fsr(suiteDesc,{ n:3})],
+                [TILE_SCORING_SUITE_4,     this.fsr(suiteDesc,{ n:4})],
+                [TILE_SCORING_SUITE_5,     this.fsr(suiteDesc,{ n:5})],
+                [TILE_SCORING_SAME_2 ,     this.fsr(setDesc,{n:2 })],
+                [TILE_SCORING_SAME_3 ,     this.fsr(setDesc,{n:3 })],
+                [TILE_SCORING_SAME_4 ,     this.fsr(setDesc,{n:4 })],
+                [TILE_SCORING_SUITE_6,     this.fsr( _('Requires a suite of ALL ${n} cards of the color of the chosen tile : the joker must be held in addition to the other cards.'),{ n:6 })],
+            ]);
+            let text = descriptionMap.get(scoringType);
+            return `<div class='myt_tile_hint_tooltip'>
+                    ${text}
+                </div>`;
         },
         
         ////////////////////////////////////////////////////////

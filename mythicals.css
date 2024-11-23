@@ -318,6 +318,70 @@
   border-radius: 250px;
   outline: 10px solid gold;
 }
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints {
+  position: absolute;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require.tooltipable:hover {
+  cursor: help;
+  outline: 10px solid yellow;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="4"] {
+  top: 297px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="4"][data-index="1"] {
+  left: 550px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="4"][data-index="2"] {
+  left: 1800px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="3"] {
+  top: 650px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="3"][data-index="1"] {
+  left: 550px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="3"][data-index="2"] {
+  left: 1800px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="2"] {
+  top: 1005px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="2"][data-index="1"] {
+  left: 550px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="2"][data-index="2"] {
+  left: 1800px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="1"] {
+  top: 1355px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="1"][data-index="1"] {
+  left: 550px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="1"][data-index="2"] {
+  left: 1800px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="8"] {
+  left: 3348px;
+  top: 196px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="7"] {
+  left: 2988px;
+  top: 666px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="6"] {
+  left: 2988px;
+  top: 1020px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_hints .myt_board_tile_require[data-scoringtype="5"] {
+  left: 2988px;
+  top: 1369px;
+}
 
 #myt_cards_deck_container {
   margin: 5px;
