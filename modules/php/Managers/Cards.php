@@ -307,6 +307,22 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       ->where('type', $cardType)
       ->get();
   }
+  
+  public static function getColorName(int $cardColor)
+  { 
+    switch($cardColor){
+      case CARD_COLOR_BLUE:
+        return clienttranslate("blue");
+      case CARD_COLOR_RED:
+        return clienttranslate("red");
+      case CARD_COLOR_PURPLE:
+        return clienttranslate("purple");
+      case CARD_COLOR_GREEN:
+        return clienttranslate("green");
+      default: 
+        return "";
+    }
+  }
   ///////////////////////////////////////////////////////////////////////////////////////
    
   /** Creation of the cards

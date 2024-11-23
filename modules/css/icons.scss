@@ -2,7 +2,12 @@
 .myt_icon_color-1,
 .myt_icon_color-2,
 .myt_icon_color-3,
-.myt_icon_color-4{
+.myt_icon_color-4,
+.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-4
+{
 
     border-radius: 10px;
     background-image: url("img/board.jpg");
@@ -22,16 +27,20 @@
     
     background-position-y: calc( $icon_img_ratio * -1726px);
 
-    &.myt_icon_color-1{//CARD_COLOR_BLUE
+    &.myt_icon_color-1,
+    &.myt_icon_card_color_log-1{//CARD_COLOR_BLUE
         background-position-x: calc( $icon_img_ratio * -2146px);
     }
-    &.myt_icon_color-2{//CARD_COLOR_GREEN
+    &.myt_icon_color-2,
+    &.myt_icon_card_color_log-2{//CARD_COLOR_GREEN
         background-position-x: calc( $icon_img_ratio * -896px);
     }
-    &.myt_icon_color-3{//CARD_COLOR_PURPLE
+    &.myt_icon_color-3,
+    &.myt_icon_card_color_log-3{//CARD_COLOR_PURPLE
         background-position-x: calc( $icon_img_ratio * -270px);
     }
-    &.myt_icon_color-4{//CARD_COLOR_RED
+    &.myt_icon_color-4,
+    &.myt_icon_card_color_log-4{//CARD_COLOR_RED
         background-position-x: calc( $icon_img_ratio * -1523px);
     }
 }

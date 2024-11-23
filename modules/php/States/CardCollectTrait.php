@@ -92,6 +92,7 @@ trait CardCollectTrait
     }
 
     //  game logic here.
+    Notifications::collectFromDeck($player,$color);
     foreach($drawnCards as $card){
       if($card->getColor() == $color){
         $card->setPId($player->getId());

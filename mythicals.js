@@ -643,6 +643,12 @@ function (dojo, declare) {
                 if(bonus_icon in args) {
                     args.bonus_icon = this.formatIcon('bonus-'+args.bonus_icon);
                 }
+                let card_color = 'card_color';
+                let card_color_type = 'card_color_type';
+                if(card_color in args && card_color_type in args) {
+                    args.card_color = this.formatIcon("card_color_log-"+args.card_color_type);
+                    args.card_color_type = "";
+                }
             }
             } catch (e) {
                 console.error(log, args, 'Exception thrown', e.stack);

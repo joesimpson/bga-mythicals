@@ -3,6 +3,7 @@
 namespace Bga\Games\Mythicals\Core;
 
 use Bga\Games\Mythicals\Game;
+use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Models\Card;
 use Bga\Games\Mythicals\Models\MasteryTile;
 use Bga\Games\Mythicals\Models\Player;
@@ -84,11 +85,28 @@ class Notifications
    * @param Player $player
    * @param int $color
    */
-  public static function collectReserve(Player $player, $color)
+  public static function collectFromDeck(Player $player, int $color)
   {
-    self::notifyAll('collectReserve', clienttranslate('${player_name} collects reserve cards of color ${color}'), [
+    self::notifyAll('collectFromDeck', clienttranslate('${player_name} collects the drawn cards of ${card_color} color'), [
+      'i18n' => ['card_color'],  
       'player' => $player,
-      'color' => $color,//TODO JSA COLOR NAME
+      'card_color' => Cards::getColorName($color),
+      'preserve' => [ 'card_color_type' ],
+      'card_color_type' => $color,
+    ]);
+  }
+  /**
+   * @param Player $player
+   * @param int $color
+   */
+  public static function collectReserve(Player $player,int $color)
+  {
+    self::notifyAll('collectReserve', clienttranslate('${player_name} collects reserve cards of ${card_color} color'), [
+      'i18n' => ['card_color'],  
+      'player' => $player,
+      'card_color' => Cards::getColorName($color),
+      'preserve' => [ 'card_color_type' ],
+      'card_color_type' => $color,
     ]);
   }
 

@@ -1082,7 +1082,11 @@
 .myt_icon_color-1,
 .myt_icon_color-2,
 .myt_icon_color-3,
-.myt_icon_color-4 {
+.myt_icon_color-4,
+.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-4 {
   border-radius: 10px;
   background-image: url("img/board.jpg");
   background-size: 4573.1707317073% 2246.3414634146% !important;
@@ -1091,28 +1095,72 @@
   height: 41px;
   background-position-y: -863px;
 }
-.myt_icon_color-1.myt_icon_color-1,
+.myt_icon_color-1.myt_icon_color-1, .myt_icon_color-1.myt_icon_card_color_log-1,
 .myt_icon_color-2.myt_icon_color-1,
+.myt_icon_color-2.myt_icon_card_color_log-1,
 .myt_icon_color-3.myt_icon_color-1,
-.myt_icon_color-4.myt_icon_color-1 {
+.myt_icon_color-3.myt_icon_card_color_log-1,
+.myt_icon_color-4.myt_icon_color-1,
+.myt_icon_color-4.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-1.myt_icon_color-1,
+.myt_icon_card_color_log-1.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-2.myt_icon_color-1,
+.myt_icon_card_color_log-2.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-3.myt_icon_color-1,
+.myt_icon_card_color_log-3.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-4.myt_icon_color-1,
+.myt_icon_card_color_log-4.myt_icon_card_color_log-1 {
   background-position-x: -1073px;
 }
-.myt_icon_color-1.myt_icon_color-2,
+.myt_icon_color-1.myt_icon_color-2, .myt_icon_color-1.myt_icon_card_color_log-2,
 .myt_icon_color-2.myt_icon_color-2,
+.myt_icon_color-2.myt_icon_card_color_log-2,
 .myt_icon_color-3.myt_icon_color-2,
-.myt_icon_color-4.myt_icon_color-2 {
+.myt_icon_color-3.myt_icon_card_color_log-2,
+.myt_icon_color-4.myt_icon_color-2,
+.myt_icon_color-4.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-1.myt_icon_color-2,
+.myt_icon_card_color_log-1.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-2.myt_icon_color-2,
+.myt_icon_card_color_log-2.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-3.myt_icon_color-2,
+.myt_icon_card_color_log-3.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-4.myt_icon_color-2,
+.myt_icon_card_color_log-4.myt_icon_card_color_log-2 {
   background-position-x: -448px;
 }
-.myt_icon_color-1.myt_icon_color-3,
+.myt_icon_color-1.myt_icon_color-3, .myt_icon_color-1.myt_icon_card_color_log-3,
 .myt_icon_color-2.myt_icon_color-3,
+.myt_icon_color-2.myt_icon_card_color_log-3,
 .myt_icon_color-3.myt_icon_color-3,
-.myt_icon_color-4.myt_icon_color-3 {
+.myt_icon_color-3.myt_icon_card_color_log-3,
+.myt_icon_color-4.myt_icon_color-3,
+.myt_icon_color-4.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-1.myt_icon_color-3,
+.myt_icon_card_color_log-1.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-2.myt_icon_color-3,
+.myt_icon_card_color_log-2.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-3.myt_icon_color-3,
+.myt_icon_card_color_log-3.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-4.myt_icon_color-3,
+.myt_icon_card_color_log-4.myt_icon_card_color_log-3 {
   background-position-x: -135px;
 }
-.myt_icon_color-1.myt_icon_color-4,
+.myt_icon_color-1.myt_icon_color-4, .myt_icon_color-1.myt_icon_card_color_log-4,
 .myt_icon_color-2.myt_icon_color-4,
+.myt_icon_color-2.myt_icon_card_color_log-4,
 .myt_icon_color-3.myt_icon_color-4,
-.myt_icon_color-4.myt_icon_color-4 {
+.myt_icon_color-3.myt_icon_card_color_log-4,
+.myt_icon_color-4.myt_icon_color-4,
+.myt_icon_color-4.myt_icon_card_color_log-4,
+.myt_icon_card_color_log-1.myt_icon_color-4,
+.myt_icon_card_color_log-1.myt_icon_card_color_log-4,
+.myt_icon_card_color_log-2.myt_icon_color-4,
+.myt_icon_card_color_log-2.myt_icon_card_color_log-4,
+.myt_icon_card_color_log-3.myt_icon_color-4,
+.myt_icon_card_color_log-3.myt_icon_card_color_log-4,
+.myt_icon_card_color_log-4.myt_icon_color-4,
+.myt_icon_card_color_log-4.myt_icon_card_color_log-4 {
   background-position-x: -761.5px;
 }
 
