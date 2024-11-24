@@ -1,3 +1,18 @@
+@mixin myt_icon_card_color($iconPosX,$iconPosY,$width,$height){
+    width: $width;
+    height: $height;
+    background-image: url("img/board.jpg");
+    $board_img_width: 3750px;
+    $board_img_height: 1842px;
+    $icon_img_width: 82px;
+    $icon_img_height: 82px;
+    background-position-x: calc(math.div($width, $icon_img_width) * $iconPosX);
+    background-position-y: calc(math.div($height, $icon_img_height ) * $iconPosY);
+    background-size: 
+        math.percentage(math.div($board_img_width, $icon_img_width )) 
+        math.percentage(math.div($board_img_height,$icon_img_height ));
+}
+
 //BLIND COLOR SYMBOLS
 .myt_icon_color-1,
 .myt_icon_color-2,
@@ -8,40 +23,23 @@
 .myt_icon_card_color_log-3,
 .myt_icon_card_color_log-4
 {
-
+    $icon_width: 41px;
     border-radius: 10px;
-    background-image: url("img/board.jpg");
-    $board_img_width: 3750px;
-    $board_img_height: 1842px;
-    $icon_img_width: 82px;
-    $icon_img_height: 82px;
-    $icon_img_ratio: 0.5;
-
-    background-size: 
-        math.percentage(calc(math.div($board_img_width, $icon_img_width ))) 
-        math.percentage(math.div($board_img_height,$icon_img_height )) 
-        !important;
-    background-repeat: repeat !important;
-    width: calc( $icon_img_ratio * $icon_img_width);
-    height: calc( $icon_img_ratio * $icon_img_height);
-    
-    background-position-y: calc( $icon_img_ratio * -1726px);
-
     &.myt_icon_color-1,
     &.myt_icon_card_color_log-1{//CARD_COLOR_BLUE
-        background-position-x: calc( $icon_img_ratio * -2146px);
+        @include myt_icon_card_color(-2146px,-1726px,$icon_width,$icon_width);
     }
     &.myt_icon_color-2,
     &.myt_icon_card_color_log-2{//CARD_COLOR_GREEN
-        background-position-x: calc( $icon_img_ratio * -896px);
+        @include myt_icon_card_color(-896px,-1726px,$icon_width,$icon_width);
     }
     &.myt_icon_color-3,
     &.myt_icon_card_color_log-3{//CARD_COLOR_PURPLE
-        background-position-x: calc( $icon_img_ratio * -270px);
+        @include myt_icon_card_color(-270px,-1726px,$icon_width,$icon_width);
     }
     &.myt_icon_color-4,
     &.myt_icon_card_color_log-4{//CARD_COLOR_RED
-        background-position-x: calc( $icon_img_ratio * -1523px);
+        @include myt_icon_card_color(-1523px,-1726px,$icon_width,$icon_width);
     }
 }
 

@@ -17,6 +17,125 @@
   --myt_board_display_scale: 0.2;
 }
 
+.myt_icon_color-1,
+.myt_icon_color-2,
+.myt_icon_color-3,
+.myt_icon_color-4,
+.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-4 {
+  border-radius: 10px;
+}
+.myt_icon_color-1.myt_icon_color-1, .myt_icon_color-1.myt_icon_card_color_log-1,
+.myt_icon_color-2.myt_icon_color-1,
+.myt_icon_color-2.myt_icon_card_color_log-1,
+.myt_icon_color-3.myt_icon_color-1,
+.myt_icon_color-3.myt_icon_card_color_log-1,
+.myt_icon_color-4.myt_icon_color-1,
+.myt_icon_color-4.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-1.myt_icon_color-1,
+.myt_icon_card_color_log-1.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-2.myt_icon_color-1,
+.myt_icon_card_color_log-2.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-3.myt_icon_color-1,
+.myt_icon_card_color_log-3.myt_icon_card_color_log-1,
+.myt_icon_card_color_log-4.myt_icon_color-1,
+.myt_icon_card_color_log-4.myt_icon_card_color_log-1 {
+  width: 41px;
+  height: 41px;
+  background-image: url("img/board.jpg");
+  background-position-x: -1073px;
+  background-position-y: -863px;
+  background-size: 4573.1707317073% 2246.3414634146%;
+}
+.myt_icon_color-1.myt_icon_color-2, .myt_icon_color-1.myt_icon_card_color_log-2,
+.myt_icon_color-2.myt_icon_color-2,
+.myt_icon_color-2.myt_icon_card_color_log-2,
+.myt_icon_color-3.myt_icon_color-2,
+.myt_icon_color-3.myt_icon_card_color_log-2,
+.myt_icon_color-4.myt_icon_color-2,
+.myt_icon_color-4.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-1.myt_icon_color-2,
+.myt_icon_card_color_log-1.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-2.myt_icon_color-2,
+.myt_icon_card_color_log-2.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-3.myt_icon_color-2,
+.myt_icon_card_color_log-3.myt_icon_card_color_log-2,
+.myt_icon_card_color_log-4.myt_icon_color-2,
+.myt_icon_card_color_log-4.myt_icon_card_color_log-2 {
+  width: 41px;
+  height: 41px;
+  background-image: url("img/board.jpg");
+  background-position-x: -448px;
+  background-position-y: -863px;
+  background-size: 4573.1707317073% 2246.3414634146%;
+}
+.myt_icon_color-1.myt_icon_color-3, .myt_icon_color-1.myt_icon_card_color_log-3,
+.myt_icon_color-2.myt_icon_color-3,
+.myt_icon_color-2.myt_icon_card_color_log-3,
+.myt_icon_color-3.myt_icon_color-3,
+.myt_icon_color-3.myt_icon_card_color_log-3,
+.myt_icon_color-4.myt_icon_color-3,
+.myt_icon_color-4.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-1.myt_icon_color-3,
+.myt_icon_card_color_log-1.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-2.myt_icon_color-3,
+.myt_icon_card_color_log-2.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-3.myt_icon_color-3,
+.myt_icon_card_color_log-3.myt_icon_card_color_log-3,
+.myt_icon_card_color_log-4.myt_icon_color-3,
+.myt_icon_card_color_log-4.myt_icon_card_color_log-3 {
+  width: 41px;
+  height: 41px;
+  background-image: url("img/board.jpg");
+  background-position-x: -135px;
+  background-position-y: -863px;
+  background-size: 4573.1707317073% 2246.3414634146%;
+}
+.myt_icon_color-1.myt_icon_color-4, .myt_icon_color-1.myt_icon_card_color_log-4,
+.myt_icon_color-2.myt_icon_color-4,
+.myt_icon_color-2.myt_icon_card_color_log-4,
+.myt_icon_color-3.myt_icon_color-4,
+.myt_icon_color-3.myt_icon_card_color_log-4,
+.myt_icon_color-4.myt_icon_color-4,
+.myt_icon_color-4.myt_icon_card_color_log-4,
+.myt_icon_card_color_log-1.myt_icon_color-4,
+.myt_icon_card_color_log-1.myt_icon_card_color_log-4,
+.myt_icon_card_color_log-2.myt_icon_color-4,
+.myt_icon_card_color_log-2.myt_icon_card_color_log-4,
+.myt_icon_card_color_log-3.myt_icon_color-4,
+.myt_icon_card_color_log-3.myt_icon_card_color_log-4,
+.myt_icon_card_color_log-4.myt_icon_color-4,
+.myt_icon_card_color_log-4.myt_icon_card_color_log-4 {
+  width: 41px;
+  height: 41px;
+  background-image: url("img/board.jpg");
+  background-position-x: -761.5px;
+  background-position-y: -863px;
+  background-size: 4573.1707317073% 2246.3414634146%;
+}
+
+.myt_icon_color-5,
+.myt_icon_color-6 {
+  border-radius: 10px;
+  background-image: url("img/tiles.jpg");
+  background-size: 2925.7142857143% 1828.5714285714% !important;
+  background-repeat: repeat !important;
+  width: 40px;
+  height: 40px;
+}
+.myt_icon_color-5.myt_icon_color-5,
+.myt_icon_color-6.myt_icon_color-5 {
+  background-position-y: -597.7142857143px;
+  background-position-x: -93.7142857143px;
+}
+.myt_icon_color-5.myt_icon_color-6,
+.myt_icon_color-6.myt_icon_color-6 {
+  background-position-y: -594.5714285714px;
+  background-position-x: -977.1428571429px;
+}
+
 .myt_panel .myt_player_infos {
   display: flex;
   flex-direction: column;
@@ -580,19 +699,12 @@
 .myt_cards_stack_resizable {
   display: flex;
   border-radius: 10px;
-  border: 2px solid black;
   box-shadow: 1px 1px 10px black;
   background-color: rgba(213, 162, 87, 0.5098039216);
   position: relative;
   margin-left: 10px;
 }
 .myt_cards_stack_resizable .myt_cards_stack {
-  /*
-  &#myt_cards_stack_reserve{
-      min-width: calc(var(--reserve_stack_scale) * $card_width);
-      min-height: calc(var(--reserve_stack_scale) * $card_height);
-  }
-  */
   display: flex;
   flex-flow: column;
 }
@@ -1085,13 +1197,64 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 #myt_players_table .myt_player_cards {
   display: flex;
   flex-flow: row;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
   padding: 0px 5px;
   min-height: 200px;
+  border-radius: 20px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  justify-content: space-evenly;
+  row-gap: 10px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable {
   min-width: 100px;
+}
+#myt_players_table .myt_player_cards .myt_cards_stack_resizable::before {
+  content: "";
+  display: inherit;
+  opacity: 0.7;
+  position: relative;
+  width: 100px;
+  height: 200px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+#myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="1"]::before {
+  width: 100px;
+  height: 100px;
+  background-image: url("img/board.jpg");
+  background-position-x: -2617.0731707317px;
+  background-position-y: -2104.8780487805px;
+  background-size: 4573.1707317073% 2246.3414634146%;
+}
+#myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="2"]::before {
+  width: 100px;
+  height: 100px;
+  background-image: url("img/board.jpg");
+  background-position-x: -1092.6829268293px;
+  background-position-y: -2104.8780487805px;
+  background-size: 4573.1707317073% 2246.3414634146%;
+}
+#myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="3"]::before {
+  width: 100px;
+  height: 100px;
+  background-image: url("img/board.jpg");
+  background-position-x: -329.2682926829px;
+  background-position-y: -2104.8780487805px;
+  background-size: 4573.1707317073% 2246.3414634146%;
+}
+#myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="4"]::before {
+  width: 100px;
+  height: 100px;
+  background-image: url("img/board.jpg");
+  background-position-x: -1857.3170731707px;
+  background-position-y: -2104.8780487805px;
+  background-size: 4573.1707317073% 2246.3414634146%;
+}
+#myt_players_table .myt_player_cards .myt_cards_stack_resizable .myt_cards_stack {
+  position: absolute;
 }
 
 #myt_cards_draw {
@@ -1376,6 +1539,9 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   border-radius: 30px;
 }
 
+.myt_player_tiles {
+  margin: 15px;
+}
 .myt_player_tiles .myt_player_toptile .myt_tile::after, .myt_player_tiles .myt_player_toptile .myt_tile::before {
   content: "";
   position: absolute;
@@ -1404,111 +1570,6 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   position: absolute;
   width: 100%;
   height: 100%;
-}
-
-.myt_icon_color-1,
-.myt_icon_color-2,
-.myt_icon_color-3,
-.myt_icon_color-4,
-.myt_icon_card_color_log-1,
-.myt_icon_card_color_log-2,
-.myt_icon_card_color_log-3,
-.myt_icon_card_color_log-4 {
-  border-radius: 10px;
-  background-image: url("img/board.jpg");
-  background-size: 4573.1707317073% 2246.3414634146% !important;
-  background-repeat: repeat !important;
-  width: 41px;
-  height: 41px;
-  background-position-y: -863px;
-}
-.myt_icon_color-1.myt_icon_color-1, .myt_icon_color-1.myt_icon_card_color_log-1,
-.myt_icon_color-2.myt_icon_color-1,
-.myt_icon_color-2.myt_icon_card_color_log-1,
-.myt_icon_color-3.myt_icon_color-1,
-.myt_icon_color-3.myt_icon_card_color_log-1,
-.myt_icon_color-4.myt_icon_color-1,
-.myt_icon_color-4.myt_icon_card_color_log-1,
-.myt_icon_card_color_log-1.myt_icon_color-1,
-.myt_icon_card_color_log-1.myt_icon_card_color_log-1,
-.myt_icon_card_color_log-2.myt_icon_color-1,
-.myt_icon_card_color_log-2.myt_icon_card_color_log-1,
-.myt_icon_card_color_log-3.myt_icon_color-1,
-.myt_icon_card_color_log-3.myt_icon_card_color_log-1,
-.myt_icon_card_color_log-4.myt_icon_color-1,
-.myt_icon_card_color_log-4.myt_icon_card_color_log-1 {
-  background-position-x: -1073px;
-}
-.myt_icon_color-1.myt_icon_color-2, .myt_icon_color-1.myt_icon_card_color_log-2,
-.myt_icon_color-2.myt_icon_color-2,
-.myt_icon_color-2.myt_icon_card_color_log-2,
-.myt_icon_color-3.myt_icon_color-2,
-.myt_icon_color-3.myt_icon_card_color_log-2,
-.myt_icon_color-4.myt_icon_color-2,
-.myt_icon_color-4.myt_icon_card_color_log-2,
-.myt_icon_card_color_log-1.myt_icon_color-2,
-.myt_icon_card_color_log-1.myt_icon_card_color_log-2,
-.myt_icon_card_color_log-2.myt_icon_color-2,
-.myt_icon_card_color_log-2.myt_icon_card_color_log-2,
-.myt_icon_card_color_log-3.myt_icon_color-2,
-.myt_icon_card_color_log-3.myt_icon_card_color_log-2,
-.myt_icon_card_color_log-4.myt_icon_color-2,
-.myt_icon_card_color_log-4.myt_icon_card_color_log-2 {
-  background-position-x: -448px;
-}
-.myt_icon_color-1.myt_icon_color-3, .myt_icon_color-1.myt_icon_card_color_log-3,
-.myt_icon_color-2.myt_icon_color-3,
-.myt_icon_color-2.myt_icon_card_color_log-3,
-.myt_icon_color-3.myt_icon_color-3,
-.myt_icon_color-3.myt_icon_card_color_log-3,
-.myt_icon_color-4.myt_icon_color-3,
-.myt_icon_color-4.myt_icon_card_color_log-3,
-.myt_icon_card_color_log-1.myt_icon_color-3,
-.myt_icon_card_color_log-1.myt_icon_card_color_log-3,
-.myt_icon_card_color_log-2.myt_icon_color-3,
-.myt_icon_card_color_log-2.myt_icon_card_color_log-3,
-.myt_icon_card_color_log-3.myt_icon_color-3,
-.myt_icon_card_color_log-3.myt_icon_card_color_log-3,
-.myt_icon_card_color_log-4.myt_icon_color-3,
-.myt_icon_card_color_log-4.myt_icon_card_color_log-3 {
-  background-position-x: -135px;
-}
-.myt_icon_color-1.myt_icon_color-4, .myt_icon_color-1.myt_icon_card_color_log-4,
-.myt_icon_color-2.myt_icon_color-4,
-.myt_icon_color-2.myt_icon_card_color_log-4,
-.myt_icon_color-3.myt_icon_color-4,
-.myt_icon_color-3.myt_icon_card_color_log-4,
-.myt_icon_color-4.myt_icon_color-4,
-.myt_icon_color-4.myt_icon_card_color_log-4,
-.myt_icon_card_color_log-1.myt_icon_color-4,
-.myt_icon_card_color_log-1.myt_icon_card_color_log-4,
-.myt_icon_card_color_log-2.myt_icon_color-4,
-.myt_icon_card_color_log-2.myt_icon_card_color_log-4,
-.myt_icon_card_color_log-3.myt_icon_color-4,
-.myt_icon_card_color_log-3.myt_icon_card_color_log-4,
-.myt_icon_card_color_log-4.myt_icon_color-4,
-.myt_icon_card_color_log-4.myt_icon_card_color_log-4 {
-  background-position-x: -761.5px;
-}
-
-.myt_icon_color-5,
-.myt_icon_color-6 {
-  border-radius: 10px;
-  background-image: url("img/tiles.jpg");
-  background-size: 2925.7142857143% 1828.5714285714% !important;
-  background-repeat: repeat !important;
-  width: 40px;
-  height: 40px;
-}
-.myt_icon_color-5.myt_icon_color-5,
-.myt_icon_color-6.myt_icon_color-5 {
-  background-position-y: -597.7142857143px;
-  background-position-x: -93.7142857143px;
-}
-.myt_icon_color-5.myt_icon_color-6,
-.myt_icon_color-6.myt_icon_color-6 {
-  background-position-y: -594.5714285714px;
-  background-position-x: -977.1428571429px;
 }
 
 /**

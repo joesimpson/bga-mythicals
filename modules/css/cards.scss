@@ -80,20 +80,14 @@ $card_height: 200px;
     display: flex;
 
     border-radius: 10px;
-    border: 2px solid black;
+    //border: 2px solid black;
     box-shadow: 1px 1px 10px black;
     background-color: #d5a25782;
     position: relative;
     margin-left: 10px;
 
     .myt_cards_stack{
-         /*
-        &#myt_cards_stack_reserve{
-            min-width: calc(var(--reserve_stack_scale) * $card_width);
-            min-height: calc(var(--reserve_stack_scale) * $card_height);
-        }
-        */
-
+        
         display: flex;
         flex-flow: column;
         .myt_card{
@@ -230,23 +224,62 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
         box-shadow: 1px 1px 10px black;
         background-color: #d5a25782;
         margin-left: 10px;
+        
+        //width: 95%;
+        //margin: 15px auto;
     }
 
     .myt_title{
         text-align: center;
         padding: 0 7px;
     }
+
     .myt_player_cards{
         display: flex;
         flex-flow: row;
+        flex-direction: row;
         flex-wrap: wrap;
         align-items: flex-start;
         padding: 0px 5px;
 
         min-height: $card_height;
-
+                
+        border-radius: 20px;
+        column-gap: 10px;
+        justify-content: space-evenly;
+        row-gap: 10px;
+        
         .myt_cards_stack_resizable{
             min-width: $card_width;
+
+            &::before {//View COLOR icon behind stack
+                content: "";
+                display: inherit;
+                opacity: 0.7;
+                position: relative;
+                width: $card_width;
+                height: $card_height;
+                margin-top: math.div($card_height,4);
+                margin-bottom: math.div($card_height,4);
+            }    
+            &[data-color="1"]::before {//CARD_COLOR_BLUE
+                @include myt_icon_card_color(-2146px,-1726px,$card_width,$card_width);
+            }
+            &[data-color="2"]::before {//CARD_COLOR_GREEN
+                @include myt_icon_card_color(-896px,-1726px,$card_width,$card_width);
+            }
+            &[data-color="3"]::before {//CARD_COLOR_PURPLE
+                @include myt_icon_card_color(-270px,-1726px,$card_width,$card_width);
+            }
+            &[data-color="4"]::before {//CARD_COLOR_RED
+                @include myt_icon_card_color(-1523px,-1726px,$card_width,$card_width);
+            }
+            
+            .myt_cards_stack{
+                //See card over icon background when present
+                position: absolute;
+            }
+                
         }
     }
 }
