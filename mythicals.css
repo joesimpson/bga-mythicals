@@ -1275,6 +1275,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   align-items: center;
   justify-content: center;
   padding: 0px 5px;
+  width: 110px;
 }
 #myt_cards_draw .myt_card[data-color="1"] {
   order: 4;
@@ -2165,6 +2166,9 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   align-items: center;
   flex-wrap: wrap;
   flex-flow: row;
+}
+#myt_main_zone #myt_board_zone {
+  width: 80%;
 }
 
 .myt_nodisplay {

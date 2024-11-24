@@ -143,13 +143,15 @@ function (dojo, declare) {
                             </div>
                         </div>
                         <div id="myt_cards_draw"></div>
-                        <div id='myt_resizable_board'>
-                            <div id='myt_board_container'>
-                                <div id="myt_board">
-                                    <div id="myt_board_tiles"></div>
-                                    <div id="myt_cards_reserve"></div>
-                                    <div id="myt_board_tokens"></div>
-                                    <div id="myt_board_hints"></div>
+                        <div id="myt_board_zone">
+                            <div id='myt_resizable_board'>
+                                <div id='myt_board_container'>
+                                    <div id="myt_board">
+                                        <div id="myt_board_tiles"></div>
+                                        <div id="myt_cards_reserve"></div>
+                                        <div id="myt_board_tokens"></div>
+                                        <div id="myt_board_hints"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -249,15 +251,15 @@ function (dojo, declare) {
             return {
                 boardWidth: {
                     section: "layout",
-                    default: 20,
+                    default: 70,
                     name: _('Main board'),
                     type: 'slider',
                     sliderConfig: {
                         step: 1,
                         padding: 0,
                         range: {
-                        min: [10],
-                        max: [40],
+                        min: [50],
+                        max: [100],
                         },
                     },
                 }, 
@@ -267,7 +269,7 @@ function (dojo, declare) {
             };
         },
         onChangeBoardWidthSetting(val) {
-            document.documentElement.style.setProperty('--myt_board_display_scale', val/100);
+           // document.documentElement.style.setProperty('--myt_board_display_scale', val/100);
             this.updateLayout();
         },
         ///////////////////////////////////////////////////
@@ -627,11 +629,21 @@ function (dojo, declare) {
         onScreenWidthChange() {
             if (this.settings) this.updateLayout();
         },
+        getGameZoneWidth() {
+            return $('myt_board_zone').getBoundingClientRect()['width'];
+        },
         updateLayout() {
             if (!this.settings) return;
+            if (!this.settings.boardWidth) return;
             const ROOT = document.documentElement;
     
-            //TODO JSA  updateLayout
+            const WIDTH = this.getGameZoneWidth();
+            const BOARD_WIDTH = 3750;//board_img_width
+    
+            let cardsWidthRatio = 0; //20%
+            let boardWidthRatio =  (100 - cardsWidthRatio ) / 100;
+            let widthScale = ((this.settings.boardWidth * boardWidthRatio/ 100) * WIDTH) / BOARD_WIDTH;
+            ROOT.style.setProperty('--myt_board_display_scale', widthScale);
         },
 
         ///////////////////////////////////////////////////

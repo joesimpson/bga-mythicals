@@ -33,6 +33,10 @@
     align-items: center;
     flex-wrap: wrap;
     flex-flow: row;
+
+    #myt_board_zone{
+        width: 80%;
+    }
 }
 .myt_nodisplay{
     display: none;

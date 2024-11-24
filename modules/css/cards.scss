@@ -299,6 +299,7 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
     align-items: center;
     justify-content: center;
     padding: 0px 5px;
+    width: calc(1.1 * $card_width);
 
     .myt_card{
 
