@@ -33,6 +33,12 @@ $card_height: calc(2 * $card_width);
 
             background-image: url('img/board.jpg');
 
+            .help-marker{
+                //Keep around the same size for the help marker in help mode
+                transform: scale(calc(1 / var(--myt_board_display_scale)));
+                transform-origin: top left;
+            }
+
             #myt_board_tiles{
                 //position: absolute;
                 //grid-template-columns: repeat(7, 1fr);

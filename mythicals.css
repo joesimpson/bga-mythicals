@@ -285,6 +285,10 @@
   background-repeat: no-repeat;
   background-image: url("img/board.jpg");
 }
+#myt_resizable_board #myt_board_container #myt_board .help-marker {
+  transform: scale(calc(1 / var(--myt_board_display_scale)));
+  transform-origin: top left;
+}
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell {
   position: absolute;
 }
@@ -1170,12 +1174,13 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 }
 
 .myt_deck_size {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  position: absolute;
+  bottom: -25px;
+  text-align: center;
+  width: 100%;
 }
 
 #myt_players_table {

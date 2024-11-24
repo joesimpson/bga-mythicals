@@ -138,8 +138,9 @@ function (dojo, declare) {
                     <div id="myt_select_piece_container"></div>
                     <div id="myt_main_zone">
                         <div id="myt_cards_deck_container">
-                            <div class="myt_card_back"></div>
-                            <div class="myt_deck_size" id="myt_deck_size">${gamedatas.deckSize}</div>
+                            <div class="myt_card_back">
+                                <div class="myt_deck_size" id="myt_deck_size">${gamedatas.deckSize}</div>
+                            </div>
                         </div>
                         <div id="myt_cards_draw"></div>
                         <div id='myt_resizable_board'>

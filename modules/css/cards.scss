@@ -208,10 +208,11 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
     }
 }
 .myt_deck_size{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     user-select: none;
+    position: absolute;
+    bottom: -25px;
+    text-align: center;
+    width: 100%;
 }
 
 #myt_players_table{
