@@ -358,6 +358,8 @@ function (dojo, declare) {
             let elements = [];
             let tile_id = args.tile_id;
             let cardIds = args.cardIds;
+            //hightlight the tile for which we need to choose cards :
+            $(`myt_tile-${tile_id}`).classList.add('selected');
             Object.values(cardIds).forEach((cardId) => (elements[cardId] = $(`myt_card-${cardId}`)));
             this.onSelectN(elements, args.nbExpected, (selectedCards) => {
                 this.takeAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards.join(',')});
@@ -411,6 +413,7 @@ function (dojo, declare) {
             let selectedTileId = args.tile_id;
             let maxTokens = args.n;
             let selectedElements = [];
+            $(`myt_tile-${selectedTileId}`).classList.add('selected');
             let confirmMsg = _('Confirm ${n} bonus markers');
             this.addPrimaryActionButton('btnConfirm', this.fsr(confirmMsg, { n: 0 }), () => {
                 this.takeAction('actTileReinforce', { tile_id: selectedTileId, nTokens: selectedElements.length });

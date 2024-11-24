@@ -1491,6 +1491,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 }
 .myt_tile.selected, .myt_tile.selected:hover {
   box-shadow: 0px 0px 7px 2px green;
+  outline: 20px solid rgb(9, 212, 212);
   z-index: 4;
 }
 .myt_tile.tooltipable:hover {
