@@ -2301,3 +2301,12 @@ body[data-myt_undo_style="2"] #btnTextRestartTurn {
 #pagesection_howtoplay ul li, .midSizeDialog ul li {
   list-style: disc;
 }
+
+/*** FIX BGA 3D mode clicks : **/
+.mode_3d #game_play_area_wrap {
+  pointer-events: none;
+}
+
+#myt_game_container {
+  pointer-events: all;
+}
