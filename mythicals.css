@@ -733,7 +733,13 @@
 }
 .myt_cards_stack_resizable .myt_cards_stack.selectable {
   cursor: pointer;
-  outline: 20px solid yellow;
+  border-top: 20px solid yellow;
+}
+.myt_cards_stack_resizable .myt_cards_stack.selectable .myt_card {
+  /*! outline: 20px solid yellow; */
+  border: 20px solid yellow;
+  border-top: none;
+  margin-left: -20px;
 }
 .myt_cards_stack_resizable .myt_cards_stack.selectable:hover {
   transform: scale(1.1);

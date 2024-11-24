@@ -129,8 +129,15 @@ $card_height: 200px;
 
         &.selectable{
             cursor: pointer;
-            outline: 20px solid yellow;
-
+            //outline: 20px solid yellow;
+            //Outline is fine but the height is not enough to see the bottom line -> let's add a border on sub cards
+            border-top: 20px solid yellow;
+            .myt_card{
+                /*! outline: 20px solid yellow; */
+                border: 20px solid yellow;
+                border-top: none;
+                margin-left: -20px;
+            }
             &:hover {
                 transform: scale(1.1);
             }
