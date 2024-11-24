@@ -110,6 +110,7 @@ $tile_height: 100px;
 }
 
 .myt_tile_tooltip{
+    text-align: center;
     .myt_tile{
         width: calc($tile_width * 2);
         height: calc($tile_height * 2);

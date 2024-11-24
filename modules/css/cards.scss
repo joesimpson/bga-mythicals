@@ -317,8 +317,13 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
 }
 
 .myt_card_tooltip{
+    text-align: center;
     .myt_card{
         width: calc($card_width * 2);
         height: calc($card_height * 2);
+    }
+    .myt_value_desc{
+        //don't let a long desc be less pretty
+        width: calc($card_width * 2);
     }
 }

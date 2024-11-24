@@ -923,6 +923,7 @@ function (dojo, declare) {
             }
             return [`<div class='myt_tile_tooltip'>
                     <h1>${title}</h1>
+                    <hr/>
                     <h3>${descColor}</h3>
                     <h2>${descValue}</h2>
                     <h2>${descFace}</h2>
@@ -1036,8 +1037,9 @@ function (dojo, declare) {
             let div = this.tplCard(cardDatas,'_tmp');
             return [`<div class='myt_card_tooltip'>
                     <h1>${title}</h1>
+                    <hr/>
                     <h3>${descColor}</h3>
-                    <h2>${descValue}</h2>
+                    <h2 class="myt_value_desc">${descValue}</h2>
                     ${div}
                 </div>`];
         }, 

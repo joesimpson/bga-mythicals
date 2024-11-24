@@ -1284,9 +1284,15 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   order: 3;
 }
 
+.myt_card_tooltip {
+  text-align: center;
+}
 .myt_card_tooltip .myt_card {
   width: 200px;
   height: 400px;
+}
+.myt_card_tooltip .myt_value_desc {
+  width: 200px;
 }
 
 .myt_tile {
@@ -1543,6 +1549,9 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   top: 215.3515625px;
 }
 
+.myt_tile_tooltip {
+  text-align: center;
+}
 .myt_tile_tooltip .myt_tile {
   width: 200px;
   height: 200px;
