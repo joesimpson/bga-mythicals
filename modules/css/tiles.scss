@@ -47,7 +47,7 @@ $tile_height: 100px;
         z-index: 4;
     }
     &.tooltipable:hover{
-        outline: 20px solid black;
+        outline: 8px solid black;
         z-index: 4;
     }
     
@@ -75,6 +75,10 @@ $tile_height: 100px;
         height: 370px;
         border-radius: 40px;
         $tile_ratio: math.div(370px, 512px );
+
+        &.tooltipable:hover{
+            outline-width: 30px;
+        }
             
         .myt_tile_token_spot{
             position: absolute;
