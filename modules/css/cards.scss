@@ -40,7 +40,7 @@ $card_height: 200px;
         //box-shadow: 0px 0px 7px 2px green;
         box-shadow: 0px 0px 7px 2px #d3ff00, 0px 0px 7px 2px #dfff00, 0px 0px 7px 2px #fffb00;
         //transform: scale(1.1);
-        z-index: 2;
+        //z-index: 2;
 
         &.myt_selectedToDiscard{
             .myt_card_wrapper::before{
@@ -113,7 +113,7 @@ $card_height: 200px;
 
             //Stack cards 
             margin-bottom: calc(math.div(-85, 100) * $card_height);
-            z-index: 2;
+            //z-index: 2;
             &:hover {
                 //may interfere with tooltip
                 //z-index: 100;
@@ -170,6 +170,7 @@ body[data-myt_card_stack_order='1']{//PREF_CARD_STACK_ASC
             @for $i from 1 through 49 {
                 &[data-type="#{$i}"] {
                     order: $i;
+                    z-index: 2 + $i;
                 }
             }
         }
@@ -183,6 +184,7 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
             @for $i from 1 through 49 {
                 &[data-type="#{$i}"] {
                     order: 49-$i;
+                    z-index: 3 + 49-$i;
                 }
             }
         }
