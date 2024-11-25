@@ -240,4 +240,49 @@ trait DebugTrait
     $state = Game::get()->gamestate->state();
     Game::get()->zombieTurn($state,$playerId);
   }
+
+  function debug_RealTime(): void {
+    $players = Players::getAll();
+  
+    $sql = [];
+    //RESET TO TIMEMODE NORMAL with 120s
+      $sql[] = "UPDATE `global` SET `global_value` = '180' WHERE `global`.`global_id` = 8; ";
+      $sql[] = "UPDATE `global` SET `global_value` = '120' WHERE `global`.`global_id` = 9; ";
+      $sql[] = "UPDATE `global` SET `global_value` = '1' WHERE `global`.`global_id` = 200; ";
+      $sql[] = "UPDATE `global` SET `global_value` = '0' WHERE `global`.`global_id` = 201; ";
+  
+      foreach ($players as $pId => $player) {
+        $sql[] = "UPDATE `player` SET `player_remaining_reflexion_time` = '150' WHERE `player`.`player_id` = $pId; ";
+      }
+
+    foreach ($sql as $q) {
+      $this->DbQuery($q);
+    }
+  
+    $this->reloadPlayersBasicInfos();
+    //THEN REFRESH PAGE
+  }
+  
+  function debug_TurnBasedNoLimit(): void {
+    $players = Players::getAll();
+  
+    $sql = [];
+      $sql[] = "UPDATE `global` SET `global_value` = '7776000' WHERE `global`.`global_id` = 8; ";
+      $sql[] = "UPDATE `global` SET `global_value` = '2592000' WHERE `global`.`global_id` = 9; ";
+      $sql[] = "UPDATE `global` SET `global_value` = '20' WHERE `global`.`global_id` = 200; ";
+      $sql[] = "UPDATE `global` SET `global_value` = '1' WHERE `global`.`global_id` = 201; ";
+  
+      foreach ($players as $pId => $player) {
+        $sql[] = "UPDATE `player` SET `player_remaining_reflexion_time` = '7776000' WHERE `player`.`player_id` = $pId; ";
+      }
+
+    foreach ($sql as $q) {
+      $this->DbQuery($q);
+    }
+  
+    $this->reloadPlayersBasicInfos();
+    //THEN REFRESH PAGE
+  }
+
+
 }
