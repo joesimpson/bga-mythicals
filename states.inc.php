@@ -120,6 +120,7 @@ $machinestates = [
             "draw" => ST_PLAYER_TURN_COLLECT,
             "next" => ST_PLAYER_TURN_TILE_CHOICE,
             "end" => ST_CONFIRM_TURN,
+            "zombiePass"=> ST_CONFIRM_TURN,
         ],
     ],
     
@@ -138,6 +139,7 @@ $machinestates = [
         "transitions" => [
             "next" => ST_PLAYER_TURN_TILE_MODIFICATION,
             "pass" => ST_CONFIRM_TURN,
+            "zombiePass"=> ST_CONFIRM_TURN,
         ],
     ],
     
@@ -156,6 +158,7 @@ $machinestates = [
         "transitions" => [
             "next" => ST_CONFIRM_TURN,
             "pass" => ST_CONFIRM_TURN,
+            "zombiePass"=> ST_CONFIRM_TURN,
         ],
     ],
 

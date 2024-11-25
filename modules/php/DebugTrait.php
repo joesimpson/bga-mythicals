@@ -231,4 +231,13 @@ trait DebugTrait
     $this->debug_UI();
     $this->gamestate->jumpToState(ST_END_SCORING);
   }
+
+  
+  
+  function debug_Zombie(){
+    $player = Players::getActive();
+    $playerId = $player->getId();
+    $state = Game::get()->gamestate->state();
+    Game::get()->zombieTurn($state,$playerId);
+  }
 }

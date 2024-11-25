@@ -46,8 +46,9 @@ trait ConfirmUndoTrait
 
     public function stConfirmTurn()
     {
-        if (Globals::getChoices() == 0) {
-            $this->actConfirmTurn(true);
+        if (Globals::getChoices() == 0) {//AUTO CONFIRM
+            $version = $this->gamestate->table_globals[BGA_GAMESTATE_GAMEVERSION];
+            $this->actConfirmTurn($version,true);
         }
     }
 
