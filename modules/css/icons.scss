@@ -6,11 +6,20 @@
     $board_img_height: 1842px;
     $icon_img_width: 82px;
     $icon_img_height: 82px;
+
+    $background_widthRatio: math.div($board_img_width, $icon_img_width );
+    $background_heightRatio: math.div($board_img_height,$icon_img_height ); 
     background-position-x: calc(math.div($width, $icon_img_width) * $iconPosX);
     background-position-y: calc(math.div($height, $icon_img_height ) * $iconPosY);
+    /*
     background-size: 
-        math.percentage(math.div($board_img_width, $icon_img_width )) 
-        math.percentage(math.div($board_img_height,$icon_img_height ));
+        math.percentage($background_widthRatio) 
+        math.percentage($background_heightRatio);
+    */
+    //use of PERCENTAGE or PX in size AND X/y to avoid Safari/mobile bugs
+    background-size: 
+        calc($width * $background_widthRatio) 
+        calc($height * $background_heightRatio);
 }
 
 //BLIND COLOR SYMBOLS

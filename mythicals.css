@@ -47,7 +47,12 @@
   background-image: url("img/board.jpg");
   background-position-x: -1073px;
   background-position-y: -863px;
-  background-size: 4573.1707317073% 2246.3414634146%;
+  /*
+  background-size: 
+      math.percentage($background_widthRatio) 
+      math.percentage($background_heightRatio);
+  */
+  background-size: 1875px 921px;
 }
 .myt_icon_color-1.myt_icon_color-2, .myt_icon_color-1.myt_icon_card_color_log-2,
 .myt_icon_color-2.myt_icon_color-2,
@@ -69,7 +74,12 @@
   background-image: url("img/board.jpg");
   background-position-x: -448px;
   background-position-y: -863px;
-  background-size: 4573.1707317073% 2246.3414634146%;
+  /*
+  background-size: 
+      math.percentage($background_widthRatio) 
+      math.percentage($background_heightRatio);
+  */
+  background-size: 1875px 921px;
 }
 .myt_icon_color-1.myt_icon_color-3, .myt_icon_color-1.myt_icon_card_color_log-3,
 .myt_icon_color-2.myt_icon_color-3,
@@ -91,7 +101,12 @@
   background-image: url("img/board.jpg");
   background-position-x: -135px;
   background-position-y: -863px;
-  background-size: 4573.1707317073% 2246.3414634146%;
+  /*
+  background-size: 
+      math.percentage($background_widthRatio) 
+      math.percentage($background_heightRatio);
+  */
+  background-size: 1875px 921px;
 }
 .myt_icon_color-1.myt_icon_color-4, .myt_icon_color-1.myt_icon_card_color_log-4,
 .myt_icon_color-2.myt_icon_color-4,
@@ -113,7 +128,12 @@
   background-image: url("img/board.jpg");
   background-position-x: -761.5px;
   background-position-y: -863px;
-  background-size: 4573.1707317073% 2246.3414634146%;
+  /*
+  background-size: 
+      math.percentage($background_widthRatio) 
+      math.percentage($background_heightRatio);
+  */
+  background-size: 1875px 921px;
 }
 
 .myt_icon_color-5,
@@ -1329,7 +1349,12 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   background-image: url("img/board.jpg");
   background-position-x: -2617.0731707317px;
   background-position-y: -2104.8780487805px;
-  background-size: 4573.1707317073% 2246.3414634146%;
+  /*
+  background-size: 
+      math.percentage($background_widthRatio) 
+      math.percentage($background_heightRatio);
+  */
+  background-size: 4573.1707317073px 2246.3414634146px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="2"]::before {
   width: 100px;
@@ -1337,7 +1362,12 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   background-image: url("img/board.jpg");
   background-position-x: -1092.6829268293px;
   background-position-y: -2104.8780487805px;
-  background-size: 4573.1707317073% 2246.3414634146%;
+  /*
+  background-size: 
+      math.percentage($background_widthRatio) 
+      math.percentage($background_heightRatio);
+  */
+  background-size: 4573.1707317073px 2246.3414634146px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="3"]::before {
   width: 100px;
@@ -1345,7 +1375,12 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   background-image: url("img/board.jpg");
   background-position-x: -329.2682926829px;
   background-position-y: -2104.8780487805px;
-  background-size: 4573.1707317073% 2246.3414634146%;
+  /*
+  background-size: 
+      math.percentage($background_widthRatio) 
+      math.percentage($background_heightRatio);
+  */
+  background-size: 4573.1707317073px 2246.3414634146px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="4"]::before {
   width: 100px;
@@ -1353,7 +1388,12 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   background-image: url("img/board.jpg");
   background-position-x: -1857.3170731707px;
   background-position-y: -2104.8780487805px;
-  background-size: 4573.1707317073% 2246.3414634146%;
+  /*
+  background-size: 
+      math.percentage($background_widthRatio) 
+      math.percentage($background_heightRatio);
+  */
+  background-size: 4573.1707317073px 2246.3414634146px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable .myt_cards_stack {
   position: absolute;
