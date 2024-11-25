@@ -5,7 +5,8 @@ $tile_height: 100px;
     width: $tile_width;
     height: $tile_height;
     $tile_ratio: math.div($tile_width, 512px );
-    outline: 2px solid black;
+    //outline: 2px solid black;
+    box-shadow: 1px 1px 5px black;
     border-radius: 20px;
 
     //sprite positions
@@ -31,8 +32,8 @@ $tile_height: 100px;
 
     position: relative; 
     &.selectable {
-        box-shadow: 0px 0px 40px 20px #0ff;
-        outline: 20px solid aqua;
+        box-shadow: 0px 0px 40px 40px #0ff;
+        //outline: 20px solid aqua;
         z-index: 3;
         cursor: pointer;
         &:hover {
@@ -40,15 +41,15 @@ $tile_height: 100px;
         }
     }
 
-    &.selected,
-    &.selected:hover {
-        box-shadow: 0px 0px 7px 2px green;
-        outline: 20px solid rgb(9, 212, 212);
+    &.selected {
+        //outline: 20px solid rgb(9, 212, 212);
+        box-shadow: 0px 0px 40px 40px rgb(9, 212, 212);
         //transform: scale(1.1);
         z-index: 4;
     }
     &.tooltipable:hover{
-        outline: 8px solid black;
+        //outline: 8px solid black;
+        box-shadow: 0px 0px 40px 40px black;
         z-index: 4;
     }
     
@@ -89,13 +90,15 @@ $tile_height: 100px;
             height: calc($tile_ratio * $token_spot_width); 
             &.selectable{
                 cursor: pointer;
-                outline: 10px solid gold;
+                //outline: 10px solid gold;
+                box-shadow: 0px 0px 10px 20px gold;
                 border-radius: 50%;
                 &:hover {
                     transform: scale(1.1);
                 }
                 &.selected{
-                    outline-color: green;
+                    //outline-color: green;
+                    box-shadow: 0px 0px 10px 20px green;
                 }
             }
             //WE COUNT empty spots from TOP, to fill them from top

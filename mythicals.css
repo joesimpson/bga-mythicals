@@ -1400,7 +1400,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 .myt_tile {
   width: 100px;
   height: 100px;
-  outline: 2px solid black;
+  box-shadow: 1px 1px 5px black;
   border-radius: 20px;
   background-size: 800% 500%;
   background-image: url("img/tiles.jpg");
@@ -1589,21 +1589,19 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   background-position-x: 100%;
 }
 .myt_tile.selectable {
-  box-shadow: 0px 0px 40px 20px #0ff;
-  outline: 20px solid aqua;
+  box-shadow: 0px 0px 40px 40px #0ff;
   z-index: 3;
   cursor: pointer;
 }
 .myt_tile.selectable:hover {
   transform: scale(1.1);
 }
-.myt_tile.selected, .myt_tile.selected:hover {
-  box-shadow: 0px 0px 7px 2px green;
-  outline: 20px solid rgb(9, 212, 212);
+.myt_tile.selected {
+  box-shadow: 0px 0px 40px 40px rgb(9, 212, 212);
   z-index: 4;
 }
 .myt_tile.tooltipable:hover {
-  outline: 8px solid black;
+  box-shadow: 0px 0px 40px 40px black;
   z-index: 4;
 }
 .myt_tile .myt_tile_token_spot {
@@ -1635,14 +1633,14 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot.selectable {
   cursor: pointer;
-  outline: 10px solid gold;
+  box-shadow: 0px 0px 10px 20px gold;
   border-radius: 50%;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot.selectable:hover {
   transform: scale(1.1);
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot.selectable.selected {
-  outline-color: green;
+  box-shadow: 0px 0px 10px 20px green;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="1"] {
   top: 54.19921875px;
