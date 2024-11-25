@@ -28,7 +28,7 @@ $card_height: 200px;
 
     position: relative; 
     &.selectable {
-        box-shadow: 0px 0px 7px 2px #00ffff;
+        box-shadow: 0px 0px 6px 6px #00ffff;
         cursor: pointer;
         &:hover {
             transform: scale(1.1);
@@ -38,20 +38,21 @@ $card_height: 200px;
     &.selected,
     &.selected:hover {
         //box-shadow: 0px 0px 7px 2px green;
-        box-shadow: 0px 0px 7px 2px #d3ff00, 0px 0px 7px 2px #dfff00, 0px 0px 7px 2px #fffb00;
+        box-shadow: 0px 0px 6px 6px #d3ff00, 0px 0px 6px 6px #dfff00, 0px 0px 6px 6px #fffb00;
         //transform: scale(1.1);
         //z-index: 2;
 
         &.myt_selectedToDiscard{
+            $cardscale: 1;
             .myt_card_wrapper::before{
                 //Display a garbage over the card
-                align-items:center;
+                //align-items:center;
                 background:#d1d1d1be;
                 bottom:0;
                 content:"\f1f8";
                 display:flex;
                 font:normal normal normal 14px/1 FontAwesome;
-                font-size: calc(var(--myt_hand_scale) * 60px);
+                font-size: calc($cardscale * 60px);
                 justify-content:center;
                 left:0;
                 position:absolute;
@@ -123,7 +124,7 @@ $card_height: 200px;
             }
             &.selected{
                 //Make the card a bit out of the stack
-                margin-left: -20px;
+                //margin-left: -20px;
             }
         }
 

@@ -663,7 +663,7 @@
 }
 .myt_card_back.selectable,
 .myt_card.selectable {
-  box-shadow: 0px 0px 7px 2px #00ffff;
+  box-shadow: 0px 0px 6px 6px #00ffff;
   cursor: pointer;
 }
 .myt_card_back.selectable:hover,
@@ -673,18 +673,17 @@
 .myt_card_back.selected, .myt_card_back.selected:hover,
 .myt_card.selected,
 .myt_card.selected:hover {
-  box-shadow: 0px 0px 7px 2px #d3ff00, 0px 0px 7px 2px #dfff00, 0px 0px 7px 2px #fffb00;
+  box-shadow: 0px 0px 6px 6px #d3ff00, 0px 0px 6px 6px #dfff00, 0px 0px 6px 6px #fffb00;
 }
 .myt_card_back.selected.myt_selectedToDiscard .myt_card_wrapper::before, .myt_card_back.selected:hover.myt_selectedToDiscard .myt_card_wrapper::before,
 .myt_card.selected.myt_selectedToDiscard .myt_card_wrapper::before,
 .myt_card.selected:hover.myt_selectedToDiscard .myt_card_wrapper::before {
-  align-items: center;
   background: rgba(209, 209, 209, 0.7450980392);
   bottom: 0;
   content: "\f1f8";
   display: flex;
   font: normal normal normal 14px/1 FontAwesome;
-  font-size: calc(var(--myt_hand_scale) * 60px);
+  font-size: 60px;
   justify-content: center;
   left: 0;
   position: absolute;
@@ -728,10 +727,6 @@
 .myt_cards_stack_resizable .myt_cards_stack .myt_card:hover :not(.tooltipable),
 .myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable:hover :not(.tooltipable) {
   z-index: 100;
-}
-.myt_cards_stack_resizable .myt_cards_stack .myt_card.selected,
-.myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable.selected {
-  margin-left: -20px;
 }
 .myt_cards_stack_resizable .myt_cards_stack.selectable {
   cursor: pointer;
