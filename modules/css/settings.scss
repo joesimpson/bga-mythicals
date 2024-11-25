@@ -77,10 +77,10 @@
         svg {
             width: 27px;
         }
-        &:hover{
-            outline: 2px solid green;
-            cursor: help;
-        }
+        //&:hover{
+        //    outline: 2px solid green;
+        //    cursor: help;
+        //}
     }
     #show-settings {
         height: 40px;
@@ -108,6 +108,14 @@
 
         &:hover .fa-primary {
             transform: rotate(180deg);
+        }
+    }
+}
+body.notouch-device{ 
+    #help-mode-switch { 
+        &:hover{
+            outline: 2px solid green;
+            cursor: help;
         }
     }
 }

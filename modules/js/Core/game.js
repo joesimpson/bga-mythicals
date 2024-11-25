@@ -1115,15 +1115,24 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       this.tooltips[id] = tooltip;
       dojo.addClass(id, 'tooltipable');
       dojo.place(
+        //<div class='help-marker-background' id='help-marker-background-${id}'></div>
         `
-        <div class='help-marker'>
+        <div class='help-marker' id='help-marker-${id}'>
           <svg><use href="#help-marker-svg" /></svg>
         </div>
       `,
         id
       );
 
-      dojo.connect($(id), 'click', (evt) => {
+      //
+      let divToApply = $(`${id}`);
+      if($("ebd-body").classList.contains("mobile_version")){
+        //TO avoid interference on mobile
+        divToApply = $(`help-marker-${id}`);
+      }
+
+
+      dojo.connect($(`${id}`), 'click', (evt) => {
         if (!this._helpMode || this.bHideTooltips) {
           tooltip.close();
         } else {
@@ -1141,7 +1150,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       });
 
       tooltip.showTimeout = null;
-      dojo.connect($(id), 'mouseenter', () => {
+      dojo.connect(divToApply, 'mouseenter', () => {
         //BGA preference Disabled
         if(this.bHideTooltips) return;
 
@@ -1156,7 +1165,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
         }
       });
 
-      dojo.connect($(id), 'mouseleave', () => {
+      dojo.connect(divToApply, 'mouseleave', () => {
         if (!this._helpMode && !this._dragndropMode) {
           tooltip.close();
           if (tooltip.showTimeout != null) clearTimeout(tooltip.showTimeout);
