@@ -79,18 +79,15 @@ function (dojo, declare) {
     const TILE_SCORING_SAME_3 = 6;
     const TILE_SCORING_SAME_4 = 7;
     const TILE_SCORING_SUITE_6 = 8;
+        
+    const TILE_FACE_OPEN = 1;
+    const TILE_FACE_LOCKED = 2;
 
     const TOKEN_LOCATION_BOARD = 'board';
     const TOKEN_LOCATION_TILE = 'tile-';
 
     const TOKEN_TYPE_BONUS_MARKER = 1;
     const NB_MAX_TOKENS_ON_TILE = 2;
-
-    const TILE_FACE_NAMES = [
-        0,
-        'Open',//TILE_FACE_OPEN
-        'Locked',//TILE_FACE_LOCKED
-    ];
 
     return declare("bgagame.mythicals", [customgame.game], {
         constructor: function(){
@@ -932,7 +929,7 @@ function (dojo, declare) {
                 let iconColor = this.formatIcon('color-'+tile.color);
                 descColor = this.fsr(_("Color : ${color}"), {color: iconColor});
                 descValue = this.fsr(_("Score : ${n}"), {n: tile.score});
-                descFace = this.fsr(_("Face : ${face}"), {face: TILE_FACE_NAMES[tile.face]});
+                descFace = this.fsr(_("Face : ${face}"), {face: this.getTileFaceName(tile.face)});
             }
             return [`<div class='myt_tile_tooltip'>
                     <h1>${title}</h1>
@@ -990,6 +987,13 @@ function (dojo, declare) {
                 </div>`;
         },
         
+        getTileFaceName(face) {
+            let descriptionMap = new Map([
+                [TILE_FACE_OPEN,     _('Open')],
+                [TILE_FACE_LOCKED,     _('Locked')],
+            ]);
+            return descriptionMap.get(face);
+        },
         ////////////////////////////////////////////////////////
         //    ____              _
         //   / ___|__ _ _ __ __| |___
@@ -1043,7 +1047,7 @@ function (dojo, declare) {
             else {
                 title = _("Creature card");
                 let iconColor = this.formatIcon('color-'+card.color);
-                let value = CARD_VALUE_JOKER == card.value ? _('Joker, can replace any value from 1 to 5'): card.value;
+                let value = CARD_VALUE_JOKER == card.value ? _('Joker (can replace any value from 1 to 5)'): card.value;
                 descColor = this.fsr(_("Color : ${color}"), {color:iconColor});
                 descValue = this.fsr(_("Value : ${value}"), {value: value});
             }
