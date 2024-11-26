@@ -1097,13 +1097,24 @@ function (dojo, declare) {
         
         updateCardsStackCounters() { 
             debug("updateCardsStackCounters");
-            let div = document;
-            //document.querySelectorAll('.myt_player_cards').forEach((div) => {
+            //PLAYERS Collection
+            document.querySelectorAll('.myt_player_cards').forEach((div) => {
                 div.querySelectorAll('.myt_cards_stack_resizable').forEach((stack) => {
                     let nbcards = stack.querySelectorAll('.myt_card').length;
                     stack.dataset.nbcards = nbcards;
                 });
-            //});
+            });
+            //Cards on board
+            let maxNbCards = 0;
+            document.querySelectorAll('#myt_board').forEach((div) => {
+                div.querySelectorAll('.myt_cards_stack_resizable').forEach((stack) => {
+                    let nbcards = stack.querySelectorAll('.myt_card').length;
+                    stack.dataset.nbcards = nbcards;
+                    if(maxNbCards<nbcards) maxNbCards = nbcards;
+                });
+            });
+            const ROOT = document.documentElement;
+            ROOT.style.setProperty('--myt_board_cards_stack_max', maxNbCards);
         },
 
         

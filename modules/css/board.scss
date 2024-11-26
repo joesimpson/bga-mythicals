@@ -2,15 +2,19 @@
 $board_img_width: 3750px;
 $board_img_height: 1842px;
 $card_width: 450px;
-$card_height: calc(2 * $card_width);
+$card_height: var(--myt_board_card_height);
 
 #myt_resizable_board {
     width: calc(var(--myt_board_display_scale) * $board_img_width);
     height: calc(var(--myt_board_display_scale) * $board_img_height);
     margin-bottom: 10px;
-    //TODO JSA use class or attribute to know how many cards in reserve
     margin-bottom: 250px;//TEST With 5 stacked cards
-
+    //To prepare the height of the stack, we add 1 card_height for the top card, and then N-1 times the truncated part of the card
+    margin-bottom: calc(10px 
+        + var(--myt_board_display_scale) * (
+            $card_height 
+            + ((var(--myt_board_cards_stack_max) - 1) * calc(var(--myt_board_cards_stack_height_ratio) * $card_height )))
+        );
     #myt_board_container{
         /* prevents vertical invisible overflow on BGA bottom elements*/
         height: inherit;
@@ -123,12 +127,11 @@ $card_height: calc(2 * $card_width);
                     }
                 }
             }
-            $card_stack_diff_height_ratio: math.div(85, 100) ;
             .myt_cards_stack{
                 .myt_card {
                     //Stack cards 
                     margin-bottom: -165%;
-                    margin-bottom: calc( -1 * $card_stack_diff_height_ratio * $card_height);
+                    margin-bottom: calc( -1 * (1 - var(--myt_board_cards_stack_height_ratio)) * $card_height);
                 }
             }
             .myt_cards_stack_resizable {
@@ -137,7 +140,7 @@ $card_height: calc(2 * $card_width);
                         //To prepare the height of the stack, we add 1 card_height for the top card, and then N-1 times the truncated part of the card
                         height: calc(10px 
                                 + $card_height
-                                + ($i - 1)  * calc((1 - $card_stack_diff_height_ratio) * $card_height )
+                                + ($i - 1)  * calc(var(--myt_board_cards_stack_height_ratio) * $card_height )
                             );
                     }
                 }
