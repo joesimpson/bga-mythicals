@@ -580,6 +580,8 @@ function (dojo, declare) {
             let div = $(`myt_tile-${tile.id}`);
             if (!div) return;
             div.dataset.face = tile.face;
+            //Update tooltip because face has changed
+            this.addCustomTooltip(div.id, this.getTileTooltip(tile));
             //TODO ? flipAndReplace
             //this.flipAndReplace(div, divAfter);
         },
@@ -912,12 +914,10 @@ function (dojo, declare) {
         addTile(tile, location = null) {
             debug('addTile',tile);
             let divId = `myt_tile-${tile.id}`;
-            if ($(divId)) return $(divId);
-            let o = this.place('tplTile', tile, location == null ? this.getTileContainer(tile) : location);
-            let tooltipDesc = this.getTileTooltip(tile);
-            if (tooltipDesc != null) {
-                this.addCustomTooltip(o.id, tooltipDesc);
-            }
+            let o = null;
+            if ($(divId)) o = $(divId);
+            else o = this.place('tplTile', tile, location == null ? this.getTileContainer(tile) : location);
+            this.addCustomTooltip(o.id, this.getTileTooltip(tile));
     
             return o;
         },
