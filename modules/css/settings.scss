@@ -175,7 +175,9 @@ body.notouch-device{
 #settings-controls-container {
     position: relative;
     text-align: center;
-    width: 550px;
+    //width: 550px;
+    //Beware on small screens ! because top parent controls width with min
+    width: min(550px,90vw);
 
     #settings-controls-header {
         display: flex;

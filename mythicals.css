@@ -1979,7 +1979,7 @@ body.notouch-device #help-mode-switch:hover {
 #settings-controls-container {
   position: relative;
   text-align: center;
-  width: 550px;
+  width: min(550px, 90vw);
 }
 #settings-controls-container #settings-controls-header {
   display: flex;
