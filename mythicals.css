@@ -577,6 +577,7 @@
 
 #myt_cards_deck_container {
   margin: 5px;
+  height: 230px;
 }
 
 .myt_card_back,
