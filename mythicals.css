@@ -718,6 +718,10 @@
           user-select: none;
 }
 
+.myt_card .help-marker {
+  left: 40%;
+}
+
 .myt_cards_stack_resizable {
   display: flex;
   border-radius: 10px;
