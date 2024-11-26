@@ -92,6 +92,18 @@ $card_height: 200px;
     position: relative;
     margin-left: 10px;
 
+    $card_stack_diff_height_ratio: math.div(85, 100) ;
+    @for $i from 1 through 12 {//6 should be enough to have each card, but we may earn all copies of 1 color at a time from reserve
+
+        &[data-nbcards="#{$i}"]{//This number will be computed on JS side based on children
+            //To prepare the height of the stack, we add 1 card_height for the top card, and then N-1 times the truncated part of the card
+            height: calc(10px 
+                    + $card_height
+                    + ($i - 1)  * calc((1 - $card_stack_diff_height_ratio) * $card_height )
+                );
+        }
+    }
+
     .myt_cards_stack{
         
         display: flex;
@@ -118,7 +130,7 @@ $card_height: 200px;
             
 
             //Stack cards 
-            margin-bottom: calc(math.div(-85, 100) * $card_height);
+            margin-bottom: calc( -1 * $card_stack_diff_height_ratio * $card_height);
             //z-index: 2;
             &:hover {
                 //may interfere with tooltip

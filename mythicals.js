@@ -528,19 +528,24 @@ function (dojo, declare) {
             ).then(() => {
                 this.notifqueue.setSynchronousDuration(this.isFastMode() ? 0 : 10);
                 //this._counters['deckSize'].incValue(- n.args.cards.length );
+                this.updateCardsStackCounters();
             });
         },
         notif_giveCardToPublic(n) {
-            debug('notif_giveCardToPublic: receiving a new card', n);
+            debug('notif_giveCardToPublic: player receiving a new card', n);
             if (!$(`myt_card-${n.args.card.id}`)) this.addCard(n.args.card, this.getVisibleTitleContainer());
-            this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card));
+            this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card)).then(() => {
+                this.updateCardsStackCounters();
+            });
             this._counters[n.args.player_id].cards.incValue(1);
             if(n.args.player_id2) this._counters[n.args.player_id2].cards.incValue(-1);
         },
         notif_cardToReserve(n) {
             debug('notif_cardToReserve: RESERVE receiving a new card', n);
             if (!$(`myt_card-${n.args.card.id}`)) this.addCard(n.args.card, this.getVisibleTitleContainer());
-            this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card));
+            this.slide(`myt_card-${n.args.card.id}`, this.getCardContainer(n.args.card)).then(() => {
+                this.updateCardsStackCounters();
+            });
         },
 
         notif_discardCards(n) {
@@ -561,6 +566,7 @@ function (dojo, declare) {
             ).then(() => {
                 this.notifqueue.setSynchronousDuration(this.isFastMode() ? 0 : 10);
                 this._counters[n.args.player_id].cards.incValue(- n.args.cards.length);
+                this.updateCardsStackCounters();
             });
         },
         notif_takeTile(n) {
@@ -1026,6 +1032,7 @@ function (dojo, declare) {
                 }
                 return card.id;
             });
+            this.updateCardsStackCounters();
         },
     
         addCard(card, location = null) {
@@ -1086,6 +1093,17 @@ function (dojo, declare) {
             
             console.error('Trying to get container of a card', card);
             return 'myt_game_container';
+        },
+        
+        updateCardsStackCounters() { 
+            debug("updateCardsStackCounters");
+            let div = document;
+            //document.querySelectorAll('.myt_player_cards').forEach((div) => {
+                div.querySelectorAll('.myt_cards_stack_resizable').forEach((stack) => {
+                    let nbcards = stack.querySelectorAll('.myt_card').length;
+                    stack.dataset.nbcards = nbcards;
+                });
+            //});
         },
 
         

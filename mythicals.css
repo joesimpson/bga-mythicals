@@ -386,9 +386,45 @@
 #myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable#myt_cards_reserve_resizable_1 {
   left: 1943px;
 }
-#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack .myt_card,
-#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack .myt_card_resizeable {
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack .myt_card {
   margin-bottom: -165%;
+  margin-bottom: -765px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="1"] {
+  height: 910px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="2"] {
+  height: 1045px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="3"] {
+  height: 1180px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="4"] {
+  height: 1315px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="5"] {
+  height: 1450px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="6"] {
+  height: 1585px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="7"] {
+  height: 1720px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="8"] {
+  height: 1855px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="9"] {
+  height: 1990px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="10"] {
+  height: 2125px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="11"] {
+  height: 2260px;
+}
+#myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="12"] {
+  height: 2395px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens {
   position: absolute;
@@ -738,6 +774,42 @@
   background-color: rgba(213, 162, 87, 0.5098039216);
   position: relative;
   margin-left: 10px;
+}
+.myt_cards_stack_resizable[data-nbcards="1"] {
+  height: 210px;
+}
+.myt_cards_stack_resizable[data-nbcards="2"] {
+  height: 240px;
+}
+.myt_cards_stack_resizable[data-nbcards="3"] {
+  height: 270px;
+}
+.myt_cards_stack_resizable[data-nbcards="4"] {
+  height: 300px;
+}
+.myt_cards_stack_resizable[data-nbcards="5"] {
+  height: 330px;
+}
+.myt_cards_stack_resizable[data-nbcards="6"] {
+  height: 360px;
+}
+.myt_cards_stack_resizable[data-nbcards="7"] {
+  height: 390px;
+}
+.myt_cards_stack_resizable[data-nbcards="8"] {
+  height: 420px;
+}
+.myt_cards_stack_resizable[data-nbcards="9"] {
+  height: 450px;
+}
+.myt_cards_stack_resizable[data-nbcards="10"] {
+  height: 480px;
+}
+.myt_cards_stack_resizable[data-nbcards="11"] {
+  height: 510px;
+}
+.myt_cards_stack_resizable[data-nbcards="12"] {
+  height: 540px;
 }
 .myt_cards_stack_resizable .myt_cards_stack {
   display: flex;
