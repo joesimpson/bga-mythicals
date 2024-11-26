@@ -1512,13 +1512,21 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 
 .myt_card_tooltip {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.myt_card_tooltip hr {
+  width: 100%;
 }
 .myt_card_tooltip .myt_card {
-  width: 200px;
-  height: 400px;
+  width: 10em;
+  height: 20em;
 }
 .myt_card_tooltip .myt_value_desc {
-  width: 200px;
+  width: 10em;
 }
 
 .myt_tile {

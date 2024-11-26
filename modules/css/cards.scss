@@ -340,12 +340,23 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
 
 .myt_card_tooltip{
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    hr{
+        width: 100%;
+    }
     .myt_card{
-        width: calc($card_width * 2);
-        height: calc($card_height * 2);
+        //width: calc($card_width * 2);
+        //height: calc($card_height * 2);
+        width: 10em;
+        height: 20em;
     }
     .myt_value_desc{
         //don't let a long desc be less pretty
-        width: calc($card_width * 2);
+        //width: calc($card_width * 2);
+        width: 10em;
     }
 }
