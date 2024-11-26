@@ -135,26 +135,3 @@
         margin: 0 0.5em;
     }
 }
-
-.myt_icon_container {
-    display: inline-block;
-    vertical-align: middle;
-    .myt_icon{
-        &.myt_icon_cards{
-            width: 2em;
-            height: 2em;
-        }
-        &.myt_icon_tiles{
-            width: 2em;
-            height: 2em;
-        }
-        &.myt_icon_bonus_tokens {
-            
-            width: 3em;
-            height: 3em;
-                
-            background-image: url('img/bonus_marker.png');
-            background-size: 100%;
-        }
-    }
-}

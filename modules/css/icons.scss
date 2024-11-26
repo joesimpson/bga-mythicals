@@ -81,3 +81,27 @@
         background-position-x: calc( $icon_img_ratio * -3420px);
     }
 }
+
+.myt_icon_container {
+    display: inline-block;
+    vertical-align: middle;
+    .myt_icon{
+        &.myt_icon_cards{
+            width: 2em;
+            height: 2em;
+        }
+        &.myt_icon_tiles{
+            width: 2em;
+            height: 2em;
+        }
+        &.myt_icon_bonus_tokens,
+        &.myt_icon_bonus-1 { //TOKEN_TYPE_BONUS_MARKER
+            
+            width: 3em;
+            height: 3em;
+                
+            background-image: url('img/bonus_marker.png');
+            background-size: 100%;
+        }
+    }
+}

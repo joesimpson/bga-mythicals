@@ -700,9 +700,10 @@ function (dojo, declare) {
                 args.processed = true;
 
                 log = this.formatString(_(log));
-                let bonus_icon = 'bonus_icon';
-                if(bonus_icon in args) {
-                    args.bonus_icon = this.formatIcon('bonus-'+args.bonus_icon);
+                let token_type = 'token_type';
+                if(token_type in args) {
+                    args.token_name = this.formatIcon('bonus-'+args.token_type);
+                    args.token_type = "";
                 }
                 let card_color = 'card_color';
                 let card_color_type = 'card_color_type';

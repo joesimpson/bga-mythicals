@@ -175,10 +175,14 @@ class Notifications
    */
   public static function reinforceTile(Player $player,MasteryTile $tile,int $nbTokens)
   {
-    self::notifyAll('reinforceTile', clienttranslate('${player_name} reinforces a mastery tile on the board with ${n} bonus markers'), [
+    self::notifyAll('reinforceTile', clienttranslate('${player_name} reinforces a mastery tile on the board with ${n} ${token_name}'), [
       'player' => $player,
       'tile' => $tile->getUiData(),
       'n' => $nbTokens,
+      'i18n' => ['token_name'],  
+      'token_name' => clienttranslate("Bonus markers"),
+      'preserve' => [ 'token_type' ],
+      'token_type' => TOKEN_TYPE_BONUS_MARKER,
     ]);
   }
   
@@ -192,9 +196,13 @@ class Notifications
  
   public static function takeBonus(Player $player,Token $token)
   {
-    self::notifyAll('takeBonus', clienttranslate('${player_name} receives a bonus marker'), [
+    self::notifyAll('takeBonus', clienttranslate('${player_name} receives 1 ${token_name}'), [
+      'i18n' => ['token_name'],  
       'player' => $player,
       'token' => $token->getUiData(),
+      'token_name' => clienttranslate("Bonus markers"),
+      'preserve' => [ 'token_type' ],
+      'token_type' => $token->getType(),
     ]);
   }
   /*************************
