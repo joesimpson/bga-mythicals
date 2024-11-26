@@ -1126,8 +1126,8 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
 
       //
       let divToApply = $(`${id}`);
-      if($("ebd-body").classList.contains("mobile_version")){
-        //TO avoid interference on mobile
+      if($("ebd-body").classList.contains("touch-device")){
+        //TO avoid interference on touch mobile
         divToApply = $(`help-marker-${id}`);
       }
 
