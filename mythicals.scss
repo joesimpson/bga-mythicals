@@ -174,6 +174,19 @@ body[data-myt_undo_style='2']{//PREF_UNDO_STYLE_ICON
 .log.cancel.roundedbox {
     background-color: #ef9a9a;
 }
+// ------------------------------------------------------------------------------
+// Override BGA style for log player_name
+.playername_wrapper_ffa500,
+.playername_wrapper_bdd002,
+.playername_wrapper_ffffff{//WHITE
+    .playername, // Different in replay ?
+    &.playername {
+        text-shadow: 2px 0px 2px black, 
+                    0px 2px 2px black,
+                    -2px 0px 2px black,
+                    0px -2px 2px black; 
+    }
+}
 
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------

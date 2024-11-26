@@ -156,6 +156,15 @@
   background-position-x: -977.1428571429px;
 }
 
+.player_board_inner > .player-name {
+  /** Add a BLACK shadow behind player name in case of bright colors like white/orange/green-sad*/
+}
+.player_board_inner > .player-name > a[style*="color: #ffa500"],
+.player_board_inner > .player-name > a[style*="color: #ffffff"],
+.player_board_inner > .player-name > a[style*="color: #bdd002"] {
+  text-shadow: 1px 0px 1px black, 0px 1px 1px black, -1px 0px 1px black, 0px -1px 1px black;
+}
+
 .myt_panel .myt_player_infos {
   display: flex;
   flex-direction: column;
@@ -2431,6 +2440,14 @@ body[data-myt_undo_style="2"] #btnTextRestartTurn {
 /* Mobile logs */
 .log.cancel.roundedbox {
   background-color: #ef9a9a;
+}
+
+.playername_wrapper_ffa500 .playername, .playername_wrapper_ffa500.playername,
+.playername_wrapper_bdd002 .playername,
+.playername_wrapper_bdd002.playername,
+.playername_wrapper_ffffff .playername,
+.playername_wrapper_ffffff.playername {
+  text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
 }
 
 #pagesection_howtoplay li, .midSizeDialog li {
