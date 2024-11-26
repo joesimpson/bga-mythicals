@@ -985,11 +985,14 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       try {
         if (log && args) {
           //          if (args.msgYou && args.player_id == this.player_id) log = args.msgYou;
-
-          let player_keys = Object.keys(args).filter((key) => key.substr(0, 11) == 'player_name');
-          player_keys.forEach((key) => {
-            args[key] = this.coloredPlayerName(args[key],args['player_color']);
-          });
+          
+          let playernames_keys = Object.keys(args).filter((key) => key.startsWith( 'player_name'));
+          let color_keys = Object.keys(args).filter((key) => key.startsWith('player_color'));
+          for(let k=0; k<playernames_keys.length; k++){
+            let key = playernames_keys[k];
+            let colorKey = color_keys[k];
+            args[key] = this.coloredPlayerName(args[key],args[colorKey]);
+          }
 
           //          args.You = this.coloredYou();
         }
