@@ -86,7 +86,7 @@ trait TileChoiceTrait
       }
     }
     if (!$foundMatch) {
-      throw new UserException(103,"These cards are not a valid set to get this tile");
+      throw new UserException(103,self::_("These cards are not a valid set to get this tile"));
     }
     $cards = $playerCards->filter(function($card) use ($card_ids){
       return in_array($card->getId(), $card_ids);
@@ -96,7 +96,7 @@ trait TileChoiceTrait
     //TONLY FOR SETS not SUITES !
     $foundMatch = Utils::isSameValueSet($cards);
     if (!$foundMatch) {
-      throw new UserException(104,"These cards are not a valid set to get this tile");
+      throw new UserException(104,self::_("These cards are not a valid set to get this tile"));
     }
     */
 
