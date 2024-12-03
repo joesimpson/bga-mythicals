@@ -1,6 +1,7 @@
 <?php
 namespace Bga\Games\Mythicals;
 
+use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Helpers\Collection;
@@ -84,15 +85,23 @@ trait DebugTrait
     Cards::DB()->delete()->run();
     Tiles::DB()->delete()->run();
     Tokens::DB()->delete()->run();
+    Globals::DB()->delete()->run();
     Notifications::refreshUI($this->getAllDatas());
-    Stats::setupNewGame($playersDatas);
-    Cards::setupNewGame($playersDatas,[]);
-    Tiles::setupNewGame($players,[]);
-    Tokens::setupNewGame($players,[]);
+
+    //Globals::setupNewGame($players,[]);
+    //Stats::setupNewGame($playersDatas);
+    //Cards::setupNewGame($playersDatas,[]);
+    //Tiles::setupNewGame($players,[]);
+    //Tokens::setupNewGame($players,[]);
+    
+    Players::DB()->delete()->run();
+    $this->setupNewGame($players,[]);
+
+    $players = self::loadPlayersBasicInfos();
     Notifications::refreshUI($this->getAllDatas());
     
-    $this->addCheckpoint(ST_PLAYER_TURN_COLLECT);
-    $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
+    $this->addCheckpoint(ST_NEXT_TURN);
+    $this->gamestate->jumpToState(ST_NEXT_TURN);
   }
 
   //Clear logs

@@ -18,7 +18,6 @@ trait NextTurnTrait
     // Retrieve the active player ID.
     $player_id = (int)$this->getActivePlayerId();
 
-
     if(Cards::countInLocation(CARD_LOCATION_END) > 0){
       //END GAME TRIGGER
       $this->addCheckpoint(ST_END_SCORING);
@@ -26,14 +25,17 @@ trait NextTurnTrait
       return;
     }
 
-    // Give some extra time to the active player when he completed an action
-    $this->giveExtraTime($player_id);
-    
-    $this->activeNextPlayer();
-    $player = Players::getActive();
-    
     Globals::setupNewTurn();
     $turn = Globals::getTurn();
+    if($turn==1){
+      $player = Players::get(Globals::getFirstPlayer());
+    }
+    else {
+      $activePlayer = Players::getActive();
+      $player = Players::getNextPlayerNotEliminated($activePlayer->getId());
+    }
+    Players::changeActive($player->getId());
+    $player->giveExtraTime();
     Players::setupNewTurn($player);
 
     $this->addCheckpoint(ST_PLAYER_TURN_COLLECT);

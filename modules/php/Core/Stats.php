@@ -202,12 +202,23 @@ class Stats extends \Bga\Games\Mythicals\Helpers\DB_Manager
   public static function setupNewGame($players)
   {
     Stats::checkExistence();
-    foreach ($players as $pId => $player) {
-    }
-    $turnOrder = Players::getTurnOrder(Globals::getFirstPlayer());
+    $firstPlayer = Globals::getFirstPlayer();
+    /* This is a 2P game for now, let's keep it simple
+    $turnOrder = Players::getTurnOrder();
     foreach ($turnOrder as $key => $orderPId) {
-      Stats::set("turnOrder", $orderPId, $key + 1);
+      Stats::set("turnOrder", $orderPId, $key + 2);
     }
+    */
+    foreach ($players as $pId => $player) {
+      if($firstPlayer == $pId){ 
+        $turnOrder = 1;
+      }
+      else {
+        $turnOrder = 2;
+      }
+      Stats::set("turnOrder", $pId, $turnOrder);
+    }
+
     
   }
 }

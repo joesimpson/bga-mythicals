@@ -141,7 +141,7 @@ class Players extends \Bga\Games\Mythicals\Helpers\DB_Manager
    * @param int $player_id
    * @return Player
    */
-  public static function getNextPlayerNotEliminated($player_id)
+  public static function getNextPlayerNotEliminated(int $player_id)
   {
     $nextPlayer_id = Players::getNextId($player_id);
     $nextPlayer = Players::get($nextPlayer_id);

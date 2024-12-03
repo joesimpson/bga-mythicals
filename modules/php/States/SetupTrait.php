@@ -30,10 +30,6 @@ trait SetupTrait
 
     $this->setGameStateInitialValue('logging', true); 
 
-    // Activate first player (which is in general a good idea :) )
-    if(!array_key_exists("DEBUG",$options)){
-      $this->activeNextPlayer();
-    }
     /************ End of the game initialization *****/
   }
  
