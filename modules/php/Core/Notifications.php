@@ -128,7 +128,7 @@ class Notifications
    */
   public static function discardCards(Player $player,$cards)
   {
-    self::notifyAll('discardCards', clienttranslate('${player_name} discard ${n} cards'), [
+    self::notifyAll('discardCards', clienttranslate('${player_name} discards ${n} cards'), [
       'player' => $player,
       'n' => $cards->count(),
       'cards' => $cards->ui(),
