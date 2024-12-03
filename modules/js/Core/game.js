@@ -286,9 +286,6 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       }
     },
 
-    /*
-     * setupNotifications
-     */
     getVisibleTitleContainer() {
       function isVisible(elem) {
         return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
@@ -300,9 +297,9 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
         return $('gameaction_status');
       }
     },
-
     setupNotifications() {
-      console.log(this._notifications);
+      console.log("setupNotifications",this._notifications); 
+      /*
       this._notifications.forEach((notif) => {
         var functionName = 'notif_' + notif[0];
 
@@ -347,6 +344,27 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       this.notifqueue.setSynchronousDuration = (duration) => {
         setTimeout(() => dojo.publish('notifEnd', null), duration);
       };
+      */
+     
+      //2024 NEw Framework function
+      this.bgaSetupPromiseNotifications( {
+        minDuration: 900, // for longer animations (500 by default)
+        logger: debug,
+        onStart: (notifName, msg, args) => {
+          if (this._displayNotifsOnTop && msg != '') {
+            let msgF = this.format_string_recursive(msg, args);
+            $('gameaction_status').innerHTML = msgF;
+            $('pagemaintitletext').innerHTML = msgF;
+            this.removeAllActionButtons();
+          }
+        }, 
+        onEnd: (notifName, msg, args) => { 
+          //if (this._displayNotifsOnTop && msg != '') {
+          //  $('gameaction_status').innerHTML =''; 
+          //  $('pagemaintitletext').innerHTML = ''; 
+          //}
+        },
+      });
     },
 
     /**
@@ -768,7 +786,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       let b = values[1];
       return Math.sqrt(a * a + b * b);
     },
-
+    /*11/2024 Framework version 
     wait(n) {
       return new Promise((resolve, reject) => {
         if (this.isFastMode()) {
@@ -777,7 +795,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
           setTimeout(() => resolve(), n);
         }
       });
-    },
+    },*/
 
     slide(mobileElt, targetElt, options = {}) {
       let config = Object.assign(

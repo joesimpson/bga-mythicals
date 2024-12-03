@@ -137,6 +137,17 @@ trait DebugTrait
   
   */
   
+  function debug_DayCard(){
+    $player = Players::getCurrent();
+    //
+    $cards = Cards::getAll();
+    foreach($cards as $card){
+      if($card->getColor() == CARD_COLOR_DAY){
+        Notifications::dayCard($player,$card);
+      }
+    }
+  }
+  
   function debug_Suites(){
     $player = Players::getCurrent();
     Notifications::message("--------------------------------------------------");
