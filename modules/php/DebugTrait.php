@@ -146,8 +146,27 @@ trait DebugTrait
         Notifications::dayCard($player,$card);
       }
     }
+    $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
   }
   
+  function debug_NotifsSync(){
+    $player = Players::getCurrent();
+    //
+    $cards = Cards::getAll();
+    foreach($cards as $card){
+      if($card->getColor() == CARD_COLOR_DAY){
+        Notifications::dayCard($player,$card);
+      }
+    }
+    //
+    $tiles = Tiles::getBoardTiles();
+    foreach($tiles as $tile){
+      Notifications::takeTile($player,$tile);
+    }
+
+    $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
+  }
+
   function debug_Suites(){
     $player = Players::getCurrent();
     Notifications::message("--------------------------------------------------");
@@ -244,6 +263,8 @@ trait DebugTrait
     foreach($players as $player) $player->setScore(0);
     $this->debug_UI();
     $this->computeFinalScore($players);
+    
+    $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
   }
   function debug_GoToScoring(){
     $players = Players::getAll();

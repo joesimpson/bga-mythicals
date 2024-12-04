@@ -34,6 +34,7 @@ trait TileChoiceTrait
     $possibleTiles = $this->listPossibleTilesToTake($player);
     $args = [
       "possibleTiles" => $possibleTiles,
+      //AUTO SKIP STATE
       '_no_notify' => count($possibleTiles) === 0,
     ];
     

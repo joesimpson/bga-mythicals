@@ -94,13 +94,13 @@ function (dojo, declare) {
             debug('mythicals constructor');
               
             // Here, you can init the global variables of your user interface
-            this.tokenZone_width = 150;
             this._counters = {};
             
             //Filter states where we don't want other players to display state actions
             this._activeStates = ['cardCollect','tileChoice','tileModif', 'confirmTurn'];
             this._inactiveStates = ['scoring','gameEnd'];
 
+            /*
             this._notifications = [
                 ['drawCards', 1000],
                 ['giveCardToPublic', 800],
@@ -115,6 +115,7 @@ function (dojo, declare) {
                 ['dayCard', 3000],
                 ['addPoints', 1200],
             ];
+            */
 
         },
         
@@ -488,10 +489,12 @@ function (dojo, declare) {
         //////////////////////////////////////////////////////////////
         notif_clearTurn: async function(args)  {
             debug('notif_clearTurn: restarting turn/step', args);
+            //this.setNotifDuration(200);
             this.cancelLogs(args.notifIds);
         },
         notif_refreshUI: async function(args) {
             debug('notif_refreshUI: refreshing UI', args);
+            //this.setNotifDuration(200);
             this.refreshPlayersDatas(args.datas['players']);
             ['cards', 'tiles', 'tokens', 'deckSize',].forEach((value) => {
                 this.gamedatas[value] = args.datas[value];
@@ -512,71 +515,70 @@ function (dojo, declare) {
         
         notif_drawCards: async function(args) {
             debug('notif_drawCards: 3 cards to the center', args);
+            //this.setNotifDuration(1000);
+            let pcards = Object.values(args.cards);
+            //this.setNotifDuration(1000 + pcards.length*50);
             let deckContainer = $('myt_cards_deck_container');
             await Promise.all(
-                Object.values(args.cards).map((card, i) => {
+                pcards.map(async (card, i) => {
                     this.gamedatas.cards.push(card);
                     let divCard = this.addCard(card, deckContainer, {
                         phantom: false,
                         from: deckContainer.id 
                     });
                     this._counters['deckSize'].incValue(-1 );
-                    return this.wait(50 * i).then(() => 
-                        this.slide(divCard.id, this.getCardContainer(card), { })
+                    await this.wait(50 * i).then(async () => 
+                        await this.slide(divCard.id, this.getCardContainer(card), { })
                     );
                 })
-            ).then(() => {
-                this.notifqueue.setSynchronousDuration(this.isFastMode() ? 0 : 10);
-                //this._counters['deckSize'].incValue(- args.cards.length );
-                this.updateCardsStackCounters();
-            });
-            //if(isDebug) await this.wait(1000);
+            );
+            this.updateCardsStackCounters();
         },
         notif_giveCardToPublic: async function(args) {
             debug('notif_giveCardToPublic: player receiving a new card', args);
-            if (!$(`myt_card-${args.card.id}`)) this.addCard(args.card, this.getVisibleTitleContainer());
-            await this.slide(`myt_card-${args.card.id}`, this.getCardContainer(args.card)).then(() => {
-                this.updateCardsStackCounters();
-            });
+            //this.setNotifDuration(1000);
             this._counters[args.player_id].cards.incValue(1);
             if(args.player_id2) this._counters[args.player_id2].cards.incValue(-1);
             
-            //if(isDebug) await this.wait(1000);
+            if (!$(`myt_card-${args.card.id}`)) this.addCard(args.card, this.getVisibleTitleContainer());
+            await this.slide(`myt_card-${args.card.id}`, this.getCardContainer(args.card));
+            this.updateCardsStackCounters();
+            await this.wait(200);
         },
         notif_cardToReserve: async function(args) {
             debug('notif_cardToReserve: RESERVE receiving a new card', args);
+            //this.setNotifDuration(1000);
             if (!$(`myt_card-${args.card.id}`)) this.addCard(args.card, this.getVisibleTitleContainer());
-            await this.slide(`myt_card-${args.card.id}`, this.getCardContainer(args.card)).then(() => {
-                this.updateCardsStackCounters();
-            });
-            //if(isDebug) await this.wait(1000);
+            await this.slide(`myt_card-${args.card.id}`, this.getCardContainer(args.card));
+            this.updateCardsStackCounters();
+            //await this.wait(1000);
         },
 
         notif_discardCards: async function(args) {
             debug('notif_discardCards: n cards discarded to not visible zone', args);
+            let pcards = Object.values(args.cards);
+            //this.setNotifDuration(1000 + pcards.length*50);
             await Promise.all(
-                Object.values(args.cards).map((card, i) => {
+                pcards.map(async (card, i) => {
                     //Remove card datas from memory
                     let cardIndex = this.gamedatas.cards.findIndex((t) => t == card.id);
                     this.gamedatas.cards.splice(cardIndex, 1);
                     
-                    return this.wait(50 * i).then(() => 
-                        this.slide(`myt_card-${card.id}`, this.getVisibleTitleContainer(), {
+                    await this.wait(50 * i).then( async () => 
+                        await this.slide(`myt_card-${card.id}`, this.getVisibleTitleContainer(), {
                             destroy: true,
                             phantom: false,
                         })
                     );
                 })
-            ).then(() => {
-                this.notifqueue.setSynchronousDuration(this.isFastMode() ? 0 : 10);
-                this._counters[args.player_id].cards.incValue(- args.cards.length);
-                this.updateCardsStackCounters();
-            });
+            );
+            this._counters[args.player_id].cards.incValue(- args.cards.length);
+            this.updateCardsStackCounters();
 
-            //if(isDebug) await this.wait(1000);
         },
         notif_takeTile: async function(args) {
             debug('notif_takeTile: player receiving a new tile', args);
+            //this.setNotifDuration(1200);
             let tile = args.tile;
             let pId = args.player_id;
             //Remove DOM of previous one because game rule states we see only the top
@@ -584,12 +586,12 @@ function (dojo, declare) {
             if (!$(`myt_tile${tile.id}`)) this.addTile(tile, this.getVisibleTitleContainer());
             await this.slide(`myt_tile-${tile.id}`, this.getTileContainer(tile));
             this._counters[pId].tiles.incValue(1);
-            
-            //if(isDebug) await this.wait(1000);
+            await this.wait(400);
         },
         
         notif_lockTile: async function(args) {
             debug('notif_lockTile: player updating tile face', args);
+            //this.setNotifDuration(800);
             let tile = args.tile;
             let div = $(`myt_tile-${tile.id}`);
             if (!div) return;
@@ -598,20 +600,22 @@ function (dojo, declare) {
             this.addCustomTooltip(div.id, this.getTileTooltip(tile));
             //TODO ? flipAndReplace
             //this.flipAndReplace(div, divAfter);
-            //if(isDebug) await this.wait(1000);
+
+            await this.wait(800);
         },
         
         notif_newBonusMarkerOnTile: async function(args) {
             debug('notif_newBonusMarkerOnTile', args);
+            //this.setNotifDuration(900);
             let tile_id = args.tile_id;
             let token = args.token;
             await this.slide(`myt_token-${token.id}`, this.getTokenContainer(token));
             
-            //if(isDebug) await this.wait(1000);
         },
         
         notif_takeBonus: async function(args) {
             debug('notif_takeBonus', args);
+            //this.setNotifDuration(900);
             let token = args.token;
             if (this.isFastMode() ) {
                 this._counters[token.pId].bonus_tokens.incValue(1);
@@ -623,23 +627,30 @@ function (dojo, declare) {
                 from: currentPos,
                 destroy: true,
                 phantom: false,
-            } ).then(() => this._counters[token.pId].bonus_tokens.incValue(1));
-            
-            //if(isDebug) await this.wait(1000);
+            } );
+            this._counters[token.pId].bonus_tokens.incValue(1);
+            await this.wait(100);
         },
 
         notif_addPoints: async function(args) {
             debug('notif_addPoints : new score', args);
+           // this.setNotifDuration(1200);
             let pId = args.player_id;
             let points = args.n;
             this.gamedatas.players[pId].score += points;
             this.scoreCtrl[pId].incValue(points);
-            
-            //if(isDebug) await this.wait(1000);
+            await this.wait(1200);
         },
+        //Notifs with text only :
         notif_dayCard: async function(n) {
             debug('notif_dayCard', n);
+            //this.setNotifDuration(3000);
             await this.wait(3000);
+        },
+        notif_collectFromDeck: async function(n) {
+            debug('notif_collectFromDeck', n);
+            //this.setNotifDuration(1500);
+            await this.wait(1500);
         },
 
         ///////////////////////////////////////////////////

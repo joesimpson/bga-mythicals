@@ -348,25 +348,31 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
      
       //2024 NEw Framework function
       this.bgaSetupPromiseNotifications( {
-        minDuration: 900, // for longer animations (500 by default)
+        minDuration: 900, // because slide 800
+        //minDurationNoText: 500,
         logger: debug,
         onStart: (notifName, msg, args) => {
           if (this._displayNotifsOnTop && msg != '') {
-            let msgF = this.format_string_recursive(msg, args);
-            $('gameaction_status').innerHTML = msgF;
-            $('pagemaintitletext').innerHTML = msgF;
+            $('gameaction_status').innerHTML = msg;
+            $('pagemaintitletext').innerHTML = msg;
             this.removeAllActionButtons();
           }
         }, 
         onEnd: (notifName, msg, args) => { 
-          //if (this._displayNotifsOnTop && msg != '') {
-          //  $('gameaction_status').innerHTML =''; 
-          //  $('pagemaintitletext').innerHTML = ''; 
-          //}
+          //To see log 
         },
       });
     },
 
+    /**
+    Wrapper for setting a notification duration which may depends on player prefs/settings
+    */
+    setNotifDuration(time = 0){
+      //if(!this.isSettingAnimationsEnabled()) time = 0;
+      if(!this.bgaAnimationsActive()) time = 0;
+      this.notifqueue.setSynchronousDuration(time);
+    },
+  
     /**
      * Load production bug report handler
      */
@@ -797,7 +803,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       });
     },*/
 
-    slide(mobileElt, targetElt, options = {}) {
+    slide: async function(mobileElt, targetElt, options = {}) {
       let config = Object.assign(
         {
           duration: 800,
@@ -828,7 +834,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       const newParent = config.attach ? targetId : $(mobile).parentNode;
 
       // Handle fast mode
-      if (this.isFastMode() && (config.destroy || config.clearPos)) {
+      if (!this.bgaAnimationsActive() && (config.destroy || config.clearPos)) {
         if (config.destroy) this.destroy(mobile);
         else dojo.place(mobile, targetElt);
 
@@ -863,7 +869,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       dojo.addClass(mobile, config.className);
       if (config.changeParent) this.changeParent(mobile, 'game_play_area');
       if (config.from != null) this.placeOnObject(mobile, config.from);
-      return new Promise((resolve, reject) => {
+      return new Promise(async (resolve, reject) => {
         const animation =
           config.pos == null
             ? this.slideToObject(mobile, config.to || targetId, config.duration, config.delay)
@@ -885,7 +891,9 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
           if (config.clearPos && !config.destroy) dojo.style(mobile, { top: null, left: null, position: null });
           resolve();
         });
-        animation.play();
+        //animation.play();
+        //await this.bgaPlayDojoAnimation(animation);
+        this.bgaPlayDojoAnimation(animation);
       });
     },
 
@@ -1283,7 +1291,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
           if (this.linked) this.linked.innerHTML = +n;
         },
         toValue(n) {
-          if (game.isFastMode()) {
+          if (!game.bgaAnimationsActive()) {
             this.setValue(n);
             return;
           }
