@@ -14,7 +14,7 @@
  *
  */
 :root {
-  --myt_board_display_scale: 0.2;
+  --myt_board_display_scale: 0.14;
   --myt_board_card_height: 900px;
   --myt_board_cards_stack_max: 1;
   --myt_board_cards_stack_height_ratio: 0.15;

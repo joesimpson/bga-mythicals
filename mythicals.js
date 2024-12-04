@@ -247,6 +247,7 @@ function (dojo, declare) {
         }),
         getSettingsConfig() {
             return {
+                /*
                 boardWidth: {
                     section: "layout",
                     default: 100,
@@ -261,6 +262,7 @@ function (dojo, declare) {
                         },
                     },
                 }, 
+                */
 
                 undoStyle: { section: "buttons", type: 'pref', prefId: PREF_UNDO_STYLE },
                 cardStackStyle: { section: "layout", type: 'pref', prefId: PREF_CARD_STACK_STYLE },
@@ -638,7 +640,7 @@ function (dojo, declare) {
             let tiles = args.tiles;
 
             this.empty(`myt_player_toptile-${pId}`);
-            
+
             await Promise.all(
                 tiles.map(async (tile, i) => {
                     
@@ -690,9 +692,11 @@ function (dojo, declare) {
             return $('myt_board_zone').getBoundingClientRect()['width'];
         },
         updateLayout() {
+            //MAYBE no need to resize with settings in this game instead of browser zoom
+            return;
+
             if (!this.settings) return;
             if (!this.settings.boardWidth) return;
-            const ROOT = document.documentElement;
     
             const WIDTH = this.getGameZoneWidth();
             const BOARD_WIDTH = 3750;//board_img_width
@@ -701,6 +705,7 @@ function (dojo, declare) {
             let boardWidthRatio =  (100 - cardsWidthRatio ) / 100;
             let widthScale = ((this.settings.boardWidth * boardWidthRatio/ 100) * WIDTH) / BOARD_WIDTH;
             ROOT.style.setProperty('--myt_board_display_scale', widthScale);
+
         },
 
         ///////////////////////////////////////////////////
