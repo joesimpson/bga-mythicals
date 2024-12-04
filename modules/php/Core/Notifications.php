@@ -271,6 +271,9 @@ class Notifications
       $data['preserve'][] = 'player_color2';
       unset($data['player2']);
     }
+    else {
+      unset($data['player2']);
+    }
     /* not used in this game for now
     
     if (isset($data['player3'])) {
