@@ -631,6 +631,27 @@ function (dojo, declare) {
             this._counters[token.pId].bonus_tokens.incValue(1);
             await this.wait(100);
         },
+        
+        notif_revealTiles: async function(args) {
+            debug('notif_revealTiles : reveal all tiles for a player', args);
+            let pId = args.player_id;
+            let tiles = args.tiles;
+
+            this.empty(`myt_player_toptile-${pId}`);
+            
+            await Promise.all(
+                tiles.map(async (tile, i) => {
+                    
+                    await this.wait(50 * i).then( async () => {
+                        if (!$(`myt_tile-${tile.id}`)){
+                            this.addTile(tile, $(`myt_player_toptile-${pId}`));
+                            // No need for anim here
+                            //await this.slide(`myt_tile-${tile.id}`, this.getTileContainer(tile));
+                        }
+                    });
+                })
+            );
+        },
 
         notif_addPoints: async function(args) {
             debug('notif_addPoints : new score', args);

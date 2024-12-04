@@ -2,6 +2,7 @@
 
 namespace Bga\Games\Mythicals\Managers;
 
+use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Models\MasteryTile;
 
@@ -32,9 +33,16 @@ class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
     //$privateTiles = self::getPlayerHand($currentPlayerId);
     $players = Players::getAll();
 
+    $revealTiles = Globals::isScoringDone();
+
     $tiles = self::getBoardTiles();
     //GAME RULE: we can see only 1 tile on top of tiles stack of each player
     foreach($players as $pId => $p){
+      if(isset($revealTiles) && $revealTiles){
+        $hand = Tiles::getPlayerHand($pId);
+        foreach($hand as $tile) $tiles->append($tile);
+        continue;
+      }
       $tile = self::getTopOfPlayerLoc($pId,TILE_LOCATION_HAND);
       if(isset($tile)) $tiles->append($tile);
     }

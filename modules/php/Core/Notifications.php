@@ -3,6 +3,7 @@
 namespace Bga\Games\Mythicals\Core;
 
 use Bga\Games\Mythicals\Game;
+use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Models\Card;
 use Bga\Games\Mythicals\Models\MasteryTile;
@@ -203,6 +204,14 @@ class Notifications
       'token_name' => clienttranslate("Bonus markers"),
       'preserve' => [ 'token_type' ],
       'token_type' => $token->getType(),
+    ]);
+  }
+  
+  public static function revealTiles(Player $player,Collection $tiles)
+  {
+    self::notifyAll('revealTiles', '', [
+      'player' => $player,
+      'tiles' => $tiles->ui(),
     ]);
   }
   /*************************

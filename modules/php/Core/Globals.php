@@ -21,6 +21,7 @@ class Globals extends \Bga\Games\Mythicals\Helpers\DB_Manager
   protected static $variables = [
     'turn' => 'int',
     'firstPlayer' => 'int',
+    'scoringDone' => 'bool',
 
     //For Undo log module
     'choices' => 'int',
@@ -32,6 +33,7 @@ class Globals extends \Bga\Games\Mythicals\Helpers\DB_Manager
   public static function setupNewGame($players, $options)
   {
 
+    self::setScoringDone(false);
     self::setTurn(0);
     foreach($players as $pId => $player){
       self::setFirstPlayer($pId);

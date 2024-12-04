@@ -2,11 +2,11 @@
 
 namespace Bga\Games\Mythicals\States;
 
+use Bga\Games\Mythicals\Core\Globals;
 use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Managers\Players;
 use Bga\Games\Mythicals\Managers\Tiles;
-use Globals;
 
 trait ScoringTrait
 {
@@ -33,12 +33,14 @@ trait ScoringTrait
   {
     self::trace("computeFinalScore()");
     Notifications::computeFinalScore();
+    Globals::setScoringDone(true);
 
     foreach($players as $pid => $player){
       $nbTokens = $player->getNbTokens();
       $scoreTokens = $nbTokens * TOKEN_SCORE;
       $scoreTiles = 0;
       $playerTiles = Tiles::getPlayerHand($pid);
+      Notifications::revealTiles($player,$playerTiles);
       foreach($playerTiles as $tile){
         $scoreTiles += $tile->getScore();
       }
