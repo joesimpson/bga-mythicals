@@ -211,12 +211,14 @@ function (dojo, declare) {
                 });
                 document.getElementById('myt_players_table').insertAdjacentHTML('beforeend', `
                     <div id="myt_player_table-${player.id}" class="myt_player_table" data-pid=${player.id} data-color='${player.color}' style="border-color:#${player.color}">
-                        <h3 class='myt_title' >${this.fsr(('${player_name}'), { player_name:this.coloredPlayerName(player.name)}) }</h3>
-                        <div id="myt_player_cards-${player.id}" class="myt_player_cards">
-                            ${playerCardsDiv}
-                        </div>
-                        <div id="myt_player_tiles-${player.id}" class="myt_player_tiles">
-                            <div id="myt_player_toptile-${player.id}" class="myt_player_toptile">
+                        <h3 class='myt_player_table_title' >${this.fsr(('${player_name}'), { player_name:this.coloredPlayerName(player.name)}) }</h3>
+                        <div class="myt_player_table_content">
+                            <div id="myt_player_cards-${player.id}" class="myt_player_cards">
+                                ${playerCardsDiv}
+                            </div>
+                            <div id="myt_player_tiles-${player.id}" class="myt_player_tiles">
+                                <div id="myt_player_toptile-${player.id}" class="myt_player_toptile">
+                            </div>
                         </div>
                     </div>
                 `);

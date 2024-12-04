@@ -238,14 +238,13 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
 #myt_players_table{
     display: flex;
     flex-flow: row;
-    flex-wrap: nowrap;
     flex-wrap: wrap;
     align-items: flex-start;
 
     .myt_player_table{
         width: fit-content;
         display: flex;
-        flex-flow: row;
+        flex-flow: column;
 
         border-radius: 10px;
         border: 2px solid black;
@@ -256,8 +255,14 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
         //width: 95%;
         //margin: 15px auto;
     }
+    
+    .myt_player_table_content{
+        width: fit-content;
+        display: flex;
+        flex-flow: row;
+    }
 
-    .myt_title{
+    .myt_player_table_title{
         text-align: center;
         padding: 0 7px;
     }

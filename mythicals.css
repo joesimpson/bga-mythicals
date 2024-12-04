@@ -1387,7 +1387,6 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 #myt_players_table {
   display: flex;
   flex-flow: row;
-  flex-wrap: nowrap;
   flex-wrap: wrap;
   align-items: flex-start;
 }
@@ -1395,14 +1394,20 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   border-radius: 10px;
   border: 2px solid black;
   box-shadow: 1px 1px 10px black;
   background-color: rgba(213, 162, 87, 0.5098039216);
   margin-left: 10px;
 }
-#myt_players_table .myt_title {
+#myt_players_table .myt_player_table_content {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-flow: row;
+}
+#myt_players_table .myt_player_table_title {
   text-align: center;
   padding: 0 7px;
 }
