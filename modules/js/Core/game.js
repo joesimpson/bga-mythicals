@@ -915,10 +915,10 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       if (typeof relation == 'undefined') {
         relation = 'last';
       }
-      var src = dojo.position(mobile);
+      var src = this.getBoundingClientRectIgnoreZoom(mobile);
       dojo.style(mobile, 'position', 'absolute');
       dojo.place(mobile, new_parent, relation);
-      var tgt = dojo.position(mobile);
+      var tgt = this.getBoundingClientRectIgnoreZoom(mobile);
       var box = dojo.marginBox(mobile);
       var cbox = dojo.contentBox(mobile);
       var left = box.l + src.x - tgt.x;
