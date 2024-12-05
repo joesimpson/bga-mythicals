@@ -170,7 +170,7 @@ $card_height: var(--myt_board_card_height);
                     }             
                     @for $i from 9 through 16 {//NB_BONUS_TOKEN_COPIES
                         &:nth-of-type(#{$i}){
-                            top: calc((16 - $i - 1) * 100px);
+                            top: calc((16 - $i) * 100px);
                             left: 200px;
                         }
                     }
