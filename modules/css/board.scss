@@ -56,48 +56,50 @@ $card_height: var(--myt_board_card_height);
                     //height: 400px;
                     //COLOR will gives the "COLUMN" :
                     &[data-color="3"]{//TILE_COLOR_PURPLE
-                        left: 130px;
+                        left: 133px;
                     } 
                     &[data-color="2"]{//TILE_COLOR_GREEN
-                        left: 752px;
+                        left: 758px;
                     } 
                     &[data-color="4"]{//TILE_COLOR_RED
-                        left: 1380px;
+                        left: 1383px;
                     } 
                     &[data-color="1"]{//TILE_COLOR_BLUE
-                        left: 2002px;
+                        left: 2007px;
                     } 
                     &[data-color="5"]{//TILE_COLOR_GRAY
-                        left: 2575px;
+                        left: 2582px;
                     } 
                     &[data-color="6"]{//TILE_COLOR_BLACK
-                        left: 2940px;
+                        left: 2947px;
                     } 
                     //SCORING will gives the "line" :
                     &[data-scoringtype="4"]{//TILE_SCORING_SUITE_5
-                        top: 168px;
+                        top: 173px;
                     } 
                     &[data-scoringtype="3"]{//TILE_SCORING_SUITE_4
-                        top: 533px;
+                        top: 532px;
                     } 
                     &[data-scoringtype="2"]{//TILE_SCORING_SUITE_3
-                        top: 908px;
+                        top: 895px;
                     } 
                     &[data-scoringtype="1"]{//TILE_SCORING_SUITE_2
-                        top: 1245px;
+                        top: 1256px;
                     } 
                     //------------
                     &[data-scoringtype="8"]{//TILE_SCORING_SUITE_6
-                        top: 75px;
+                        top: 80px;
                     } 
                     &[data-scoringtype="7"]{//TILE_SCORING_SAME_4
-                        top: 525px;
+                        top: 534px;
                     } 
                     &[data-scoringtype="6"]{//TILE_SCORING_SAME_3
-                        top: 895px;
+                        //top: 895px;
+                        top: 892px;
                     } 
                     &[data-scoringtype="5"]{//TILE_SCORING_SAME_2
-                        top: 1255px;
+                        //top: 1255px;
+                        top: 1248px;
                     } 
                 }
             }

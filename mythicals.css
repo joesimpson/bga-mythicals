@@ -326,46 +326,46 @@
   position: absolute;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-color="3"] {
-  left: 130px;
+  left: 133px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-color="2"] {
-  left: 752px;
+  left: 758px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-color="4"] {
-  left: 1380px;
+  left: 1383px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-color="1"] {
-  left: 2002px;
+  left: 2007px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-color="5"] {
-  left: 2575px;
+  left: 2582px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-color="6"] {
-  left: 2940px;
+  left: 2947px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="4"] {
-  top: 168px;
+  top: 173px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="3"] {
-  top: 533px;
+  top: 532px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="2"] {
-  top: 908px;
-}
-#myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="1"] {
-  top: 1245px;
-}
-#myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="8"] {
-  top: 75px;
-}
-#myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="7"] {
-  top: 525px;
-}
-#myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="6"] {
   top: 895px;
 }
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="1"] {
+  top: 1256px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="8"] {
+  top: 80px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="7"] {
+  top: 534px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="6"] {
+  top: 892px;
+}
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tiles .myt_board_tile_cell[data-scoringtype="5"] {
-  top: 1255px;
+  top: 1248px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve {
   position: absolute;
@@ -1737,15 +1737,15 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 }
 .myt_tile .myt_tile_token_spot {
   position: absolute;
-  left: 9.765625px;
-  width: 27.34375px;
-  height: 27.34375px;
+  left: 14.0845070423px;
+  width: 39.4366197183px;
+  height: 39.4366197183px;
 }
 .myt_tile .myt_tile_token_spot[data-index="2"] {
-  top: 14.6484375px;
+  top: 21.1267605634px;
 }
 .myt_tile .myt_tile_token_spot[data-index="1"] {
-  top: 58.203125px;
+  top: 83.9436619718px;
 }
 
 body.notouch-device .myt_tile:hover {
@@ -1763,15 +1763,15 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
 }
 
 #myt_board_tiles .myt_tile {
-  width: 370px;
-  height: 370px;
+  width: 360px;
+  height: 360px;
   border-radius: 40px;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot {
   position: absolute;
-  left: 36.1328125px;
-  width: 101.171875px;
-  height: 101.171875px;
+  left: 50.7042253521px;
+  width: 141.9718309859px;
+  height: 141.9718309859px;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot.selectable {
   cursor: pointer;
@@ -1782,10 +1782,10 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
   box-shadow: 0px 0px 10px 20px green;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="1"] {
-  top: 54.19921875px;
+  top: 76.0563380282px;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="2"] {
-  top: 215.3515625px;
+  top: 302.1971830986px;
 }
 
 .myt_tile_tooltip {

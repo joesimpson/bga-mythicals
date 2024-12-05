@@ -1,10 +1,11 @@
 $tile_width: 100px;
 $tile_height: 100px;
+$tilesizeOnboardImg: 355px;
 
 .myt_tile {
     width: $tile_width;
     height: $tile_height;
-    $tile_ratio: math.div($tile_width, 512px );
+    $tile_ratio: math.div($tile_width, $tilesizeOnboardImg );
     //outline: 2px solid black;
     box-shadow: 1px 1px 5px black;
     border-radius: 20px;
@@ -90,10 +91,11 @@ body.notouch-device{
  
 #myt_board_tiles{
     .myt_tile{
-        width: 370px;
-        height: 370px;
+        $tilesize: 360px;
+        width: $tilesize;
+        height: $tilesize;
         border-radius: 40px;
-        $tile_ratio: math.div(370px, 512px );
+        $tile_ratio: math.div($tilesize, $tilesizeOnboardImg );
 
         //&.tooltipable:hover{
         //    outline-width: 30px;
