@@ -750,7 +750,7 @@
 .myt_card.selected:hover.myt_selectedToDiscard .myt_card_wrapper::before {
   background: rgba(209, 209, 209, 0.7450980392);
   bottom: 0;
-  content: "\f1f8";
+  content: "";
   display: flex;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: 60px;

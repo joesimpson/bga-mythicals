@@ -45,11 +45,12 @@ $card_height: 200px;
         &.myt_selectedToDiscard{
             $cardscale: 1;
             .myt_card_wrapper::before{
-                //Display a garbage over the card
                 //align-items:center;
                 background:#d1d1d1be;
                 bottom:0;
-                content:"\f1f8";
+                //Display a garbage over the card
+                //content:"\f1f8";
+                content:"";
                 display:flex;
                 font:normal normal normal 14px/1 FontAwesome;
                 font-size: calc($cardscale * 60px);
