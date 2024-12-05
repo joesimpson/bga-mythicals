@@ -164,8 +164,8 @@ $card_height: var(--myt_board_card_height);
                 height: 910px;
 
                 .myt_bonus_token{
-                    width: 150px;
-                    height: 150px;
+                    width: 145px;
+                    height: 145px;
                     position: absolute;
                                     
                     @for $i from 1 through 8 {
