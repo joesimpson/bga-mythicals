@@ -15,6 +15,12 @@ $card_height: var(--myt_board_card_height);
             $card_height 
             + ((var(--myt_board_cards_stack_max) - 1) * calc(var(--myt_board_cards_stack_height_ratio) * $card_height )))
         );
+    //OR don't keep space for 1 card when reserve is empty, but keep it if nbcards >=1     
+    margin-bottom: calc(10px 
+        + var(--myt_board_display_scale) * (
+            ( $card_height * min( 1, var(--myt_board_cards_stack_max) ) )
+            + ((var(--myt_board_cards_stack_max)) * calc(var(--myt_board_cards_stack_height_ratio) * $card_height )))
+        );
     #myt_board_container{
         /* prevents vertical invisible overflow on BGA bottom elements*/
         height: inherit;

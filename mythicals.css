@@ -298,6 +298,7 @@
   margin-bottom: 10px;
   margin-bottom: 250px;
   margin-bottom: calc(10px + var(--myt_board_display_scale) * (var(--myt_board_card_height) + (var(--myt_board_cards_stack_max) - 1) * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height)));
+  margin-bottom: calc(10px + var(--myt_board_display_scale) * (var(--myt_board_card_height) * min(1, var(--myt_board_cards_stack_max)) + (var(--myt_board_cards_stack_max)) * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height)));
 }
 #myt_resizable_board #myt_board_container {
   /* prevents vertical invisible overflow on BGA bottom elements*/
