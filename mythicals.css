@@ -1734,7 +1734,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   cursor: pointer;
 }
 .myt_tile.selected {
-  box-shadow: 0px 0px 40px 40px rgb(9, 212, 212);
+  box-shadow: 0px 0px 10px 10px rgb(9, 212, 212);
   z-index: 4;
 }
 .myt_tile .myt_tile_token_spot {
@@ -1769,6 +1769,9 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
   height: 360px;
   border-radius: 40px;
 }
+#myt_board_tiles .myt_tile.selected {
+  box-shadow: 0px 0px 40px 40px rgb(9, 212, 212);
+}
 #myt_board_tiles .myt_tile .myt_tile_token_spot {
   position: absolute;
   left: 35.15625px;
@@ -1799,9 +1802,6 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
   border-radius: 30px;
 }
 
-.myt_player_tiles {
-  margin: 15px;
-}
 .myt_player_tiles .myt_player_toptile .myt_tile::after, .myt_player_tiles .myt_player_toptile .myt_tile::before {
   content: "";
   position: absolute;
@@ -1834,6 +1834,27 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
   height: 140%;
   margin-top: -40%;
   margin-left: -30%;
+}
+
+.myt_player_table_content_right {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 0px 5px;
+  row-gap: 1px;
+  margin: 0px 15px;
+  width: 110px;
+}
+.myt_player_table_content_right .myt_player_tokens {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+.myt_player_table_content_right .myt_player_tokens .myt_bonus_token {
+  margin-right: -25px;
+  margin-bottom: -25px;
 }
 
 /**

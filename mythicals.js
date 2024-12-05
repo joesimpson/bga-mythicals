@@ -84,6 +84,7 @@ function (dojo, declare) {
     const TILE_FACE_LOCKED = 2;
 
     const TOKEN_LOCATION_BOARD = 'board';
+    const TOKEN_LOCATION_HAND = 'hand';
     const TOKEN_LOCATION_TILE = 'tile-';
 
     const TOKEN_TYPE_BONUS_MARKER = 1;
@@ -216,8 +217,11 @@ function (dojo, declare) {
                             <div id="myt_player_cards-${player.id}" class="myt_player_cards">
                                 ${playerCardsDiv}
                             </div>
-                            <div id="myt_player_tiles-${player.id}" class="myt_player_tiles">
-                                <div id="myt_player_toptile-${player.id}" class="myt_player_toptile">
+                            <div class="myt_player_table_content_right">
+                                <div id="myt_player_tokens-${player.id}" class="myt_player_tokens"></div>
+                                <div id="myt_player_tiles-${player.id}" class="myt_player_tiles">
+                                    <div id="myt_player_toptile-${player.id}" class="myt_player_toptile">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -627,11 +631,14 @@ function (dojo, declare) {
             }
             let divToken = $(`myt_token-${token.id}`);
             let currentPos = divToken.parentNode;
+            /* if we want to remove it from the view :
             await this.slide(divToken.id, `myt_reserve_${token.pId}_bonus_tokens`, {
                 from: currentPos,
                 destroy: true,
                 phantom: false,
             } );
+            */
+            await this.slide(divToken.id, this.getTokenContainer(token));
             this._counters[token.pId].bonus_tokens.incValue(1);
             await this.wait(100);
         },
@@ -1197,6 +1204,9 @@ function (dojo, declare) {
         getTokenContainer(token) { 
             if (token.location == TOKEN_LOCATION_BOARD ) {
                 return $(`myt_board_tokens`);
+            }
+            if (token.location == TOKEN_LOCATION_HAND ) {
+                return $(`myt_player_tokens-${token.pId}`);
             }
             if (token.location.startsWith(TOKEN_LOCATION_TILE)) {
                 let locationParts = token.location.split('-');

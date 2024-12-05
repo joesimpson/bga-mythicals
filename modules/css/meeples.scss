@@ -18,3 +18,28 @@
         margin-left: -30%;
     }
 }
+
+.myt_player_table_content_right{
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0px 5px;
+    row-gap: 1px;
+    margin: 0px 15px;
+    width: 110px;
+
+    .myt_player_tokens{
+        // zone in player table between cards and tiles
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+
+        margin-bottom: 25px;
+
+        .myt_bonus_token{
+            margin-right: -25px;
+            margin-bottom: -25px;
+        }
+    }
+}
