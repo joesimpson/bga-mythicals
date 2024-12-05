@@ -35,7 +35,8 @@
     flex-flow: row;
 
     #myt_board_zone{
-        width: 80%;
+        //width: 80%;
+        max-width: 80%;
     }
 }
 .myt_nodisplay{

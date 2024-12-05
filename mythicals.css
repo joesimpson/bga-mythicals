@@ -1388,7 +1388,8 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 #myt_players_table .myt_player_table {
   width: -moz-fit-content;
@@ -1399,7 +1400,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   border: 2px solid black;
   box-shadow: 1px 1px 10px black;
   background-color: rgba(213, 162, 87, 0.5098039216);
-  margin-left: 10px;
+  margin: 5px 10px;
 }
 #myt_players_table .myt_player_table_content {
   width: -moz-fit-content;
@@ -2401,7 +2402,7 @@ body.notouch-device #help-mode-switch:hover {
   flex-flow: row;
 }
 #myt_main_zone #myt_board_zone {
-  width: 80%;
+  max-width: 80%;
 }
 
 .myt_nodisplay {

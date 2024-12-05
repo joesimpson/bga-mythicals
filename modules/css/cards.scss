@@ -240,7 +240,8 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 
     .myt_player_table{
         width: fit-content;
@@ -251,7 +252,7 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
         border: 2px solid black;
         box-shadow: 1px 1px 10px black;
         background-color: #d5a25782;
-        margin-left: 10px;
+        margin: 5px 10px;
         
         //width: 95%;
         //margin: 15px auto;
