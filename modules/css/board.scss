@@ -171,15 +171,33 @@ $card_height: var(--myt_board_card_height);
                                     
                     @for $i from 1 through 8 {
                         &:nth-of-type(#{$i}){
-                            top: calc(($i - 1) * 100px);
-                            left: 100px;
+                            top: calc(40px + ($i - 1) * 130px);
+                            left: 115px;
                         }
                     }             
                     @for $i from 9 through 16 {//NB_BONUS_TOKEN_COPIES
                         &:nth-of-type(#{$i}){
-                            top: calc((16 - $i) * 100px);
-                            left: 200px;
+                            top: calc(40px + (16 - $i) * 130px);
+                            left: 215px;
                         }
+                    }
+
+                    //Small offset for several :
+                    &:nth-of-type(7){
+                        top: 350px;
+                        left: 15px;
+                    }
+                    &:nth-of-type(8){
+                        top: 500px;
+                        left: 15px;
+                    }
+                    &:nth-of-type(9){
+                        top: 350px;
+                        left: 315px;
+                    }
+                    &:nth-of-type(10){
+                        top: 500px;
+                        left: 315px;
                     }
                 }
 

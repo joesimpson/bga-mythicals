@@ -446,68 +446,84 @@
   z-index: 3;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(1) {
-  top: 0px;
-  left: 100px;
+  top: 40px;
+  left: 115px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(2) {
-  top: 100px;
-  left: 100px;
+  top: 170px;
+  left: 115px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(3) {
-  top: 200px;
-  left: 100px;
+  top: 300px;
+  left: 115px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(4) {
-  top: 300px;
-  left: 100px;
+  top: 430px;
+  left: 115px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(5) {
-  top: 400px;
-  left: 100px;
+  top: 560px;
+  left: 115px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(6) {
-  top: 500px;
-  left: 100px;
+  top: 690px;
+  left: 115px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(7) {
-  top: 600px;
-  left: 100px;
+  top: 820px;
+  left: 115px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(8) {
-  top: 700px;
-  left: 100px;
+  top: 950px;
+  left: 115px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(9) {
-  top: 700px;
-  left: 200px;
+  top: 950px;
+  left: 215px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(10) {
-  top: 600px;
-  left: 200px;
+  top: 820px;
+  left: 215px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(11) {
-  top: 500px;
-  left: 200px;
+  top: 690px;
+  left: 215px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(12) {
-  top: 400px;
-  left: 200px;
+  top: 560px;
+  left: 215px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(13) {
-  top: 300px;
-  left: 200px;
+  top: 430px;
+  left: 215px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(14) {
-  top: 200px;
-  left: 200px;
+  top: 300px;
+  left: 215px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(15) {
-  top: 100px;
-  left: 200px;
+  top: 170px;
+  left: 215px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(16) {
-  top: 0px;
-  left: 200px;
+  top: 40px;
+  left: 215px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(7) {
+  top: 350px;
+  left: 15px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(8) {
+  top: 500px;
+  left: 15px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(9) {
+  top: 350px;
+  left: 315px;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(10) {
+  top: 500px;
+  left: 315px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens #myt_ellipsis_border {
   visibility: hidden;
