@@ -15,7 +15,8 @@
  */
 :root {
   --myt_board_display_scale: 0.14;
-  --myt_board_card_height: 900px;
+  --myt_board_card_width: 465px;
+  --myt_board_card_height: 930px;
   --myt_board_cards_stack_max: 1;
   --myt_board_cards_stack_height_ratio: 0.15;
 }
@@ -373,7 +374,7 @@
   top: 1802px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_card {
-  width: 450px;
+  width: var(--myt_board_card_width);
   height: var(--myt_board_card_height);
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable {
@@ -826,7 +827,6 @@
   flex-flow: row;
   flex-wrap: wrap;
   align-items: center;
-  padding: 0px 5px;
 }
 .myt_cards_stack_resizable .myt_cards_stack .myt_card_resizeable {
   margin: 2px 5px;

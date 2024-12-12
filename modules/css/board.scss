@@ -1,7 +1,7 @@
 
 $board_img_width: 3750px;
 $board_img_height: 1842px;
-$card_width: 450px;
+$card_width: var(--myt_board_card_width);
 $card_height: var(--myt_board_card_height);
 
 #myt_resizable_board {
