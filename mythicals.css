@@ -434,15 +434,16 @@
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens {
   position: absolute;
-  left: 3185px;
+  left: 3170px;
   top: 622px;
-  width: 496px;
-  height: 910px;
+  width: 523px;
+  height: 923px;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token {
   width: 145px;
   height: 145px;
   position: absolute;
+  z-index: 3;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens .myt_bonus_token:nth-of-type(1) {
   top: 0px;
@@ -508,9 +509,18 @@
   top: 0px;
   left: 200px;
 }
-#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover {
-  border-radius: 250px;
-  outline: 10px solid gold;
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens #myt_ellipsis_border {
+  visibility: hidden;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-clip-path: ellipse(253px 462px at 259px 446px);
+          clip-path: ellipse(253px 462px at 259px 446px);
+  background: rgba(255, 251, 0, 0.568627451);
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover #myt_ellipsis_border {
+  visibility: visible;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_hints {
   position: absolute;

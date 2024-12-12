@@ -156,17 +156,18 @@ $card_height: var(--myt_board_card_height);
 
             #myt_board_tokens{
                 position: absolute;
-                left: 3185px;
+                left: 3170px;
                 top: 622px;
                 //outline: 10px solid yellow;
                 //border-radius: 250px;
-                width: 496px;
-                height: 910px;
+                width: 523px;
+                height: 923px;
 
                 .myt_bonus_token{
                     width: 145px;
                     height: 145px;
                     position: absolute;
+                    z-index: 3;
                                     
                     @for $i from 1 through 8 {
                         &:nth-of-type(#{$i}){
@@ -182,10 +183,20 @@ $card_height: var(--myt_board_card_height);
                     }
                 }
 
+                #myt_ellipsis_border{
+                    visibility: hidden;
+                    position: absolute;
+                    z-index: 2;
+                    width: 100%;
+                    height: 100%;
+                    clip-path: ellipse(253px 462px at 259px 446px);
+                    background: #fffb0091;
+                }
+
                 &.tooltipable:hover{
-                    border-radius: 250px;
-                    outline: 10px solid gold;
-                
+                    #myt_ellipsis_border{
+                        visibility: visible;
+                    }
                 }
 
             }
