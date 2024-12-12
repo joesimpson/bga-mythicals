@@ -535,9 +535,6 @@
           clip-path: ellipse(253px 462px at 259px 446px);
   background: rgba(255, 251, 0, 0.568627451);
 }
-#myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover #myt_ellipsis_border {
-  visibility: visible;
-}
 #myt_resizable_board #myt_board_container #myt_board #myt_board_hints {
   position: absolute;
 }
@@ -606,6 +603,10 @@
 #myt_cards_deck_container {
   margin: 5px;
   height: 230px;
+}
+
+body.notouch-device #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover #myt_ellipsis_border {
+  visibility: visible;
 }
 
 .myt_card_back,

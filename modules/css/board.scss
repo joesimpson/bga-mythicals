@@ -211,12 +211,6 @@ $card_height: var(--myt_board_card_height);
                     background: #fffb0091;
                 }
 
-                &.tooltipable:hover{
-                    #myt_ellipsis_border{
-                        visibility: visible;
-                    }
-                }
-
             }
 
             #myt_board_hints{
@@ -291,4 +285,12 @@ $card_height: var(--myt_board_card_height);
 #myt_cards_deck_container{
     margin: 5px;
     height: 230px;
+}
+
+body.notouch-device{
+    #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover{
+        #myt_ellipsis_border{
+            visibility: visible;
+        }
+    }
 }
