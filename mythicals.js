@@ -701,6 +701,12 @@ function (dojo, declare) {
         notif_collectFromDeck: async function(n) {
             debug('notif_collectFromDeck', n);
             //this.setNotifDuration(1500);
+            if(n.player_id == this.player_id) return;
+            await this.wait(1500);
+        },
+        notif_collectReserve: async function(n) {
+            debug('notif_collectReserve', n);
+            if(n.player_id == this.player_id) return;
             await this.wait(1500);
         },
 
