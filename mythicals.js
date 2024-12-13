@@ -322,8 +322,6 @@ function (dojo, declare) {
                 this.addPrimaryActionButton('btnDraw', this.fsr(btnMessage, {n:NB_CARDS_PER_DRAW}), callbackDrawCards); 
                 this.onClick(`myt_cards_deck_container`, callbackDrawCards );
 
-                this.addSecondaryActionButton('btnTextSeparator',_("or"));
-                $(`btnTextSeparator`).classList.add('disabled');
             }
             let playableCardsInDraw = args.drawnCards;
             Object.values(playableCardsInDraw).forEach(card => {
@@ -339,6 +337,10 @@ function (dojo, declare) {
             });
 
             let playableReserveColors = args.reserveColors;
+            if(playableDraw && playableReserveColors.length>0 ){
+                this.addSecondaryActionButton('btnTextSeparator',_("or"));
+                $(`btnTextSeparator`).classList.add('disabled');
+            }
             //CARD_COLORS is ordered
             Object.values(CARD_COLORS).forEach(color => {
                 if(!(playableReserveColors).includes(color)) return;
