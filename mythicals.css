@@ -601,8 +601,7 @@
 }
 
 #myt_cards_deck_container {
-  margin: 5px;
-  height: 100%;
+  margin-bottom: 45px;
 }
 
 body.notouch-device #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover #myt_ellipsis_border {
@@ -1535,8 +1534,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: -110%;
-  margin-top: -70%;
+  margin-top: -92%;
 }
 #myt_cards_draw .myt_card {
   /*
