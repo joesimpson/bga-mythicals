@@ -30,11 +30,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       this._notif_uid_to_log_id = {};
       this._notif_uid_to_mobile_log_id = {};
       this._last_notif = null;
-      dojo.place('loader_mask', 'overall-content', 'before');
-      dojo.style('loader_mask', {
-        height: '100vh',
-        position: 'fixed',
-      });
+      
       this._displayNotifsOnTop = true;
       this._displayNotifsOnTopWhenGameState = true;
       this._hideNotifsWhenMultiActive = false;
@@ -325,9 +321,6 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
         }
       });
 
-      // Load production bug report handler
-      dojo.subscribe('loadBug', this, (n) => this.notif_loadBug(n));
-
       this.notifqueue.setSynchronousDuration = (duration) => {
         setTimeout(() => dojo.publish('notifEnd', null), duration);
       };
@@ -358,30 +351,6 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       //if(!this.isSettingAnimationsEnabled()) time = 0;
       if(!this.bgaAnimationsActive()) time = 0;
       this.notifqueue.setSynchronousDuration(time);
-    },
-  
-    /**
-     * Load production bug report handler
-     */
-    notif_loadBug(n) {
-      function fetchNextUrl() {
-        var url = n.args.urls.shift();
-        console.log('Fetching URL', url);
-        dojo.xhrGet({
-          url: url,
-          load: function (success) {
-            console.log('Success for URL', url, success);
-            if (n.args.urls.length > 0) {
-              fetchNextUrl();
-            } else {
-              console.log('Done, reloading page');
-              window.location.reload();
-            }
-          },
-        });
-      }
-      console.log('Notif: load bug', n.args);
-      fetchNextUrl();
     },
 
     /*
@@ -462,13 +431,13 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       this.updatePageTitle();
     },
 
-    /*
-     * Remove non standard zoom property
-     */
     onScreenWidthChange() {
+      /*
+       * Remove non standard zoom property
       dojo.style('page-content', 'zoom', '');
       dojo.style('page-title', 'zoom', '');
       dojo.style('right-side-first-part', 'zoom', '');
+       */
     },
 
     /*
