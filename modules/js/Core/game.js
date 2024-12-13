@@ -69,6 +69,9 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       if (type == 'error') {
         console.error(msg);
         if (msg && msg.startsWith("!!!")) {
+          if (msg == "!!!checkVersion") {
+            this.infoDialog(  _("A new version of this game is now available"),_("Reload Required"), () => {window.location.reload(true);},true);
+          }
           return; // suppress red banner and gamelog message
         }
       }
@@ -133,32 +136,22 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
     /*
      * Make an AJAX call with automatic lock
      */
-    takeAction(action, data, check = true, checkLock = true) {
-      debug('takeAction()',action, data, check, checkLock );
+    performAction(action, data, check = true, checkLock = true) {
+      debug('performAction()',action, data, check, checkLock );
       if (check && !this.checkAction(action)) return false;
       if (!check && checkLock && !this.checkLock()) return false;
 
       data = data || {};
+      let options = {};
       if (data.lock === undefined) {
-        data.lock = true;
+        options.lock = true;
       } else if (data.lock === false) {
         delete data.lock;
       }
+      delete data.lock;
+
       data.v = this.gamedatas.version;
-      return new Promise((resolve, reject) => {
-        this.ajaxcall(
-          '/' + this.game_name + '/' + this.game_name + '/' + action + '.html',
-          data,
-          this,
-          (data) => resolve(data),
-          (isError, message, code) => {
-            if (isError && message == "!!!checkVersion") {
-              this.infoDialog(  _("A new version of this game is now available"),_("Reload Required"), () => {window.location.reload(true);},true);
-            }
-            else if (isError) reject(message, code);
-          }
-        );
-      });
+      return this.bgaPerformAction(action, data,);
     },
 
     /*
@@ -191,7 +184,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
           _('Restart turn'),
           () => {
             //this.stopActionTimer();
-            this.takeAction('actRestart');
+            this.performAction('actRestart');
           },
           'restartAction'
         );
@@ -199,7 +192,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
           'btnIconRestartTurn',
           '<i class="fa fa-undo"></i><i class="fa fa-undo"></i>',
           () => {
-            this.takeAction('actRestart');
+            this.performAction('actRestart');
           },
           'restartAction'
         );
@@ -236,7 +229,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
     
     undoToStep(stepId) {
       this.checkAction('actRestart');
-      this.takeAction('actUndoToStep', { stepId }, false);
+      this.performAction('actUndoToStep', { stepId }, false);
     },
 
     clearPossible() {
@@ -505,7 +498,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
           $('preference_fontrol_' + pref).value = newValue;
         }
         data = { pref: pref, lock: false, value: newValue, player: this.player_id };
-        if (!this.isReadOnly()) this.takeAction('actChangePref', data, false, false);
+        //if (!this.isReadOnly()) this.performAction('actChangePref', data, false, false);
         this.onPreferenceChange(pref, newValue);
       });
     },
@@ -515,7 +508,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
         let pref = prefInfo.pref_id;
         if (this.prefs[pref] != undefined && this.prefs[pref].value != prefInfo.pref_value) {
           data = { pref: pref, lock: false, value: this.prefs[pref].value, player: this.player_id };
-          this.takeAction('actChangePref', data, false, false);
+          //this.performAction('actChangePref', data, false, false);
         }
       });
     },

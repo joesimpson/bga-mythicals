@@ -315,7 +315,7 @@ function (dojo, declare) {
             if(playableDraw){
                 let btnMessage = _('Draw ${n} cards');
                 let callbackDrawCards = (evt) => {
-                    this.takeAction('actDraw', { });
+                    this.performAction('actDraw', { });
                 };
                 this.addPrimaryActionButton('btnDraw', this.fsr(btnMessage, {n:NB_CARDS_PER_DRAW}), callbackDrawCards); 
                 this.onClick(`myt_cards_deck_container`, callbackDrawCards );
@@ -327,7 +327,7 @@ function (dojo, declare) {
                     [...$(`myt_cards_draw`).querySelectorAll('.myt_card')].forEach((elt) => { elt.classList.remove('selected');});
                     div.classList.add('selected');
                     this.selectedColor = card.color;
-                    this.takeAction('actCollectDraw', { color: this.selectedColor});
+                    this.performAction('actCollectDraw', { color: this.selectedColor});
 
                 };
                 this.onClick(`${div.id}`, callbackColorSelection);
@@ -345,7 +345,7 @@ function (dojo, declare) {
                     [...$(`myt_cards_reserve`).querySelectorAll('.myt_reserve_stack')].forEach((elt) => { elt.classList.remove('selected');});
                     div.classList.add('selected');
                     this.selectedColor = color;
-                    this.takeAction('actCollectReserve', { color: this.selectedColor});
+                    this.performAction('actCollectReserve', { color: this.selectedColor});
 
                 };
                 this.onClick(`${div.id}`, callbackColorSelection);
@@ -357,7 +357,7 @@ function (dojo, declare) {
             debug('onEnteringStateTileChoice', args);
 
             this.addPrimaryActionButton('btnPassTileChoice', _('Pass'), () => {
-                    this.takeAction('actPass');
+                    this.performAction('actPass');
                 });
             let possibleTiles = args.possibleTiles;
             Object.entries(possibleTiles).forEach( (tile_datas) => {
@@ -388,7 +388,7 @@ function (dojo, declare) {
                 elements[cardId].classList.add("myt_selectedToDiscard");
             });
             this.onSelectN(elements, args.nbExpected, (selectedCards) => {
-                this.takeAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards.join(',')});
+                this.performAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards.join(',')});
             });
         },
 
@@ -409,7 +409,7 @@ function (dojo, declare) {
             if(Object.entries(args.tiles_ids_l).length == 0) $(`btnLock`).classList.add('disabled');
 
             this.addPrimaryActionButton('btnPassTileModif', _('Pass'), () => {
-                this.takeAction('actPass');
+                this.performAction('actPass');
             });
         },
         
@@ -442,7 +442,7 @@ function (dojo, declare) {
             $(`myt_tile-${selectedTileId}`).classList.add('selected');
             let confirmMsg = _('Confirm ${n} bonus markers');
             this.addPrimaryActionButton('btnConfirm', this.fsr(confirmMsg, { n: 0 }), () => {
-                this.takeAction('actTileReinforce', { tile_id: selectedTileId, nTokens: selectedElements.length });
+                this.performAction('actTileReinforce', { tile_id: selectedTileId, nTokens: selectedElements.length });
             }); 
             //DISABLED by default
             $(`btnConfirm`).classList.add('disabled');
@@ -483,7 +483,7 @@ function (dojo, declare) {
             Object.values(tiles_ids).forEach( (tile_id) => {
                 let div = $(`myt_tile-${tile_id}`);
                 let callbackTileSelection = (evt) => {
-                    this.takeAction('actTileLock', { tile_id: tile_id,});
+                    this.performAction('actTileLock', { tile_id: tile_id,});
                 };
                 this.onClick(`${div.id}`, callbackTileSelection);
             });
@@ -495,7 +495,7 @@ function (dojo, declare) {
             let confirmText = _('Confirm');
             if(this.player_id == args.c ) confirmText = _('End turn');
             this.addPrimaryActionButton('btnConfirmTurn', confirmText, () => {
-                    this.takeAction('actConfirmTurn');
+                    this.performAction('actConfirmTurn');
                 }, 'restartAction');
         },
         
