@@ -375,6 +375,7 @@ function (dojo, declare) {
                     this.clientState('tileChoiceCards',  this.fsr(_('Select ${n} cards to discard'), {n:tile.n}), {
                         tile_id: tile_id,
                         cardIds: tile.c,
+                        cardsSets: tile.s,
                         nbExpected: tile.n,
                       });
                 };
@@ -388,15 +389,17 @@ function (dojo, declare) {
             let elements = [];
             let tile_id = args.tile_id;
             let cardIds = args.cardIds;
+            let cardSets = args.cardsSets;
             //hightlight the tile for which we need to choose cards :
             $(`myt_tile-${tile_id}`).classList.add('selected');
             Object.values(cardIds).forEach((cardId) => {
                 elements[cardId] = $(`myt_card-${cardId}`);
                 elements[cardId].classList.add("myt_selectedToDiscard");
             });
+
             this.onSelectN(elements, args.nbExpected, (selectedCards) => {
                 this.performAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards.join(',')});
-            });
+            }, cardSets);
         },
 
         onEnteringStateTileModif(args) {

@@ -1336,15 +1336,17 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       ] );
       anim.play();
     },
-    /** Useful When we want to select mutliple elements at the same time
+    /** Useful When we want to select mutliple elements at the same time.
+     * 
+     * Optional parameter "listPossibleSets" will make selection impossible if not in list of sets/arrays
     */
-    onSelectN(elements, n, callback) {
+    onSelectN(elements, n, callbackOnSelectionEnd, listPossibleSets =null) {
       let selectedElements = [];
       let updateStatus = () => {
         if ($('btnConfirmChoice')) $('btnConfirmChoice').remove();
         if (selectedElements.length == n) {
           this.addPrimaryActionButton('btnConfirmChoice', _('Confirm'), () => {
-            if (callback(selectedElements)) {
+            if (callbackOnSelectionEnd(selectedElements)) {
               selectedElements = [];
               updateStatus();
             }
@@ -1361,25 +1363,70 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
 
         Object.keys(elements).forEach((id) => {
           let elt = elements[id];
-          let selected = selectedElements.includes(id);
+          let selected = selectedElements.includes(parseInt(id));
           elt.classList.toggle('selected', selected);
           elt.classList.toggle('selectable', selected || selectedElements.length < n);
         });
+        
+      };
+      let checkPossibleSets = () => {
+
+        if(listPossibleSets!=null){
+          let includesAll = (arr, target) => target.every(v => arr.includes(v));
+          //Check each element not currently selected
+          Object.keys(elements).forEach((id2) => {
+            let elt2 = elements[id2];
+            let selected2 = selectedElements.includes(parseInt(id2));
+            if(selected2) return;
+            let tmp = Array.from(selectedElements);
+            tmp.push(parseInt(id2));
+            let possibleSet = false;
+            Object.values(listPossibleSets).forEach((pSet) => {
+              if( includesAll(pSet,tmp)){
+                possibleSet = true;
+              }
+            });
+            
+            elt2.classList.toggle('selectable', selected2 || possibleSet && selectedElements.length < n);
+            
+          });
+
+          let nbSelectables = 0;
+          Object.keys(elements).forEach((id) => {
+            let elt = elements[id];
+            if(elt.classList.contains("selectable")) nbSelectables++;
+          });
+          if(nbSelectables == n){
+            //If only 1 match in fixed possible sets, let's auto select it
+            debug("onSelectN... auto select ",nbSelectables);
+            Object.keys(elements).forEach((id) => {
+              let elt = elements[id];
+              if(elt.classList.contains("selectable")){
+                elt.classList.add("selected");
+                if(!selectedElements.includes(parseInt(id))) selectedElements.push(parseInt(id));
+              }
+            });
+            updateStatus();
+          }
+        }
       };
 
       Object.keys(elements).forEach((id) => {
         let elt = elements[id];
 
         this.onClick(elt, () => {
+          if(!elt.classList.contains("selectable")) return;
+          
           let index = selectedElements.findIndex((t) => t == id);
 
           if (index === -1) {
             if (selectedElements.length >= n) return;
-            selectedElements.push(id);
+            selectedElements.push(parseInt(id));
           } else {
             selectedElements.splice(index, 1);
           }
           updateStatus();
+          checkPossibleSets();
         });
       });
     },
