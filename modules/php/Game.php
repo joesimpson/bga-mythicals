@@ -199,13 +199,6 @@ class Game extends \Table
 
         throw new \feException("Zombie mode not supported at this game state: \"{$state_name}\".");
     }
-
-    #[CheckAction(false)]
-    public function actChangePref(int $pref, int $value): void
-    {
-        //TODO JSA check if useless from boilerplate
-        //Preferences::set($this->getCurrentPId(), $pref, $value);
-    }
     
     /**
     * Check Server version to compare with client version : throw an error in case it 's not the same

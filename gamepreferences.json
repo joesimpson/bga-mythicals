@@ -13,6 +13,19 @@
         "default": 2,
         "attribute": "myt_undo_style"
     },
+    "102": {
+        "name": "Ask for turn confirmation",
+        "needReload": false,
+        "values": {
+            "2": {
+                "name": "Enabled"
+            },
+            "0": {
+                "name": "Disabled"
+            }
+        },
+        "default": 2
+    },
     "110": {
         "name": "Card stack order",
         "needReload": false,

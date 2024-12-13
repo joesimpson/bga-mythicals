@@ -29,6 +29,7 @@ define([
 function (dojo, declare) {
     
     const PREF_UNDO_STYLE = 101;
+    const PREF_CONFIRM = 102;
     const PREF_CARD_STACK_STYLE = 110;
     
     const CARD_LOCATION_RESERVE = 'reserve';
@@ -249,10 +250,12 @@ function (dojo, declare) {
         },
        
         
+        /* not enough settings for now, let's keep all in 1 section
         getSettingsSections: ()=>({
             layout: _("Layout"),
             buttons: _("Buttons"),
         }),
+        */
         getSettingsConfig() {
             return {
                 /*
@@ -272,8 +275,17 @@ function (dojo, declare) {
                 }, 
                 */
 
-                undoStyle: { section: "buttons", type: 'pref', prefId: PREF_UNDO_STYLE },
-                cardStackStyle: { section: "layout", type: 'pref', prefId: PREF_CARD_STACK_STYLE },
+                confirmMode: { 
+                    type: 'pref', 
+                    prefId: PREF_CONFIRM },
+                undoStyle: { 
+                    //section: "buttons", 
+                    type: 'pref', 
+                    prefId: PREF_UNDO_STYLE },
+                cardStackStyle: { 
+                    //section: "layout", 
+                    type: 'pref', 
+                    prefId: PREF_CARD_STACK_STYLE },
             };
         },
         onChangeBoardWidthSetting(val) {

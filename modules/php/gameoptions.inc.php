@@ -43,6 +43,16 @@ $game_preferences = [
     'attribute' => 'myt_undo_style',
   ],
 
+  PREF_CONFIRM => [
+    'name' => totranslate('Ask for turn confirmation'),
+    'needReload' => false,
+    'values' => [
+      PREF_CONFIRM_ENABLED => ['name' => totranslate('Enabled')],
+      PREF_CONFIRM_DISABLED => ['name' => totranslate('Disabled')],
+    ],
+    "default"=> PREF_CONFIRM_ENABLED,
+  ],
+
   PREF_CARD_STACK_STYLE => [
     'name' => totranslate('Card stack order'),
     'needReload' => false,
