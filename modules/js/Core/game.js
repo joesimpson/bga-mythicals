@@ -83,19 +83,9 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       return this.instantaneousMode;
     },
 
-    setModeInstataneous() {
-      if (this.instantaneousMode == false) {
-        this.instantaneousMode = true;
-        dojo.style('leftright_page_wrapper', 'display', 'none');
-      }
-    },
-
     unsetModeInstantaneous() {
-      if (this.instantaneousMode) {
-        this.instantaneousMode = false;
-        dojo.style('leftright_page_wrapper', 'display', 'flex');
-        this.updateLayout();
-      }
+      this.inherited(arguments);
+      this.updateLayout();
     },
 
     /*
