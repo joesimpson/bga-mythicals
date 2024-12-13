@@ -151,7 +151,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       delete data.lock;
 
       data.v = this.gamedatas.version;
-      return this.bgaPerformAction(action, data,);
+      return this.bgaPerformAction(action, data);
     },
 
     /*
@@ -232,10 +232,8 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       this.performAction('actUndoToStep', { stepId }, false);
     },
 
-    clearPossible() {
-      debug('clearPossible()' );
-      this.removeAllActionButtons();
-
+    clearPreAnimation() {
+      debug('clearPreAnimation()' );
       this._connections.forEach(dojo.disconnect);
       this._connections = [];
       this._selectableNodes.forEach((node) => {
@@ -245,6 +243,12 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       dojo.query('.unselectable').removeClass('unselectable');
       dojo.query('.selectable').removeClass('selectable');
       dojo.query('.selected').removeClass('selected');
+    },
+
+    clearPossible() {
+      debug('clearPossible()' );
+      this.clearPreAnimation();
+      this.removeAllActionButtons(); 
     },
 
     /**
@@ -330,6 +334,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
             $('pagemaintitletext').innerHTML = msg;
             this.removeAllActionButtons();
           }
+          this.clearPreAnimation();
         }, 
         onEnd: (notifName, msg, args) => { 
           //To see log 
@@ -1416,7 +1421,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
 
         this.onClick(elt, () => {
           if(!elt.classList.contains("selectable")) return;
-          
+
           let index = selectedElements.findIndex((t) => t == id);
 
           if (index === -1) {

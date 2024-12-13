@@ -134,6 +134,15 @@ body[data-myt_undo_style='2']{//PREF_UNDO_STYLE_ICON
     }
     color: white;
 }
+
+
+body.lockedInterface{
+
+    #customActions,
+    #restartAction{
+        pointer-events: none;
+    }
+}
  
 // SAFE MODE --------------------------
 #ebd-body.help-mode {

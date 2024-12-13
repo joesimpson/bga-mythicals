@@ -527,6 +527,7 @@ function (dojo, declare) {
         notif_refreshUI: async function(args) {
             debug('notif_refreshUI: refreshing UI', args);
             //this.setNotifDuration(200);
+            this.clearPossible();
             this.refreshPlayersDatas(args.datas['players']);
             ['cards', 'tiles', 'tokens', 'deckSize',].forEach((value) => {
                 this.gamedatas[value] = args.datas[value];

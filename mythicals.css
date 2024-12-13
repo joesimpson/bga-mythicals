@@ -2566,6 +2566,11 @@ body[data-myt_undo_style="2"] #btnTextRestartTurn {
   background-color: rgb(132, 96, 66);
 }
 
+body.lockedInterface #customActions,
+body.lockedInterface #restartAction {
+  pointer-events: none;
+}
+
 #ebd-body.help-mode .tooltipable {
   cursor: help;
 }
