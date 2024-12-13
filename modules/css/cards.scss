@@ -225,14 +225,19 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
     //FOR ANIMATION FOR HERE
     .myt_card{
         position: absolute;
+        top: 0px;
     }
 }
 .myt_deck_size{
     user-select: none;
     position: absolute;
-    bottom: -25px;
+    top: 0px;
     text-align: center;
     width: 100%;
+    color: white;
+    text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+    font-size: 25px;
+    font-weight: 700;
 }
 
 #myt_players_table{
@@ -324,11 +329,13 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
     flex-wrap: wrap;  
     align-items: center;
     justify-content: center;
-    padding: 0px 5px;
-    width: calc(1.1 * $card_width);
+    //width: calc(3 * $card_width);
+    width: 100%;
+    margin-top: -110%;
+    margin-top: -70%;
 
     .myt_card{
-
+        /*
         &[data-color="1"] {//CARD_COLOR_BLUE
             order: 4;
         }
@@ -341,6 +348,24 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
         &[data-color="4"] {//CARD_COLOR_RED
             order: 3;
         }
+        */
+
+        margin-left: calc(-0.7 * $card_width);
+        &:nth-of-type(1){//FIRST card
+            margin-left:0px;
+        }
+        .help-marker{
+            top: 20%;
+            left: 5%;
+        }
+
+        //&.selectable{
+        //    z-index: 4;
+        //    &:hover{
+        //        z-index: 5;
+        //    }
+        //}
+        
     }
 }
 

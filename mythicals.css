@@ -602,7 +602,7 @@
 
 #myt_cards_deck_container {
   margin: 5px;
-  height: 230px;
+  height: 100%;
 }
 
 body.notouch-device #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens.tooltipable:hover #myt_ellipsis_border {
@@ -1400,6 +1400,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 }
 #myt_cards_deck_container .myt_card {
   position: absolute;
+  top: 0px;
 }
 
 .myt_deck_size {
@@ -1407,9 +1408,13 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
      -moz-user-select: none;
           user-select: none;
   position: absolute;
-  bottom: -25px;
+  top: 0px;
   text-align: center;
   width: 100%;
+  color: white;
+  text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+  font-size: 25px;
+  font-weight: 700;
 }
 
 #myt_players_table {
@@ -1529,20 +1534,33 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 0px 5px;
-  width: 110px;
+  width: 100%;
+  margin-top: -110%;
+  margin-top: -70%;
 }
-#myt_cards_draw .myt_card[data-color="1"] {
-  order: 4;
+#myt_cards_draw .myt_card {
+  /*
+  &[data-color="1"] {//CARD_COLOR_BLUE
+      order: 4;
+  }
+  &[data-color="2"] {//CARD_COLOR_GREEN
+      order: 2;
+  }
+  &[data-color="3"] {//CARD_COLOR_PURPLE
+      order: 1;
+  }
+  &[data-color="4"] {//CARD_COLOR_RED
+      order: 3;
+  }
+  */
+  margin-left: -70px;
 }
-#myt_cards_draw .myt_card[data-color="2"] {
-  order: 2;
+#myt_cards_draw .myt_card:nth-of-type(1) {
+  margin-left: 0px;
 }
-#myt_cards_draw .myt_card[data-color="3"] {
-  order: 1;
-}
-#myt_cards_draw .myt_card[data-color="4"] {
-  order: 3;
+#myt_cards_draw .myt_card .help-marker {
+  top: 20%;
+  left: 5%;
 }
 
 .myt_card_tooltip {
@@ -2453,6 +2471,14 @@ body.notouch-device #help-mode-switch:hover {
   align-items: center;
   flex-wrap: wrap;
   flex-flow: row;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+}
+#myt_main_zone #myt_left_zone {
+  max-width: 25%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 #myt_main_zone #myt_board_zone {
   max-width: 80%;
@@ -2564,6 +2590,7 @@ body[data-myt_undo_style="2"] #btnTextRestartTurn {
   width: 20px;
   height: 20px;
   z-index: 900;
+  color: black;
   border: 1px solid black;
   border-radius: 50%;
 }

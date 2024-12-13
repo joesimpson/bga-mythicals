@@ -137,12 +137,14 @@ function (dojo, declare) {
                 <div id="myt_game_container">
                     <div id="myt_select_piece_container"></div>
                     <div id="myt_main_zone">
-                        <div id="myt_cards_deck_container">
-                            <div class="myt_card_back">
-                                <div class="myt_deck_size" id="myt_deck_size">${gamedatas.deckSize}</div>
+                        <div id="myt_left_zone">
+                            <div id="myt_cards_deck_container">
+                                <div class="myt_card_back">
+                                    <div class="myt_deck_size" id="myt_deck_size">${gamedatas.deckSize}</div>
+                                </div>
                             </div>
+                            <div id="myt_cards_draw"></div>
                         </div>
-                        <div id="myt_cards_draw"></div>
                         <div id="myt_board_zone">
                             <div id='myt_resizable_board'>
                                 <div id='myt_board_container'>
@@ -552,7 +554,7 @@ function (dojo, declare) {
                         from: deckContainer.id 
                     });
                     this._counters['deckSize'].incValue(-1 );
-                    await this.wait(50 * i).then(async () => 
+                    await this.wait(300 * i).then(async () => 
                         await this.slide(divCard.id, this.getCardContainer(card), { })
                     );
                 })

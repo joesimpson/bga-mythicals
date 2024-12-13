@@ -33,6 +33,14 @@
     align-items: center;
     flex-wrap: wrap;
     flex-flow: row;
+    column-gap: 5px;
+
+    #myt_left_zone{
+        max-width: 25%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
 
     #myt_board_zone{
         //width: 80%;
@@ -152,6 +160,7 @@ body[data-myt_undo_style='2']{//PREF_UNDO_STYLE_ICON
     width: 20px;
     height: 20px;
     z-index: 900;
+    color: black;
     border: 1px solid black;
     border-radius: 50%;
 

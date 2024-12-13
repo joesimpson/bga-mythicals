@@ -284,7 +284,8 @@ $card_height: var(--myt_board_card_height);
 
 #myt_cards_deck_container{
     margin: 5px;
-    height: 230px;
+    //height: 230px;
+    height: 100%;
 }
 
 body.notouch-device{
