@@ -319,6 +319,9 @@ function (dojo, declare) {
                 };
                 this.addPrimaryActionButton('btnDraw', this.fsr(btnMessage, {n:NB_CARDS_PER_DRAW}), callbackDrawCards); 
                 this.onClick(`myt_cards_deck_container`, callbackDrawCards );
+
+                this.addSecondaryActionButton('btnTextSeparator',_("or"));
+                $(`btnTextSeparator`).classList.add('disabled');
             }
             let playableCardsInDraw = args.drawnCards;
             Object.values(playableCardsInDraw).forEach(card => {

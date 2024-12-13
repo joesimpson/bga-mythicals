@@ -2483,6 +2483,13 @@ body.notouch-device #help-mode-switch:hover {
   background-color: rgba(255, 115, 0, 0.75) !important;
 }
 
+#btnTextSeparator {
+  background: inherit;
+  color: inherit;
+  border: none;
+  box-shadow: none;
+}
+
 body[data-myt_undo_style="1"] #btnIconUndoLastStep,
 body[data-myt_undo_style="1"] #btnIconRestartTurn {
   display: none !important;
