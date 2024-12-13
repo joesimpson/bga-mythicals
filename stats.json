@@ -28,6 +28,16 @@
         "name": "Creature cards",
         "type": "int"
       },
+      "cards_from_deck": {
+        "id": 23,
+        "name": "Collected from deck",
+        "type": "int"
+      },
+      "cards_from_reserve": {
+        "id": 24,
+        "name": "Collected from reserve",
+        "type": "int"
+      },
       "tiles": {
         "id": 21,
         "name": "Mastery tiles",

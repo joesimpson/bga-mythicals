@@ -138,6 +138,7 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
       $card->setLocation(CARD_LOCATION_HAND);
       Notifications::giveCardTo($player,$card);
       Stats::inc("cards",$player);
+      Stats::inc("cards_from_reserve",$player);
     }
     return $cards;
   }

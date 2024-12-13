@@ -99,6 +99,7 @@ trait CardCollectTrait
         $card->setLocation(CARD_LOCATION_HAND);
         Notifications::giveCardTo($player,$card);
         Stats::inc("cards",$player);
+        Stats::inc("cards_from_deck",$player);
       }
       else {
         //move others to RESERVE !
