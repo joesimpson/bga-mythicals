@@ -138,9 +138,19 @@ body.notouch-device{
 
 .myt_tile_tooltip{
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    hr{
+        width: 100%;
+    }
     .myt_tile{
-        width: calc($tile_width * 2);
-        height: calc($tile_height * 2);
+        //width: calc($tile_width * 2);
+        //height: calc($tile_height * 2);
+        width: 15em;
+        height: 15em;
         border-radius: 30px;
     }
 }
