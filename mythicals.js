@@ -630,13 +630,18 @@ function (dojo, declare) {
             let tile = args.tile;
             let div = $(`myt_tile-${tile.id}`);
             if (!div) return;
-            div.dataset.face = tile.face;
-            //Update tooltip because face has changed
-            this.addCustomTooltip(div.id, this.getTileTooltip(tile));
-            //TODO ? flipAndReplace
-            //this.flipAndReplace(div, divAfter);
+            
+            let divAfter = div.cloneNode();
+            //divAfter.id = divAfter.id + "_tmp";
+            divAfter.dataset.face = tile.face;
+            await this.flipAndReplace(div, divAfter);
+            //divAfter.id = `myt_tile-${tile.id}`;
 
-            await this.wait(800);
+            //Update tooltip because face has changed
+            this.destroyTooltip(divAfter);
+            this.addCustomTooltip(divAfter.id, this.getTileTooltip(tile));
+
+            await this.wait(100);
         },
         
         notif_newBonusMarkerOnTile: async function(args) {

@@ -40,14 +40,18 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
       this.alwaysFixTopActionsMaximum = 30;
     },
 
-    destroy(elem, delayRemove = false) {
-      //debug(`destroy ${elem.id}`,elem);
+    destroyTooltip(elem) {
       if (this.tooltips[elem.id]) {
         clearTimeout(this.tooltips[elem.id].showTimeout);
         this.tooltips[elem.id].close();
         this.tooltips[elem.id].destroy();
         delete this.tooltips[elem.id];
       }
+    },
+
+    destroy(elem, delayRemove = false) {
+      //debug(`destroy ${elem.id}`,elem);
+      this.destroyTooltip(elem);
       this.empty(elem);
       if(!delayRemove) elem.remove();
     },
@@ -897,9 +901,9 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
     /*
      * Wrap a node inside a flip container to trigger a flip animation before replacing with another node
      */
-    flipAndReplace(target, newNode, duration = 1000) {
-      // Fast replay mode
-      if (this.isFastMode()) {
+    flipAndReplace: async function(target, newNode, duration = 1000) {
+      debug("flipAndReplace start");
+      if (!this.bgaAnimationsActive()) {
         dojo.place(newNode, target, 'replace');
         return;
       }
@@ -928,6 +932,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
           dojo.place(newNode, container, 'replace');
           resolve();
         }, duration);
+        debug("flipAndReplace end");
       });
     },
 
