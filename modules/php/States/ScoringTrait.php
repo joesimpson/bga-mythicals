@@ -43,13 +43,15 @@ trait ScoringTrait
       Notifications::revealTiles($player,$playerTiles);
       foreach($playerTiles as $tile){
         $scoreTiles += $tile->getScore();
+        Notifications::scoreTile($player,$tile,$tile->getScore());
       }
 
       $totalScore = $scoreTokens + $scoreTiles;
       $player->setScore($totalScore);
       Stats::set( "score", $player, $totalScore );
-      Notifications::addPoints($player,$scoreTokens,clienttranslate('${player_name} scores ${n} ${points} with ${n2} tokens'), $nbTokens);
-      Notifications::addPoints($player,$scoreTiles,clienttranslate('${player_name} scores ${n} ${points} with ${n2} tiles'), $playerTiles->count());
+      Notifications::scoreTokens($player,$scoreTokens,$nbTokens);
+      //Replaced by separate notif for each tile
+      //Notifications::addPoints($player,$scoreTiles,clienttranslate('${player_name} scores ${n} ${points} with ${n2} tiles'), $playerTiles->count());
     }
     
   }

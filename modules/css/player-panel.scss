@@ -135,3 +135,15 @@
         margin: 0 0.5em;
     }
 }
+
+#myt_score_animation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 22px;
+
+    .myt_icon_container {
+        font-size: 0.8em;
+    }
+}

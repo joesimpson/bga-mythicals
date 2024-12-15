@@ -5,6 +5,7 @@ namespace Bga\Games\Mythicals\Core;
 use Bga\Games\Mythicals\Game;
 use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Managers\Cards;
+use Bga\Games\Mythicals\Managers\Tiles;
 use Bga\Games\Mythicals\Models\Card;
 use Bga\Games\Mythicals\Models\MasteryTile;
 use Bga\Games\Mythicals\Models\Player;
@@ -13,21 +14,21 @@ use Bga\Games\Mythicals\Models\Token;
 class Notifications
 { 
   
-  /**
-   * @param Player $player
-   * @param int $points
-   * @param string $msg (optional) Message to overwrite default
-   */
-  public static function addPoints(Player $player,int $points, string $msg = null, int $n2 =null){
-    if(!isset($msg)) $msg = clienttranslate('${player_name} scores ${n} ${points}');
-    $args = [ 
-      'player' => $player,
-      'n' => $points,
-      'points' => 'points',
-    ];
-    if(isset($n2)) $args['n2'] = $n2;
-    self::notifyAll('addPoints',$msg, $args, );
-  }
+  // Commented because unused in this game, and we don't need to translate that message
+  ///**
+  // * @param Player $player
+  // * @param int $points
+  // * @param string $msg (optional) Message to overwrite default
+  // */
+  //public static function addPoints(Player $player,int $points, string $msg = null, int $n2 =null){
+  //  if(!isset($msg)) $msg = clienttranslate('${player_name} scores ${n} points');
+  //  $args = [ 
+  //    'player' => $player,
+  //    'n' => $points,
+  //  ];
+  //  if(isset($n2)) $args['n2'] = $n2;
+  //  self::notifyAll('addPoints',$msg, $args, );
+  //}
 
   /**
    */
@@ -35,6 +36,31 @@ class Notifications
   {
     self::notifyAll('computeFinalScore', clienttranslate('Computing final score...'), [
     ]);
+  }
+ 
+  public static function scoreTile(Player $player,MasteryTile $tile, int $points){
+    $msg = clienttranslate('${player_name} scores ${n} points with a ${tile_color} tile');
+    $args = [ 
+      'player' => $player,
+      'n' => $points,
+      'tile' => $tile->getUiData(),
+
+      'i18n' => ['tile_color'],  
+      'tile_color' => Tiles::getColorName($tile->getColor()),
+      'preserve' => [ 'tile_color_type' ],
+      'tile_color_type' => $tile->getColor(),
+    ];
+    self::notifyAll('scoreTile',$msg, $args, );
+  }
+  
+  public static function scoreTokens(Player $player, int $points, int $nbTokens){
+    $msg = clienttranslate('${player_name} scores ${n} points with ${n2} tokens');
+    $args = [ 
+      'player' => $player,
+      'n' => $points,
+      'n2' => $nbTokens,
+    ];
+    self::notifyAll('scoreTokens',$msg, $args, );
   }
 
   /**

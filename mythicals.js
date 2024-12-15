@@ -694,10 +694,27 @@ function (dojo, declare) {
            // this.setNotifDuration(1200);
             let pId = args.player_id;
             let points = args.n;
-            this.gamedatas.players[pId].score += points;
-            this.scoreCtrl[pId].incValue(points);
-            await this.wait(1200);
+            await this.gainPoints(pId,points);
+            await this.wait(100);
         },
+        notif_scoreTile: async function(args) {
+            debug('notif_scoreTile', args);
+            let pId = args.player_id;
+            let points = args.n;
+            let tile = args.tile;
+            let divTile = $(`myt_tile-${tile.id}`);
+            await this.gainPoints(pId,points,divTile);
+            await this.wait(100);
+        },
+        notif_scoreTokens: async function(args) {
+            debug('notif_scoreTokens', args);
+            let pId = args.player_id;
+            let points = args.n;
+            let divTokens = $(`myt_player_tokens-${pId}`);
+            await this.gainPoints(pId,points,divTokens);
+            await this.wait(100);
+        },
+
         //Notifs with text only :
         notif_dayCard: async function(n) {
             debug('notif_dayCard', n);
@@ -747,34 +764,28 @@ function (dojo, declare) {
             ROOT.style.setProperty('--myt_board_display_scale', widthScale);
 
         },
-
-        ///////////////////////////////////////////////////
-        //// Player's action
-        
-        /*
-        
-            Here, you are defining methods to handle player's action (ex: results of mouse click on 
-            game objects).
+ 
+        gainPoints: async function(pId,n, fromElement = null) {
+            this.gamedatas.players[pId].score += n;
             
-            Most of the time, these methods:
-            _ check the action is possible at this game state.
-            _ make a call to the game server
-        
-        */
-        
-        // Example:
-        
-        onCardClick: function( color )
-        {
-            debug( 'onCardClick', color );
+            if(n !=0){
+                let elem = `<div id='myt_score_animation'>
+                    ${Math.abs(n)}
+                    <div class="myt_icon_container myt_icon_container_score">
+                        <div class="myt_icon myt_icon_score"></div>
+                    </div>
+                    </div>`;
+                $('page-content').insertAdjacentHTML('beforeend', elem);
 
-            this.bgaPerformAction("actCollectReserve", { 
-                color,
-            }).then(() =>  {                
-                // What to do after the server call if it succeeded
-                // (most of the time, nothing, as the game will react to notifs / change of state instead)
-            });        
-        },    
+                await this.slide(`myt_score_animation`, `player_score_${pId}`, {
+                    from: fromElement || this.getVisibleTitleContainer(),
+                    destroy: true,
+                    phantom: false,
+                    duration: 1500,
+                });
+            }
+            this.scoreCtrl[pId].incValue(n);
+        },
 
          ////////////////////////////////////////////////////////////
         // _____                          _   _   _
@@ -804,6 +815,12 @@ function (dojo, declare) {
                 if(card_color in args && card_color_type in args) {
                     args.card_color = this.formatIcon("card_color_log-"+args.card_color_type);
                     args.card_color_type = "";
+                }
+                let tile_color = 'tile_color';
+                let tile_color_type = 'tile_color_type';
+                if(tile_color in args && tile_color_type in args) {
+                    args.tile_color = this.formatIcon("tile_color_log-"+args.tile_color_type);
+                    args.tile_color_type = "";
                 }
             }
             } catch (e) {

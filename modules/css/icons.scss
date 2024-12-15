@@ -30,28 +30,38 @@
 .myt_icon_card_color_log-1,
 .myt_icon_card_color_log-2,
 .myt_icon_card_color_log-3,
-.myt_icon_card_color_log-4
+.myt_icon_card_color_log-4,
+.myt_icon_tile_color_log-1,
+.myt_icon_tile_color_log-2,
+.myt_icon_tile_color_log-3,
+.myt_icon_tile_color_log-4
 {
     $icon_width: 41px;
     border-radius: 10px;
     &.myt_icon_color-1,
+    &.myt_icon_tile_color_log-1,
     &.myt_icon_card_color_log-1{//CARD_COLOR_BLUE
         @include myt_icon_card_color(-2146px,-1726px,$icon_width,$icon_width);
     }
     &.myt_icon_color-2,
+    &.myt_icon_tile_color_log-2,
     &.myt_icon_card_color_log-2{//CARD_COLOR_GREEN
         @include myt_icon_card_color(-896px,-1726px,$icon_width,$icon_width);
     }
     &.myt_icon_color-3,
+    &.myt_icon_tile_color_log-3,
     &.myt_icon_card_color_log-3{//CARD_COLOR_PURPLE
         @include myt_icon_card_color(-270px,-1726px,$icon_width,$icon_width);
     }
     &.myt_icon_color-4,
+    &.myt_icon_tile_color_log-4,
     &.myt_icon_card_color_log-4{//CARD_COLOR_RED
         @include myt_icon_card_color(-1523px,-1726px,$icon_width,$icon_width);
     }
 }
 
+.myt_icon_tile_color_log-5,
+.myt_icon_tile_color_log-6,
 .myt_icon_color-5,
 .myt_icon_color-6
 {
@@ -72,10 +82,12 @@
     width: calc( $icon_img_ratio * $icon_img_width);
     height: calc( $icon_img_ratio * $icon_img_height);
     
+    &.myt_icon_tile_color_log-5,
     &.myt_icon_color-5{//TILE_COLOR_GRAY
         background-position-y: calc( $icon_img_ratio * -2092px);
         background-position-x: calc( $icon_img_ratio * -328px);
     } 
+    &.myt_icon_tile_color_log-6,
     &.myt_icon_color-6{//TILE_COLOR_BLACK
         background-position-y: calc( $icon_img_ratio * -2081px);
         background-position-x: calc( $icon_img_ratio * -3420px);
@@ -94,6 +106,7 @@
             width: 2em;
             height: 2em;
         }
+        &.myt_icon_score,
         &.myt_icon_bonus_tokens,
         &.myt_icon_bonus-1 { //TOKEN_TYPE_BONUS_MARKER
             

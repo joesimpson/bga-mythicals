@@ -92,6 +92,26 @@ class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
   public static function formatBoardLocation(int $scoringType){
     return TILE_LOCATION_BOARD."$scoringType";
   }
+
+  public static function getColorName(int $color)
+  { 
+    switch($color){
+      case TILE_COLOR_BLUE:
+        return clienttranslate("blue");
+      case TILE_COLOR_RED:
+        return clienttranslate("red");
+      case TILE_COLOR_PURPLE:
+        return clienttranslate("purple");
+      case TILE_COLOR_GREEN:
+        return clienttranslate("green");
+      case TILE_COLOR_BLACK:
+        return clienttranslate("black");
+      case TILE_COLOR_GRAY:
+        return clienttranslate("gray");
+      default: 
+        return "";
+    }
+  }
    
   /** Creation of the tiles */
   public static function setupNewGame($players, $options)
