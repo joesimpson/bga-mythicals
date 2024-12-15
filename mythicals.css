@@ -1880,7 +1880,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   cursor: pointer;
 }
 .myt_tile.selected {
-  box-shadow: 0px 0px 10px 10px rgb(9, 212, 212);
+  box-shadow: 0px 0px 10px 10px gold;
   z-index: 4;
 }
 .myt_tile .myt_tile_token_spot {
@@ -1916,7 +1916,7 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
   border-radius: 40px;
 }
 #myt_board_tiles .myt_tile.selected {
-  box-shadow: 0px 0px 40px 40px rgb(9, 212, 212);
+  box-shadow: 0px 0px 40px 40px gold;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot {
   position: absolute;
@@ -1926,11 +1926,11 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot.selectable {
   cursor: pointer;
-  box-shadow: 0px 0px 10px 20px gold;
+  box-shadow: 0px 0px 10px 20px #0ff;
   border-radius: 50%;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot.selectable.selected {
-  box-shadow: 0px 0px 10px 20px green;
+  box-shadow: 0px 0px 10px 20px gold;
 }
 #myt_board_tiles .myt_tile .myt_tile_token_spot[data-index="1"] {
   top: 52.734375px;
