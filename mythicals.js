@@ -392,6 +392,8 @@ function (dojo, declare) {
             let cardSets = args.cardsSets;
             //hightlight the tile for which we need to choose cards :
             $(`myt_tile-${tile_id}`).classList.add('selected');
+            //Cancel when click on tile :
+            this.onClick(`myt_tile-${tile_id}`, () => this.clearClientState());
             Object.values(cardIds).forEach((cardId) => {
                 elements[cardId] = $(`myt_card-${cardId}`);
                 elements[cardId].classList.add("myt_selectedToDiscard");
