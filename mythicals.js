@@ -576,9 +576,9 @@ function (dojo, declare) {
             if(args.player_id2) this._counters[args.player_id2].cards.incValue(-1);
             
             if (!$(`myt_card-${args.card.id}`)) this.addCard(args.card, this.getVisibleTitleContainer());
-            await this.slide(`myt_card-${args.card.id}`, this.getCardContainer(args.card));
+            await this.slide(`myt_card-${args.card.id}`, this.getCardContainer(args.card), { duration: 450,});
             this.updateCardsStackCounters();
-            await this.wait(200);
+            await this.wait(10);
         },
         notif_cardToReserve: async function(args) {
             debug('notif_cardToReserve: RESERVE receiving a new card', args);
@@ -737,7 +737,7 @@ function (dojo, declare) {
         notif_collectReserve: async function(n) {
             debug('notif_collectReserve', n);
             if(n.player_id == this.player_id) return;
-            await this.wait(1500);
+            await this.wait(500);
         },
 
         ///////////////////////////////////////////////////
