@@ -1547,6 +1547,9 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   text-align: center;
   padding: 0 7px;
 }
+#myt_players_table .myt_player_table_title .myt_player_score_recap {
+  display: none;
+}
 #myt_players_table .myt_player_cards {
   display: flex;
   flex-flow: row;
@@ -2029,6 +2032,54 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
 .myt_player_table_content_right .myt_player_tokens .myt_bonus_token {
   margin-right: -25px;
   margin-bottom: -25px;
+}
+
+#myt_game_container.myt_scoringPhase #myt_main_zone {
+  display: none;
+}
+#myt_game_container.myt_scoringPhase #myt_players_table {
+  flex-flow: column;
+}
+#myt_game_container.myt_scoringPhase .myt_player_cards {
+  display: none;
+  opacity: 0;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_title {
+  display: flex;
+  flex-flow: row;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_title .myt_player_table_title_name {
+  flex-grow: 90;
+  font-size: 1.5em;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_title .myt_player_score_recap {
+  flex-grow: 10;
+  display: inherit;
+  position: relative;
+  font-size: 3em;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_content_right {
+  width: 510px;
+  padding-bottom: 10px;
+  flex-flow: row;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_content_right .myt_player_tiles {
+  order: 1;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_content_right .myt_player_toptile {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_content_right .myt_player_toptile .myt_tile {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_content_right .myt_player_toptile .myt_tile::before {
+  content: unset;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_content_right .myt_player_tokens {
+  order: 2;
 }
 
 /**
@@ -2631,6 +2682,7 @@ body.notouch-device #help-mode-switch:hover {
   flex-flow: row;
   -moz-column-gap: 5px;
        column-gap: 5px;
+  opacity: 1;
 }
 #myt_main_zone #myt_left_zone {
   max-width: 25%;
@@ -2643,11 +2695,11 @@ body.notouch-device #help-mode-switch:hover {
 }
 
 .myt_nodisplay {
-  display: none;
+  display: none !important;
 }
 
 .myt_hidden {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 .phantom {

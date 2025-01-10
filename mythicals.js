@@ -217,7 +217,11 @@ function (dojo, declare) {
                 });
                 document.getElementById('myt_players_table').insertAdjacentHTML('beforeend', `
                     <div id="myt_player_table-${player.id}" class="myt_player_table" data-pid=${player.id} data-color='${player.color}' style="border-color:#${player.color}">
-                        <h3 class='myt_player_table_title' >${this.fsr(('${player_name}'), { player_name:this.coloredPlayerName(player.name)}) }</h3>
+                        <h3 class='myt_player_table_title' >
+                            <div class='myt_player_table_title_name' >${this.fsr(('${player_name}'), { player_name:this.coloredPlayerName(player.name)}) }</div>
+                            <div class='myt_player_score_recap' id="myt_player_score_recap-${player.id}" >${player.score}</div>
+                        </h3>
+                       
                         <div class="myt_player_table_content">
                             <div id="myt_player_cards-${player.id}" class="myt_player_cards">
                                 ${playerCardsDiv}
@@ -511,6 +515,24 @@ function (dojo, declare) {
                 }, 'restartAction');
         },
         
+
+        onEnteringStateScoring(args) {
+            debug('onEnteringStateScoring', args);
+            //Hide game elements for scoring to come
+            $("myt_game_container").classList.add('myt_scoringPhase');
+        },
+        onEnteringStatePlayerGameEnd(args) {
+            debug('onEnteringStatePlayerGameEnd', args);
+            $("myt_game_container").classList.add('myt_scoringPhase');
+ 
+        },
+        onEnteringStateGameEnd(args) {
+            debug('onEnteringStateGameEnd', args);
+            $("myt_game_container").classList.add('myt_scoringPhase');
+ 
+        },
+
+        
         //////////////////////////////////////////////////////////////
         //    _   _       _   _  __ _           _   _                 
         //   | \ | |     | | (_)/ _(_)         | | (_)                
@@ -541,6 +563,7 @@ function (dojo, declare) {
             this.forEachPlayer((player) => {
                 let pId = player.id;
                 this.scoreCtrl[pId].toValue(player.score);
+                this._counters[pId].scoreRecap.toValue(player.score);
                 this._counters[pId].cards.toValue(player.nbcards);
                 this._counters[pId].tiles.toValue(player.nbtiles);
                 this._counters[pId].bonus_tokens.toValue(player.nbtokens);
@@ -784,7 +807,12 @@ function (dojo, declare) {
                     </div>`;
                 $('page-content').insertAdjacentHTML('beforeend', elem);
 
-                await this.slide(`myt_score_animation`, `player_score_${pId}`, {
+                let animTo = `player_score_${pId}`;
+                if( $("myt_game_container").classList.contains("myt_scoringPhase") ) {
+                    animTo = `myt_player_score_recap-${pId}`;
+                }
+
+                await this.slide(`myt_score_animation`, animTo, {
                     from: fromElement || this.getVisibleTitleContainer(),
                     destroy: true,
                     phantom: false,
@@ -792,6 +820,7 @@ function (dojo, declare) {
                 });
             }
             this.scoreCtrl[pId].incValue(n);
+            this._counters[pId].scoreRecap.incValue(n);
         },
 
          ////////////////////////////////////////////////////////////
@@ -889,6 +918,7 @@ function (dojo, declare) {
                 `);
                 */
                 this._counters[pId] = {
+                    scoreRecap: this.createCounter(`myt_player_score_recap-${pId}`, player.score),
                     cards: this.createCounter(`myt_counter_${pId}_cards`, player.nbcards),
                     tiles: this.createCounter(`myt_counter_${pId}_tiles`, player.nbtiles),
                     bonus_tokens: this.createCounter(`myt_counter_${pId}_bonus_tokens`, player.nbtokens),

@@ -1,0 +1,62 @@
+
+// ---------- SPECIFIC for SCORING PHASE we reuse the same block ------------ 
+#myt_game_container.myt_scoringPhase {
+    //Hiding content for scoring phase
+    #myt_main_zone{
+        display: none;
+        //opacity: 0;
+        //animation: myt_fade_out 1s;
+    }
+    #myt_players_table{
+        flex-flow: column;
+    }
+    .myt_player_cards{
+        display: none;
+        opacity: 0;
+    }
+    
+    .myt_player_table_title{
+        display: flex;
+        flex-flow: row;
+        
+        .myt_player_table_title_name{
+            flex-grow: 90;
+            font-size: 1.5em;
+        }
+        .myt_player_score_recap{
+            flex-grow: 10;
+            display: inherit;
+            position: relative;
+            font-size: 3em;
+        }
+    }
+    //SHOWING TILES as a row, next to tokens
+    .myt_player_table_content_right{
+        width: 510px;
+        padding-bottom: 10px;
+        flex-flow: row;
+
+        .myt_player_tiles{
+            order: 1;
+            
+        }
+        .myt_player_toptile{
+            display: flex; 
+            flex-flow: row;
+            flex-wrap: wrap;
+
+            .myt_tile{
+                margin-bottom:5px;
+                margin-right:5px;
+
+                &::before{
+                    content: unset;
+                }
+            }
+
+        }
+        .myt_player_tokens{
+            order: 2;
+        }
+    }
+} 

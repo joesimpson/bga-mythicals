@@ -271,6 +271,10 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
     .myt_player_table_title{
         text-align: center;
         padding: 0 7px;
+
+        .myt_player_score_recap{
+            display: none;
+        }
     }
 
     .myt_player_cards{
