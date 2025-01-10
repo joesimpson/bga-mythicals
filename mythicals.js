@@ -1051,6 +1051,7 @@ function (dojo, declare) {
             let title = "";
             let descColor = "";
             let descValue ="";
+            let descRequire, divRequire ="";
             let div = this.tplTile(cardDatas,'_tmp');
             {
                 title = _('Mastery tile');
@@ -1058,14 +1059,20 @@ function (dojo, declare) {
                 descColor = this.fsr(_("Color : ${color}"), {color: iconColor});
                 descValue = this.fsr(_("Score : ${n}"), {n: tile.score});
                 descFace = this.fsr(_("Face : ${face}"), {face: this.getTileFaceName(tile.face)});
+
+                if (tile.location.startsWith(TILE_LOCATION_BOARD)) {
+                    descRequire = this.fsr(_("To take this tile from the board : ${x}"), {x: `<div class="myt_require_detail">${this.getTileHintTooltip(tile.pos)}</div>` } );
+                    divRequire =`<div class="myt_require"><hr/>${descRequire}</div>`;
+                }
             }
             return [`<div class='myt_tile_tooltip'>
-                    <h1>${title}</h1>
+                    <div class="myt_h1">${title}</div>
                     <hr/>
-                    <h3>${descColor}</h3>
-                    <h2>${descValue}</h2>
-                    <h2>${descFace}</h2>
+                    <div class="myt_h3">${descColor}</div>
+                    <div class="myt_h2">${descValue}</div>
+                    <div class="myt_h2">${descFace}</div>
                     ${div}
+                    ${divRequire}
                 </div>`];
 
         },

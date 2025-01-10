@@ -1955,6 +1955,26 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
   height: 15em;
   border-radius: 30px;
 }
+.myt_tile_tooltip .myt_h1 {
+  font-size: 28px;
+  font-weight: 400;
+}
+.myt_tile_tooltip .myt_h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.myt_tile_tooltip .myt_h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.myt_tile_tooltip .myt_require {
+  font-weight: bold;
+  font-style: italic;
+}
+.myt_tile_tooltip .myt_require .myt_require_detail {
+  font-weight: normal;
+  font-style: normal;
+}
 
 .myt_player_tiles .myt_player_toptile .myt_tile::after, .myt_player_tiles .myt_player_toptile .myt_tile::before {
   content: "";
