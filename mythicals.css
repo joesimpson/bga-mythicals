@@ -276,6 +276,7 @@
 }
 .player_board_inner > .player-name > a[style*="color: #ffa500"],
 .player_board_inner > .player-name > a[style*="color: #ffffff"],
+.player_board_inner > .player-name > a[style*="color: #72c3b1"],
 .player_board_inner > .player-name > a[style*="color: #bdd002"] {
   text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
 }
@@ -2838,6 +2839,8 @@ body.lockedInterface #restartAction {
 .playername_wrapper_ffa500 .playername, .playername_wrapper_ffa500.playername,
 .playername_wrapper_bdd002 .playername,
 .playername_wrapper_bdd002.playername,
+.playername_wrapper_72c3b1 .playername,
+.playername_wrapper_72c3b1.playername,
 .playername_wrapper_ffffff .playername,
 .playername_wrapper_ffffff.playername {
   text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;

@@ -4,6 +4,7 @@
         /** Add a BLACK shadow behind player name in case of bright colors like white/orange/green-sad*/
         >a[style*='color: #ffa500'],
         >a[style*='color: #ffffff'],
+        >a[style*='color: #72c3b1'],
         >a[style*='color: #bdd002']
         {
             text-shadow: 2px 0px 2px black, 
