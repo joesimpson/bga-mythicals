@@ -98,7 +98,7 @@ $card_height: 200px;
 
         &[data-nbcards="#{$i}"]{//This number will be computed on JS side based on children
             //To prepare the height of the stack, we add 1 card_height for the top card, and then N-1 times the truncated part of the card
-            height: calc(10px 
+            height: calc( 0px 
                     + $card_height
                     + ($i - 1)  * calc((1 - $card_stack_diff_height_ratio) * $card_height )
                 );
@@ -280,6 +280,7 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
         flex-wrap: wrap;
         align-items: flex-start;
         padding: 0px 5px;
+        padding-bottom: 10px;
 
         min-height: $card_height;
                 

@@ -912,40 +912,40 @@ body.notouch-device #myt_resizable_board #myt_board_container #myt_board #myt_bo
   margin-left: 10px;
 }
 .myt_cards_stack_resizable[data-nbcards="1"] {
-  height: 210px;
+  height: 200px;
 }
 .myt_cards_stack_resizable[data-nbcards="2"] {
-  height: 240px;
+  height: 230px;
 }
 .myt_cards_stack_resizable[data-nbcards="3"] {
-  height: 270px;
+  height: 260px;
 }
 .myt_cards_stack_resizable[data-nbcards="4"] {
-  height: 300px;
+  height: 290px;
 }
 .myt_cards_stack_resizable[data-nbcards="5"] {
-  height: 330px;
+  height: 320px;
 }
 .myt_cards_stack_resizable[data-nbcards="6"] {
-  height: 360px;
+  height: 350px;
 }
 .myt_cards_stack_resizable[data-nbcards="7"] {
-  height: 390px;
+  height: 380px;
 }
 .myt_cards_stack_resizable[data-nbcards="8"] {
-  height: 420px;
+  height: 410px;
 }
 .myt_cards_stack_resizable[data-nbcards="9"] {
-  height: 450px;
+  height: 440px;
 }
 .myt_cards_stack_resizable[data-nbcards="10"] {
-  height: 480px;
+  height: 470px;
 }
 .myt_cards_stack_resizable[data-nbcards="11"] {
-  height: 510px;
+  height: 500px;
 }
 .myt_cards_stack_resizable[data-nbcards="12"] {
-  height: 540px;
+  height: 530px;
 }
 .myt_cards_stack_resizable .myt_cards_stack {
   display: flex;
@@ -1554,6 +1554,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   flex-wrap: wrap;
   align-items: flex-start;
   padding: 0px 5px;
+  padding-bottom: 10px;
   min-height: 200px;
   border-radius: 20px;
   -moz-column-gap: 10px;
