@@ -1959,18 +1959,6 @@ body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
   height: 15em;
   border-radius: 30px;
 }
-.myt_tile_tooltip .myt_h1 {
-  font-size: 28px;
-  font-weight: 400;
-}
-.myt_tile_tooltip .myt_h2 {
-  font-size: 18px;
-  font-weight: 700;
-}
-.myt_tile_tooltip .myt_h3 {
-  font-size: 16px;
-  font-weight: 700;
-}
 .myt_tile_tooltip .myt_require {
   font-weight: bold;
   font-style: italic;
@@ -2701,6 +2689,21 @@ body.notouch-device #help-mode-switch:hover {
 
 .myt_hidden {
   visibility: hidden !important;
+}
+
+.myt_h1 {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.myt_h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.myt_h3 {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .phantom {
