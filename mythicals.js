@@ -501,8 +501,8 @@ function (dojo, declare) {
             //Hide game elements for scoring to come
             $("myt_game_container").classList.add('myt_scoringPhase');
         },
-        onEnteringStatePlayerGameEnd(args) {
-            debug('onEnteringStatePlayerGameEnd', args);
+        onEnteringStatePreEndOfGame(args) {
+            debug('onEnteringStatePreEndOfGame', args);
             $("myt_game_container").classList.add('myt_scoringPhase');
  
         },
@@ -660,10 +660,6 @@ function (dojo, declare) {
             debug('notif_takeBonus', args);
             //this.setNotifDuration(900);
             let token = args.token;
-            if (this.isFastMode() ) {
-                this._counters[token.pId].bonus_tokens.incValue(1);
-                return Promise.resolve();
-            }
             let divToken = $(`myt_token-${token.id}`);
             let currentPos = divToken.parentNode;
             /* if we want to remove it from the view :
@@ -698,7 +694,12 @@ function (dojo, declare) {
                 })
             );
         },
-
+        
+        notif_computeFinalScore: async function(args) {
+            debug('notif_computeFinalScore', args);
+            $("myt_game_container").classList.add('myt_scoringPhase');
+            await this.wait(400);
+        },
         notif_addPoints: async function(args) {
             debug('notif_addPoints : new score', args);
            // this.setNotifDuration(1200);
