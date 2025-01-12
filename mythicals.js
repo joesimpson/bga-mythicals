@@ -410,19 +410,44 @@ function (dojo, declare) {
 
         onEnteringStateTileModif(args) {
             debug('onEnteringStateTileModif', args);
-                
+            /*  
             this.addPrimaryActionButton('btnReinforce', _('Reinforce'), () => {
                 this.clientState('tileReinforce',  this.fsr(_('Select a tile'), {}), {
                     possibleTiles: args.tiles_ids_r,
                 });
             });
             if( Object.entries(args.tiles_ids_r).length == 0) $(`btnReinforce`).classList.add('disabled');
+            */
+            Object.entries(args.tiles_ids_r).forEach( (tile_datas) => {
+                let tile_id = tile_datas[0];
+                let nbEmptySpots = tile_datas[1];
+                let div = $(`myt_tile-${tile_id}`);
+                let lockableTile = (args.tiles_ids_l.indexOf(parseInt(tile_id))>=0) ? true : false;
+                let callbackTileSelection = (evt) => {
+                    let n = nbEmptySpots;
+                    let stateMsg = this.fsr(_('Select up to ${n} bonus spots to reinforce this tile'), {n:n});
+                    if(lockableTile) stateMsg = this.fsr(_('Select up to ${n} bonus spots to reinforce OR lock this tile'), {n:n});
+                    this.clientState('tileReinforceTokens', stateMsg, {
+                        tile_id: tile_id,
+                        n: n,
+                      });
+
+                     if(lockableTile) {
+                        this.addPrimaryActionButton('btnLock', _('Lock'), () => {
+                            this.performAction('actTileLock', { tile_id: tile_id,});
+                        });
+                     }
+                };
+                this.onClick(`${div.id}`, callbackTileSelection);
+            });
+            /*
             this.addPrimaryActionButton('btnLock', _('Lock'), () => {
                 this.clientState('tileLock',  this.fsr(_('Select a tile'), {}), {
                     tiles_ids: args.tiles_ids_l,
                 });
             });
             if(Object.entries(args.tiles_ids_l).length == 0) $(`btnLock`).classList.add('disabled');
+            */
 
             this.addPrimaryActionButton('btnPassTileModif', _('Pass'), () => {
                 this.performAction('actPass');
@@ -430,6 +455,7 @@ function (dojo, declare) {
         },
         
         //CLIENT STATE
+        /*
         onEnteringStateTileReinforce(args) {
             debug('onEnteringStateTileReinforce', args);
             this.addCancelStateBtn(_('Go back'));
@@ -447,18 +473,19 @@ function (dojo, declare) {
                 };
                 this.onClick(`${div.id}`, callbackTileSelection);
             });
-        },
+        },*/
         //CLIENT STATE
         onEnteringStateTileReinforceTokens(args) {
             debug('onEnteringStateTileReinforceTokens', args);
             this.addCancelStateBtn(_('Go back'));
             let selectedTileId = args.tile_id;
             let maxTokens = args.n;
-            let selectedElements = [];
+            //let selectedElements = [];
+            let selectedSize = 0;
             $(`myt_tile-${selectedTileId}`).classList.add('selected');
-            let confirmMsg = _('Confirm ${n} bonus markers');
+            let confirmMsg = _('Reinforce +${n} bonus markers');
             this.addPrimaryActionButton('btnConfirm', this.fsr(confirmMsg, { n: 0 }), () => {
-                this.performAction('actTileReinforce', { tile_id: selectedTileId, nTokens: selectedElements.length });
+                this.performAction('actTileReinforce', { tile_id: selectedTileId, nTokens: selectedSize });
             }); 
             //DISABLED by default
             $(`btnConfirm`).classList.add('disabled');
@@ -468,19 +495,21 @@ function (dojo, declare) {
             //for(let k=NB_MAX_TOKENS_ON_TILE; k>=1 && k>= NB_MAX_TOKENS_ON_TILE - maxTokens ; k--){
                 let div = $(`myt_tile_token_spot-${selectedTileId}-${k}`);
                 if(div.querySelector(`.myt_bonus_token`)) continue;
+                let indexToken = k - (NB_MAX_TOKENS_ON_TILE-maxTokens);//indexToken from 1 to maxTokens
+                div.innerHTML = "+"+ indexToken;
                 let callbackSpotSelection = (evt) => {
-                    //let selected = selectedElements.includes(div.id);
+                    [...$(`myt_tile-${selectedTileId}`).querySelectorAll('.myt_tile_token_spot')].forEach((elt) => { elt.classList.remove('selected');});
                     div.classList.toggle('selected');
-                    //div.classList.toggle('selectable', selected || selectedElements.length < maxTokens);
-                    
+                    /*
                     let index = selectedElements.findIndex((t) => t == div.id);
                     if (index === -1) {//save new Selection
                         selectedElements.push(div.id);
                     } else {//Remove old selection
                         selectedElements.splice(index, 1);
-                    }
-                    $('btnConfirm').innerHTML = this.fsr(confirmMsg, { n: selectedElements.length });
-                    if(selectedElements.length>0 && selectedElements.length<=maxTokens){
+                    }*/
+                    selectedSize = indexToken;
+                    $('btnConfirm').innerHTML = this.fsr(confirmMsg, { n: selectedSize });
+                    if(selectedSize>0 && selectedSize<=maxTokens){
                         $(`btnConfirm`).classList.remove('disabled');
                     }
                     else {
@@ -491,6 +520,7 @@ function (dojo, declare) {
                 this.onClick(`${div.id}`, callbackSpotSelection);
             }
         },
+        /*
         //CLIENT STATE
         onEnteringStateTileLock(args) {
             debug('onEnteringStateTileLock', args);
@@ -503,7 +533,7 @@ function (dojo, declare) {
                 };
                 this.onClick(`${div.id}`, callbackTileSelection);
             });
-        },
+        },*/
 
         onEnteringStateConfirmTurn(args) {
             debug('onEnteringStateConfirmTurn', args);
