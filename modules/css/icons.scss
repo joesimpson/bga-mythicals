@@ -118,3 +118,17 @@
         }
     }
 }
+
+
+.customimagebutton{
+    .myt_icon_container {
+        .myt_icon{
+            &.myt_icon_bonus-1 { //TOKEN_TYPE_BONUS_MARKER
+                width: 2em;
+                height: 2em;
+                margin-left: 0.3em;
+                margin-right: 0.3em;
+            }
+        }
+    }
+}

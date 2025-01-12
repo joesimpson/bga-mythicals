@@ -460,13 +460,19 @@ function (dojo, declare) {
             //DISABLED by default
             $(`btnConfirmReinforce`).classList.add('disabled');
             
-            
             for(let k=1 + (NB_MAX_TOKENS_ON_TILE-maxTokens); k<=NB_MAX_TOKENS_ON_TILE; k++){
             //for(let k=NB_MAX_TOKENS_ON_TILE; k>=1 && k>= NB_MAX_TOKENS_ON_TILE - maxTokens ; k--){
                 let div = $(`myt_tile_token_spot-${selectedTileId}-${k}`);
                 if(div.querySelector(`.myt_bonus_token`)) continue;
                 let indexToken = k - (NB_MAX_TOKENS_ON_TILE-maxTokens);//indexToken from 1 to maxTokens
                 div.innerHTML = "+"+ indexToken;
+                    
+                let confirmCallBackN = () => {
+                    this.performAction('actTileReinforce', { tile_id: selectedTileId, nTokens: indexToken });
+                };
+                if(autoConfirm){
+                    this.addImageActionButton(`btnConfirmReinforce-${indexToken}`, this.fsr(_("+${n} ${bonus}"), { n: indexToken, bonus: this.formatIcon('bonus-'+TOKEN_TYPE_BONUS_MARKER) }), confirmCallBackN); 
+                }
                 let callbackSpotSelection = (evt) => {
                     [...$(`myt_tile-${selectedTileId}`).querySelectorAll('.myt_tile_token_spot')].forEach((elt) => { elt.classList.remove('selected');});
                     div.classList.toggle('selected'); 
@@ -474,7 +480,7 @@ function (dojo, declare) {
                     $('btnConfirmReinforce').innerHTML = this.fsr(confirmMsg, { n: selectedSize });
                     if(selectedSize>0 && selectedSize<=maxTokens){
                         $(`btnConfirmReinforce`).classList.remove('disabled');
-                        if(autoConfirm) confirmCallBack();
+                        if(autoConfirm) confirmCallBackN();
                     }
                     else {
                         //DISABLED by default

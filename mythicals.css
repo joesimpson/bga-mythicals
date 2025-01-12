@@ -272,6 +272,13 @@
   background-size: 100%;
 }
 
+.bgabutton .myt_icon_container .myt_icon.myt_icon_bonus-1 {
+  width: 2em;
+  height: 2em;
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+}
+
 .player_board_inner > .player-name {
   /** Add a BLACK shadow behind player name in case of bright colors like white/orange/green-sad*/
 }
