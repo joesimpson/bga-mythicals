@@ -410,14 +410,7 @@ function (dojo, declare) {
 
         onEnteringStateTileModif(args) {
             debug('onEnteringStateTileModif', args);
-            /*  
-            this.addPrimaryActionButton('btnReinforce', _('Reinforce'), () => {
-                this.clientState('tileReinforce',  this.fsr(_('Select a tile'), {}), {
-                    possibleTiles: args.tiles_ids_r,
-                });
-            });
-            if( Object.entries(args.tiles_ids_r).length == 0) $(`btnReinforce`).classList.add('disabled');
-            */
+
             Object.entries(args.tiles_ids_r).forEach( (tile_datas) => {
                 let tile_id = tile_datas[0];
                 let nbEmptySpots = tile_datas[1];
@@ -432,22 +425,17 @@ function (dojo, declare) {
                         n: n,
                       });
 
-                     if(lockableTile) {
-                        this.addPrimaryActionButton('btnLock', _('Lock'), () => {
+                    if(lockableTile) {
+                        callbackTileLock = () => {
                             this.performAction('actTileLock', { tile_id: tile_id,});
-                        });
-                     }
+                        };
+                        this.addPrimaryActionButton('btnLock', _('LOCK'), callbackTileLock);
+                        let lockSpot = div.querySelector(`.myt_tile_lock_spot`);
+                        this.onClick(`${lockSpot.id}`, callbackTileLock);
+                    }
                 };
                 this.onClick(`${div.id}`, callbackTileSelection);
             });
-            /*
-            this.addPrimaryActionButton('btnLock', _('Lock'), () => {
-                this.clientState('tileLock',  this.fsr(_('Select a tile'), {}), {
-                    tiles_ids: args.tiles_ids_l,
-                });
-            });
-            if(Object.entries(args.tiles_ids_l).length == 0) $(`btnLock`).classList.add('disabled');
-            */
 
             this.addPrimaryActionButton('btnPassTileModif', _('Pass'), () => {
                 this.performAction('actPass');
@@ -455,32 +443,11 @@ function (dojo, declare) {
         },
         
         //CLIENT STATE
-        /*
-        onEnteringStateTileReinforce(args) {
-            debug('onEnteringStateTileReinforce', args);
-            this.addCancelStateBtn(_('Go back'));
-            let possibleTiles = args.possibleTiles;
-            Object.entries(possibleTiles).forEach( (tile_datas) => {
-                let tile_id = tile_datas[0];
-                let nbEmptySpots = tile_datas[1];
-                let div = $(`myt_tile-${tile_id}`);
-                let callbackTileSelection = (evt) => {
-                    let n = nbEmptySpots;
-                    this.clientState('tileReinforceTokens',  this.fsr(_('Select up to ${n} bonus spots to reinforce this tile'), {n:n}), {
-                        tile_id: tile_id,
-                        n: n,
-                      });
-                };
-                this.onClick(`${div.id}`, callbackTileSelection);
-            });
-        },*/
-        //CLIENT STATE
         onEnteringStateTileReinforceTokens(args) {
             debug('onEnteringStateTileReinforceTokens', args);
             this.addCancelStateBtn(_('Go back'));
             let selectedTileId = args.tile_id;
             let maxTokens = args.n;
-            //let selectedElements = [];
             let selectedSize = 0;
             $(`myt_tile-${selectedTileId}`).classList.add('selected');
             let confirmMsg = _('Reinforce +${n} bonus markers');
@@ -499,14 +466,7 @@ function (dojo, declare) {
                 div.innerHTML = "+"+ indexToken;
                 let callbackSpotSelection = (evt) => {
                     [...$(`myt_tile-${selectedTileId}`).querySelectorAll('.myt_tile_token_spot')].forEach((elt) => { elt.classList.remove('selected');});
-                    div.classList.toggle('selected');
-                    /*
-                    let index = selectedElements.findIndex((t) => t == div.id);
-                    if (index === -1) {//save new Selection
-                        selectedElements.push(div.id);
-                    } else {//Remove old selection
-                        selectedElements.splice(index, 1);
-                    }*/
+                    div.classList.toggle('selected'); 
                     selectedSize = indexToken;
                     $('btnConfirm').innerHTML = this.fsr(confirmMsg, { n: selectedSize });
                     if(selectedSize>0 && selectedSize<=maxTokens){
@@ -520,20 +480,6 @@ function (dojo, declare) {
                 this.onClick(`${div.id}`, callbackSpotSelection);
             }
         },
-        /*
-        //CLIENT STATE
-        onEnteringStateTileLock(args) {
-            debug('onEnteringStateTileLock', args);
-            this.addCancelStateBtn(_('Go back'));
-            let tiles_ids = args.tiles_ids;
-            Object.values(tiles_ids).forEach( (tile_id) => {
-                let div = $(`myt_tile-${tile_id}`);
-                let callbackTileSelection = (evt) => {
-                    this.performAction('actTileLock', { tile_id: tile_id,});
-                };
-                this.onClick(`${div.id}`, callbackTileSelection);
-            });
-        },*/
 
         onEnteringStateConfirmTurn(args) {
             debug('onEnteringStateConfirmTurn', args);
@@ -1141,10 +1087,16 @@ function (dojo, declare) {
                    data-face="${tile.face}" >
                    ${this.tplTileTokenSpot(tile.id,1,prefix)}
                    ${this.tplTileTokenSpot(tile.id,2,prefix)}
+                   ${this.tplTileLockSpot(tile.id,prefix)}
                 </div>`;
         },
         tplTileTokenSpot(tileId,index, prefix ='') {
             return `<div id="myt_tile_token_spot${prefix}-${tileId}-${index}" class="myt_tile_token_spot" data-index="${index}">
+                </div>`;
+        },
+        tplTileLockSpot(tileId, prefix ='') {
+            return `<div id="myt_tile_lock_spot${prefix}-${tileId}" class="myt_tile_lock_spot">
+                    <i class="fa6-solid fa6-lock"></i>
                 </div>`;
         },
         

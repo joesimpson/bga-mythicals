@@ -1899,6 +1899,27 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 .myt_tile .myt_tile_token_spot[data-index="1"] {
   top: 58.203125px;
 }
+.myt_tile .myt_tile_lock_spot {
+  position: absolute;
+  right: 30px;
+  top: 109px;
+  z-index: 5;
+  font-size: 80px;
+  width: 100px;
+  height: 100px;
+  border-radius: 20%;
+  text-align: center;
+  visibility: hidden;
+  color: white;
+}
+.myt_tile .myt_tile_lock_spot.selectable {
+  visibility: visible;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 20px #0ff;
+}
+.myt_tile .myt_tile_lock_spot.selectable.selected {
+  box-shadow: 0px 0px 10px 20px gold;
+}
 
 body.notouch-device .myt_tile:hover {
   transform: scale(1.1);
@@ -1911,6 +1932,9 @@ body.notouch-device #myt_board_tiles .myt_tile.tooltipable:hover {
   box-shadow: 0px 0px 40px 40px black;
 }
 body.notouch-device #myt_board_tiles .myt_tile_token_spot.selectable:hover {
+  transform: scale(1.3);
+}
+body.notouch-device #myt_board_tiles .myt_tile_lock_spot.selectable:hover {
   transform: scale(1.3);
 }
 
