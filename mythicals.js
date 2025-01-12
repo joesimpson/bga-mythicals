@@ -405,7 +405,7 @@ function (dojo, declare) {
 
             this.onSelectN(elements, args.nbExpected, (selectedCards) => {
                 this.performAction('actTileChoice', { tile_id: tile_id, card_ids: selectedCards.join(',')});
-            }, cardSets);
+            }, cardSets, true);
         },
 
         onEnteringStateTileModif(args) {

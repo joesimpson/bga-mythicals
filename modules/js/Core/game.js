@@ -1348,18 +1348,22 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
     },
     /** Useful When we want to select mutliple elements at the same time.
      * 
-     * Optional parameter "listPossibleSets" will make selection impossible if not in list of sets/arrays
+     * Optional parameter "listPossibleSets" will make selection impossible if not in list of sets/arrays.
+     * Optional parameter "autoConfirm" will make selection callback as soon as we have a possible set
     */
-    onSelectN(elements, n, callbackOnSelectionEnd, listPossibleSets =null) {
+    onSelectN(elements, n, callbackOnSelectionEnd, listPossibleSets =null, autoConfirm = false) {
       let selectedElements = [];
+      let endSelection = () => {
+        if (callbackOnSelectionEnd(selectedElements)) {
+          selectedElements = [];
+          updateStatus();
+        }
+      }
       let updateStatus = () => {
         if ($('btnConfirmChoice')) $('btnConfirmChoice').remove();
         if (selectedElements.length == n) {
           this.addPrimaryActionButton('btnConfirmChoice', _('Confirm'), () => {
-            if (callbackOnSelectionEnd(selectedElements)) {
-              selectedElements = [];
-              updateStatus();
-            }
+            endSelection();
           });
         }
 
@@ -1417,6 +1421,8 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
               }
             });
             updateStatus();
+            if(autoConfirm) endSelection();
+
           }
         }
       };
