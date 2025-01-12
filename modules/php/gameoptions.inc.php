@@ -50,7 +50,7 @@ $game_preferences = [
       PREF_CONFIRM_ENABLED => ['name' => totranslate('Enabled')],
       PREF_CONFIRM_DISABLED => ['name' => totranslate('Disabled')],
     ],
-    "default"=> PREF_CONFIRM_ENABLED,
+    "default"=> PREF_CONFIRM_DISABLED,
   ],
 
   PREF_CARD_STACK_STYLE => [

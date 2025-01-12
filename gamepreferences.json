@@ -24,7 +24,7 @@
                 "name": "Disabled"
             }
         },
-        "default": 2
+        "default": 0
     },
     "110": {
         "name": "Card stack order",
