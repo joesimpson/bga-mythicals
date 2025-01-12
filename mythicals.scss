@@ -99,6 +99,11 @@
     border: none;
     box-shadow: none;
 }
+#btnConfirmReinforce{
+    &.disabled{
+        display: none;
+    }
+}
 
 body[data-myt_undo_style='1']{//PREF_UNDO_STYLE_TEXT
     #btnIconUndoLastStep, 

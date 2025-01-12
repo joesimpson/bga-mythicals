@@ -2757,6 +2757,10 @@ body.notouch-device #help-mode-switch:hover {
   box-shadow: none;
 }
 
+#btnConfirmReinforce.disabled {
+  display: none;
+}
+
 body[data-myt_undo_style="1"] #btnIconUndoLastStep,
 body[data-myt_undo_style="1"] #btnIconRestartTurn {
   display: none !important;

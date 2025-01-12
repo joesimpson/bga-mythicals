@@ -450,12 +450,15 @@ function (dojo, declare) {
             let maxTokens = args.n;
             let selectedSize = 0;
             $(`myt_tile-${selectedTileId}`).classList.add('selected');
+            //TODO : add PRef to disable auto confirm if we want
+            let autoConfirm = true;
             let confirmMsg = _('Reinforce +${n} bonus markers');
-            this.addPrimaryActionButton('btnConfirm', this.fsr(confirmMsg, { n: 0 }), () => {
+            let confirmCallBack = () => {
                 this.performAction('actTileReinforce', { tile_id: selectedTileId, nTokens: selectedSize });
-            }); 
+            };
+            this.addPrimaryActionButton('btnConfirmReinforce', this.fsr(confirmMsg, { n: 0 }), confirmCallBack); 
             //DISABLED by default
-            $(`btnConfirm`).classList.add('disabled');
+            $(`btnConfirmReinforce`).classList.add('disabled');
             
             
             for(let k=1 + (NB_MAX_TOKENS_ON_TILE-maxTokens); k<=NB_MAX_TOKENS_ON_TILE; k++){
@@ -468,13 +471,14 @@ function (dojo, declare) {
                     [...$(`myt_tile-${selectedTileId}`).querySelectorAll('.myt_tile_token_spot')].forEach((elt) => { elt.classList.remove('selected');});
                     div.classList.toggle('selected'); 
                     selectedSize = indexToken;
-                    $('btnConfirm').innerHTML = this.fsr(confirmMsg, { n: selectedSize });
+                    $('btnConfirmReinforce').innerHTML = this.fsr(confirmMsg, { n: selectedSize });
                     if(selectedSize>0 && selectedSize<=maxTokens){
-                        $(`btnConfirm`).classList.remove('disabled');
+                        $(`btnConfirmReinforce`).classList.remove('disabled');
+                        if(autoConfirm) confirmCallBack();
                     }
                     else {
                         //DISABLED by default
-                        $(`btnConfirm`).classList.add('disabled');
+                        $(`btnConfirmReinforce`).classList.add('disabled');
                     }
                 };
                 this.onClick(`${div.id}`, callbackSpotSelection);
