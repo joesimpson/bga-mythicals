@@ -31,6 +31,7 @@ function (dojo, declare) {
     const PREF_UNDO_STYLE = 101;
     const PREF_CONFIRM = 102;
     const PREF_CARD_STACK_STYLE = 110;
+    const PREF_BACKGROUND = 111;
     
     const CARD_LOCATION_RESERVE = 'reserve';
     const CARD_LOCATION_HAND = 'hand';
@@ -135,6 +136,7 @@ function (dojo, declare) {
             
             document.getElementById('game_play_area').insertAdjacentHTML('beforeend', `
                 <div id="myt_game_container">
+                    <div id="myt_overall_background"></div>
                     <div id="myt_select_piece_container"></div>
                     <div id="myt_main_zone">
                         <div id="myt_left_zone">
@@ -292,6 +294,9 @@ function (dojo, declare) {
                     //section: "layout", 
                     type: 'pref', 
                     prefId: PREF_CARD_STACK_STYLE },
+                backgroundStyle: { 
+                    type: 'pref', 
+                    prefId: PREF_BACKGROUND },
             };
         },
         onChangeBoardWidthSetting(val) {

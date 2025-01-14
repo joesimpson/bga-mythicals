@@ -2680,6 +2680,32 @@ body.notouch-device #help-mode-switch:hover {
 /**
     PREFIX FOR THIS GAME PROJECT : "myt"
 */
+#myt_overall_background {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: -10;
+  opacity: 0.9;
+}
+
+body[data-myt_background_style="1"] #myt_overall_background {
+  background-image: url("img/background/white.jpg");
+}
+
+body[data-myt_background_style="2"] #myt_overall_background {
+  visibility: hidden;
+}
+
+body[data-myt_background_style="3"] #myt_overall_background {
+  background-image: url("img/background/white.jpg");
+  filter: invert(1);
+}
+
 #myt_main_zone {
   display: flex;
   justify-content: center;

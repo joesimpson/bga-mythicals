@@ -28,6 +28,48 @@
 /**
     PREFIX FOR THIS GAME PROJECT : "myt"
 */
+
+//html 
+//{
+//    background-image:url("img/background/white.jpg");
+//    background-repeat:repeat;
+//    background-size:1920px 1080px;
+//}
+
+#myt_overall_background{
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -10;
+    opacity: 0.9;
+}
+
+body[data-myt_background_style='1']{//PREF_BACKGROUND_WHITE
+    #myt_overall_background
+    {
+        background-image:url("img/background/white.jpg");
+    }
+}
+body[data-myt_background_style='2']{//PREF_BACKGROUND_BGA
+    #myt_overall_background
+    {
+        visibility: hidden;
+    }
+}
+body[data-myt_background_style='3']{//PREF_BACKGROUND_DARK
+    #myt_overall_background
+    {
+        //background:#000000bf;
+        background-image:url("img/background/white.jpg");
+        filter: invert(1);
+    }
+}
+
 #myt_main_zone{
     
     display: flex;

@@ -39,5 +39,22 @@
         },
         "default": 1,
         "attribute": "myt_card_stack_order"
+    },
+    "111": {
+        "name": "Background",
+        "needReload": false,
+        "values": {
+            "1": {
+                "name": "Official : white"
+            },
+            "2": {
+                "name": "BGA standard"
+            },
+            "3": {
+                "name": "Unofficial : dark"
+            }
+        },
+        "default": 1,
+        "attribute": "myt_background_style"
     }
 }

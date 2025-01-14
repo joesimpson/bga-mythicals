@@ -64,5 +64,17 @@ $game_preferences = [
     "default"=> PREF_CARD_STACK_ASC,
     'attribute' => 'myt_card_stack_order',
   ],
+
+  PREF_BACKGROUND => [
+    'name' => totranslate('Background'),
+    'needReload' => false,
+    'values' => [
+      PREF_BACKGROUND_WHITE => [ 'name' => 'Official : white'],
+      PREF_BACKGROUND_BGA => [ 'name' => 'BGA standard' ],
+      PREF_BACKGROUND_DARK => [ 'name' => 'Unofficial : dark' ],
+    ],
+    "default"=> PREF_BACKGROUND_WHITE,
+    'attribute' => 'myt_background_style',
+  ],
  
 ];
