@@ -2725,7 +2725,7 @@ body[data-myt_background_style="3"] #myt_overall_background {
 }
 #myt_main_zone #myt_board_zone {
   max-width: 80%;
-  align-self: baseline;
+  align-self: start;
 }
 
 .myt_nodisplay {
