@@ -93,7 +93,7 @@ class Tokens extends \Bga\Games\Mythicals\Helpers\Pieces
     }
     $token->setLocation(TOKEN_LOCATION_TILE.$tile->getId());
     $token->setPosition($tile->getTokens()->count());
-    Notifications::newBonusMarkerOnTile($tile,$token);
+    //Notifications::newBonusMarkerOnTile($tile,$token);
     return $token;
   }
 

@@ -2,6 +2,7 @@
 
 namespace Bga\Games\Mythicals\Models;
 
+use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Exceptions\UnexpectedException;
 use Bga\Games\Mythicals\Exceptions\UserException;
 use Bga\Games\Mythicals\Helpers\Collection;
@@ -76,6 +77,7 @@ class MasteryTile extends Tile
       $token = Tokens::addBonusMarkerOnTile($this);
       $newTokens->append($token);
     }
+    Notifications::newBonusMarkersOnTile($this,$newTokens);
 
     return $newTokens;
   }

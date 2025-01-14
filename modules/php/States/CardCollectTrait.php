@@ -8,6 +8,7 @@ use Bga\Games\Mythicals\Core\Notifications;
 use Bga\Games\Mythicals\Core\Stats;
 use Bga\Games\Mythicals\Exceptions\UnexpectedException;
 use Bga\Games\Mythicals\Game;
+use Bga\Games\Mythicals\Helpers\Collection;
 use Bga\Games\Mythicals\Managers\Cards;
 use Bga\Games\Mythicals\Managers\Players;
 
@@ -93,11 +94,14 @@ trait CardCollectTrait
 
     //  game logic here.
     Notifications::collectFromDeck($player,$color);
+    $cardsToCollect = new Collection();
+    $cardsToReserve = new Collection();
     foreach($drawnCards as $card){
       if($card->getColor() == $color){
         $card->setPId($player->getId());
         $card->setLocation(CARD_LOCATION_HAND);
-        Notifications::giveCardTo($player,$card);
+        //Notifications::giveCardTo($player,$card);
+        $cardsToCollect->append($card);
         Stats::inc("cards",$player);
         Stats::inc("cards_from_deck",$player);
       }
@@ -105,10 +109,12 @@ trait CardCollectTrait
         //move others to RESERVE !
         $card->setPId(null);
         $card->setLocation(CARD_LOCATION_RESERVE);
-        Notifications::cardToReserve($player,$card);
-
+        //Notifications::cardToReserve($player,$card);
+        $cardsToReserve->append($card);
       }
     }
+    Notifications::giveCardsToPlayer($player,$cardsToCollect);
+    if(!$cardsToReserve->isEmpty()) Notifications::cardsToReserve($player,$cardsToReserve);
     Cards::moveDuplicatesToOpponent($player);
 
     // at the end of the action, move to the next state

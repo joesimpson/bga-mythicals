@@ -566,10 +566,7 @@ function (dojo, declare) {
             await Promise.all(
                 pcards.map(async (card, i) => {
                     this.gamedatas.cards.push(card);
-                    let divCard = this.addCard(card, deckContainer, {
-                        phantom: false,
-                        from: deckContainer.id 
-                    });
+                    let divCard = this.addCard(card, deckContainer);
                     this._counters['deckSize'].incValue(-1 );
                     await this.wait(300 * i).then(async () => 
                         await this.slide(divCard.id, this.getCardContainer(card), { })
@@ -578,9 +575,9 @@ function (dojo, declare) {
             );
             this.updateCardsStackCounters();
         },
+        /* DEPRECATED because we send n cards now 
         notif_giveCardToPublic: async function(args) {
             debug('notif_giveCardToPublic: player receiving a new card', args);
-            //this.setNotifDuration(1000);
             this._counters[args.player_id].cards.incValue(1);
             if(args.player_id2) this._counters[args.player_id2].cards.incValue(-1);
             
@@ -589,13 +586,47 @@ function (dojo, declare) {
             this.updateCardsStackCounters();
             await this.wait(10);
         },
+        */
+        notif_giveCardsToPlayer: async function(args) {
+            debug('notif_giveCardsToPlayer: player receiving n cards', args);
+            let pcards = Object.values(args.cards);
+            let nbCards = pcards.length;
+            this._counters[args.player_id].cards.incValue(nbCards);
+            if(args.player_id2) this._counters[args.player_id2].cards.incValue(-nbCards);
+
+            let deckContainer = $('myt_cards_deck_container');
+
+            await Promise.all(
+                pcards.map(async (card, i) => {
+                    if (!$(`myt_card-${card.id}`)) this.addCard(card, deckContainer);
+                    await this.wait(300 * i).then(async () => 
+                        await this.slide(`myt_card-${card.id}`, this.getCardContainer(card), { duration: 750,})
+                    );
+                    this.updateCardsStackCounters();
+                })
+            );
+            await this.wait(10);
+        },
+        /* DEPRECATED, use notif_cardsToReserve
         notif_cardToReserve: async function(args) {
             debug('notif_cardToReserve: RESERVE receiving a new card', args);
-            //this.setNotifDuration(1000);
             if (!$(`myt_card-${args.card.id}`)) this.addCard(args.card, this.getVisibleTitleContainer());
             await this.slide(`myt_card-${args.card.id}`, this.getCardContainer(args.card));
             this.updateCardsStackCounters();
-            //await this.wait(1000);
+        },
+        */
+        notif_cardsToReserve: async function(args) {
+            debug('notif_cardsToReserve: RESERVE receiving N new cards', args);
+            let pcards = Object.values(args.cards);
+            await Promise.all(
+                pcards.map(async (card, i) => {
+                    if (!$(`myt_card-${card.id}`)) this.addCard(card, this.getVisibleTitleContainer());
+                    await this.wait(200 * i).then(async () => 
+                        await this.slide(`myt_card-${card.id}`, this.getCardContainer(card), { duration: 650,})
+                    );
+                    this.updateCardsStackCounters();
+                })
+            );
         },
 
         notif_discardCards: async function(args) {
@@ -653,13 +684,17 @@ function (dojo, declare) {
             await this.wait(100);
         },
         
-        notif_newBonusMarkerOnTile: async function(args) {
-            debug('notif_newBonusMarkerOnTile', args);
-            //this.setNotifDuration(900);
+        notif_newBonusMarkersOnTile: async function(args) {
+            debug('notif_newBonusMarkersOnTile', args);
             let tile_id = args.tile_id;
-            let token = args.token;
-            await this.slide(`myt_token-${token.id}`, this.getTokenContainer(token));
-            
+            let pTokens = Object.values(args.tokens);
+            await Promise.all(
+                pTokens.map(async (token, i) => {
+                    await this.wait(100 * i).then(async () => 
+                        await this.slide(`myt_token-${token.id}`, this.getTokenContainer(token))
+                    );
+                })
+            );
         },
         
         notif_takeBonus: async function(args) {

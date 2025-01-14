@@ -94,9 +94,11 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     }
     foreach($cards as $card){
       $card->setPId($player->getId());
-      Notifications::giveCardTo($player,$card);
+      //Notifications::giveCardTo($player,$card);
       Stats::inc("cards",$player->getId());
     }
+    Notifications::giveCardsToPlayer($player,$cards);
+
     $missingNb = $nbCards - $cards->count();
     Game::get()->trace("setupDrawCardsToHand($nbCards) -> $missingNb are missing");
     if($missingNb>0) // Notifications::missingCards($player,$missingNb);
@@ -136,10 +138,11 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     foreach($cards as $card){
       $card->setPId($player->getId());
       $card->setLocation(CARD_LOCATION_HAND);
-      Notifications::giveCardTo($player,$card);
+      //Notifications::giveCardTo($player,$card);
       Stats::inc("cards",$player);
       Stats::inc("cards_from_reserve",$player);
     }
+    Notifications::giveCardsToPlayer($player,$cards);
     return $cards;
   }
   
@@ -150,13 +153,15 @@ class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
     $opponentPlayerId = Players::getNextId($player);
     $opponentPlayer = Players::get($opponentPlayerId);
     $cardsToMove = self::listDuplicatesInPlayerHand($player);
+    if($cardsToMove->isEmpty()) return;
     foreach($cardsToMove as $card){
       $card->setPId($opponentPlayer->getId());
       $card->setLocation(CARD_LOCATION_HAND);
-      Notifications::giveCardTo($opponentPlayer,$card,$player);
+      //Notifications::giveCardTo($opponentPlayer,$card,$player);
       Stats::inc("cards",$player,-1);
       Stats::inc("cards",$opponentPlayer,+1);
     }
+    Notifications::giveCardsToPlayer($opponentPlayer,$cardsToMove,$player);
     //return $cardsToMove;
   }
   

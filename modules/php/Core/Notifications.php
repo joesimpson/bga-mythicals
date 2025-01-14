@@ -63,36 +63,69 @@ class Notifications
     self::notifyAll('scoreTokens',$msg, $args, );
   }
 
+  ///**
+  // * @param Player $player
+  // * @param Card $card
+  // * @deprecated see cardsToReserve
+  // */
+  //public static function cardToReserve(Player $player, $card)
+  //{
+  //  self::notifyAll('cardToReserve', clienttranslate('A new card goes to the reserve'), [
+  //    //'player' => $player,
+  //    'card' => $card->getUiData(),
+  //  ]);
+  //}
+  
   /**
+   * Same notif as cardToReserve() but send all cards at the same time to animate all at the same time
    * @param Player $player
-   * @param Card $card
+   * @param Collection $cards
    */
-  public static function cardToReserve(Player $player, $card)
+  public static function cardsToReserve(Player $player, Collection $cards)
   {
-    self::notifyAll('cardToReserve', clienttranslate('A new card goes to the reserve'), [
+    $msg = clienttranslate('${n} cards go to the reserve');
+    self::notifyAll('cardsToReserve', $msg, [
       //'player' => $player,
-      'card' => $card->getUiData(),
+      'cards' => $cards->ui(),
+      'n' =>  $cards->count(),
     ]);
   }
   
   /**
    * @param Player $player
-   * @param Player $fromPlayer
    * @param Card $card
+   * @param Player $fromPlayer
+   * @deprecated see giveCardsToPlayer to send a Collection 
    */
-  public static function giveCardTo(Player $player, $card, $fromPlayer = null)
+  public static function giveCardTo(Player $player, Card $card, Player $fromPlayer = null)
   {
-    $msg = clienttranslate('${player_name} receives a new card');
-    if(isset($fromPlayer)) $msg = clienttranslate('${player_name} receives a card from ${player_name2}');
+    $msg = clienttranslate('${player_name} receives ${n} cards');
+    if(isset($fromPlayer)) $msg = clienttranslate('${player_name} receives ${n} cards from ${player_name2}');
+    //"giveCardToPublic" represents the public informations to notify (in case we want another with private infos)
     self::notifyAll('giveCardToPublic', $msg, [
       'player' => $player,
       'player2' => $fromPlayer,
-    /*]);
-    //Beware this is a private info !
-    self::notify($player,'giveCardTo', '', [
-      'player' => $player,
-    */
       'card' => $card->getUiData(),
+      'n' =>  1,
+    ]);
+    //self::giveCardsToPlayer($player, new Collection($card),$fromPlayer);
+  }
+  
+  /**
+   * Same notif as giveCardTo() but send all cards at the same time to animate all at the same time
+   * @param Player $player
+   * @param Collection $cards
+   * @param Player $fromPlayer
+   */
+  public static function giveCardsToPlayer(Player $player, Collection $cards, Player $fromPlayer = null)
+  {
+    $msg = clienttranslate('${player_name} receives ${n} cards');
+    if(isset($fromPlayer)) $msg = clienttranslate('${player_name} receives ${n} cards from ${player_name2}');
+    self::notifyAll('giveCardsToPlayer', $msg, [
+      'player' => $player,
+      'player2' => $fromPlayer,
+      'cards' => $cards->ui(),
+      'n' =>  $cards->count(),
     ]);
   }
 
@@ -213,11 +246,21 @@ class Notifications
     ]);
   }
   
+  /**
+   * @deprecated use newBonusMarkersOnTile 
+   */
   public static function newBonusMarkerOnTile(MasteryTile $tile,Token $token)
   {
     self::notifyAll('newBonusMarkerOnTile', '', [
       'tile_id' => $tile->getId(),
       'token' => $token->getUiData(),
+    ]);
+  }
+  public static function newBonusMarkersOnTile(MasteryTile $tile,Collection $tokens)
+  {
+    self::notifyAll('newBonusMarkersOnTile', '', [
+      'tile_id' => $tile->getId(),
+      'tokens' => $tokens->ui(),
     ]);
   }
  
