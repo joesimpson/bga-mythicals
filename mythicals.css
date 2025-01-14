@@ -272,7 +272,7 @@
   background-size: 100%;
 }
 
-.bgabutton .myt_icon_container .myt_icon.myt_icon_bonus-1 {
+.customimagebutton .myt_icon_container .myt_icon.myt_icon_bonus-1 {
   width: 2em;
   height: 2em;
   margin-left: 0.3em;
@@ -1580,64 +1580,46 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable::before {
   content: "";
   display: inherit;
-  opacity: 0.7;
+  opacity: 1;
   position: relative;
   width: 100px;
   height: 200px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 156px;
+  margin-bottom: 0px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="1"]::before {
+  background-image: url("img/colors.jpg");
   width: 100px;
-  height: 100px;
-  background-image: url("img/board.jpg");
-  background-position-x: -2617.0731707317px;
-  background-position-y: -2104.8780487805px;
-  /*
-  background-size: 
-      math.percentage($background_widthRatio) 
-      math.percentage($background_heightRatio);
-  */
-  background-size: 4573.1707317073px 2246.3414634146px;
+  height: 44px;
+  background-position-x: 0px;
+  background-position-y: 0px;
+  background-size: 200px 88px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="2"]::before {
+  background-image: url("img/colors.jpg");
   width: 100px;
-  height: 100px;
-  background-image: url("img/board.jpg");
-  background-position-x: -1092.6829268293px;
-  background-position-y: -2104.8780487805px;
-  /*
-  background-size: 
-      math.percentage($background_widthRatio) 
-      math.percentage($background_heightRatio);
-  */
-  background-size: 4573.1707317073px 2246.3414634146px;
+  height: 44px;
+  background-position-x: 100px;
+  background-position-y: 0px;
+  background-size: 200px 88px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="3"]::before {
+  background-image: url("img/colors.jpg");
   width: 100px;
-  height: 100px;
-  background-image: url("img/board.jpg");
-  background-position-x: -329.2682926829px;
-  background-position-y: -2104.8780487805px;
-  /*
-  background-size: 
-      math.percentage($background_widthRatio) 
-      math.percentage($background_heightRatio);
-  */
-  background-size: 4573.1707317073px 2246.3414634146px;
+  height: 44px;
+  background-position-x: 0px;
+  background-position-y: 44px;
+  background-size: 200px 88px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable[data-color="4"]::before {
+  background-image: url("img/colors.jpg");
   width: 100px;
-  height: 100px;
-  background-image: url("img/board.jpg");
-  background-position-x: -1857.3170731707px;
-  background-position-y: -2104.8780487805px;
-  /*
-  background-size: 
-      math.percentage($background_widthRatio) 
-      math.percentage($background_heightRatio);
-  */
-  background-size: 4573.1707317073px 2246.3414634146px;
+  height: 44px;
+  background-position-x: 100px;
+  background-position-y: 44px;
+  background-size: 200px 88px;
 }
 #myt_players_table .myt_player_cards .myt_cards_stack_resizable .myt_cards_stack {
   position: absolute;

@@ -22,6 +22,26 @@
         calc($height * $background_heightRatio);
 }
 
+@mixin myt_icon_card_color_v2($iconPosX,$iconPosY,$width,$height){
+    background-image: url("img/colors.jpg");
+    $colors_img_width: 1970px;
+    $colors_img_height: 874px;
+    $icon_img_width: 985px;
+    $icon_img_height: 437px;
+    width: $width;
+    //$height: calc(math.div($width, $icon_img_width) * $icon_img_height);
+    height: $height;
+
+    $background_widthRatio: math.div($colors_img_width, $icon_img_width );
+    $background_heightRatio: math.div($colors_img_height,$icon_img_height ); 
+    background-position-x: calc(math.div($width, $icon_img_width) * $iconPosX);
+    background-position-y: calc(math.div($height, $icon_img_height ) * $iconPosY);
+    //use of PERCENTAGE or PX in size AND X/y to avoid Safari/mobile bugs
+    background-size: 
+        calc($width * $background_widthRatio) 
+        calc($height * $background_heightRatio);
+}
+
 //BLIND COLOR SYMBOLS
 .myt_icon_color-1,
 .myt_icon_color-2,
