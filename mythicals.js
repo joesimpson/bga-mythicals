@@ -455,9 +455,9 @@ function (dojo, declare) {
             let maxTokens = args.n;
             let selectedSize = 0;
             $(`myt_tile-${selectedTileId}`).classList.add('selected');
-            //TODO : add PRef to disable auto confirm if we want
+            //TODO : add PRef to disable auto confirm if we want + add _() to translate it
             let autoConfirm = true;
-            let confirmMsg = _('Reinforce +${n} bonus markers');
+            let confirmMsg = ('Reinforce +${n} bonus markers');
             let confirmCallBack = () => {
                 this.performAction('actTileReinforce', { tile_id: selectedTileId, nTokens: selectedSize });
             };
