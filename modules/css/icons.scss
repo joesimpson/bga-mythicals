@@ -1,11 +1,11 @@
-@mixin myt_icon_card_color($iconPosX,$iconPosY,$width,$height){
+@mixin _myt_icon_card_color_v1($iconPosX,$iconPosY,$width,$height){
     width: $width;
     height: $height;
-    background-image: url("img/board.jpg");
-    $board_img_width: 3750px;
-    $board_img_height: 1842px;
-    $icon_img_width: 82px;
-    $icon_img_height: 82px;
+    background-image: url("img/colors.jpg");
+    $board_img_width: 1970px;
+    $board_img_height: 874px;
+    $icon_img_width: 295px;
+    $icon_img_height: 295px;
 
     $background_widthRatio: math.div($board_img_width, $icon_img_width );
     $background_heightRatio: math.div($board_img_height,$icon_img_height ); 
@@ -22,7 +22,7 @@
         calc($height * $background_heightRatio);
 }
 
-@mixin myt_icon_card_color_v2($iconPosX,$iconPosY,$width,$height){
+@mixin _myt_icon_card_color_v2($iconPosX,$iconPosY,$width,$height){
     background-image: url("img/colors.jpg");
     $colors_img_width: 1970px;
     $colors_img_height: 874px;
@@ -61,22 +61,22 @@
     &.myt_icon_color-1,
     &.myt_icon_tile_color_log-1,
     &.myt_icon_card_color_log-1{//CARD_COLOR_BLUE
-        @include myt_icon_card_color(-2146px,-1726px,$icon_width,$icon_width);
+        @include _myt_icon_card_color_v1(-344px,-97px,$icon_width,$icon_width);
     }
     &.myt_icon_color-2,
     &.myt_icon_tile_color_log-2,
     &.myt_icon_card_color_log-2{//CARD_COLOR_GREEN
-        @include myt_icon_card_color(-896px,-1726px,$icon_width,$icon_width);
+        @include _myt_icon_card_color_v1(-1330px,-97px,$icon_width,$icon_width);
     }
     &.myt_icon_color-3,
     &.myt_icon_tile_color_log-3,
     &.myt_icon_card_color_log-3{//CARD_COLOR_PURPLE
-        @include myt_icon_card_color(-270px,-1726px,$icon_width,$icon_width);
+        @include _myt_icon_card_color_v1(-344px,-537px,$icon_width,$icon_width);
     }
     &.myt_icon_color-4,
     &.myt_icon_tile_color_log-4,
     &.myt_icon_card_color_log-4{//CARD_COLOR_RED
-        @include myt_icon_card_color(-1523px,-1726px,$icon_width,$icon_width);
+        @include _myt_icon_card_color_v1(-1330px,-537px,$icon_width,$icon_width);
     }
 }
 

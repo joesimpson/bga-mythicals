@@ -310,16 +310,16 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
                 border-bottom-left-radius: 10px;
             }    
             &[data-color="1"]::before {//CARD_COLOR_BLUE
-                @include myt_icon_card_color_v2(0px,0px,$card_width, $icon_height);
+                @include _myt_icon_card_color_v2(0px,0px,$card_width, $icon_height);
             }
             &[data-color="2"]::before {//CARD_COLOR_GREEN
-                @include myt_icon_card_color_v2(985px,0px,$card_width, $icon_height);
+                @include _myt_icon_card_color_v2(985px,0px,$card_width, $icon_height);
             }
             &[data-color="3"]::before {//CARD_COLOR_PURPLE
-                @include myt_icon_card_color_v2(0px,437px,$card_width, $icon_height);
+                @include _myt_icon_card_color_v2(0px,437px,$card_width, $icon_height);
             }
             &[data-color="4"]::before {//CARD_COLOR_RED
-                @include myt_icon_card_color_v2(985px,437px,$card_width, $icon_height);
+                @include _myt_icon_card_color_v2(985px,437px,$card_width, $icon_height);
             }
             
             .myt_cards_stack{

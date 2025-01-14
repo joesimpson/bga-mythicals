@@ -72,15 +72,15 @@
 .myt_icon_tile_color_log-4.myt_icon_card_color_log-1 {
   width: 41px;
   height: 41px;
-  background-image: url("img/board.jpg");
-  background-position-x: -1073px;
-  background-position-y: -863px;
+  background-image: url("img/colors.jpg");
+  background-position-x: -47.8101694915px;
+  background-position-y: -13.4813559322px;
   /*
   background-size: 
       math.percentage($background_widthRatio) 
       math.percentage($background_heightRatio);
   */
-  background-size: 1875px 921px;
+  background-size: 273.7966101695px 121.4711864407px;
 }
 .myt_icon_color-1.myt_icon_color-2, .myt_icon_color-1.myt_icon_tile_color_log-2, .myt_icon_color-1.myt_icon_card_color_log-2,
 .myt_icon_color-2.myt_icon_color-2,
@@ -118,15 +118,15 @@
 .myt_icon_tile_color_log-4.myt_icon_card_color_log-2 {
   width: 41px;
   height: 41px;
-  background-image: url("img/board.jpg");
-  background-position-x: -448px;
-  background-position-y: -863px;
+  background-image: url("img/colors.jpg");
+  background-position-x: -184.8474576271px;
+  background-position-y: -13.4813559322px;
   /*
   background-size: 
       math.percentage($background_widthRatio) 
       math.percentage($background_heightRatio);
   */
-  background-size: 1875px 921px;
+  background-size: 273.7966101695px 121.4711864407px;
 }
 .myt_icon_color-1.myt_icon_color-3, .myt_icon_color-1.myt_icon_tile_color_log-3, .myt_icon_color-1.myt_icon_card_color_log-3,
 .myt_icon_color-2.myt_icon_color-3,
@@ -164,15 +164,15 @@
 .myt_icon_tile_color_log-4.myt_icon_card_color_log-3 {
   width: 41px;
   height: 41px;
-  background-image: url("img/board.jpg");
-  background-position-x: -135px;
-  background-position-y: -863px;
+  background-image: url("img/colors.jpg");
+  background-position-x: -47.8101694915px;
+  background-position-y: -74.6338983051px;
   /*
   background-size: 
       math.percentage($background_widthRatio) 
       math.percentage($background_heightRatio);
   */
-  background-size: 1875px 921px;
+  background-size: 273.7966101695px 121.4711864407px;
 }
 .myt_icon_color-1.myt_icon_color-4, .myt_icon_color-1.myt_icon_tile_color_log-4, .myt_icon_color-1.myt_icon_card_color_log-4,
 .myt_icon_color-2.myt_icon_color-4,
@@ -210,15 +210,15 @@
 .myt_icon_tile_color_log-4.myt_icon_card_color_log-4 {
   width: 41px;
   height: 41px;
-  background-image: url("img/board.jpg");
-  background-position-x: -761.5px;
-  background-position-y: -863px;
+  background-image: url("img/colors.jpg");
+  background-position-x: -184.8474576271px;
+  background-position-y: -74.6338983051px;
   /*
   background-size: 
       math.percentage($background_widthRatio) 
       math.percentage($background_heightRatio);
   */
-  background-size: 1875px 921px;
+  background-size: 273.7966101695px 121.4711864407px;
 }
 
 .myt_icon_tile_color_log-5,
@@ -2766,28 +2766,28 @@ body[data-myt_undo_style="2"] #btnTextRestartTurn {
   color: white;
 }
 #btnCollectReserve_1:not(.disabled) {
-  background-color: #005983;
+  background-color: #295c84;
 }
 
 #btnCollectReserve_2 {
   color: white;
 }
 #btnCollectReserve_2:not(.disabled) {
-  background-color: #2f6125;
+  background-color: #395e2d;
 }
 
 #btnCollectReserve_3 {
   color: white;
 }
 #btnCollectReserve_3:not(.disabled) {
-  background-color: #731e74;
+  background-color: #662770;
 }
 
 #btnCollectReserve_4 {
   color: white;
 }
 #btnCollectReserve_4:not(.disabled) {
-  background-color: #9d140a;
+  background-color: #862015;
 }
 
 #btnReinforce {
