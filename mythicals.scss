@@ -37,21 +37,21 @@
 //}
 
 #myt_overall_background{
-    background-position: 50%;
+    background-position: 0%;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     left: 0;
     position: fixed;
     top: 0;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     z-index: -10;
-    opacity: 0.9;
 }
 
 body[data-myt_background_style='1']{//PREF_BACKGROUND_WHITE
     #myt_overall_background
     {
+        //opacity: 0.9;
         background-image:url("img/background/white.jpg");
     }
 }
