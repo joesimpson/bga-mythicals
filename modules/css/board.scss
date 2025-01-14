@@ -16,7 +16,7 @@ $card_height: var(--myt_board_card_height);
             + ((var(--myt_board_cards_stack_max) - 1) * calc(var(--myt_board_cards_stack_height_ratio) * $card_height )))
         );
     //OR don't keep space for 1 card when reserve is empty, but keep it if nbcards >=1     
-    margin-bottom: calc(0px 
+    margin-bottom: calc(0px - var(--myt_reserve_pos_bottom)
         + var(--myt_board_display_scale) * (
             ( $card_height * min( 1, max( var(--myt_board_cards_stack_min), var(--myt_board_cards_stack_max) ) ) )
             + ( max( var(--myt_board_cards_stack_min), var(--myt_board_cards_stack_max) ) * calc(var(--myt_board_cards_stack_height_ratio) * $card_height )))
@@ -112,7 +112,7 @@ $card_height: var(--myt_board_card_height);
 
             #myt_cards_reserve{
                 position: absolute;
-                top: calc($board_img_height - 40px);
+                bottom: var(--myt_reserve_pos_bottom);
                 
                 .myt_card {
                     width: $card_width;
@@ -146,7 +146,7 @@ $card_height: var(--myt_board_card_height);
                 @for $i from 1 through 12 {//6 should be enough to have each card, but we may earn all copies of 1 color at a time from reserve
                     &[data-nbcards="#{$i}"]{//This number will be computed on JS side based on children
                         //To prepare the height of the stack, we add 1 card_height for the top card, and then N-1 times the truncated part of the card
-                        height: calc(10px 
+                        height: calc(0px 
                                 + $card_height
                                 + ($i - 1)  * calc(var(--myt_board_cards_stack_height_ratio) * $card_height )
                             );

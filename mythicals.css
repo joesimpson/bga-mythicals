@@ -20,6 +20,7 @@
   --myt_board_cards_stack_min: 3;
   --myt_board_cards_stack_max: 1;
   --myt_board_cards_stack_height_ratio: 0.15;
+  --myt_reserve_pos_bottom: 20px;
 }
 
 .myt_icon_color-1,
@@ -411,7 +412,7 @@
   margin-bottom: 10px;
   margin-bottom: 250px;
   margin-bottom: calc(10px + var(--myt_board_display_scale) * (var(--myt_board_card_height) + (var(--myt_board_cards_stack_max) - 1) * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height)));
-  margin-bottom: calc(0px + var(--myt_board_display_scale) * (var(--myt_board_card_height) * min(1, max(var(--myt_board_cards_stack_min), var(--myt_board_cards_stack_max))) + max(var(--myt_board_cards_stack_min), var(--myt_board_cards_stack_max)) * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height)));
+  margin-bottom: calc(0px - var(--myt_reserve_pos_bottom) + var(--myt_board_display_scale) * (var(--myt_board_card_height) * min(1, max(var(--myt_board_cards_stack_min), var(--myt_board_cards_stack_max))) + max(var(--myt_board_cards_stack_min), var(--myt_board_cards_stack_max)) * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height)));
 }
 #myt_resizable_board #myt_board_container {
   /* prevents vertical invisible overflow on BGA bottom elements*/
@@ -483,7 +484,7 @@
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve {
   position: absolute;
-  top: 1802px;
+  bottom: var(--myt_reserve_pos_bottom);
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_card {
   width: var(--myt_board_card_width);
@@ -509,40 +510,40 @@
   margin-bottom: calc(-1 * (1 - var(--myt_board_cards_stack_height_ratio)) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="1"] {
-  height: calc(10px + var(--myt_board_card_height) + 0 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 0 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="2"] {
-  height: calc(10px + var(--myt_board_card_height) + 1 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 1 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="3"] {
-  height: calc(10px + var(--myt_board_card_height) + 2 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 2 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="4"] {
-  height: calc(10px + var(--myt_board_card_height) + 3 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 3 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="5"] {
-  height: calc(10px + var(--myt_board_card_height) + 4 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 4 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="6"] {
-  height: calc(10px + var(--myt_board_card_height) + 5 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 5 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="7"] {
-  height: calc(10px + var(--myt_board_card_height) + 6 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 6 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="8"] {
-  height: calc(10px + var(--myt_board_card_height) + 7 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 7 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="9"] {
-  height: calc(10px + var(--myt_board_card_height) + 8 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 8 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="10"] {
-  height: calc(10px + var(--myt_board_card_height) + 9 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 9 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="11"] {
-  height: calc(10px + var(--myt_board_card_height) + 10 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 10 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board .myt_cards_stack_resizable[data-nbcards="12"] {
-  height: calc(10px + var(--myt_board_card_height) + 11 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
+  height: calc(0px + var(--myt_board_card_height) + 11 * var(--myt_board_cards_stack_height_ratio) * var(--myt_board_card_height));
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_board_tokens {
   position: absolute;
