@@ -470,7 +470,7 @@ function (dojo, declare) {
                 let div = $(`myt_tile_token_spot-${selectedTileId}-${k}`);
                 if(div.querySelector(`.myt_bonus_token`)) continue;
                 let indexToken = k - (NB_MAX_TOKENS_ON_TILE-maxTokens);//indexToken from 1 to maxTokens
-                div.innerHTML = "+"+ indexToken;
+                div.insertAdjacentHTML('afterbegin', `<div id="myt_tile_token_spot_to_select-${indexToken}" class="myt_tile_token_spot_to_select">+${indexToken}</div>`);
                     
                 let confirmCallBackN = () => {
                     this.performAction('actTileReinforce', { tile_id: selectedTileId, nTokens: indexToken });
@@ -848,6 +848,11 @@ function (dojo, declare) {
             }
             this.scoreCtrl[pId].incValue(n);
             this._counters[pId].scoreRecap.incValue(n);
+        },
+
+        clearPossible() {
+            this.inherited(arguments);
+            [...document.querySelectorAll('.myt_tile_token_spot_to_select')].forEach((elt) => { this.destroy(elt);});
         },
 
          ////////////////////////////////////////////////////////////
