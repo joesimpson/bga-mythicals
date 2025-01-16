@@ -1540,11 +1540,19 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   width: fit-content;
   display: flex;
   flex-flow: column;
-  border-radius: 10px;
-  border: 2px solid black;
-  box-shadow: 1px 1px 10px black;
+  border-radius: 5%;
   background-color: rgba(255, 196, 108, 0.33);
   margin: 5px 10px;
+  border-image-slice: 16 16 16 16;
+  border-image-repeat: stretch;
+  border-width: 1rem;
+  border-style: solid;
+}
+#myt_players_table .myt_player_table[data-color=c47d1f] {
+  border-image-source: url("img/background/MYT_BGA_Frame_01.png");
+}
+#myt_players_table .myt_player_table[data-color="646a76"] {
+  border-image-source: url("img/background/MYT_BGA_Frame_02.png");
 }
 #myt_players_table .myt_player_table_content {
   width: -moz-fit-content;
@@ -1555,6 +1563,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 #myt_players_table .myt_player_table_title {
   text-align: center;
   padding: 0 7px;
+  margin-top: -0.5rem;
 }
 #myt_players_table .myt_player_table_title .myt_player_score_recap {
   display: none;

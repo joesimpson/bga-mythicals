@@ -218,7 +218,7 @@ function (dojo, declare) {
                     </div>`;
                 });
                 document.getElementById('myt_players_table').insertAdjacentHTML('beforeend', `
-                    <div id="myt_player_table-${player.id}" class="myt_player_table" data-pid=${player.id} data-color='${player.color}' style="border-color:#${player.color}">
+                    <div id="myt_player_table-${player.id}" class="myt_player_table" data-pid=${player.id} data-color='${player.color}'>
                         <h3 class='myt_player_table_title' >
                             <div class='myt_player_table_title_name' >${this.fsr(('${player_name}'), { player_name:this.coloredPlayerName(player.name)}) }</div>
                             <div class='myt_player_score_recap' id="myt_player_score_recap-${player.id}" >${player.score}</div>

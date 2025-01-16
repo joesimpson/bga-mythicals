@@ -252,14 +252,26 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
         display: flex;
         flex-flow: column;
 
-        border-radius: 10px;
-        border: 2px solid black;
-        box-shadow: 1px 1px 10px black;
+        border-radius: 5%;
+        //border: 2px solid black;
+        //box-shadow: 1px 1px 10px black;
         background-color: rgba(255, 196, 108, 0.33);
         margin: 5px 10px;
         
         //width: 95%;
         //margin: 15px auto;
+
+        //Publisher style frame :
+        border-image-slice: 16 16 16 16;
+        border-image-repeat: stretch;
+        border-width: 1rem;
+        border-style: solid;
+        &[data-color="c47d1f"]{
+            border-image-source: url("img/background/MYT_BGA_Frame_01.png");
+        }
+        &[data-color="646a76"]{
+            border-image-source: url("img/background/MYT_BGA_Frame_02.png");
+        }
     }
     
     .myt_player_table_content{
@@ -271,6 +283,7 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
     .myt_player_table_title{
         text-align: center;
         padding: 0 7px;
+        margin-top: -0.5rem; // because of border-width
 
         .myt_player_score_recap{
             display: none;
