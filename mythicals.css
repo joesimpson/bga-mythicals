@@ -1543,7 +1543,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   border-radius: 10px;
   border: 2px solid black;
   box-shadow: 1px 1px 10px black;
-  background-color: rgba(213, 162, 87, 0.33);
+  background-color: rgba(255, 196, 108, 0.33);
   margin: 5px 10px;
 }
 #myt_players_table .myt_player_table_content {

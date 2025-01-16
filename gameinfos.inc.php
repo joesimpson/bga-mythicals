@@ -75,7 +75,10 @@ $gameinfos = [
     'language_dependency' => false,
 
     // Colors attributed to players
-    'player_colors' => ["ff0000", "008000", "0000ff", "ffa500","000000","ffffff", "e94190","982fff","72c3b1","f07f16","bdd002","7b7b7b", "773300"],
+    // 13 selectable colors on player profile :
+    //'player_colors' => ["ff0000", "008000", "0000ff", "ffa500","000000","ffffff", "e94190","982fff","72c3b1","f07f16","bdd002","7b7b7b", "773300"],
+    // Publisher design colors :
+    'player_colors' => ["c47d1f", "646a76"],
 
     // Favorite colors support : if set to "true", support attribution of favorite colors based on player's preferences (see reattributeColorsBasedOnPreferences PHP method)
     // NB: this parameter is used only to flag games supporting this feature; you must use (or not use) reattributeColorsBasedOnPreferences PHP method to actually enable or disable the feature.
