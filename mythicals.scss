@@ -25,6 +25,7 @@
 @import "modules/css/settings";
 @import "modules/css/nouislider";
 @import "modules/css/flip";
+@import "modules/css/fonts";
 /**
     PREFIX FOR THIS GAME PROJECT : "myt"
 */
@@ -95,6 +96,13 @@ body[data-myt_background_style='3']{//PREF_BACKGROUND_DARK
         //width: 80%;
         max-width: 80%;
         align-self: start;
+    }
+}
+
+#myt_game_container{
+    .playername{
+        text-transform: uppercase;
+        font-family: "Bebas Neue";
     }
 }
 
