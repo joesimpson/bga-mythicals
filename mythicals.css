@@ -2721,6 +2721,9 @@ body[data-myt_background_style="3"] #myt_overall_background {
   display: flex;
   flex-flow: column;
   align-items: center;
+  align-self: start;
+  position: relative;
+  top: 10px;
 }
 #myt_main_zone #myt_board_zone {
   max-width: 80%;
