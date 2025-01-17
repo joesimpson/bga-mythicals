@@ -281,6 +281,9 @@ class Notifications
     ]);
   }
   
+  /**
+   * @deprecated see 1 by 1 revelation in scoreTile
+   */
   public static function revealTiles(Player $player,Collection $tiles)
   {
     self::notifyAll('revealTiles', '', [
@@ -288,6 +291,7 @@ class Notifications
       'tiles' => $tiles->ui(),
     ]);
   }
+   
   /*************************
    **** GENERIC METHODS ****
    *************************/

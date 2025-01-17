@@ -75,13 +75,15 @@ class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
   }
   
   /**
-   * Return all HAND tiles of this player
+   * Return all HAND tiles of this player, ordered from TOP of Stack to bottom
    * @param int $pId
    * @return Collection
    */
   public static function getPlayerHand($pId)
   {
-    return self::getFilteredQuery($pId, TILE_LOCATION_HAND)->get();
+    return self::getFilteredQuery($pId, TILE_LOCATION_HAND)
+      ->orderBy(static::$prefix . 'state', 'DESC')
+      ->get();
   }
   
 

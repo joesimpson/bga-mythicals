@@ -40,8 +40,9 @@ trait ScoringTrait
       $scoreTokens = $nbTokens * TOKEN_SCORE;
       $scoreTiles = 0;
       $playerTiles = Tiles::getPlayerHand($pid);
-      Notifications::revealTiles($player,$playerTiles);
-      foreach($playerTiles as $tile){
+      //Replaced by 1 by 1 revelation 
+      //Notifications::revealTiles($player,$playerTiles);
+      foreach($playerTiles as $tile){ // TODO JSA list from top of stack
         $scoreTiles += $tile->getScore();
         Notifications::scoreTile($player,$tile,$tile->getScore());
       }

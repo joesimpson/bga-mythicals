@@ -760,6 +760,10 @@ function (dojo, declare) {
             let points = args.n;
             let tile = args.tile;
             let divTile = $(`myt_tile-${tile.id}`);
+            if (!divTile){
+                divTile = this.addTile(tile, $(`myt_player_tiles-${pId}`));
+                await this.slide(divTile.id, this.getTileContainer(tile), { from: $(`myt_player_tiles-${pId}`)});
+            }
             await this.gainPoints(pId,points,divTile);
             await this.wait(100);
         },
