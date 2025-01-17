@@ -211,9 +211,14 @@ class Notifications
    */
   public static function takeTile(Player $player,MasteryTile $tile)
   {
-    self::notifyAll('takeTile', clienttranslate('${player_name} takes a mastery tile from the board'), [
+    self::notifyAll('takeTile', clienttranslate('${player_name} takes a ${tile_color} mastery tile from the board'), [
       'player' => $player,
       'tile' => $tile->getUiData(),
+      
+      'i18n' => ['tile_color'],  
+      'tile_color' => Tiles::getColorName($tile->getColor()),
+      'preserve' => [ 'tile_color_type' ],
+      'tile_color_type' => $tile->getColor(),
     ]);
   }
   /**
