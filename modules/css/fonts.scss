@@ -5,11 +5,13 @@
 
 //FROM https://fonts.google.com/specimen/Bebas+Neue
 @font-face {
+    display: swap;
     font-family: "Bebas Neue";
     font-style: normal;
     font-weight: 400;
     src: 
         url(img/fonts/Bebas_Neue/BebasNeue-Regular.ttf) format("truetype"),
+        ;
 }
 
 //FROM https://fonts.google.com/specimen/Zen+Antique+Soft
@@ -17,6 +19,13 @@
     font-family: "Zen Antique Soft";
     font-style: normal;
     font-weight: 400;
-    src: url(img/fonts/Zen_Antique_Soft/ZenAntiqueSoft-Regular.ttf) format("truetype");
+    src: 
+        //url(img/fonts/Zen_Antique_Soft/ZenAntiqueSoft-Regular.ttf) format("truetype"),
+        //lighter file size with numbers only : 
+        url(img/fonts/Zen_Antique_Soft/ZenAntiqueSoft-Regular.woff2) format("woff2"),
+        ;
         
 }
+//to get a lighter file size with numbers only : 
+//@import url('https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&text=0123456789&display=swap');
+

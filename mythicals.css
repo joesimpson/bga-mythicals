@@ -2691,6 +2691,7 @@ body.notouch-device #help-mode-switch:hover {
 /* ---------------------------- FONTS                          ---------------------------- */
 /* ---------------------------- ----------------------------   ---------------------------- */
 @font-face {
+  display: swap;
   font-family: "Bebas Neue";
   font-style: normal;
   font-weight: 400;
@@ -2700,7 +2701,7 @@ body.notouch-device #help-mode-switch:hover {
   font-family: "Zen Antique Soft";
   font-style: normal;
   font-weight: 400;
-  src: url(img/fonts/Zen_Antique_Soft/ZenAntiqueSoft-Regular.ttf) format("truetype");
+  src: url(img/fonts/Zen_Antique_Soft/ZenAntiqueSoft-Regular.woff2) format("woff2");
 }
 /**
     PREFIX FOR THIS GAME PROJECT : "myt"
