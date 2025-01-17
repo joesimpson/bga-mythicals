@@ -1,4 +1,30 @@
 
+#myt_score_animation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-family: "Zen Antique Soft";
+    color: #2C3240;
+
+    .myt_icon_container {
+        font-size: 0.8em;
+
+        .myt_icon_qty{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            padding-left: 20px;
+            @for $i from 0 through 9 {
+                &[data-value="#{$i}"] {
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}
+
 // ---------- SPECIFIC for SCORING PHASE we reuse the same block ------------ 
 #myt_game_container.myt_scoringPhase {
     //Hiding content for scoring phase
@@ -23,11 +49,17 @@
             flex-grow: 90;
             font-size: 1.5em;
         }
-        .myt_player_score_recap{
+        .myt_player_score_recap_container{
             flex-grow: 10;
             display: inherit;
             position: relative;
-            font-size: 3em;
+            font-size: 25px;
+            padding-left: 20px;
+
+            .myt_player_score_recap{
+                margin-left: -18px;
+                color: #2C3240;
+            }
         }
     }
     //SHOWING TILES as a row, next to tokens

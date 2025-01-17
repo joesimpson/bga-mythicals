@@ -221,7 +221,10 @@ function (dojo, declare) {
                     <div id="myt_player_table-${player.id}" class="myt_player_table" data-pid=${player.id} data-color='${player.color}'>
                         <h3 class='myt_player_table_title' >
                             <div class='myt_player_table_title_name' >${this.fsr(('${player_name}'), { player_name:this.coloredPlayerName(player.name)}) }</div>
-                            <div class='myt_player_score_recap' id="myt_player_score_recap-${player.id}" >${player.score}</div>
+                            <div class='myt_player_score_recap_container'>
+                                ${this.formatIcon("score")}
+                                <div class='myt_player_score_recap' id="myt_player_score_recap-${player.id}" >${player.score}</div>
+                            </div>
                         </h3>
                        
                         <div class="myt_player_table_content">
@@ -831,10 +834,7 @@ function (dojo, declare) {
             
             if(n !=0){
                 let elem = `<div id='myt_score_animation'>
-                    ${Math.abs(n)}
-                    <div class="myt_icon_container myt_icon_container_score">
-                        <div class="myt_icon myt_icon_score"></div>
-                    </div>
+                    ${this.formatIcon("score",Math.abs(n))}
                     </div>`;
                 $('page-content').insertAdjacentHTML('beforeend', elem);
 
@@ -903,7 +903,7 @@ function (dojo, declare) {
         },
         formatIcon(name, n = null) {
             let type = name;
-            let text = n == null ? '' : `<span class='myt_icon_qty'>${n}</span>`;
+            let text = n == null ? '' : `<span class='myt_icon_qty' data-value="${n}">${n}</span>`;
             return `<div class="myt_icon_container myt_icon_container_${type}">
                 <div class="myt_icon myt_icon_${type}">${text}</div>
                 </div>`;

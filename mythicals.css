@@ -307,10 +307,16 @@
   width: 2em;
   height: 2em;
 }
-.myt_icon_container .myt_icon.myt_icon_score, .myt_icon_container .myt_icon.myt_icon_bonus_tokens, .myt_icon_container .myt_icon.myt_icon_bonus-1 {
+.myt_icon_container .myt_icon.myt_icon_bonus_tokens, .myt_icon_container .myt_icon.myt_icon_bonus-1 {
   width: 3em;
   height: 3em;
   background-image: url("img/bonus_marker.png");
+  background-size: 100%;
+}
+.myt_icon_container .myt_icon.myt_icon_score {
+  width: 30px;
+  height: 37.1788413098px;
+  background-image: url("img/icons/MYT_BGA_Lune.png");
   background-size: 100%;
 }
 
@@ -434,17 +440,6 @@
 }
 .myt_panel .myt_icon_container {
   margin: 0 0.5em;
-}
-
-#myt_score_animation {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 22px;
-}
-#myt_score_animation .myt_icon_container {
-  font-size: 0.8em;
 }
 
 #myt_resizable_board {
@@ -1607,7 +1602,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   padding: 0 7px;
   margin-top: -0.5rem;
 }
-#myt_players_table .myt_player_table_title .myt_player_score_recap {
+#myt_players_table .myt_player_table_title .myt_player_score_recap_container {
   font-family: "Zen Antique Soft";
   display: none;
 }
@@ -2097,6 +2092,55 @@ body.notouch-device #myt_board_tiles .myt_tile_lock_spot.selectable:hover {
   margin-bottom: -25px;
 }
 
+#myt_score_animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-family: "Zen Antique Soft";
+  color: #2C3240;
+}
+#myt_score_animation .myt_icon_container {
+  font-size: 0.8em;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  padding-left: 20px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="0"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="1"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="2"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="3"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="4"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="5"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="6"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="7"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="8"] {
+  padding-left: 10px;
+}
+#myt_score_animation .myt_icon_container .myt_icon_qty[data-value="9"] {
+  padding-left: 10px;
+}
+
 #myt_game_container.myt_scoringPhase #myt_main_zone {
   display: none;
 }
@@ -2115,11 +2159,16 @@ body.notouch-device #myt_board_tiles .myt_tile_lock_spot.selectable:hover {
   flex-grow: 90;
   font-size: 1.5em;
 }
-#myt_game_container.myt_scoringPhase .myt_player_table_title .myt_player_score_recap {
+#myt_game_container.myt_scoringPhase .myt_player_table_title .myt_player_score_recap_container {
   flex-grow: 10;
   display: inherit;
   position: relative;
-  font-size: 3em;
+  font-size: 25px;
+  padding-left: 20px;
+}
+#myt_game_container.myt_scoringPhase .myt_player_table_title .myt_player_score_recap_container .myt_player_score_recap {
+  margin-left: -18px;
+  color: #2C3240;
 }
 #myt_game_container.myt_scoringPhase .myt_player_table_content_right {
   width: 510px;

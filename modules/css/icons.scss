@@ -172,6 +172,7 @@
 .myt_icon_container {
     display: inline-block;
     vertical-align: middle;
+
     .myt_icon{
         &.myt_icon_cards{
             width: 2em;
@@ -181,7 +182,6 @@
             width: 2em;
             height: 2em;
         }
-        &.myt_icon_score,
         &.myt_icon_bonus_tokens,
         &.myt_icon_bonus-1 { //TOKEN_TYPE_BONUS_MARKER
             
@@ -190,6 +190,16 @@
                 
             background-image: url('img/bonus_marker.png');
             background-size: 100%;
+        }
+        &.myt_icon_score {
+            $moon_img_width: 794px;
+            $moon_img_height: 984px;
+            $icon_img_width: 30px;
+            $background_widthRatio: math.div($icon_img_width, $moon_img_width);
+            width: $icon_img_width;
+            height: calc($moon_img_height * $background_widthRatio);
+            background-image: url('img/icons/MYT_BGA_Lune.png'); 
+            background-size: 100%;    
         }
     }
 }
