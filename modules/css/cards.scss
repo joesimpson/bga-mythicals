@@ -266,6 +266,8 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
         border-image-repeat: stretch;
         border-width: 1rem;
         border-style: solid;
+        //DEFAULT for any unexpected color :
+        border-image-source: url("img/background/MYT_BGA_Frame_01.png");
         &[data-color="c47d1f"]{
             border-image-source: url("img/background/MYT_BGA_Frame_01.png");
         }

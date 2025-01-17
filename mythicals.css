@@ -1547,6 +1547,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   border-image-repeat: stretch;
   border-width: 1rem;
   border-style: solid;
+  border-image-source: url("img/background/MYT_BGA_Frame_01.png");
 }
 #myt_players_table .myt_player_table[data-color=c47d1f] {
   border-image-source: url("img/background/MYT_BGA_Frame_01.png");
