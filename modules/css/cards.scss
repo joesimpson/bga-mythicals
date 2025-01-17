@@ -252,7 +252,7 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
         display: flex;
         flex-flow: column;
 
-        border-radius: 5%;
+        border-radius: 1.8rem;
         //border: 2px solid black;
         //box-shadow: 1px 1px 10px black;
         background-color: rgba(255, 196, 108, 0.33);
@@ -350,7 +350,6 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
 #myt_cards_draw{
     display: flex;
     flex-flow: row;
-    flex-wrap: wrap;  
     align-items: center;
     justify-content: center;
     //width: calc(3 * $card_width);

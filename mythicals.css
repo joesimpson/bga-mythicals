@@ -1576,7 +1576,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
   width: fit-content;
   display: flex;
   flex-flow: column;
-  border-radius: 5%;
+  border-radius: 1.8rem;
   background-color: rgba(255, 196, 108, 0.33);
   margin: 5px 10px;
   border-image-slice: 16 16 16 16;
@@ -1675,7 +1675,6 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 #myt_cards_draw {
   display: flex;
   flex-flow: row;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   width: 100%;
