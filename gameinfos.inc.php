@@ -11,7 +11,7 @@
 
 $gameinfos = [
     // Name of the game in English (will serve as the basis for translation)
-    'game_name' => "Mythicals",
+    'game_name' => "Mythicals the boardgame",
 
     // Game publisher (use empty string if there is no publisher)
     'publisher' => 'Repos Production',
