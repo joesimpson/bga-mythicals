@@ -254,6 +254,47 @@
   background-position-x: -40px;
 }
 
+.myt_icon_scoring_type {
+  border-radius: 10px;
+  background-image: url("img/icons/icons.jpg");
+  background-size: 400% 300% !important;
+  background-repeat: repeat !important;
+  width: 70px;
+  height: 70px;
+}
+.myt_icon_scoring_type.myt_icon_scoring_type-1 {
+  background-position-y: 0px;
+  background-position-x: 0px;
+}
+.myt_icon_scoring_type.myt_icon_scoring_type-2 {
+  background-position-y: 0px;
+  background-position-x: -70px;
+}
+.myt_icon_scoring_type.myt_icon_scoring_type-3 {
+  background-position-y: 0px;
+  background-position-x: -140px;
+}
+.myt_icon_scoring_type.myt_icon_scoring_type-4 {
+  background-position-y: 0px;
+  background-position-x: -210px;
+}
+.myt_icon_scoring_type.myt_icon_scoring_type-5 {
+  background-position-y: -70px;
+  background-position-x: 0px;
+}
+.myt_icon_scoring_type.myt_icon_scoring_type-6 {
+  background-position-y: -70px;
+  background-position-x: -70px;
+}
+.myt_icon_scoring_type.myt_icon_scoring_type-7 {
+  background-position-y: -70px;
+  background-position-x: -140px;
+}
+.myt_icon_scoring_type.myt_icon_scoring_type-8 {
+  background-position-y: -70px;
+  background-position-x: -210px;
+}
+
 .myt_icon_container {
   display: inline-block;
   vertical-align: middle;
@@ -1991,9 +2032,14 @@ body.notouch-device #myt_board_tiles .myt_tile_lock_spot.selectable:hover {
   font-weight: bold;
   font-style: italic;
 }
+.myt_tile_tooltip .myt_require .myt_icon_scoring_type {
+  float: left;
+  margin-right: 10px;
+}
 .myt_tile_tooltip .myt_require .myt_require_detail {
   font-weight: normal;
   font-style: normal;
+  text-align: justify;
 }
 
 .myt_player_tiles .myt_player_toptile .myt_tile::after, .myt_player_tiles .myt_player_toptile .myt_tile::before {

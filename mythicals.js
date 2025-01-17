@@ -1124,7 +1124,9 @@ function (dojo, declare) {
 
                 if (tile.location.startsWith(TILE_LOCATION_BOARD)) {
                     descRequire = this.fsr(_("To take this tile from the board : ${x}"), {x: `<div class="myt_require_detail">${this.getTileHintTooltip(tile.pos)}</div>` } );
-                    divRequire =`<div class="myt_require"><hr/>${descRequire}</div>`;
+                    divRequire =`<div class="myt_require"><hr/>
+                            <div class="myt_icon_scoring_type-${tile.pos} myt_icon_scoring_type"></div>${descRequire}
+                        </div>`;
                 }
             }
             return [`<div class='myt_tile_tooltip'>

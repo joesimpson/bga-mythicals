@@ -114,6 +114,61 @@
     }
 }
 
+
+//Grey and black icons
+.myt_icon_scoring_type
+{
+    $icon_div_width: 70px;
+    border-radius: 10px;
+    background-image: url("img/icons/icons.jpg");
+    $icons_img_width: 1180px;
+    $icons_img_height: 885px;
+    $icon_img_width: 295px;
+    $icon_img_height: 295px;
+    $icon_img_ratio: math.div($icon_div_width, $icon_img_width );
+
+    background-size: 
+        math.percentage(math.div($icons_img_width, $icon_img_width )) 
+        math.percentage(math.div($icons_img_height,$icon_img_height )) 
+        !important;
+    background-repeat: repeat !important;
+    width: calc( $icon_img_ratio * $icon_img_width);
+    height: calc( $icon_img_ratio * $icon_img_height);
+    
+    &.myt_icon_scoring_type-1{//TILE_SCORING_SUITE_2
+        background-position-y: calc( $icon_img_ratio * -1 * 0 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 0 * $icon_img_width);
+    } 
+    &.myt_icon_scoring_type-2{//TILE_SCORING_SUITE_3
+        background-position-y: calc( $icon_img_ratio * -1 * 0 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 1 * $icon_img_width);
+    } 
+    &.myt_icon_scoring_type-3{//TILE_SCORING_SUITE_4
+        background-position-y: calc( $icon_img_ratio * -1 * 0 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 2 * $icon_img_width);
+    } 
+    &.myt_icon_scoring_type-4{//TILE_SCORING_SUITE_5
+        background-position-y: calc( $icon_img_ratio * -1 * 0 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 3 * $icon_img_width);
+    }  
+    &.myt_icon_scoring_type-5{//TILE_SCORING_SAME_2
+        background-position-y: calc( $icon_img_ratio * -1 * 1 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 0 * $icon_img_width);
+    } 
+    &.myt_icon_scoring_type-6{//TILE_SCORING_SAME_3
+        background-position-y: calc( $icon_img_ratio * -1 * 1 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 1 * $icon_img_width);
+    } 
+    &.myt_icon_scoring_type-7{//TILE_SCORING_SAME_4
+        background-position-y: calc( $icon_img_ratio * -1 * 1 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 2 * $icon_img_width);
+    } 
+    &.myt_icon_scoring_type-8{//TILE_SCORING_SUITE_6
+        background-position-y: calc( $icon_img_ratio * -1 * 1 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 3 * $icon_img_width);
+    }  
+}
+
 .myt_icon_container {
     display: inline-block;
     vertical-align: middle;

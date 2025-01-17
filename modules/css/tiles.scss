@@ -184,10 +184,15 @@ body.notouch-device{
     .myt_require{
         font-weight: bold;
         font-style: italic;
+        .myt_icon_scoring_type{
+            float: left; 
+            margin-right:10px;
+        }
 
         .myt_require_detail{
             font-weight: normal;
             font-style: normal;
+            text-align: justify;
         }
     }
 }

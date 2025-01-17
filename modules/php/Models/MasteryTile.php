@@ -15,7 +15,7 @@ class MasteryTile extends Tile
     ['color', 'int'],
     ['score', 'int'],
     //The way to score this tile :
-    ['scoring', 'int'],
+    //['scoring', 'int'],
   ];
 
   public function __construct($row, $datas)
@@ -28,6 +28,7 @@ class MasteryTile extends Tile
     $data = parent::getUiData();
     $data['color'] = $this->getColor();
     $data['score'] = $this->getScore();
+    //$data['scoring'] = $this->getBoardPosition();
     $data['pos'] = $this->getBoardPosition();
     //State is now used to stack tiles in hand
     $data['face'] = $this->getFace();// $this->getState();
