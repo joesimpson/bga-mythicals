@@ -227,8 +227,8 @@
 .myt_icon_color-5,
 .myt_icon_color-6 {
   border-radius: 10px;
-  background-image: url("img/tiles.jpg");
-  background-size: 2925.7142857143% 1828.5714285714% !important;
+  background-image: url("img/icons/icons.jpg");
+  background-size: 400% 300% !important;
   background-repeat: repeat !important;
   width: 40px;
   height: 40px;
@@ -240,8 +240,8 @@
 .myt_icon_color-5.myt_icon_color-5,
 .myt_icon_color-6.myt_icon_tile_color_log-5,
 .myt_icon_color-6.myt_icon_color-5 {
-  background-position-y: -597.7142857143px;
-  background-position-x: -93.7142857143px;
+  background-position-y: -80px;
+  background-position-x: 0;
 }
 .myt_icon_tile_color_log-5.myt_icon_tile_color_log-6, .myt_icon_tile_color_log-5.myt_icon_color-6,
 .myt_icon_tile_color_log-6.myt_icon_tile_color_log-6,
@@ -250,8 +250,8 @@
 .myt_icon_color-5.myt_icon_color-6,
 .myt_icon_color-6.myt_icon_tile_color_log-6,
 .myt_icon_color-6.myt_icon_color-6 {
-  background-position-y: -594.5714285714px;
-  background-position-x: -977.1428571429px;
+  background-position-y: -80px;
+  background-position-x: -40px;
 }
 
 .myt_icon_container {

@@ -80,23 +80,23 @@
     }
 }
 
+//Grey and black icons
 .myt_icon_tile_color_log-5,
 .myt_icon_tile_color_log-6,
 .myt_icon_color-5,
 .myt_icon_color-6
 {
     border-radius: 10px;
-    //Let's look at the gray and black tiles for those colors
-    background-image: url("img/tiles.jpg");
-    $tiles_img_width: 4096px;
-    $tiles_img_height: 2560px;
-    $icon_img_width: 140px;
-    $icon_img_height: 140px;
+    background-image: url("img/icons/icons.jpg");
+    $icons_img_width: 1180px;
+    $icons_img_height: 885px;
+    $icon_img_width: 295px;
+    $icon_img_height: 295px;
     $icon_img_ratio: math.div(40px, $icon_img_width );
 
     background-size: 
-        math.percentage(math.div($tiles_img_width, $icon_img_width )) 
-        math.percentage(math.div($tiles_img_height,$icon_img_height )) 
+        math.percentage(math.div($icons_img_width, $icon_img_width )) 
+        math.percentage(math.div($icons_img_height,$icon_img_height )) 
         !important;
     background-repeat: repeat !important;
     width: calc( $icon_img_ratio * $icon_img_width);
@@ -104,13 +104,13 @@
     
     &.myt_icon_tile_color_log-5,
     &.myt_icon_color-5{//TILE_COLOR_GRAY
-        background-position-y: calc( $icon_img_ratio * -2092px);
-        background-position-x: calc( $icon_img_ratio * -328px);
+        background-position-y: calc( $icon_img_ratio * -1 * 2 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * 0);
     } 
     &.myt_icon_tile_color_log-6,
     &.myt_icon_color-6{//TILE_COLOR_BLACK
-        background-position-y: calc( $icon_img_ratio * -2081px);
-        background-position-x: calc( $icon_img_ratio * -3420px);
+        background-position-y: calc( $icon_img_ratio * -1 * 2 * $icon_img_height);
+        background-position-x: calc( $icon_img_ratio * -1 * 1 * $icon_img_width);
     }
 }
 
