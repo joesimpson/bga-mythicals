@@ -1558,7 +1558,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
      -moz-user-select: none;
           user-select: none;
   position: absolute;
-  top: 20px;
+  top: 40%;
   text-align: center;
   width: 100%;
   color: white;
