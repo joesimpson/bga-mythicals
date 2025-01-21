@@ -2038,6 +2038,9 @@ body.notouch-device #myt_board_tiles .myt_tile_lock_spot.selectable:hover {
   text-align: justify;
 }
 
+.myt_player_tiles .myt_player_toptile .myt_tile {
+  position: absolute;
+}
 .myt_player_tiles .myt_player_toptile .myt_tile::after, .myt_player_tiles .myt_player_toptile .myt_tile::before {
   content: "";
   position: absolute;
@@ -2187,6 +2190,7 @@ body.notouch-device #myt_board_tiles .myt_tile_lock_spot.selectable:hover {
 #myt_game_container.myt_scoringPhase .myt_player_table_content_right .myt_player_toptile .myt_tile {
   margin-bottom: 5px;
   margin-right: 5px;
+  position: relative;
 }
 #myt_game_container.myt_scoringPhase .myt_player_table_content_right .myt_player_toptile .myt_tile::before {
   content: unset;

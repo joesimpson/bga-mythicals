@@ -80,6 +80,7 @@
             .myt_tile{
                 margin-bottom:5px;
                 margin-right:5px;
+                position: relative;//remove stack style
 
                 &::before{
                     content: unset;

@@ -199,7 +199,11 @@ body.notouch-device{
 
 .myt_player_tiles{
     .myt_player_toptile{
+        
         .myt_tile{
+            //add stack style where we see only the top one:
+            position: absolute;
+
             &::after,
             &::before{  
                 //Simulate a mini stack visual

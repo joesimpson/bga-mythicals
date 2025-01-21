@@ -665,10 +665,17 @@ function (dojo, declare) {
             let tile = args.tile;
             let pId = args.player_id;
             //Remove DOM of previous one because game rule states we see only the top
-            this.empty(`myt_player_toptile-${pId}`);
+            //this.empty(`myt_player_toptile-${pId}`);
+            let tileContainer = this.getTileContainer(tile);
             if (!$(`myt_tile${tile.id}`)) this.addTile(tile, this.getVisibleTitleContainer());
-            await this.slide(`myt_tile-${tile.id}`, this.getTileContainer(tile));
+            await this.slide(`myt_tile-${tile.id}`, tileContainer);
             this._counters[pId].tiles.incValue(1);
+            
+            //Remove DOM of previous one because game rule states we see only the top
+            tileContainer.querySelectorAll('.myt_tile[id^="myt_tile-"]').forEach((oTile) => {
+                if(oTile.dataset.id != tile.id ) this.destroy(oTile);
+            });
+
             await this.wait(400);
         },
         
