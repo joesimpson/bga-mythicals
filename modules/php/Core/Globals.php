@@ -35,10 +35,13 @@ class Globals extends \Bga\Games\Mythicals\Helpers\DB_Manager
 
     self::setScoringDone(false);
     self::setTurn(0);
+
     foreach($players as $pId => $player){
-      self::setFirstPlayer($pId);
-      break;
+
     }
+    //Randomize first player selection
+    $randomPId = array_rand($players);
+    self::setFirstPlayer($randomPId);
 
     //              --------------------------------------------
     //GAME OPTIONS  --------------------------------------------
