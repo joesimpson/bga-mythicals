@@ -40,12 +40,24 @@ trait TileModifTrait
     $args = [
       "tiles_ids_r" => $possibleTilesToReinforce,
       "tiles_ids_l" => $possibleTilesToLock->getIds(),
+      
+      //AUTO SKIP STATE when END GAME TRIGGER
+      //'_no_notify' => Cards::countInLocation(CARD_LOCATION_END) > 0,
     ];
     
     $this->addArgsForUndo($args);
     return $args;
   }
   
+  public function stTileModif(): void{
+    //$args = $this->argTileModif();
+    //if ($args['_no_notify']) {
+    //Publisher request : AUTO SKIP This useless step when END GAME TRIGGER
+    if(Cards::countInLocation(CARD_LOCATION_END) > 0){
+      $this->gamestate->nextState('pass');
+      return;
+    }
+  }
   /**
    * Step 2.2 : player may REINFORCE a tile
    * @param int $tile_id : chosen tile 

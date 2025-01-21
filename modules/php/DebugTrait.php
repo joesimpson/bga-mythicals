@@ -224,6 +224,40 @@ trait DebugTrait
     $this->debug_UI();
   }
   
+  //Test end when  DAY CARD will be drawn
+  function debug_testLastTurn(){
+    $player = Players::getCurrent();
+    Cards::moveAllInLocation('tmp'.CARD_LOCATION_DECK,CARD_LOCATION_DECK);
+    Cards::moveAllInLocation(CARD_LOCATION_CURRENT_DRAW,CARD_LOCATION_DECK);
+    Cards::moveAllInLocation(CARD_LOCATION_END,CARD_LOCATION_DECK);
+    Cards::moveAllInLocation(CARD_LOCATION_HAND,CARD_LOCATION_DECK);
+    //Add more cards to player to test when we have cards sets
+    $cards = Cards::pickForLocation(10,CARD_LOCATION_DECK, CARD_LOCATION_HAND);
+    foreach($cards as $card){
+      $card->setPId($player->getId());
+    }
+
+    $this->debug_UI();
+
+    $cards = Cards::getInLocation(CARD_LOCATION_DECK);
+    foreach($cards as $card){
+      
+      if($card->getColor() == CARD_COLOR_DAY){
+        //Notifications::dayCard($player,$card);
+        //Notifications::drawCards($player,new Collection([$card]));
+
+        Cards::insertOnTop($card->getId(), CARD_LOCATION_DECK);
+      }
+      //else {
+      //  $card->setLocation('tmp'.$card->getLocation());
+      //}
+    }
+
+    $this->debug_UI();
+    
+    $this->gamestate->jumpToState(ST_PLAYER_TURN_COLLECT);
+  }
+
   function debug_Scoring(){
     $players = Players::getAll();
     foreach($players as $player) $player->setScore(0);

@@ -149,6 +149,7 @@ $machinestates = [
         "descriptionmyturn" => clienttranslate('${you} may reinforce or lock another mastery tile'),
         "type" => "activeplayer",
         "args" => "argTileModif",
+        "action" => "stTileModif",
         "possibleactions" => [
             "actTileReinforce", 
             "actTileLock", 
