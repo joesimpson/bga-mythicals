@@ -528,6 +528,8 @@
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable {
   position: absolute;
+  box-shadow: unset;
+  background-color: unset;
 }
 #myt_resizable_board #myt_board_container #myt_board #myt_cards_reserve .myt_cards_stack_resizable#myt_cards_reserve_resizable_3 {
   left: 68px;
@@ -764,6 +766,7 @@ body.notouch-device #myt_resizable_board #myt_board_container #myt_board #myt_bo
   border: 1px solid black;
   box-shadow: 1px 1px 5px black;
   border-radius: 5px;
+  border-radius: 5%;
   background-size: 700% 400%;
   background-image: url("img/cards.jpg");
   position: relative;
@@ -1016,13 +1019,11 @@ body.notouch-device #myt_resizable_board #myt_board_container #myt_board #myt_bo
 }
 .myt_cards_stack_resizable .myt_cards_stack.selectable {
   cursor: pointer;
-  border-top: 20px solid yellow;
+  box-shadow: -3px -3px 0px 25px yellow;
+  border-radius: 5%;
 }
 .myt_cards_stack_resizable .myt_cards_stack.selectable .myt_card {
   /*! outline: 20px solid yellow; */
-  border: 20px solid yellow;
-  border-top: none;
-  margin-left: -20px;
 }
 .myt_cards_stack_resizable .myt_cards_stack.selectable:hover {
   transform: scale(1.1);
@@ -1542,6 +1543,7 @@ body[data-myt_card_stack_order="2"] .myt_cards_stack .myt_card_resizeable[data-t
 }
 #myt_cards_deck_container.selectable:hover {
   transform: scale(1.1);
+  z-index: 2;
 }
 #myt_cards_deck_container.selectable.selected {
   outline-color: rgb(0, 255, 64);

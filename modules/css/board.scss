@@ -120,6 +120,8 @@ $card_height: var(--myt_board_card_height);
                 }
                 .myt_cards_stack_resizable{
                     position: absolute;
+                    box-shadow: unset;
+                    background-color: unset;
 
                     &#myt_cards_reserve_resizable_3{//CARD_COLOR_PURPLE
                         left: 68px;

@@ -10,6 +10,7 @@ $card_height: 200px;
     border: 1px solid black;
     box-shadow: 1px 1px 5px black;
     border-radius: 5px;
+    border-radius: 5%;//% to avoid a different radius whent card is resized (on board reserve)
 
     //sprite positions
     background-size: 700% 400%;
@@ -149,12 +150,16 @@ $card_height: 200px;
             cursor: pointer;
             //outline: 20px solid yellow;
             //Outline is fine but the height is not enough to see the bottom line -> let's add a border on sub cards
-            border-top: 20px solid yellow;
+            //border-top: 20px solid yellow;
+            //Finally, I use box-shadow to keep border-radius pretty
+            box-shadow: -3px -3px 0px 25px yellow;
+            border-radius: 5%;
             .myt_card{
                 /*! outline: 20px solid yellow; */
-                border: 20px solid yellow;
-                border-top: none;
-                margin-left: -20px;
+                //border: 20px solid yellow;
+                //border-top: none;
+                //margin-left: -20px;
+
             }
             &:hover {
                 transform: scale(1.1);
@@ -217,6 +222,7 @@ body[data-myt_card_stack_order='2']{//PREF_CARD_STACK_DESC
 
         &:hover{
             transform: scale(1.1);
+            z-index: 2;
         }
         &.selected{
             outline-color: rgb(0, 255, 64);
