@@ -1,6 +1,6 @@
 <?php
-namespace Bga\Games\Mythicals\Helpers;
-use Bga\Games\Mythicals\Game;
+namespace Bga\Games\MythicalsTheBoardGame\Helpers;
+use Bga\Games\MythicalsTheBoardGame\Game;
 
 class DB_Manager extends \APP_DbObject
 {

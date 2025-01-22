@@ -1,20 +1,20 @@
 <?php
 
-namespace Bga\Games\Mythicals\Models;
+namespace Bga\Games\MythicalsTheBoardGame\Models;
 
-use Bga\Games\Mythicals\Game;
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Core\Stats;
-use Bga\Games\Mythicals\Managers\Cards;
-use Bga\Games\Mythicals\Managers\Players;
-use Bga\Games\Mythicals\Managers\Tiles;
-use Bga\Games\Mythicals\Managers\Tokens;
+use Bga\Games\MythicalsTheBoardGame\Game;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Core\Stats;
+use Bga\Games\MythicalsTheBoardGame\Managers\Cards;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tokens;
 
 /*
  * Player: all utility functions concerning a player
  */
 
-class Player extends \Bga\Games\Mythicals\Helpers\DB_Model
+class Player extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Model
 {
   private $map = null;
   protected $table = 'player';

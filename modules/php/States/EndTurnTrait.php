@@ -1,6 +1,6 @@
 <?php
 
-namespace Bga\Games\Mythicals\States;
+namespace Bga\Games\MythicalsTheBoardGame\States;
 
 trait EndTurnTrait
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Bga\Games\Mythicals\Models;
+namespace Bga\Games\MythicalsTheBoardGame\Models;
 
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Exceptions\UnexpectedException;
-use Bga\Games\Mythicals\Exceptions\UserException;
-use Bga\Games\Mythicals\Helpers\Collection;
-use Bga\Games\Mythicals\Managers\Tokens;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UnexpectedException;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UserException;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tokens;
 
 class MasteryTile extends Tile
 {

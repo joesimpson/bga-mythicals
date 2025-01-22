@@ -1,12 +1,12 @@
 <?php
 
-namespace Bga\Games\Mythicals\Models;
+namespace Bga\Games\MythicalsTheBoardGame\Models;
 
 /*
  * Tile: all utility functions concerning a Mastery Tile
  */
 
-class Tile extends \Bga\Games\Mythicals\Helpers\DB_Model
+class Tile extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Model
 {
   protected $table = 'tiles';
   protected $primary = 'tile_id';

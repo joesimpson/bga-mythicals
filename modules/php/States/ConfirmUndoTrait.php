@@ -1,14 +1,14 @@
 <?php
 
-namespace Bga\Games\Mythicals\States;
+namespace Bga\Games\MythicalsTheBoardGame\States;
 
 use Bga\GameFramework\Actions\Types\IntParam;
-use Bga\Games\Mythicals\Core\Globals;
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Exceptions\UnexpectedException;
-use Bga\Games\Mythicals\Game;
-use Bga\Games\Mythicals\Helpers\Log;
-use Bga\Games\Mythicals\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Core\Globals;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UnexpectedException;
+use Bga\Games\MythicalsTheBoardGame\Game;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Log;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
 
 trait ConfirmUndoTrait
 {

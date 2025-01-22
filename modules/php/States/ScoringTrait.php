@@ -1,12 +1,12 @@
 <?php
 
-namespace Bga\Games\Mythicals\States;
+namespace Bga\Games\MythicalsTheBoardGame\States;
 
-use Bga\Games\Mythicals\Core\Globals;
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Core\Stats;
-use Bga\Games\Mythicals\Managers\Players;
-use Bga\Games\Mythicals\Managers\Tiles;
+use Bga\Games\MythicalsTheBoardGame\Core\Globals;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Core\Stats;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
 
 trait ScoringTrait
 {

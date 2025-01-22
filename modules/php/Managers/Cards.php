@@ -1,19 +1,19 @@
 <?php
 
-namespace Bga\Games\Mythicals\Managers;
+namespace Bga\Games\MythicalsTheBoardGame\Managers;
 
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Core\Stats;
-use Bga\Games\Mythicals\Game;
-use Bga\Games\Mythicals\Helpers\Collection;
-use Bga\Games\Mythicals\Helpers\Utils;
-use Bga\Games\Mythicals\Models\Card;
-use Bga\Games\Mythicals\Models\CreatureCard;
-use Bga\Games\Mythicals\Models\Player;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Core\Stats;
+use Bga\Games\MythicalsTheBoardGame\Game;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Utils;
+use Bga\Games\MythicalsTheBoardGame\Models\Card;
+use Bga\Games\MythicalsTheBoardGame\Models\CreatureCard;
+use Bga\Games\MythicalsTheBoardGame\Models\Player;
 
 /* Class to manage all the cards */
 
-class Cards extends \Bga\Games\Mythicals\Helpers\Pieces
+class Cards extends \Bga\Games\MythicalsTheBoardGame\Helpers\Pieces
 {
   protected static $table = 'cards';
   protected static $prefix = 'card_';

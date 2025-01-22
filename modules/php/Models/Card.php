@@ -1,12 +1,12 @@
 <?php
 
-namespace Bga\Games\Mythicals\Models;
+namespace Bga\Games\MythicalsTheBoardGame\Models;
 
 /*
  * Card: all utility functions concerning a card
  */
 
-class Card extends \Bga\Games\Mythicals\Helpers\DB_Model
+class Card extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Model
 {
   protected $table = 'cards';
   protected $primary = 'card_id';

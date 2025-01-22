@@ -1,5 +1,5 @@
 <?php
-namespace Bga\Games\Mythicals\Helpers;
+namespace Bga\Games\MythicalsTheBoardGame\Helpers;
 
 class QueryBuilder extends \APP_DbObject
 {

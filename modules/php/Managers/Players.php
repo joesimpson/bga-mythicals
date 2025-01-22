@@ -1,26 +1,26 @@
 <?php
 
-namespace Bga\Games\Mythicals\Managers;
+namespace Bga\Games\MythicalsTheBoardGame\Managers;
 
-use Bga\Games\Mythicals\Game;
-use Bga\Games\Mythicals\Core\Globals;
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Core\Stats;
-use Bga\Games\Mythicals\Exceptions\UnexpectedException;
-use Bga\Games\Mythicals\Models\Player;
+use Bga\Games\MythicalsTheBoardGame\Game;
+use Bga\Games\MythicalsTheBoardGame\Core\Globals;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Core\Stats;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UnexpectedException;
+use Bga\Games\MythicalsTheBoardGame\Models\Player;
 
 /*
  * Players manager : allows to easily access players ...
  *  a player is an instance of Player class
  */
 
-class Players extends \Bga\Games\Mythicals\Helpers\DB_Manager
+class Players extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Manager
 {
   protected static $table = 'player';
   protected static $primary = 'player_id';
   protected static function cast($row)
   {
-    return new \Bga\Games\Mythicals\Models\Player($row);
+    return new \Bga\Games\MythicalsTheBoardGame\Models\Player($row);
   }
 
   /**

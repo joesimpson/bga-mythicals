@@ -1,16 +1,16 @@
 <?php
 
-namespace Bga\Games\Mythicals\Managers;
+namespace Bga\Games\MythicalsTheBoardGame\Managers;
 
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Exceptions\UnexpectedException;
-use Bga\Games\Mythicals\Helpers\Collection;
-use Bga\Games\Mythicals\Models\MasteryTile;
-use Bga\Games\Mythicals\Models\Token;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UnexpectedException;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Models\MasteryTile;
+use Bga\Games\MythicalsTheBoardGame\Models\Token;
 
 /* Class to manage all the tokens */
 
-class Tokens extends \Bga\Games\Mythicals\Helpers\Pieces
+class Tokens extends \Bga\Games\MythicalsTheBoardGame\Helpers\Pieces
 {
   protected static $table = 'tokens';
   protected static $prefix = 'token_';

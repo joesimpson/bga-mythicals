@@ -1,11 +1,11 @@
 <?php
 
-namespace Bga\Games\Mythicals\Helpers;
+namespace Bga\Games\MythicalsTheBoardGame\Helpers;
 
-use Bga\Games\Mythicals\Game;
-use Bga\Games\Mythicals\Core\Globals;
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Game;
+use Bga\Games\MythicalsTheBoardGame\Core\Globals;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
 
 /**
  * Class that allows to log DB change: useful for undo feature

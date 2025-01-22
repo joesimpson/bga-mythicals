@@ -1,7 +1,7 @@
 <?php
-namespace Bga\Games\Mythicals\Helpers;
+namespace Bga\Games\MythicalsTheBoardGame\Helpers;
 
-use Bga\Games\Mythicals\Game;
+use Bga\Games\MythicalsTheBoardGame\Game;
 
 abstract class Utils extends \APP_DbObject
 {

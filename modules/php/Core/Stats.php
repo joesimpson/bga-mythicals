@@ -1,15 +1,15 @@
 <?php
 
-namespace Bga\Games\Mythicals\Core;
+namespace Bga\Games\MythicalsTheBoardGame\Core;
 
-use Bga\Games\Mythicals\Managers\Players;
-use Bga\Games\Mythicals\Game;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Game;
 
 /*
  * Statistics
  */
 
-class Stats extends \Bga\Games\Mythicals\Helpers\DB_Manager
+class Stats extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Manager
 {
   protected static $table = 'stats';
   protected static $primary = 'stats_id';

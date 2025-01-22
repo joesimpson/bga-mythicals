@@ -1,15 +1,15 @@
 /**
  *------
  * BGA framework: Gregory Isabelli & Emmanuel Colin & BoardGameArena
- * Mythicals implementation : © joesimpson <1324811+joesimpson@users.noreply.github.com>
+ * MythicalsTheBoardGame implementation : © joesimpson <1324811+joesimpson@users.noreply.github.com>
  *
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
  * -----
  *
- * mythicals.js
+ * mythicalstheboardgame.js
  *
- * Mythicals user interface script
+ * MythicalsTheBoardGame user interface script
  * 
  * In this file, you are describing the logic of your user interface, in Javascript language.
  *
@@ -92,9 +92,9 @@ function (dojo, declare) {
     const TOKEN_TYPE_BONUS_MARKER = 1;
     const NB_MAX_TOKENS_ON_TILE = 2;
 
-    return declare("bgagame.mythicals", [customgame.game], {
+    return declare("bgagame.mythicalstheboardgame", [customgame.game], {
         constructor: function(){
-            debug('mythicals constructor');
+            debug('mythicalstheboardgame constructor');
               
             // Here, you can init the global variables of your user interface
             this._counters = {};

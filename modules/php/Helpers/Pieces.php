@@ -1,5 +1,5 @@
 <?php
-namespace Bga\Games\Mythicals\Helpers;
+namespace Bga\Games\MythicalsTheBoardGame\Helpers;
 
 /*
  * This is a generic class to manage game pieces.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bga\Games\Mythicals\Models;
+namespace Bga\Games\MythicalsTheBoardGame\Models;
 
 class CreatureCard extends Card
 {

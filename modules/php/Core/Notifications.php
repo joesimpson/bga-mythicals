@@ -1,15 +1,15 @@
 <?php
 
-namespace Bga\Games\Mythicals\Core;
+namespace Bga\Games\MythicalsTheBoardGame\Core;
 
-use Bga\Games\Mythicals\Game;
-use Bga\Games\Mythicals\Helpers\Collection;
-use Bga\Games\Mythicals\Managers\Cards;
-use Bga\Games\Mythicals\Managers\Tiles;
-use Bga\Games\Mythicals\Models\Card;
-use Bga\Games\Mythicals\Models\MasteryTile;
-use Bga\Games\Mythicals\Models\Player;
-use Bga\Games\Mythicals\Models\Token;
+use Bga\Games\MythicalsTheBoardGame\Game;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Managers\Cards;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
+use Bga\Games\MythicalsTheBoardGame\Models\Card;
+use Bga\Games\MythicalsTheBoardGame\Models\MasteryTile;
+use Bga\Games\MythicalsTheBoardGame\Models\Player;
+use Bga\Games\MythicalsTheBoardGame\Models\Token;
 
 class Notifications
 { 

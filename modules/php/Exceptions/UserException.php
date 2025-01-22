@@ -1,6 +1,6 @@
 <?php
-namespace Bga\Games\Mythicals\Exceptions;
-use Bga\Games\Mythicals\Game;
+namespace Bga\Games\MythicalsTheBoardGame\Exceptions;
+use Bga\Games\MythicalsTheBoardGame\Game;
 
 class UserException extends \BgaUserException
 {

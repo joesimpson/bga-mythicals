@@ -1,21 +1,21 @@
 <?php
 
-namespace Bga\Games\Mythicals\States;
+namespace Bga\Games\MythicalsTheBoardGame\States;
 
 use Bga\GameFramework\Actions\Types\IntArrayParam;
 use Bga\GameFramework\Actions\Types\IntParam;
-use Bga\Games\Mythicals\Core\Globals;
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Core\Stats;
-use Bga\Games\Mythicals\Exceptions\UnexpectedException;
-use Bga\Games\Mythicals\Exceptions\UserException;
-use Bga\Games\Mythicals\Game;
-use Bga\Games\Mythicals\Helpers\Collection;
-use Bga\Games\Mythicals\Helpers\Utils;
-use Bga\Games\Mythicals\Managers\Cards;
-use Bga\Games\Mythicals\Managers\Players;
-use Bga\Games\Mythicals\Managers\Tiles;
-use Bga\Games\Mythicals\Models\MasteryTile;
+use Bga\Games\MythicalsTheBoardGame\Core\Globals;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Core\Stats;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UnexpectedException;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UserException;
+use Bga\Games\MythicalsTheBoardGame\Game;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Utils;
+use Bga\Games\MythicalsTheBoardGame\Managers\Cards;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
+use Bga\Games\MythicalsTheBoardGame\Models\MasteryTile;
 
 trait TileChoiceTrait
 {

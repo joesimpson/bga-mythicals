@@ -2,7 +2,7 @@
 /**
  *------
  * BGA framework: Gregory Isabelli & Emmanuel Colin & BoardGameArena
- * Mythicals implementation : © joesimpson <1324811+joesimpson@users.noreply.github.com>
+ * MythicalsTheBoardGame implementation : © joesimpson <1324811+joesimpson@users.noreply.github.com>
  *
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
@@ -16,15 +16,15 @@
  */
 declare(strict_types=1);
 
-namespace Bga\Games\Mythicals;
+namespace Bga\Games\MythicalsTheBoardGame;
 
 use \Bga\GameFramework\Actions\CheckAction;
-use Bga\Games\Mythicals\Core\Preferences;
-use Bga\Games\Mythicals\Exceptions\UserException;
-use Bga\Games\Mythicals\Managers\Cards;
-use Bga\Games\Mythicals\Managers\Players;
-use Bga\Games\Mythicals\Managers\Tiles;
-use Bga\Games\Mythicals\Managers\Tokens;
+use Bga\Games\MythicalsTheBoardGame\Core\Preferences;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UserException;
+use Bga\Games\MythicalsTheBoardGame\Managers\Cards;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tokens;
 
 require_once(APP_GAMEMODULE_PATH . "module/table/table.game.php");
 require_once 'constants.inc.php';
@@ -156,7 +156,7 @@ class Game extends \Table
      */
     protected function getGameName()
     {
-        return "mythicals";
+        return "mythicalstheboardgame";
     }
 
     /**

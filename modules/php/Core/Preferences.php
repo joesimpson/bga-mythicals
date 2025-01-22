@@ -1,11 +1,11 @@
 <?php
-namespace Bga\Games\Mythicals\Core;
-use Bga\Games\Mythicals\Game;
+namespace Bga\Games\MythicalsTheBoardGame\Core;
+use Bga\Games\MythicalsTheBoardGame\Game;
 
 /**
  * User preferences module from boilerplate, but now framework exposes an access to user prefs
  */
-class Preferences extends \Bga\Games\Mythicals\Helpers\DB_Manager
+class Preferences extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Manager
 {
   // protected static $table = 'user_preferences';
   // protected static $primary = 'id';

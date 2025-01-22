@@ -1,10 +1,10 @@
 <?php
 
-namespace Bga\Games\Mythicals\States;
+namespace Bga\Games\MythicalsTheBoardGame\States;
 
-use Bga\Games\Mythicals\Core\Globals;
-use Bga\Games\Mythicals\Managers\Cards;
-use Bga\Games\Mythicals\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Core\Globals;
+use Bga\Games\MythicalsTheBoardGame\Managers\Cards;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
 
 trait NextTurnTrait
 {

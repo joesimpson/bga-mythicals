@@ -1,17 +1,17 @@
 <?php
 
-namespace Bga\Games\Mythicals\Core;
+namespace Bga\Games\MythicalsTheBoardGame\Core;
 
-use Bga\Games\Mythicals\Game;
-use Bga\Games\Mythicals\Exceptions\UnexpectedException;
-use Bga\Games\Mythicals\Helpers\Collection;
-use Bga\Games\Mythicals\Helpers\Utils;
+use Bga\Games\MythicalsTheBoardGame\Game;
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UnexpectedException;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Utils;
 
 /** 
  * Globals
  */
 
-class Globals extends \Bga\Games\Mythicals\Helpers\DB_Manager
+class Globals extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Manager
 {
   ////////// !! reuse the same table  as BGA framework but with boilerplate Logger and cache
   protected static $table = 'bga_globals';

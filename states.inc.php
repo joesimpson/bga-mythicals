@@ -2,7 +2,7 @@
 /**
  *------
  * BGA framework: Gregory Isabelli & Emmanuel Colin & BoardGameArena
- * Mythicals implementation : © joesimpson <1324811+joesimpson@users.noreply.github.com>
+ * MythicalsTheBoardGame implementation : © joesimpson <1324811+joesimpson@users.noreply.github.com>
  *
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
@@ -10,7 +10,7 @@
  *
  * states.inc.php
  *
- * Mythicals game states description
+ * MythicalsTheBoardGame game states description
  *
  */
 

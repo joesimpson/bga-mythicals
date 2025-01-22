@@ -1,17 +1,17 @@
 <?php
-namespace Bga\Games\Mythicals;
+namespace Bga\Games\MythicalsTheBoardGame;
 
-use Bga\Games\Mythicals\Core\Globals;
-use Bga\Games\Mythicals\Core\Notifications;
-use Bga\Games\Mythicals\Core\Stats;
-use Bga\Games\Mythicals\Helpers\Collection;
-use Bga\Games\Mythicals\Helpers\QueryBuilder;
-use Bga\Games\Mythicals\Helpers\Utils;
-use Bga\Games\Mythicals\Managers\Cards;
-use Bga\Games\Mythicals\Managers\Players;
-use Bga\Games\Mythicals\Managers\Tiles;
-use Bga\Games\Mythicals\Managers\Tokens;
-use Bga\Games\Mythicals\Models\Token;
+use Bga\Games\MythicalsTheBoardGame\Core\Globals;
+use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
+use Bga\Games\MythicalsTheBoardGame\Core\Stats;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Helpers\QueryBuilder;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Utils;
+use Bga\Games\MythicalsTheBoardGame\Managers\Cards;
+use Bga\Games\MythicalsTheBoardGame\Managers\Players;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
+use Bga\Games\MythicalsTheBoardGame\Managers\Tokens;
+use Bga\Games\MythicalsTheBoardGame\Models\Token;
 
 /**
  * Debugging functions to be called in chat window in BGA Studio

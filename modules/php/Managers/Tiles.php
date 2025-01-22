@@ -1,14 +1,14 @@
 <?php
 
-namespace Bga\Games\Mythicals\Managers;
+namespace Bga\Games\MythicalsTheBoardGame\Managers;
 
-use Bga\Games\Mythicals\Core\Globals;
-use Bga\Games\Mythicals\Helpers\Collection;
-use Bga\Games\Mythicals\Models\MasteryTile;
+use Bga\Games\MythicalsTheBoardGame\Core\Globals;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Models\MasteryTile;
 
 /* Class to manage all the Tiles */
 
-class Tiles extends \Bga\Games\Mythicals\Helpers\Pieces
+class Tiles extends \Bga\Games\MythicalsTheBoardGame\Helpers\Pieces
 {
   protected static $table = 'tiles';
   protected static $prefix = 'tile_';

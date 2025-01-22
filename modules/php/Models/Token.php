@@ -1,12 +1,12 @@
 <?php
 
-namespace Bga\Games\Mythicals\Models;
+namespace Bga\Games\MythicalsTheBoardGame\Models;
 
 /*
  * Token: all utility functions concerning a Token
  */
 
-class Token extends \Bga\Games\Mythicals\Helpers\DB_Model
+class Token extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Model
 {
   protected $table = 'tokens';
   protected $primary = 'token_id';
