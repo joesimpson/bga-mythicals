@@ -149,8 +149,8 @@ body[data-myt_background_style='3']{//PREF_BACKGROUND_DARK
 }
 
 #btnTextSeparator{
-    background: inherit;
-    color: inherit;
+    background: inherit !important;
+    color: inherit !important;
     border: none;
     box-shadow: none;
 }
@@ -177,25 +177,25 @@ body[data-myt_undo_style='2']{//PREF_UNDO_STYLE_ICON
 
 #btnCollectReserve_1{//CARD_COLOR_BLUE
     &:not(.disabled){
-        background-color: #295c84;
+        background: #295c84;
     }
     color: white;
 }
 #btnCollectReserve_2{//CARD_COLOR_GREEN
     &:not(.disabled){
-        background-color: #395e2d;
+        background: #395e2d;
     }
     color: white;
 }
 #btnCollectReserve_3{//CARD_COLOR_PURPLE
     &:not(.disabled){
-        background-color: #662770;
+        background: #662770;
     }
     color: white;
 }
 #btnCollectReserve_4{//CARD_COLOR_RED
     &:not(.disabled){
-        background-color: #862015;
+        background: #862015;
     }
     color: white;
 }

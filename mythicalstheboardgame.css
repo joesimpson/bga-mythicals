@@ -2903,8 +2903,8 @@ body[data-myt_background_style="3"] #myt_overall_background {
 }
 
 #btnTextSeparator {
-  background: inherit;
-  color: inherit;
+  background: inherit !important;
+  color: inherit !important;
   border: none;
   box-shadow: none;
 }
@@ -2927,28 +2927,28 @@ body[data-myt_undo_style="2"] #btnTextRestartTurn {
   color: white;
 }
 #btnCollectReserve_1:not(.disabled) {
-  background-color: #295c84;
+  background: #295c84;
 }
 
 #btnCollectReserve_2 {
   color: white;
 }
 #btnCollectReserve_2:not(.disabled) {
-  background-color: #395e2d;
+  background: #395e2d;
 }
 
 #btnCollectReserve_3 {
   color: white;
 }
 #btnCollectReserve_3:not(.disabled) {
-  background-color: #662770;
+  background: #662770;
 }
 
 #btnCollectReserve_4 {
   color: white;
 }
 #btnCollectReserve_4:not(.disabled) {
-  background-color: #862015;
+  background: #862015;
 }
 
 #btnReinforce {
