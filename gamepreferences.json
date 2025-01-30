@@ -56,5 +56,19 @@
         },
         "default": 1,
         "attribute": "myt_background_style"
+    },
+    "112": {
+        "name": "End scoring animation",
+        "needReload": false,
+        "values": {
+            "1": {
+                "name": "Normal"
+            },
+            "2": {
+                "name": "Fast"
+            }
+        },
+        "default": 1,
+        "attribute": "myt_pref_anim_end"
     }
 }

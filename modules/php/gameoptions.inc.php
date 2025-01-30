@@ -77,4 +77,14 @@ $game_preferences = [
     'attribute' => 'myt_background_style',
   ],
  
+  PREF_ANIMATION_END => [
+    'name' => totranslate('End scoring animation'),
+    'needReload' => false,
+    'values' => [
+      PREF_ANIMATION_END_NORMAL => [ 'name' => 'Normal'],
+      PREF_ANIMATION_END_FAST => [ 'name' => 'Fast' ],
+    ],
+    "default"=> PREF_ANIMATION_END_NORMAL,
+    'attribute' => 'myt_pref_anim_end',
+  ],
 ];

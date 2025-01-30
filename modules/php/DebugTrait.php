@@ -261,6 +261,7 @@ trait DebugTrait
   function debug_Scoring(){
     $players = Players::getAll();
     foreach($players as $player) $player->setScore(0);
+    Globals::setScoringDone(false);
     $this->debug_UI();
     $this->computeFinalScore($players);
     

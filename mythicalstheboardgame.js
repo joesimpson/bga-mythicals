@@ -32,6 +32,9 @@ function (dojo, declare) {
     const PREF_CONFIRM = 102;
     const PREF_CARD_STACK_STYLE = 110;
     const PREF_BACKGROUND = 111;
+
+    const PREF_ANIMATION_END = 112;
+    const PREF_ANIMATION_END_FAST = 2;
     
     const CARD_LOCATION_RESERVE = 'reserve';
     const CARD_LOCATION_HAND = 'hand';
@@ -300,6 +303,9 @@ function (dojo, declare) {
                 backgroundStyle: { 
                     type: 'pref', 
                     prefId: PREF_BACKGROUND },
+                animationEnd: { 
+                    type: 'pref', 
+                    prefId: PREF_ANIMATION_END },
             };
         },
         onChangeBoardWidthSetting(val) {
@@ -770,11 +776,15 @@ function (dojo, declare) {
             let points = args.n;
             let tile = args.tile;
             let divTile = $(`myt_tile-${tile.id}`);
+            let skipScoreAnimation =  gameui.prefs[PREF_ANIMATION_END].value == PREF_ANIMATION_END_FAST;
             if (!divTile){
                 divTile = this.addTile(tile, $(`myt_player_tiles-${pId}`));
-                await this.slide(divTile.id, this.getTileContainer(tile), { from: $(`myt_player_tiles-${pId}`)});
+                await this.slide(divTile.id, this.getTileContainer(tile), { 
+                    from: $(`myt_player_tiles-${pId}`),
+                    duration: skipScoreAnimation ? 200 : 800,
+                });
             }
-            await this.gainPoints(pId,points,divTile);
+            await this.gainPoints(pId,points,divTile, skipScoreAnimation);
             await this.wait(100);
         },
         notif_scoreTokens: async function(args) {
@@ -782,7 +792,8 @@ function (dojo, declare) {
             let pId = args.player_id;
             let points = args.n;
             let divTokens = $(`myt_player_tokens-${pId}`);
-            await this.gainPoints(pId,points,divTokens);
+            let skipScoreAnimation =  gameui.prefs[PREF_ANIMATION_END].value == PREF_ANIMATION_END_FAST;
+            await this.gainPoints(pId,points,divTokens,skipScoreAnimation);
             await this.wait(100);
         },
 
@@ -836,10 +847,10 @@ function (dojo, declare) {
 
         },
  
-        gainPoints: async function(pId,n, fromElement = null) {
+        gainPoints: async function(pId,n, fromElement = null, skipScoreAnimation = false ) {
             this.gamedatas.players[pId].score += n;
             
-            if(n !=0){
+            if(n !=0 && !skipScoreAnimation){
                 let elem = `<div id='myt_score_animation'>
                     ${this.formatIcon("score",Math.abs(n))}
                     </div>`;
