@@ -1195,7 +1195,7 @@ function (dojo, declare) {
                 [TILE_SCORING_SAME_2 ,     this.fsr(setDesc,{n:2 })],
                 [TILE_SCORING_SAME_3 ,     this.fsr(setDesc,{n:3 })],
                 [TILE_SCORING_SAME_4 ,     this.fsr(setDesc,{n:4 })],
-                [TILE_SCORING_SUITE_6,     this.fsr( _('Requires a suite of ALL ${n} cards of the color of the chosen tile : the joker must be held in addition to the other cards.'),{ n:6 })],
+                [TILE_SCORING_SUITE_6,     this.fsr( _('Requires a suite of ALL ${n} cards of the same color : the joker must be held in addition to the other cards.'),{ n:6 })],
             ]);
             let text = descriptionMap.get(scoringType);
             return `<div class='myt_tile_hint_tooltip'>
