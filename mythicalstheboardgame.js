@@ -482,11 +482,12 @@ function (dojo, declare) {
             //DISABLED by default
             $(`btnConfirmReinforce`).classList.add('disabled');
             
-            for(let k=1 + (NB_MAX_TOKENS_ON_TILE-maxTokens); k<=NB_MAX_TOKENS_ON_TILE; k++){
+            for(let k=1; k<= maxTokens && maxTokens>0; k++){
+            //for(let k=1 + (NB_MAX_TOKENS_ON_TILE-maxTokens); k<=NB_MAX_TOKENS_ON_TILE; k++){
             //for(let k=NB_MAX_TOKENS_ON_TILE; k>=1 && k>= NB_MAX_TOKENS_ON_TILE - maxTokens ; k--){
                 let div = $(`myt_tile_token_spot-${selectedTileId}-${k}`);
                 if(div.querySelector(`.myt_bonus_token`)) continue;
-                let indexToken = k - (NB_MAX_TOKENS_ON_TILE-maxTokens);//indexToken from 1 to maxTokens
+                let indexToken = k;//indexToken from 1 to maxTokens
                 div.insertAdjacentHTML('afterbegin', `<div id="myt_tile_token_spot_to_select-${indexToken}" class="myt_tile_token_spot_to_select">+${indexToken}</div>`);
                     
                 let confirmCallBackN = () => {
