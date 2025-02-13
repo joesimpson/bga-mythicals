@@ -425,19 +425,27 @@ function (dojo, declare) {
         onEnteringStateTileModif(args) {
             debug('onEnteringStateTileModif', args);
 
-            Object.entries(args.tiles_ids_r).forEach( (tile_datas) => {
-                let tile_id = tile_datas[0];
-                let nbEmptySpots = tile_datas[1];
-                let div = $(`myt_tile-${tile_id}`);
+            let boardTiles = document.getElementById('myt_board_tiles').querySelectorAll(".myt_tile");
+
+            boardTiles.forEach( (div) => {
+                let tile_id = div.dataset.id;
+                let reinforceableTile = (Object.keys(args.tiles_ids_r).indexOf(tile_id)>=0) ? true : false;
                 let lockableTile = (args.tiles_ids_l.indexOf(parseInt(tile_id))>=0) ? true : false;
+                //IF no more available tokens, tile could be no lockable nor reinforceable
+                if(!reinforceableTile && !lockableTile) return;
+
                 let callbackTileSelection = (evt) => {
-                    let n = nbEmptySpots;
+                    let n = 0;
+                    if(reinforceableTile){
+                        let nbEmptySpots = args.tiles_ids_r[tile_id];
+                        n = nbEmptySpots;
+                    }
                     let stateMsg = this.fsr(_('Select up to ${n} bonus spots to reinforce this tile'), {n:n});
                     if(lockableTile) stateMsg = this.fsr(_('Select up to ${n} bonus spots to reinforce OR lock this tile'), {n:n});
                     this.clientState('tileReinforceTokens', stateMsg, {
                         tile_id: tile_id,
                         n: n,
-                      });
+                    });
 
                     if(lockableTile) {
                         callbackTileLock = () => {
