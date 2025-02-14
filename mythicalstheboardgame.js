@@ -482,12 +482,20 @@ function (dojo, declare) {
             //DISABLED by default
             $(`btnConfirmReinforce`).classList.add('disabled');
             
-            for(let k=1; k<= maxTokens && maxTokens>0; k++){
+            let nbAddedTokens =0;
+            let nbSkippedTokens =0;
+            for(let k=1; k<= NB_MAX_TOKENS_ON_TILE; k++){
             //for(let k=1 + (NB_MAX_TOKENS_ON_TILE-maxTokens); k<=NB_MAX_TOKENS_ON_TILE; k++){
             //for(let k=NB_MAX_TOKENS_ON_TILE; k>=1 && k>= NB_MAX_TOKENS_ON_TILE - maxTokens ; k--){
                 let div = $(`myt_tile_token_spot-${selectedTileId}-${k}`);
-                if(div.querySelector(`.myt_bonus_token`)) continue;
-                let indexToken = k;//indexToken from 1 to maxTokens
+                if(div.querySelector(`.myt_bonus_token`)){
+                    //If token already there, continue on next spot
+                    nbSkippedTokens++;
+                    continue;
+                }
+                if(maxTokens <= nbAddedTokens) continue;         
+                nbAddedTokens++;
+                let indexToken = k - nbSkippedTokens;//indexToken from 1 to 2
                 div.insertAdjacentHTML('afterbegin', `<div id="myt_tile_token_spot_to_select-${indexToken}" class="myt_tile_token_spot_to_select">+${indexToken}</div>`);
                     
                 let confirmCallBackN = () => {
