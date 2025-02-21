@@ -42,7 +42,7 @@ trait ScoringTrait
       $playerTiles = Tiles::getPlayerHand($pid);
       //Replaced by 1 by 1 revelation 
       //Notifications::revealTiles($player,$playerTiles);
-      foreach($playerTiles as $tile){ // TODO JSA list from top of stack
+      foreach($playerTiles as $tile){ // list from top of stack
         $scoreTiles += $tile->getScore();
         Notifications::scoreTile($player,$tile,$tile->getScore());
       }

@@ -98,6 +98,7 @@ class Cards extends \Bga\Games\MythicalsTheBoardGame\Helpers\Pieces
       Stats::inc("cards",$player->getId());
     }
     Notifications::giveCardsToPlayer($player,$cards);
+    Notifications::cardsDetail($cards);
 
     $missingNb = $nbCards - $cards->count();
     Game::get()->trace("setupDrawCardsToHand($nbCards) -> $missingNb are missing");

@@ -4,6 +4,7 @@ namespace Bga\Games\MythicalsTheBoardGame\Core;
 
 use Bga\Games\MythicalsTheBoardGame\Game;
 use Bga\Games\MythicalsTheBoardGame\Helpers\Collection;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Utils;
 use Bga\Games\MythicalsTheBoardGame\Managers\Cards;
 use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
 use Bga\Games\MythicalsTheBoardGame\Models\Card;
@@ -175,11 +176,52 @@ class Notifications
    * @param Collection $cards
    */
   public static function drawCards(Player $player,$cards)
-  {
+  { 
     self::notifyAll('drawCards', clienttranslate('${player_name} draws ${n} cards from the deck'), [
       'player' => $player,
       'n' => $cards->count(),
       'cards' => $cards->ui(),
+    ]);
+
+    Notifications::cardsDetail($cards);
+  }
+  
+  /**
+   * @param Collection $cards
+   */
+  public static function cardsDetail(Collection $cards)
+  {
+    //prepare to log cards:
+    $cards_logs = [];
+    $cards_args = [];
+    $k = 1;
+
+    foreach ($cards as $card) {
+      $name = 'card_color_' . $k;
+      $value = 'card_value_' . $k;
+
+      $cardValue = $card->getValue();
+      if(CARD_VALUE_JOKER == $cardValue) $cardValue = "*";
+      else if(CARD_TYPE_DAY_CARD == $card->getType()) {
+        $cardValue = clienttranslate("Day Card");
+        $cards_args['i18n'][] = $value;
+      }
+
+      $cards_logs[] = '${' . $value  . '} ${' . $name . '}';
+      $cards_args[$value] = $cardValue;
+      $cards_args[$name] = Cards::getColorName($card->getColor());
+      $cards_args['i18n'][] = $name;
+      $cards_args['preserve'][] = "card_colortype_$k";
+      $cards_args["card_colortype_$k"] = $card->getColor();
+      $k++;
+    }
+
+    $cards_names = [
+      'log' => join(', ', $cards_logs),
+      'args' => $cards_args,
+    ];
+    self::notifyAll('cardsDetail', ('${cards_names}'), [
+      'cards_names' => $cards_names,
     ]);
   }
   /**

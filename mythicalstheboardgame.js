@@ -923,6 +923,28 @@ function (dojo, declare) {
                     args.card_color = this.formatIcon("card_color_log-"+args.card_color_type);
                     args.card_color_type = "";
                 }
+                //----------------- When array of cards :
+                let card_colors_keys = Object.keys(args).filter((key) => key.startsWith( 'card_color_'));
+                let card_values_keys = Object.keys(args).filter((key) => key.startsWith( 'card_value_'));
+                let card_color_type_keys = Object.keys(args).filter((key) => key.startsWith( 'card_colortype_'));
+                for(let k=0; k<card_colors_keys.length; k++){
+                  let key = card_colors_keys[k];
+                  let valueKey = card_values_keys[k];
+                  let colorKey = card_color_type_keys[k];
+                  let colorInt = args[colorKey];
+                  let valueInt = args[valueKey];
+                  //args[key] = this.formatIcon("card_color_log-"+colorInt);
+                  //args[valueKey] = this.formatIcon("card_value-"+colorInt+"-"+valueInt,valueInt);
+                  
+                  if(CARD_COLOR_DAY == colorInt) {
+                    continue;
+                  }
+                  args[key] = this.formatTinyCardIcon(colorInt,valueInt);
+                  args[valueKey] = "";
+                }
+                //--------------------
+      
+
                 let tile_color = 'tile_color';
                 let tile_color_type = 'tile_color_type';
                 if(tile_color in args && tile_color_type in args) {
@@ -956,6 +978,16 @@ function (dojo, declare) {
             return `<div class="myt_icon_container myt_icon_container_${type}">
                 <div class="myt_icon myt_icon_${type}">${text}${tplSubIcons}</div>
                 </div>`;
+        },
+        formatTinyCardIcon(card_color, card_value) {
+            return `<div class="myt_icon_tinycard_container" data-color="${card_color}">
+                <div class="myt_icon_tinycard_row">
+                    <div class="myt_icon myt_icon_tinycard_value">
+                        <span class='myt_icon_qty' data-value="${card_value}">${ CARD_VALUE_JOKER == card_value ? '*' : card_value}</span>
+                    </div>
+                    ${this.formatIcon("card_color_log-"+card_color)}
+                </div>
+            </div>`;
         },
         
         formatString(str) {

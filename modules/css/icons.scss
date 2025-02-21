@@ -169,6 +169,54 @@
     }  
 }
 
+.myt_icon_tinycard_container{
+    display: inline-block;
+    vertical-align: middle;
+    width: fit-content;
+    
+    border-radius: 5px;
+
+    .myt_icon_tinycard_row{
+        display: flex;
+        flex-direction: row;
+    }
+    &[data-color="1"]//CARD_COLOR_BLUE
+    {
+        background: #295c84;
+        color: white;
+    }
+    &[data-color="2"]//CARD_COLOR_GREEN
+    {
+        background: #395e2d;
+        color: white;
+    }
+    &[data-color="3"]//CARD_COLOR_PURPLE
+    {
+        background: #662770;
+        color: white;
+    }
+    &[data-color="4"]//CARD_COLOR_RED
+    {
+        background: #862015;
+        color: white;
+    }
+    
+    .myt_icon{
+        &.myt_icon_tinycard_value{
+            width: 2em;
+            height: 100%;
+            text-align: center;
+            margin-right: -0.5em;
+
+            .myt_icon_qty{
+                font-size: 2em;
+                margin-top: -0.1em;
+                font-family: "Zen Antique Soft";
+            }
+        }
+    }
+}
+
 .myt_icon_container {
     display: inline-block;
     vertical-align: middle;
