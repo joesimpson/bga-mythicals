@@ -154,7 +154,9 @@ function (dojo, declare) {
                             <div id='myt_resizable_board'>
                                 <div id='myt_board_container'>
                                     <div id="myt_board">
+                                        <div id="myt_board_background"></div>
                                         <div id="myt_board_tiles"></div>
+                                        <div id="myt_board_filler">&nbsp;<br/></div>
                                         <div id="myt_cards_reserve"></div>
                                         <div id="myt_board_tokens">
                                             <div id="myt_ellipsis_border"></div>

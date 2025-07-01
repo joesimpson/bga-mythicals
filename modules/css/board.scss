@@ -38,10 +38,19 @@ $card_height: var(--myt_board_card_height);
             display: flex;
             flex-wrap: wrap;
 
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-
-            background-image: url('img/board.jpg');
+            #myt_board_background{
+                position: absolute;
+                width: $board_img_width;
+                height: $board_img_height;
+                background-image: url('img/board.jpg');
+                background-size: 100% auto;
+                background-repeat: no-repeat;
+            }
+            #myt_board_filler{
+                // Mobile issue on Brave and maybe Chrome : 
+                //No specific display here, but this "text" div make the browser make better computation of parent width/height ?z
+                font-size: 0.1em;
+            }
 
             .help-marker{
                 //Keep around the same size for the help marker in help mode

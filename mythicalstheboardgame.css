@@ -504,9 +504,17 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_background {
+  position: absolute;
+  width: 3750px;
+  height: 1842px;
+  background-image: url("img/board.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-image: url("img/board.jpg");
+}
+#myt_resizable_board #myt_board_container #myt_board #myt_board_filler {
+  font-size: 0.1em;
 }
 #myt_resizable_board #myt_board_container #myt_board .help-marker {
   transform: scale(calc(1 / var(--myt_board_display_scale)));
