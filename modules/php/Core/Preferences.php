@@ -86,7 +86,7 @@ class Preferences extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Manager
     $playerPrefs = [];
     foreach (ALL_PREFERENCES as $prefId)
     {
-      $pref_value = Game::get()->getGameUserPreference($pId,$prefId);
+      $pref_value = Game::get()->bga->userPreferences->get($pId,$prefId);
       $playerPrefs[] = [
         "id" => "$pId--$prefId",
         "player_id" => $pId,

@@ -26,10 +26,9 @@ use Bga\Games\MythicalsTheBoardGame\Managers\Players;
 use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
 use Bga\Games\MythicalsTheBoardGame\Managers\Tokens;
 
-require_once(APP_GAMEMODULE_PATH . "module/table/table.game.php");
 require_once 'constants.inc.php';
 
-class Game extends \Table
+class Game extends \Bga\GameFramework\Table
 {    
     use DebugTrait;
     use States\ConfirmUndoTrait;

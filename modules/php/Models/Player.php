@@ -46,7 +46,8 @@ class Player extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Model
   {
     //return Preferences::get($this->id, $prefId);
     //BGA framework :
-    return Game::get()->getGameUserPreference($this->getId(),$prefId);
+    $pref_value = Game::get()->bga->userPreferences->get($this->getId(),$prefId);
+    return $pref_value;
   }
 
   public function getStat($name)
