@@ -98,7 +98,7 @@ trait TileChoiceTrait
     //TONLY FOR SETS not SUITES !
     $foundMatch = Utils::isSameValueSet($cards);
     if (!$foundMatch) {
-      throw new UserException(104,self::_("These cards are not a valid set to get this tile"));
+      ("These cards are not a valid set to get this tile"));
     }
     */
 

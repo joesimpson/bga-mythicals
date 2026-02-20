@@ -1,15 +1,14 @@
 <?php
 namespace Bga\Games\MythicalsTheBoardGame\Exceptions;
-use Bga\Games\MythicalsTheBoardGame\Game;
 
-class UserException extends \BgaUserException
+class UserException extends \Bga\GameFramework\UserException
 {
     protected $code;
 
     public function __construct($code,$str)
     {
-        $this->code = $code;
-        parent::__construct(Game::get()->translate($str));
+        //$this->code = $code;
+        parent::__construct(($str));
     }
 }
 ?>
