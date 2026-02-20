@@ -581,7 +581,7 @@ function (dojo, declare) {
     
             this.forEachPlayer((player) => {
                 let pId = player.id;
-                this.scoreCtrl[pId].toValue(player.score);
+                this.bga.playerPanels.getScoreCounter(pId).toValue(player.score);
                 this._counters[pId].scoreRecap.toValue(player.score);
                 this._counters[pId].cards.toValue(player.nbcards);
                 this._counters[pId].tiles.toValue(player.nbtiles);
@@ -887,7 +887,7 @@ function (dojo, declare) {
                     duration: 1500,
                 });
             }
-            this.scoreCtrl[pId].incValue(n);
+            this.bga.playerPanels.getScoreCounter(pId).incValue(n);
             this._counters[pId].scoreRecap.incValue(n);
         },
 
