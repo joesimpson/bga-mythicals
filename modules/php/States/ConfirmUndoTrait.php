@@ -8,6 +8,7 @@ use Bga\Games\MythicalsTheBoardGame\Core\Notifications;
 use Bga\Games\MythicalsTheBoardGame\Exceptions\UnexpectedException;
 use Bga\Games\MythicalsTheBoardGame\Game;
 use Bga\Games\MythicalsTheBoardGame\Helpers\Log;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Utils;
 use Bga\Games\MythicalsTheBoardGame\Managers\Players;
 
 trait ConfirmUndoTrait
@@ -50,7 +51,7 @@ trait ConfirmUndoTrait
         if (Globals::getChoices() == 0 
             || $player->getPref(PREF_CONFIRM) == PREF_CONFIRM_DISABLED
         ) {//AUTO CONFIRM
-            $version = $this->gamestate->table_globals[BGA_GAMESTATE_GAMEVERSION];
+            $version = Utils::gameVersion();
             $this->actConfirmTurn($version,true);
         }
     }

@@ -1,6 +1,7 @@
 <?php
 namespace Bga\Games\MythicalsTheBoardGame\Helpers;
 
+use Bga\Games\MythicalsTheBoardGame\Exceptions\UserException;
 use Bga\Games\MythicalsTheBoardGame\Game;
 
 abstract class Utils
@@ -37,6 +38,23 @@ abstract class Utils
     
     public static function array_of_uniquearrays(array $array): array {
         return array_intersect_key($array, array_unique(array_map('serialize', $array)));
+    }
+    
+    public static function gameVersion() : int
+    {
+        $gameVersion = Game::get()->bga->tableOptions->get(BGA_GAMESTATE_GAMEVERSION);
+        return intval($gameVersion);
+    }
+    /**
+    * Check Server version to compare with client version : throw an error in case it 's not the same
+    * From https://en.doc.boardgamearena.com/BGA_Studio_Cookbook#Force_players_to_refresh_after_new_deploy
+    */
+    public static function checkVersion(int $clientVersion)
+    {
+        $gameVersion = Utils::gameVersion();
+        if ($clientVersion != $gameVersion) {
+            throw new UserException(555,'!!!checkVersion');
+        }
     }
 
     ////////////////////////////////////////////////////////////////

@@ -21,6 +21,7 @@ namespace Bga\Games\MythicalsTheBoardGame;
 use \Bga\GameFramework\Actions\CheckAction;
 use Bga\Games\MythicalsTheBoardGame\Core\Preferences;
 use Bga\Games\MythicalsTheBoardGame\Exceptions\UserException;
+use Bga\Games\MythicalsTheBoardGame\Helpers\Utils;
 use Bga\Games\MythicalsTheBoardGame\Managers\Cards;
 use Bga\Games\MythicalsTheBoardGame\Managers\Players;
 use Bga\Games\MythicalsTheBoardGame\Managers\Tiles;
@@ -141,7 +142,7 @@ class Game extends \Bga\GameFramework\Table
         $result["tiles"] = Tiles::getUiData($current_player_id);
         $result["tokens"] = Tokens::getUiData($current_player_id);
         $result["prefs"] = Preferences::getUiData($current_player_id);
-        $result["version"] = intval($this->gamestate->table_globals[BGA_GAMESTATE_GAMEVERSION]);
+        $result["version"] = Utils::gameVersion();
 
         // TODO: Gather all information about current game situation (visible by player $current_player_id).
 
@@ -195,9 +196,7 @@ class Game extends \Bga\GameFramework\Table
     */
     public function checkVersion(int $clientVersion)
     {
-        if ($clientVersion != intval($this->gamestate->table_globals[BGA_GAMESTATE_GAMEVERSION])) {
-            throw new UserException(555,'!!!checkVersion');
-        }
+        Utils::checkVersion($clientVersion);
     }
     
     /////////////////////////////////////////////////////////////
