@@ -3,7 +3,7 @@ namespace Bga\Games\MythicalsTheBoardGame\Helpers;
 
 use Bga\Games\MythicalsTheBoardGame\Game;
 
-abstract class Utils extends \APP_DbObject
+abstract class Utils
 {
     public static function filter(&$data, $filter)
     {

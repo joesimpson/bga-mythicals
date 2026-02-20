@@ -2,7 +2,7 @@
 namespace Bga\Games\MythicalsTheBoardGame\Helpers;
 use Bga\Games\MythicalsTheBoardGame\Game;
 
-abstract class DB_Model extends \APP_DbObject implements \JsonSerializable
+abstract class DB_Model implements \JsonSerializable
 {
   protected $table = null;
   protected $primary = null;

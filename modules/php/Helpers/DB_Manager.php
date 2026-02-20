@@ -2,7 +2,7 @@
 namespace Bga\Games\MythicalsTheBoardGame\Helpers;
 use Bga\Games\MythicalsTheBoardGame\Game;
 
-class DB_Manager extends \APP_DbObject
+class DB_Manager
 {
     protected static $table = null;
     protected static $primary = null;
