@@ -28,7 +28,7 @@ trait ConfirmUndoTrait
      */
     public function addStep()
     {
-        $stepId = Log::step($this->gamestate->state_id());
+        $stepId = Log::step($this->gamestate->getCurrentMainStateId());
         Globals::incChoices();
     }
 
