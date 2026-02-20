@@ -149,16 +149,6 @@ class Game extends \Bga\GameFramework\Table
     }
 
     /**
-     * Returns the game name.
-     *
-     * IMPORTANT: Please do not modify.
-     */
-    protected function getGameName()
-    {
-        return "mythicalstheboardgame";
-    }
-
-    /**
      * This method is called each time it is the turn of a player who has quit the game (= "zombie" player).
      * You can do whatever you want in order to make sure the turn of this player ends appropriately
      * (ex: pass).
