@@ -14,18 +14,18 @@
  */
 
 @use "sass:math";
-@import "modules/css/variables";
-@import "modules/css/icons";
-@import "modules/css/player-panel";
-@import "modules/css/board";
-@import "modules/css/cards";
-@import "modules/css/tiles";
-@import "modules/css/meeples";
-@import "modules/css/scoring";
-@import "modules/css/settings";
-@import "modules/css/nouislider";
-@import "modules/css/flip";
-@import "modules/css/fonts";
+@import "src/css/variables";
+@import "src/css/icons";
+@import "src/css/player-panel";
+@import "src/css/board";
+@import "src/css/cards";
+@import "src/css/tiles";
+@import "src/css/meeples";
+@import "src/css/scoring";
+@import "src/css/settings";
+@import "src/css/nouislider";
+@import "src/css/flip";
+@import "src/css/fonts";
 /**
     PREFIX FOR THIS GAME PROJECT : "myt"
 */
