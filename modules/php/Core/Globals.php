@@ -74,6 +74,7 @@ class Globals extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Manager
     $tmp = self::$log;
     self::$log = false;
 
+    /*
     //Migrate from 'bga_globals' to 'my_global_variables', like I do in upgradeTableDb, but this method is called before
     $version = Utils::gameVersion();
     if($version <= 2602201835 && $version != 999999999){
@@ -86,6 +87,7 @@ class Globals extends \Bga\Games\MythicalsTheBoardGame\Helpers\DB_Manager
               SELECT * FROM `bga_globals`";
       Table::DbQuery($sql);
     }
+    */
 
     foreach (self::DB()
         ->select(['value', 'name'])

@@ -74,7 +74,7 @@ define(['dojo', 'dojo/_base/declare', g_gamethemeurl + 'modules/js/vendor/nouisl
         console.error(msg);
         if (msg && msg.startsWith("!!!")) {
           if (msg == "!!!checkVersion") {
-            this.infoDialog(  _("A new version of this game is now available"),_("Reload Required"), () => {window.location.reload(true);},true);
+            this.infoDialog(  _("A new version of this game is now available"),_("Reload Required"), () => {window.location.reload(true);},false);
           }
           return; // suppress red banner and gamelog message
         }
